@@ -1,7 +1,5 @@
-'use client'
-
-import { FaUser, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"
 import Link from "next/link"
+import { FaUser, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"
 import { IoIosArrowForward } from "react-icons/io"
 
 const reviews = [
@@ -9,15 +7,23 @@ const reviews = [
         id: 1,
         name: "Анна Смирнова",
         company: "Студия красоты «Lux»",
-        category: "Сайты",
-        avatar: null, // или можно использовать иконку
+        avatar: null,
         rating: 5,
         text: "Заказали готовый сайт для салона — всё сделали за 3 дня, адаптировали под наш стиль. Клиенты теперь записываются онлайн, брони больше не теряются. Очень довольны результатом!",
         date: "15 августа 2026",
     },
+    {
+        id: 2,
+        name: "Михаил Петров",
+        company: "Ресторан «Вкус»",
+        avatar: null,
+        rating: 5,
+        text: "Готовый лендинг для ресторана — запустили за 4 дня. Всё работает отлично, бронирование столиков через сайт приносит новых гостей. Отдельное спасибо за интеграцию с доставкой.",
+        date: "2 сентября 2026",
+    }
 ]
 
-export function ReviewsCatalog() {
+export function ReviewsReadySites() {
     return (
         <div className="container">
             <div className="pt-42">
@@ -26,31 +32,18 @@ export function ReviewsCatalog() {
                     <span className="text-white/40 text-xs uppercase tracking-widest">Отзывы</span>
                     <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
                 </div>
-                <div className="text-center max-w-2xl mx-auto">
-                    <h2 className="text-white text-font-space text-4xl md:text-5xl">Что говорят те, кто уже запустился</h2>
+
+            <div className="text-center max-w-2xl mx-auto">
+                    <h2 className="text-white text-font-space text-4xl md:text-5xl">Что говорят владельцы сайтов</h2>
                     <p className="text-white/60 text-font-inter text-base mt-3">
-                        Реальные впечатления клиентов о готовых решениях и результате после запуска.
+                        Реальный опыт клиентов, которые выбрали готовое решение вместо разработки с нуля.
                     </p>
                 </div>
-                <div className="mt-8 flex flex-wrap justify-center gap-3">
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white text-black border-white transition-all duration-300 cursor-pointer">
-                        Все
-                    </button>
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white/5 text-white/80 border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                        Сайты
-                    </button>
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white/5 text-white/80 border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                        Боты
-                    </button>
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white/5 text-white/80 border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                        Инструменты
-                    </button>
-                </div>
-                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {reviews.map((review) => (
                         <div
                             key={review.id}
-                            className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all flex flex-col"
+                            className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:shadow-2xl flex flex-col"
                         >
                             <div className="flex items-start gap-4">
                                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
@@ -72,9 +65,6 @@ export function ReviewsCatalog() {
                                         <span className="text-white/30 text-xs ml-1">{review.date}</span>
                                     </div>
                                 </div>
-                                <span className="shrink-0 px-2.5 py-0.5 rounded-full border border-white/10 text-white/40 text-[10px] uppercase tracking-wider">
-                                    {review.category}
-                                </span>
                             </div>
                             <p className="text-white/70 text-font-inter text-sm leading-relaxed mt-4 flex-1">
                                 {review.text}
@@ -91,7 +81,7 @@ export function ReviewsCatalog() {
                 <div className="mt-12 max-w-2xl mx-auto text-center bg-[#111111] border border-white/10 rounded-xl p-8">
                     <p className="text-white text-base font-medium">Уже пользовались нашим решением?</p>
                     <p className="text-white/60 text-font-inter text-sm mt-1">
-                        Расскажите, как всё прошло — ваш отзыв поможет другим быстрее принять решение.
+                        Расскажите, как всё прошло - ваш отзыв поможет другим быстрее принять решение.
                     </p>
                     <Link
                         href="#"
@@ -105,3 +95,4 @@ export function ReviewsCatalog() {
         </div>
     )
 }
+

@@ -85,6 +85,57 @@ export function HeaderDesktopNav() {
                 </div>
             </div>
 
+            <div className="relative group pb-2">
+                <span className="link_nav-header group flex items-center gap-0.5">
+                    Каталог
+                    <MdOutlineKeyboardArrowDown className="size-4 duration-300 group-hover:translate-y-0.5" />
+                </span>
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <div className="bg-[#111111] border border-white/10 rounded-xl shadow-2xl shadow-black/50 p-6 w-screen max-w-5xl backdrop-blur-sm">
+                        <div className="grid grid-cols-3 gap-8 text-sm">
+
+                            <div>
+                                <a href="/catalog/ready-sites" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
+                                    Готовые сайты
+                                </a>
+                                <ul className="space-y-2">
+                                    <li><a href="/services/web-development/sites" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/web-development/web-application" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/web-development/interfaces" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/web-development/online-stores" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/web-development/complex-webproducts" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <a href="/catalog/bots" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
+                                    Боты
+                                </a>
+                                <ul className="space-y-2">
+                                    <li><a href="/services/automation/process-automation" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/automation/integrations" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/automation/crm" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/automation/bots" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/automation/notifications" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/automation/internal-tools" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <a href="/catalog/ready-models" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
+                                    Готовые инструменты
+                                </a>
+                                <ul className="space-y-2">
+                                    <li><a href="/services/growth-analytics/seo" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                    <li><a href="/services/growth-analytics/analytics" className="text-white/50 hover:text-white transition-colors"></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <a className="link_nav-header group" href="/portfolio">
                 Портфолио
             </a>

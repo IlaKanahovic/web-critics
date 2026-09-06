@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ['/api/', '/admin/'],
             },
         ],
-        sitemap: 'https://web-products.ru/sitemap.xml',
+        sitemap: 'https://web-critics.ru/sitemap.xml',
     };
 }

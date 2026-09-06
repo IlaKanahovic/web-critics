@@ -1,12 +1,14 @@
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
-import { HeroCatalogMainPage } from "./catalogMainPage/HeroCatalogMainPage";
-import { TableCatalog } from "./catalogMainPage/TableCatalog";
-import { DontFindCatalog } from "./catalogMainPage/DontFindCatalog";
-import { ReviewsCatalog } from "./catalogMainPage/ReviewsCatalog";
+import { HeroCatalogReadySites } from "./HeroCatalogReadySites";
+import { PriceAssessment } from "./PriceAssessment";
+import { FAQByReadySites } from "./FAQByReadySites";
+import { ReviewsReadySites } from "./ReviewsReadySites";
 import { Footer } from "@/components/layout/footer/Footer";
+import { SubscriptionByReadySites } from "./SubscriptionByReadySites";
 
-export default function Catalog() {
+
+export default function ReadySitesCatalog() {
     return (
         <div className="relative min-h-screen bg-black">
             <div
@@ -23,13 +25,13 @@ export default function Catalog() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <HeroCatalogMainPage />
-                <TableCatalog />
-                <DontFindCatalog />
-                <ReviewsCatalog />
+                <HeroCatalogReadySites />
+                <SubscriptionByReadySites />
+                <PriceAssessment />
+                <FAQByReadySites />
+                <ReviewsReadySites />
                 <Footer />
             </div>
         </div>
     )
 }
-

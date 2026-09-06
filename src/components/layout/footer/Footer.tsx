@@ -11,7 +11,7 @@ export function Footer() {
             </div>
 
             <div className="container px-4 md:px-0">
-                <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
+                <div className="py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
                     <div className="col-span-2 md:col-span-1">
                         <div className="mb-6">
                             <BrandIdentityLogo />
@@ -29,14 +29,23 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* доделать ссылки */}
+                    <div>
+                        <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Услуги</h4>
+                        <ul className="space-y-2.5">
+                            <li><a href="#" className="hover:text-white transition-colors duration-200">Веб-разработка</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors duration-200">Автоматизация</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors duration-200">Рост и аналитика</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors duration-200">AI</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors duration-200">Надёжность и масштабирование</a></li>
+                        </ul>
+                    </div>
+
                     <div>
                         <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Продукты</h4>
                         <ul className="space-y-2.5">
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Готовые сайты</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Боты</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Веб-сервисы</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Индивидуальная разработка</a></li>
+                            <li><a href="/catalog/ready-sites" className="hover:text-white transition-colors duration-200">Готовые сайты</a></li>
+                            <li><a href="/catalog/bots" className="hover:text-white transition-colors duration-200">Боты</a></li>
+                            <li><a href="/catalog/ready-models" className="hover:text-white transition-colors duration-200">Готовые инструменты</a></li>
                         </ul>
                     </div>
 
