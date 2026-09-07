@@ -84,7 +84,7 @@ export function ReviewsReadySites() {
                         Расскажите, как всё прошло - ваш отзыв поможет другим быстрее принять решение.
                     </p>
                     <Link
-                        href="#"
+                        href="/reviews"
                         className="inline-flex items-center gap-2 mt-4 text-white/80 hover:text-white transition-colors duration-200 group"
                     >
                         <span className="text-sm font-medium">Оставить отзыв</span>

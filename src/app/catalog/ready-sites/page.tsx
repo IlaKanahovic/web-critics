@@ -1,11 +1,12 @@
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { HeroCatalogReadySites } from "./HeroCatalogReadySites";
-import { PriceAssessment } from "./PriceAssessment";
 import { FAQByReadySites } from "./FAQByReadySites";
 import { ReviewsReadySites } from "./ReviewsReadySites";
 import { Footer } from "@/components/layout/footer/Footer";
 import { SubscriptionByReadySites } from "./SubscriptionByReadySites";
+import { PriceAssessmentReadySites } from "./PriceAssessmentReadySites";
+import { CTAByFooterReadySites } from "./CTAByFooterReadySites";
 
 
 export default function ReadySitesCatalog() {
@@ -14,7 +15,7 @@ export default function ReadySitesCatalog() {
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                    backgroundImage: "radial-gradient(circle, #222222 1px, transparent 1px)",
+                    backgroundImage: "radial-gradient(circle, #303030 1px, transparent 1px)",
                     backgroundSize: "24px 24px",
                 }}
             />
@@ -27,9 +28,10 @@ export default function ReadySitesCatalog() {
                 </div>
                 <HeroCatalogReadySites />
                 <SubscriptionByReadySites />
-                <PriceAssessment />
+                <PriceAssessmentReadySites />
                 <FAQByReadySites />
                 <ReviewsReadySites />
+                <CTAByFooterReadySites />
                 <Footer />
             </div>
         </div>

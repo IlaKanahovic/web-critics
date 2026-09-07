@@ -1,23 +1,25 @@
 import { FaCheck } from "react-icons/fa"
 
 const includedItems = [
-    "Готовый сайт",
-    "Адаптация под ваш бизнес",
-    "Домен",
-    "Хостинг",
-    "SSL-сертификат",
-    "Техническое обслуживание",
+    "Готовый инструмент",
+    "Адаптация под ваш процесс",
+    "Подключение необходимых сервисов",
+    "Настройка интеграций",
+    "Размещение необходимых компонентов",
     "Исправление технических проблем",
-    "Обновления / изменения*",
 ]
 
 const tableRows = [
-    { label: "Готовый сайт", oneTime: true, subscription: true },
-    { label: "Адаптация", oneTime: true, subscription: true },
-    { label: "Домен", oneTime: "ваш / отдельно", subscription: "подключаем" },
-    { label: "Хостинг", oneTime: "ваш / отдельно", subscription: "включён" },
-    { label: "SEO", oneTime: true, subscription: "включён" },
-    { label: "SSL", oneTime: true, subscription: "включён" },
+    { label: "Готовый инструмент", oneTime: true, subscription: true },
+    { label: "Адаптация под ваш процесс", oneTime: true, subscription: true },
+    { label: "Подключение необходимых сервисов", oneTime: true, subscription: "подключаем" },
+    { label: "Размещение необходимых компонентов", oneTime: true, subscription: "включён" },
+    { label: "Мониторинг работоспособности", oneTime: "отдельно", subscription: "включён" },
+    {
+        label: "Настройка интеграций",
+        oneTime: true,
+        subscription: true,
+    },
     {
         label: "Техническая поддержка",
         oneTime: "отдельно",
@@ -31,7 +33,7 @@ const tableRows = [
     { label: "Ежемесячная оплата", oneTime: "—", subscription: true },
 ]
 
-export function SubscriptionByReadySites() {
+export function SubscriptionByReadyModels() {
     return (
         <div className="container">
             <div className="pt-42">
@@ -42,29 +44,28 @@ export function SubscriptionByReadySites() {
                 </div>
 
                 <div className="text-center max-w-2xl mx-auto">
-                    <h2 className="text-white text-font-space text-4xl md:text-5xl">Сайт работает - мы следим за ним</h2>
+                    <h2 className="text-white text-font-space text-4xl md:text-5xl">Инструмент работает - мы следим за остальным</h2>
                     <p className="text-white/60 text-font-inter text-base mt-3">
-                        Подписка позволяет запустить готовый сайт без самостоятельной настройки хостинга, домена и технического
-                        обслуживания.
+                        Не хотите самостоятельно заниматься размещением, подключением и техническим обслуживанием? Можно выбрать подписку - мы берём техническую сторону на себя.
                     </p>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                        <h3 className="text-white text-lg font-semibold">Домен</h3>
-                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Поможем выбрать доменное имя, оформим его и подключим к сайту.</p>
+                        <h3 className="text-white text-lg font-semibold">Подключение</h3>
+                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Подключим инструмент к вашим сервисам и настроим его работу в соответствии с вашим процессом.</p>
                     </div>
                     <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                        <h3 className="text-white text-lg font-semibold">Хостинг</h3>
-                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Разместим сайт на нашей инфраструктуре и будем следить за его работоспособностью.</p>
+                        <h3 className="text-white text-lg font-semibold">Инфраструктура</h3>
+                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Разместим необходимые сервисы и будем следить за их работоспособностью.</p>
                     </div>
                     <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                        <h3 className="text-white text-lg font-semibold">SSL</h3>
-                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Настроим SSL-сертификат и необходимые параметры безопасности для работы сайта по HTTPS.</p>
+                        <h3 className="text-white text-lg font-semibold">Интеграции</h3>
+                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Подключим CRM, API, таблицы и другие необходимые сервисы.</p>
                     </div>
                     <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
                         <h3 className="text-white text-lg font-semibold">Поддержка</h3>
-                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Если сайт перестал работать или возникла техническая проблема, мы найдём причину и восстановим его работоспособность.</p>
+                        <p className="text-white/60 text-sm mt-2 leading-relaxed">Если инструмент перестал работать или возникла техническая проблема - найдём причину и восстановим его работу.</p>
                     </div>
                 </div>
 
@@ -72,6 +73,7 @@ export function SubscriptionByReadySites() {
 
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-white text-font-space text-3xl md:text-4xl text-center">Что входит в подписку</h2>
+                    <p className="text-white/60 text-font-inter text-center text-base mt-1">Вы получаете готовый инструмент, адаптированный под вашу задачу, а мы занимаемся его технической стороной после запуска.</p>
                     <div className="mt-8 bg-[#111111] border border-white/10 rounded-xl p-6">
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2.5">
                             {includedItems.map((item, idx) => (
@@ -137,19 +139,21 @@ export function SubscriptionByReadySites() {
                 <div className="my-8 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
                 <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-white text-font-space text-3xl md:text-4xl">А что после подписки?</h2>
+                    <h2 className="text-white text-font-space text-3xl md:text-4xl">А что будет, если подписка закончится?</h2>
                     <p className="text-white/60 text-font-inter text-base mt-3">
                         Подписку можно прекратить в любой момент. После её окончания мы прекращаем оплачивать и обслуживать
                         инфраструктуру, которую предоставляли в рамках подписки.
+                        <br />
+                        Сам инструмент и созданные для него материалы остаются у вас. Вы можете самостоятельно разместить его на своей инфраструктуре или продолжить пользоваться нашей подпиской.
                     </p>
-                    <p className="text-white font-medium mt-4">Сайт при этом остаётся у вас.</p>
+                    <p className="text-white font-medium mt-4">Инструмент при этом остаётся у вас.</p>
 
                     <p className="text-white/60 text-font-inter text-sm mt-6">
-                        В обоих вариантах вы получаете готовый сайт. Разница в том, кто занимается его технической стороной после запуска.
+                        В обоих вариантах вы получаете готовый инструмент. Разница в том, кто занимается его технической стороной после запуска.
                     </p>
 
                     <p className="text-white/60 text-font-inter text-sm mt-6">
-                        Хотите продолжить пользоваться сайтом без самостоятельной настройки?
+                        Хотите продолжить пользоваться инструментом без самостоятельной настройки?
                         <br />
                         Просто продлите подписку - мы продолжим его размещать и сопровождать.
                     </p>

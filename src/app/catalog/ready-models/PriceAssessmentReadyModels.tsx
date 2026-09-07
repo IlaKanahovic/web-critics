@@ -1,27 +1,29 @@
 import { FaCube, FaPaintBrush, FaRocket, FaPlus, FaCheck } from "react-icons/fa"
 
 const includedItems = [
-    "готовый сайт",
-    "адаптация под ваш бизнес",
-    "замена контента",
-    "базовая настройка SEO",
-    "адаптивная версия",
+    "готовый инструмент",
+    "настройка под вашу задачу",
+    "адаптация параметров и сценариев",
+    "подключение необходимых сервисов",
+    "настройка интеграций",
+    "тестирование",
+    "запуск"
 ]
 
 const addonItems = [
-    "дополнительные страницы",
+    "новые источники данных",
+    "дополнительные сценарии",
     "интеграции",
-    "подключение домена",
-    "размещение сайта",
-    "тестирование перед запуском",
-    "онлайн-оплату",
     "CRM",
+    "API",
+    "AI-функции",
+    "пользовательскую логику",
     "аналитику",
     "постоянную поддержку",
     "дополнительные функции",
 ]
 
-export function PriceAssessment() {
+export function PriceAssessmentReadyModels() {
     return (
         <div className="container">
             <div className="pt-42">
@@ -32,33 +34,38 @@ export function PriceAssessment() {
                 </div>
                 <div>
                     <h2 className="text-white text-font-space text-4xl md:text-5xl text-center">За что вы платите</h2>
+                    <p className="text-white/60 text-font-inter text-center text-base mt-3">
+                        В готовом инструменте уже есть основная логика и функциональность. Вы платите за готовое решение,
+                        <br />
+                        его адаптацию, подключение и запуск - а не за разработку всего с нуля.
+                    </p>
                     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
                             <FaCube className="text-white/60 size-8 mb-4" />
                             <h3 className="text-white text-lg font-semibold">Основа</h3>
                             <p className="text-white/60 text-sm mt-2 leading-relaxed">
-                                Готовый дизайн, структура и функциональность выбранного решения.
+                                Готовая логика, функциональность и структура выбранного инструмента.
                             </p>
                         </div>
                         <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
                             <FaPaintBrush className="text-white/60 size-8 mb-4" />
                             <h3 className="text-white text-lg font-semibold">Адаптация</h3>
                             <p className="text-white/60 text-sm mt-2 leading-relaxed">
-                                Логотип, цвета, контент, контакты и другие элементы под ваш бизнес.
+                                Настраиваем параметры и сценарии работы под ваш процесс.
+                            </p>
+                        </div>
+                        <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                            <FaPlus className="text-white/60 size-8 mb-4" />
+                            <h3 className="text-white text-lg font-semibold">Подключение</h3>
+                            <p className="text-white/60 text-sm mt-2 leading-relaxed">
+                                Подключаем необходимые сервисы, источники данных и интеграции.
                             </p>
                         </div>
                         <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
                             <FaRocket className="text-white/60 size-8 mb-4" />
                             <h3 className="text-white text-lg font-semibold">Запуск</h3>
                             <p className="text-white/60 text-sm mt-2 leading-relaxed">
-                                Настройка, подключение домена и размещение сайта.
-                            </p>
-                        </div>
-                        <div className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                            <FaPlus className="text-white/60 size-8 mb-4" />
-                            <h3 className="text-white text-lg font-semibold">Дополнения</h3>
-                            <p className="text-white/60 text-sm mt-2 leading-relaxed">
-                                Дополнительные функции и интеграции - только если они действительно нужны.
+                                Проверяем работу инструмента и подключаем его к вашему рабочему процессу.
                             </p>
                         </div>
                     </div>
@@ -95,7 +102,7 @@ export function PriceAssessment() {
                     </div>
                     <div className="mt-8 max-w-2xl mx-auto text-center bg-[#111111] border border-white/10 rounded-xl p-6">
                         <p className="text-white/80 text-font-inter text-sm leading-relaxed">
-                            После запуска сайт можно оставить на самостоятельном обслуживании или подключить сопровождение.
+                            После запуска инструмент можно оставить на самостоятельном обслуживании или подключить сопровождение.
                         </p>
                     </div>
                 </div>
