@@ -1,12 +1,12 @@
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
-import { HeroCatalogBots } from "./HeroCatalogBots";
-import { SubscriptionByBots } from "./SubscriptionByBots";
-import { PriceAssessmentBots } from "./PriceAssessmentBots";
-import { FAQByBots } from "./FAQByBots";
-import { ReviewsBots } from "./ReviewsBots";
 import { Footer } from "@/components/layout/footer/Footer";
-import { CTAByFooterBots } from "./CTAByFooterBots";
+import { HeroCatalogBots } from "./components/HeroCatalogBots";
+import { SubscriptionByBots } from "./components/SubscriptionByBots";
+import { PriceAssessmentBots } from "./components/PriceAssessmentBots";
+import { FAQByBots } from "./components/FAQByBots";
+import { ReviewsBots } from "./components/ReviewsBots";
+import { CTAByFooterBots } from "./components/CTAByFooterBots";
 
 
 export default function BotsCatalog() {

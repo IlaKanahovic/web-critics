@@ -1,15 +1,12 @@
+import { Footer } from "@/components/layout/footer/Footer";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
-import { Footer } from "@/components/layout/footer/Footer";
-import { HeroCatalogReadySites } from "./components/HeroCatalogReadySites";
-import { SubscriptionByReadySites } from "./components/SubscriptionByReadySites";
-import { PriceAssessmentReadySites } from "./components/PriceAssessmentReadySites";
-import { FAQByReadySites } from "./components/FAQByReadySites";
-import { ReviewsReadySites } from "./components/ReviewsReadySites";
-import { CTAByFooterReadySites } from "./components/CTAByFooterReadySites";
+import { HeroProductBots } from "./componentsProduct/HeroProductBots";
+import { DescriptionProductBots } from "./componentsProduct/DescriptionProductBots";
+import { OtherProductBots } from "./componentsProduct/OtherProductBots";
+import { CTAProductBots } from "./componentsProduct/CTAProductBots";
 
-
-export default function ReadySitesCatalog() {
+export default function Product() {
     return (
         <div className="relative min-h-screen bg-black">
             <div
@@ -26,12 +23,10 @@ export default function ReadySitesCatalog() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <HeroCatalogReadySites />
-                <SubscriptionByReadySites />
-                <PriceAssessmentReadySites />
-                <FAQByReadySites />
-                <ReviewsReadySites />
-                <CTAByFooterReadySites />
+                <HeroProductBots />
+                <DescriptionProductBots />
+                <OtherProductBots />
+                <CTAProductBots />
                 <Footer />
             </div>
         </div>

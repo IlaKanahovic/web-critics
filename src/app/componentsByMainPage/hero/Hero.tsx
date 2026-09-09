@@ -1,13 +1,13 @@
-'use client'
-
 import { HeroLeft } from "./HeroLeft"
 import { HeroRight } from "./HeroRight"
 
 export function Hero() {
     return (
-        <div className="container flex items-center gap-100">
-            <HeroLeft />
-            <div className="hero-desktop-only">
+        <div className="container grid grid-cols-1 lg:grid-cols-5 gap-8 pt-8">
+            <div className="lg:col-span-3">
+                <HeroLeft />
+            </div>
+            <div className="lg:col-span-2">
                 <HeroRight />
             </div>
         </div>

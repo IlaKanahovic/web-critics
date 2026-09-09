@@ -4,7 +4,7 @@ import { HiOutlineMail } from 'react-icons/hi'
 
 export function Footer() {
     return (
-        <footer className="bg-black text-white/60 text-sm pt-12">
+        <footer className="text-white/60 text-sm pt-12">
             <div className="relative w-full h-px overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent" />
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent blur-xl" />

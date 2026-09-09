@@ -9,7 +9,7 @@ import CodeIcon3D from "@/components/ui/3d/CodeIcon3D";
 import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 
-const cardClass = "relative rounded-xl bg-[#111111] border border-white/10 shadow-inner shadow-white/5 before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-12 before:h-12 before:bg-white/20 before:rounded-full before:blur-2xl before:pointer-events-none after:absolute after:top-0 after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent after:pointer-events-none transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center p-6 min-h-[460px] cursor-pointer"
+const cardClass = "relative rounded-xl bg-[#111111] border border-white/10 shadow-inner shadow-white/5 before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-12 before:h-12 before:bg-white/20 before:rounded-full before:blur-2xl before:pointer-events-none after:absolute after:top-0 after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent after:pointer-events-none transition-all duration-300 hover:shadow-2xl flex flex-col items-center p-6 min-h-[460px] cursor-pointer"
 
 const services = [
     {

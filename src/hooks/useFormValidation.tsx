@@ -7,6 +7,7 @@ interface FormState {
     phone: string
     email: string
     consent: boolean
+    offer: boolean
 }
 
 interface Errors {
@@ -14,6 +15,7 @@ interface Errors {
     phone?: string
     email?: string
     consent?: string
+    offer?: string 
 }
 
 export function useFormValidation() {
@@ -22,6 +24,7 @@ export function useFormValidation() {
         phone: '',
         email: '',
         consent: false,
+        offer: false
     })
 
     const [errors, setErrors] = useState<Errors>({})
@@ -50,6 +53,11 @@ export function useFormValidation() {
 
         if (field === 'consent') {
             if (!value) return 'необходимо дать согласие на обработку персональных данных'
+            return undefined
+        }
+
+        if (field === 'offer') {
+            if (!value) return 'необходимо принять условия публичной оферты'
             return undefined
         }
 

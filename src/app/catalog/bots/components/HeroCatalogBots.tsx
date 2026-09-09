@@ -1,41 +1,44 @@
-import { CardProductCatalogReadySites } from "./CardProductCatalogReadySites"
+import { CardProductCatalogBots } from "./CardProductCatalogBots"
 
-export function HeroCatalogReadySites() {
-    const dataReadySites = [
-        {
-            id: 1,
-            title: "Сайт для студии красоты",
-            description: "Для салонов и частных мастеров",
-            features: ["Онлайн-запись", "Каталог услуг", "Адаптивная версия"],
-            price: 15000,
-            priceMounth: '3 990₽/мес.',
-            previewBg: "bg-gradient-to-br from-pink-500/20 to-purple-500/20",
-        },
-        {
-            id: 2,
-            title: "Лендинг для ресторана",
-            description: "Для ресторанов, кафе и доставки",
-            features: ["Меню", "Бронирование", "Интеграция с доставкой"],
-            price: 15000,
-            priceMounth: '3 990₽/мес.',
-            previewBg: "bg-gradient-to-br from-orange-500/20 to-red-500/20",
-        },
-    ]
+export const dataBots = [
+    {
+        id: 1,
+        title: "Бот для обработки заявок",
+        description: "Собирает обращения клиентов, задаёт необходимые вопросы и передаёт готовую заявку вам или в CRM.",
+        features: ["Сбор заявок", "Уведомления", "Интеграция с CRM"],
+        price: 13000,
+        priceMounth: '6 500₽ + 2 990₽/мес.',
+        previewBg: "bg-gradient-to-br from-pink-500/20 to-purple-500/20",
+        slug: 'processing-of-applications-bots',
+    },
+    {
+        id: 2,
+        title: "Автоуведомления клентам",
+        description: "Telegram-бот, который сам напоминает клиентам о записи, подтверждает визит и снижает неявки.",
+        features: ["Уведомления", "Автоматические вопросы", "Telegram-бот"],
+        price: 13000,
+        priceMounth: '6 500₽ + 2 990₽/мес.',
+        previewBg: "bg-gradient-to-br from-orange-500/20 to-red-500/20",
+        slug: 'auto‑notifications-to-clients',
+    },
+]
 
-    const forWhowArray = ["Все", "Услуги", "Красота", "Рестораны", "Специалисты", "Медицина", "E-commerce", "Другое"]
-    const opportunitiesArray = ["Все", "Форма заявки", "Онлайн-запись", "Каталог", "Интернет-магазин", "Блог", "Интеграции"]
-    const priceArray = ["Все", "До 10 000 ₽", "10 000–20 000 ₽", "20 000–30 000 ₽", "30 000 ₽+"]
+export function HeroCatalogBots() {
+
+    const forWhowArray = ["Все", "Продажи", "Запись", "Уведомления", "Автоматизация", "Внутренние задачи"]
+    const opportunitiesArray = ["Все", "Диалог", "Формы", "Уведомления", "Каталог", "Заявки", "Работа с данными", "AI"]
+    const priceArray = ["Все", "До 5 000 ₽", "5 000–10 000 ₽", "10 000–20 000 ₽", "20 000-35 000 ₽", "35 000+ ₽"]
     const quantityArray = ["Все", "5", "10", "25", "50"]
     const sortingArray = ["По популярности", "По цене ↑", "По цене ↓", "По новизне"]
 
     return (
         <div className="container">
             <div className="pt-24">
-                <h1 className="text-font-cormorant text-[#f0f0f0] text-center text-[80px] leading-24 mt-8">Сайт уже готов. Осталось сделать его вашим.</h1>
+                <h1 className="text-font-cormorant text-[#f0f0f0] text-center text-[80px] leading-24 mt-8">Бот уже готов. Осталось настроить его под ваши задачи.</h1>
                 <h2 className="text-font-inter text-[#bcbebe] text-[18px] text-center mt-2">
-                    Выберите подходящий вариант,
+                    Выберите готовое решение, адаптируйте сценарии под свой бизнес
                     <br />
-                    адаптируйте его под свой бизнес и запустите быстрее, чем индивидуальную разработку.
+                    и запустите автоматизацию без разработки с нуля. Для Telegram, сайтов, внутренних процессов и других задач.
                 </h2>
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -123,8 +126,8 @@ export function HeroCatalogReadySites() {
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {dataReadySites.map((site) => (
-                        <CardProductCatalogReadySites key={site.id} {...site} />
+                    {dataBots.map((bot) => (
+                        <CardProductCatalogBots key={bot.id} {...bot} />
                     ))}
                 </div>
             </div>

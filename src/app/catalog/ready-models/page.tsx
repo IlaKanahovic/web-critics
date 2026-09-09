@@ -1,12 +1,13 @@
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
-import { HeroCatalogReadyModels } from "./HeroCatalogReadyModels";
-import { SubscriptionByReadyModels } from "./SubscriptionByReadyModels";
-import { PriceAssessmentReadyModels } from "./PriceAssessmentReadyModels";
-import { FAQByReadyModels } from "./FAQByReadyModels";
-import { ReviewsReadyModels } from "./ReviewsReadyModels";
-import { CTAByFooterReadyModels } from "./CTAByFooterReadyModels";
+
 import { Footer } from "@/components/layout/footer/Footer";
+import { HeroCatalogReadyModels } from "./components/HeroCatalogReadyModels";
+import { SubscriptionByReadyModels } from "./components/SubscriptionByReadyModels";
+import { PriceAssessmentReadyModels } from "./components/PriceAssessmentReadyModels";
+import { FAQByReadyModels } from "./components/FAQByReadyModels";
+import { ReviewsReadyModels } from "./components/ReviewsReadyModels";
+import { CTAByFooterReadyModels } from "./components/CTAByFooterReadyModels";
 
 
 export default function ReadModelsCatalog() {

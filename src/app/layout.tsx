@@ -77,18 +77,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         inter.variable
       )}
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'WebProducts',
-            url: 'https://web-products.ru',
-            logo: 'https://web-products.ru/img/avatar.svg',
-          }),
-        }}
-      />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'WebProducts',
+              url: 'https://web-products.ru',
+              logo: 'https://web-products.ru/img/avatar.svg',
+            }),
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   )
