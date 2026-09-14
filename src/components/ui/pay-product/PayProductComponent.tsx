@@ -284,7 +284,7 @@ export function PayProductComponent() {
                 <div className="mt-12 max-w-3xl mx-auto text-center">
                     <h2 className="text-white text-font-space text-2xl md:text-3xl">Остались вопросы?</h2>
                     <p className="text-white/60 text-font-inter text-sm mt-2">Не уверены, какой вариант выбрать?</p>
-                    <p className="text-white/50 text-font-inter text-sm">Опишите задачу — поможем выбрать подходящий формат и расскажем, что потребуется для запуска.</p>
+                    <p className="text-white/50 text-font-inter text-sm">Опишите задачу - поможем выбрать подходящий формат и расскажем, что потребуется для запуска.</p>
                     <Link href="/contacts">
                         <button className="button-main-styles inline-flex items-center gap-2 mt-4">Обсудить задачу</button>
                     </Link>

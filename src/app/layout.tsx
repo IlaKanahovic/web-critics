@@ -33,7 +33,7 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
 export const metadata: Metadata = {
   metadataBase: new URL('https://web-critics.ru'),
   title: {
-    default: 'WebCRitics — решение проблем бизнеса',
+    default: 'WebCRitics',
     template: '%s | WebCRitics',
   },
   description: 'Находим, что мешает вашему бизнесу расти, и создаём цифровое решение под конкретную задачу.',

@@ -55,8 +55,7 @@ export function Footer() {
                             <li><a href="/about" className="hover:text-white transition-colors duration-200">О студии</a></li>
                             <li><a href="/portfolio" className="hover:text-white transition-colors duration-200">Портфолио</a></li>
                             <li><a href="/blog" className="hover:text-white transition-colors duration-200">Блог</a></li>
-                            <li><a href="/privacy" className="hover:text-white transition-colors duration-200">Политика конфиденциальности</a></li>
-                            <li><a href="/offer" className="hover:text-white transition-colors duration-200">Оферта</a></li>
+                            <li><a href="/documents" className="hover:text-white transition-colors duration-200">Документы и памятки</a></li>
                         </ul>
                     </div>
 
