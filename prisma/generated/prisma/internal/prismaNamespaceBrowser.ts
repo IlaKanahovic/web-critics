@@ -51,7 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  Lead: 'Lead',
+  CatalogPurchases: 'CatalogPurchases'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -75,16 +77,43 @@ export const UserScalarFieldEnum = {
   username: 'username',
   phone: 'phone',
   email: 'email',
+  createdAt: 'createdAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const LeadScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  phone: 'phone',
+  email: 'email',
   budgetFrom: 'budgetFrom',
   budgetTo: 'budgetTo',
   descriprion: 'descriprion',
   services: 'services',
   advertisement: 'advertisement',
   quantityApplications: 'quantityApplications',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  ownerId: 'ownerId'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
+
+
+export const CatalogPurchasesScalarFieldEnum = {
+  id: 'id',
+  format: 'format',
+  username: 'username',
+  phone: 'phone',
+  email: 'email',
+  descriprion: 'descriprion',
+  advertisement: 'advertisement',
+  createdAt: 'createdAt',
+  ownerId: 'ownerId'
+} as const
+
+export type CatalogPurchasesScalarFieldEnum = (typeof CatalogPurchasesScalarFieldEnum)[keyof typeof CatalogPurchasesScalarFieldEnum]
 
 
 export const SortOrder = {

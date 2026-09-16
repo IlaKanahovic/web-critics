@@ -1,4 +1,16 @@
 model User {
+    id               String             @id @default(cuid())
+    username         String
+    phone            String             @unique
+    email            String             @unique
+    createdAt        DateTime           @default(now()) @map("created_at")
+    leads            Lead[]
+    catalogPurchases CatalogPurchases[]
+
+    @@map("users")
+}
+
+model Lead {
     id                   String   @id @default(cuid())
     username             String
     phone                String
@@ -6,10 +18,27 @@ model User {
     budgetFrom           String   @map("budget_from")
     budgetTo             String   @map("budget_to")
     descriprion          String?
-    services             String?
+    services             String[]
     advertisement        Boolean
     quantityApplications String   @map("quantity_applications")
     createdAt            DateTime @default(now()) @map("created_at")
+    ownerId              String   @map("owner_id")
+    owner                User     @relation(fields: [ownerId], references: [id])
 
-    @@map("users")
+    @@map("leads")
+}
+
+model CatalogPurchases {
+    id            String   @id @default(cuid())
+    format        String
+    username      String
+    phone         String
+    email         String
+    descriprion   String?
+    advertisement Boolean
+    createdAt     DateTime @default(now()) @map("created_at")
+    ownerId       String   @map("owner_id")
+    owner         User     @relation(fields: [ownerId], references: [id])
+
+    @@map("catalog_purchases")
 }
