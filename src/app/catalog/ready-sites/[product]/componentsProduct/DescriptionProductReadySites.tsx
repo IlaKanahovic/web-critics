@@ -7,7 +7,7 @@ export function DescriptionProductReadySites() {
                 <div className="max-w-4xl mx-auto">
                     <p className="text-white/80 text-font-inter text-center text-base md:text-lg leading-relaxed">
                         {/* ДИНАМИЧЕСКИЙ ТЕКСТ: описание назначения сайта */}
-                        Сайт предназначен для компаний, которым нужно представить продукцию, показать направления работы и получать заявки.
+                        "ОПИСАНИЕ НАЗНАЧЕНИЯ САЙТА"
                     </p>
                 </div>
 

@@ -4,6 +4,7 @@ import { IoIosArrowForward } from "react-icons/io"
 import { FaCheck, FaPlus } from "react-icons/fa"
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import { StarRating } from "@/lib/utils/StarRating"
 
 export function HeroProductBots() {
     const params = useParams()
@@ -39,7 +40,11 @@ export function HeroProductBots() {
                                 <span className="text-white/30 text-sm font-medium">Превью бота</span>
                             </div>
                             <div className="flex flex-wrap items-center gap-3 mt-6 text-white/40 text-xs uppercase tracking-wider">
-                                <span className="text-white/60">["че то там"] 'че то там'</span>
+                                <div className="flex items-center gap-3 text-white/50">
+                                    <span>Средняя оценка</span>
+                                    <span className="text-white/70 font-medium">'ОЦЕНКА'</span>
+                                    <StarRating ratingValue={'5/5'} />
+                                </div>
                                 <span className="w-px h-4 bg-white/10" />
                                 <span>(ПЛЮС)</span>
                                 <span className="w-px h-4 bg-white/10" />
