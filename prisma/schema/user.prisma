@@ -42,3 +42,5 @@ model CatalogPurchases {
 
     @@map("catalog_purchases")
 }
+
+

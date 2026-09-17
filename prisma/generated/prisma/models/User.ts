@@ -324,10 +324,6 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }

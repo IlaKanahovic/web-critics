@@ -1,0 +1,26 @@
+model Product {
+    id                 String   @id @default(cuid())
+    title              String   @unique
+    description        String
+    features           String[]
+    singlePrice        String   @map("single_price")
+    mounthPrice        String   @map("mounth_price")
+    previewBg          String   @map("preview_bg")
+    slug               String
+    demoUrl            String   @map("demp_url")
+    categoryDesc       String   @map("category_desc")
+    estimation         String
+    positive           String[]
+    included           String[]
+    possibleSettings   String[] @map("possible_settings")
+    additionally       String[]
+    desciptionPurpose  String   @map("description_purpose")
+    suitable           String[]
+    notSuitable        String[] @map("not_suitable")
+    howItWorks         String   @map("how_it_works")
+    specifications     String[]
+    requirements       String
+    valuesRequirements String[] @map("values_requirements")
+
+    @@map("products")
+}

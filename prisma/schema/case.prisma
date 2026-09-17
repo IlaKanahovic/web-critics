@@ -1,0 +1,14 @@
+model Case {
+    id          String   @id @default(cuid())
+    title       String
+    service     String
+    type        String
+    previewBg   String   @map("preview_bg")
+    slug        String
+    url         String?
+    tasks       String[]
+    popups      String[]
+    interesting String[]
+
+    @@map("cases")
+}
