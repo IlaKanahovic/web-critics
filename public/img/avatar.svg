@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <circle cx="256" cy="256" r="256" fill="#000000"/>
-  <circle cx="256" cy="256" r="248" stroke="#262626" stroke-width="2" fill="none"/>
-  <path
-    d="M156 380V148L196 268L256 108L316 268L356 148V380H326V198L256 348L186 198V380H156Z"
-    fill="#FAFAFA"
-  />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g xmlns="http://www.w3.org/2000/svg" transform="matrix(-1 0 0 -1 512 512)"><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0 1 -1 0 512 -0)"><g xmlns="http://www.w3.org/2000/svg" transform="matrix(-1 0 0 -1 512 512)"><g xmlns="http://www.w3.org/2000/svg" transform="matrix(0 1 -1 0 512 -0)"><circle cx="256" cy="256" r="256" fill="#000000" /><circle cx="256" cy="256" r="248" stroke="#262626" stroke-width="2" fill="none" /><path d="M156 380V148L196 268L256 108L316 268L356 148V380H326V198L256 348L186 198V380H156Z" fill="#FAFAFA" /></g></g></g></g></svg>

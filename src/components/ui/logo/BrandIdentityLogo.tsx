@@ -16,10 +16,10 @@ export function BrandIdentityLogo({
                 <svg
                     width={iconSize}
                     height={iconSize}
-                    viewBox="0 0 32 36"
+                    viewBox="3 0 32 36"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="shrink-0"
+                    className="shrink-0 rotate-180 mt-0.5"
                     aria-hidden="true"
                 >
                     <path
@@ -28,12 +28,12 @@ export function BrandIdentityLogo({
                     />
                 </svg>
                 <span
-                    className={`font-bold tracking-tight text-[#ffffff] ${textSize} mt-0.75 logo-web`}
+                    className={`font-bold tracking-tight text-[#ffffff] ${textSize} logo-web`}
                 >
                     eb
                 </span>
                 <span
-                    className={`font-bold tracking-tight text-[#d7d7d7] ${textSize} mt-0.75 logo-web`}
+                    className={`font-bold tracking-tight text-[#d7d7d7] ${textSize} logo-web`}
                 >
                     CRitic
                 </span>

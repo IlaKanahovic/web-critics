@@ -27,6 +27,7 @@ export type AggregateProduct = {
 export type ProductMinAggregateOutputType = {
   id: string | null
   title: string | null
+  type: string | null
   description: string | null
   singlePrice: string | null
   mounthPrice: string | null
@@ -43,6 +44,7 @@ export type ProductMinAggregateOutputType = {
 export type ProductMaxAggregateOutputType = {
   id: string | null
   title: string | null
+  type: string | null
   description: string | null
   singlePrice: string | null
   mounthPrice: string | null
@@ -59,6 +61,7 @@ export type ProductMaxAggregateOutputType = {
 export type ProductCountAggregateOutputType = {
   id: number
   title: number
+  type: number
   description: number
   features: number
   singlePrice: number
@@ -86,6 +89,7 @@ export type ProductCountAggregateOutputType = {
 export type ProductMinAggregateInputType = {
   id?: true
   title?: true
+  type?: true
   description?: true
   singlePrice?: true
   mounthPrice?: true
@@ -102,6 +106,7 @@ export type ProductMinAggregateInputType = {
 export type ProductMaxAggregateInputType = {
   id?: true
   title?: true
+  type?: true
   description?: true
   singlePrice?: true
   mounthPrice?: true
@@ -118,6 +123,7 @@ export type ProductMaxAggregateInputType = {
 export type ProductCountAggregateInputType = {
   id?: true
   title?: true
+  type?: true
   description?: true
   features?: true
   singlePrice?: true
@@ -216,6 +222,7 @@ export type ProductGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type ProductGroupByOutputType = {
   id: string
   title: string
+  type: string
   description: string
   features: string[]
   singlePrice: string
@@ -262,6 +269,7 @@ export type ProductWhereInput = {
   NOT?: Prisma.ProductWhereInput | Prisma.ProductWhereInput[]
   id?: Prisma.StringFilter<"Product"> | string
   title?: Prisma.StringFilter<"Product"> | string
+  type?: Prisma.StringFilter<"Product"> | string
   description?: Prisma.StringFilter<"Product"> | string
   features?: Prisma.StringNullableListFilter<"Product">
   singlePrice?: Prisma.StringFilter<"Product"> | string
@@ -287,6 +295,7 @@ export type ProductWhereInput = {
 export type ProductOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   description?: Prisma.SortOrder
   features?: Prisma.SortOrder
   singlePrice?: Prisma.SortOrder
@@ -315,6 +324,7 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProductWhereInput | Prisma.ProductWhereInput[]
   OR?: Prisma.ProductWhereInput[]
   NOT?: Prisma.ProductWhereInput | Prisma.ProductWhereInput[]
+  type?: Prisma.StringFilter<"Product"> | string
   description?: Prisma.StringFilter<"Product"> | string
   features?: Prisma.StringNullableListFilter<"Product">
   singlePrice?: Prisma.StringFilter<"Product"> | string
@@ -340,6 +350,7 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
 export type ProductOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   description?: Prisma.SortOrder
   features?: Prisma.SortOrder
   singlePrice?: Prisma.SortOrder
@@ -371,6 +382,7 @@ export type ProductScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProductScalarWhereWithAggregatesInput | Prisma.ProductScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Product"> | string
   title?: Prisma.StringWithAggregatesFilter<"Product"> | string
+  type?: Prisma.StringWithAggregatesFilter<"Product"> | string
   description?: Prisma.StringWithAggregatesFilter<"Product"> | string
   features?: Prisma.StringNullableListFilter<"Product">
   singlePrice?: Prisma.StringWithAggregatesFilter<"Product"> | string
@@ -396,6 +408,7 @@ export type ProductScalarWhereWithAggregatesInput = {
 export type ProductCreateInput = {
   id?: string
   title: string
+  type: string
   description: string
   features?: Prisma.ProductCreatefeaturesInput | string[]
   singlePrice: string
@@ -421,6 +434,7 @@ export type ProductCreateInput = {
 export type ProductUncheckedCreateInput = {
   id?: string
   title: string
+  type: string
   description: string
   features?: Prisma.ProductCreatefeaturesInput | string[]
   singlePrice: string
@@ -446,6 +460,7 @@ export type ProductUncheckedCreateInput = {
 export type ProductUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   features?: Prisma.ProductUpdatefeaturesInput | string[]
   singlePrice?: Prisma.StringFieldUpdateOperationsInput | string
@@ -471,6 +486,7 @@ export type ProductUpdateInput = {
 export type ProductUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   features?: Prisma.ProductUpdatefeaturesInput | string[]
   singlePrice?: Prisma.StringFieldUpdateOperationsInput | string
@@ -496,6 +512,7 @@ export type ProductUncheckedUpdateInput = {
 export type ProductCreateManyInput = {
   id?: string
   title: string
+  type: string
   description: string
   features?: Prisma.ProductCreatefeaturesInput | string[]
   singlePrice: string
@@ -521,6 +538,7 @@ export type ProductCreateManyInput = {
 export type ProductUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   features?: Prisma.ProductUpdatefeaturesInput | string[]
   singlePrice?: Prisma.StringFieldUpdateOperationsInput | string
@@ -546,6 +564,7 @@ export type ProductUpdateManyMutationInput = {
 export type ProductUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   features?: Prisma.ProductUpdatefeaturesInput | string[]
   singlePrice?: Prisma.StringFieldUpdateOperationsInput | string
@@ -568,17 +587,10 @@ export type ProductUncheckedUpdateManyInput = {
   valuesRequirements?: Prisma.ProductUpdatevaluesRequirementsInput | string[]
 }
 
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
-}
-
 export type ProductCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   description?: Prisma.SortOrder
   features?: Prisma.SortOrder
   singlePrice?: Prisma.SortOrder
@@ -604,6 +616,7 @@ export type ProductCountOrderByAggregateInput = {
 export type ProductMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   description?: Prisma.SortOrder
   singlePrice?: Prisma.SortOrder
   mounthPrice?: Prisma.SortOrder
@@ -620,6 +633,7 @@ export type ProductMaxOrderByAggregateInput = {
 export type ProductMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   description?: Prisma.SortOrder
   singlePrice?: Prisma.SortOrder
   mounthPrice?: Prisma.SortOrder
@@ -667,10 +681,6 @@ export type ProductCreatespecificationsInput = {
 
 export type ProductCreatevaluesRequirementsInput = {
   set: string[]
-}
-
-export type StringFieldUpdateOperationsInput = {
-  set?: string
 }
 
 export type ProductUpdatefeaturesInput = {
@@ -723,6 +733,7 @@ export type ProductUpdatevaluesRequirementsInput = {
 export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  type?: boolean
   description?: boolean
   features?: boolean
   singlePrice?: boolean
@@ -748,6 +759,7 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  type?: boolean
   description?: boolean
   features?: boolean
   singlePrice?: boolean
@@ -773,6 +785,7 @@ export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  type?: boolean
   description?: boolean
   features?: boolean
   singlePrice?: boolean
@@ -798,6 +811,7 @@ export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type ProductSelectScalar = {
   id?: boolean
   title?: boolean
+  type?: boolean
   description?: boolean
   features?: boolean
   singlePrice?: boolean
@@ -820,7 +834,7 @@ export type ProductSelectScalar = {
   valuesRequirements?: boolean
 }
 
-export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "features" | "singlePrice" | "mounthPrice" | "previewBg" | "slug" | "demoUrl" | "categoryDesc" | "estimation" | "positive" | "included" | "possibleSettings" | "additionally" | "desciptionPurpose" | "suitable" | "notSuitable" | "howItWorks" | "specifications" | "requirements" | "valuesRequirements", ExtArgs["result"]["product"]>
+export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "type" | "description" | "features" | "singlePrice" | "mounthPrice" | "previewBg" | "slug" | "demoUrl" | "categoryDesc" | "estimation" | "positive" | "included" | "possibleSettings" | "additionally" | "desciptionPurpose" | "suitable" | "notSuitable" | "howItWorks" | "specifications" | "requirements" | "valuesRequirements", ExtArgs["result"]["product"]>
 
 export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Product"
@@ -828,6 +842,7 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
+    type: string
     description: string
     features: string[]
     singlePrice: string
@@ -1273,6 +1288,7 @@ export interface Prisma__ProductClient<T, Null = never, ExtArgs extends runtime.
 export interface ProductFieldRefs {
   readonly id: Prisma.FieldRef<"Product", 'String'>
   readonly title: Prisma.FieldRef<"Product", 'String'>
+  readonly type: Prisma.FieldRef<"Product", 'String'>
   readonly description: Prisma.FieldRef<"Product", 'String'>
   readonly features: Prisma.FieldRef<"Product", 'String[]'>
   readonly singlePrice: Prisma.FieldRef<"Product", 'String'>

@@ -9,42 +9,8 @@ import { DevelopmentStagesWebDevelopment } from "./components/DevelopmentStagesW
 import { HowWeWorkWebDevelopment } from "./components/HowWeWorkWebDevelopment";
 import { FAQandCTAByWebDevelopment } from "./components/FAQandCTAByWebDevelopment";
 import { Footer } from "@/components/layout/footer/Footer";
+import { bgWebDevelopment, codeLinesWebDevelopment, fileTreeWebDevelopment } from "@/constants/bg";
 
-const codeLines = [
-    { w: 130, indent: 0, color: "#c4b5fd" },
-    { w: 200, indent: 1, color: "#7aa2ff" },
-    { w: 90, indent: 2, color: "#c4b5fd" },
-    { w: 160, indent: 2, color: "#a78bfa" },
-    { w: 110, indent: 1, color: "#c4b5fd" },
-    { w: 180, indent: 0, color: "#7aa2ff" },
-    { w: 140, indent: 1, color: "#a78bfa" },
-    { w: 70, indent: 2, color: "#c4b5fd" },
-    { w: 190, indent: 2, color: "#7aa2ff" },
-    { w: 120, indent: 1, color: "#c4b5fd" },
-    { w: 160, indent: 0, color: "#a78bfa" },
-    { w: 100, indent: 1, color: "#c4b5fd" },
-    { w: 80, indent: 0, color: "#7aa2ff" },
-]
-
-const fileTree = [
-    { label: "src", depth: 0 },
-    { label: "components", depth: 1 },
-    { label: "Header.tsx", depth: 2 },
-    { label: "Hero.tsx", depth: 2 },
-    { label: "Footer.tsx", depth: 2 },
-    { label: "app", depth: 1 },
-    { label: "page.tsx", depth: 2 },
-    { label: "layout.tsx", depth: 2 },
-    { label: "styles", depth: 1 },
-]
-
-const floatingCards = [
-    { x: 240, y: 900, w: 180, h: 44, delay: "0s" },
-    { x: 200, y: 1400, w: 220, h: 56, delay: "1.2s" },
-    { x: 1180, y: 1200, w: 200, h: 48, delay: "2.4s" },
-    { x: 160, y: 2100, w: 240, h: 60, delay: "0.6s" },
-    { x: 1220, y: 2200, w: 180, h: 44, delay: "1.8s" },
-]
 
 export default function servicesWebDevelopment() {
     return (
@@ -77,7 +43,7 @@ export default function servicesWebDevelopment() {
                     }}
                 />
 
-                {floatingCards.map((c, i) => (
+                {bgWebDevelopment.map((c, i) => (
                     <div
                         key={`card-${i}`}
                         className="absolute webdev-float"
@@ -134,7 +100,7 @@ export default function servicesWebDevelopment() {
                                     files
                                 </span>
                                 <div className="mt-2 space-y-1.5">
-                                    {fileTree.map((f, i) => (
+                                    {fileTreeWebDevelopment.map((f, i) => (
                                         <div
                                             key={`f-${i}`}
                                             className="flex items-center gap-1.5"
@@ -173,7 +139,7 @@ export default function servicesWebDevelopment() {
                                 </div>
 
                                 <div className="space-y-2">
-                                    {codeLines.map((line, i) => (
+                                    {codeLinesWebDevelopment.map((line, i) => (
                                         <div
                                             key={`line-${i}`}
                                             className="flex items-center gap-2"
@@ -195,7 +161,7 @@ export default function servicesWebDevelopment() {
 
                                     <div className="flex items-center gap-2" style={{ paddingLeft: "0px" }}>
                                         <span className="text-[8px] text-white/15 font-mono w-4 text-right">
-                                            {String(codeLines.length + 1).padStart(2, "0")}
+                                            {String(codeLinesWebDevelopment.length + 1).padStart(2, "0")}
                                         </span>
                                         <div className="w-1.5 h-3 bg-violet-300/70 webdev-cursor" />
                                     </div>
@@ -224,7 +190,6 @@ export default function servicesWebDevelopment() {
                 <div className="webdev-glow-1 absolute -top-1/4 -left-1/4 w-225 h-225 rounded-full" />
                 <div className="webdev-glow-2 absolute -bottom-1/4 -right-1/4 w-225 h-225 rounded-full" />
             </div>
-
             <style>{`
                 @keyframes webdevFloat {
                     0%, 100% { transform: translateY(0); opacity: 0.55; }

@@ -397,6 +397,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  Case: 'Case',
   Product: 'Product',
   User: 'User',
   Lead: 'Lead',
@@ -416,10 +417,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "product" | "user" | "lead" | "catalogPurchases"
+    modelProps: "case" | "product" | "user" | "lead" | "catalogPurchases"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    Case: {
+      payload: Prisma.$CasePayload<ExtArgs>
+      fields: Prisma.CaseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CaseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CaseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>
+        }
+        findFirst: {
+          args: Prisma.CaseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CaseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>
+        }
+        findMany: {
+          args: Prisma.CaseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>[]
+        }
+        create: {
+          args: Prisma.CaseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>
+        }
+        createMany: {
+          args: Prisma.CaseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CaseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>[]
+        }
+        delete: {
+          args: Prisma.CaseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>
+        }
+        update: {
+          args: Prisma.CaseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>
+        }
+        deleteMany: {
+          args: Prisma.CaseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CaseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CaseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>[]
+        }
+        upsert: {
+          args: Prisma.CaseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CasePayload>
+        }
+        aggregate: {
+          args: Prisma.CaseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCase>
+        }
+        groupBy: {
+          args: Prisma.CaseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CaseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CaseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CaseCountAggregateOutputType> | number
+        }
+      }
+    }
     Product: {
       payload: Prisma.$ProductPayload<ExtArgs>
       fields: Prisma.ProductFieldRefs
@@ -755,9 +830,26 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const CaseScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  service: 'service',
+  type: 'type',
+  previewBg: 'previewBg',
+  slug: 'slug',
+  url: 'url',
+  tasks: 'tasks',
+  popups: 'popups',
+  interesting: 'interesting'
+} as const
+
+export type CaseScalarFieldEnum = (typeof CaseScalarFieldEnum)[keyof typeof CaseScalarFieldEnum]
+
+
 export const ProductScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  type: 'type',
   description: 'description',
   features: 'features',
   singlePrice: 'singlePrice',
@@ -1056,6 +1148,7 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
  */
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
+  case?: Prisma.CaseOmit
   product?: Prisma.ProductOmit
   user?: Prisma.UserOmit
   lead?: Prisma.LeadOmit

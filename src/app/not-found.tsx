@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
+import '../globals.css'
 
 export default function NotFound() {
     return (
