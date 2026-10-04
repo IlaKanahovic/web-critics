@@ -8,6 +8,7 @@ import { DevelopmentStagesAi } from "./components/DevelopmentStagesAi";
 import { HowWeWorkAi } from "./components/HowWeWorkAi";
 import { WhatCanWeCheckSpecificallyAi } from "./components/WhatCanWeCheckSpecificallyAi";
 import { FAQandCTAByAi } from "./components/FAQandCTAByAi";
+import { MainDirectionsAi } from "./components/MainDirectionsAi";
 
 const hubs = [
     { cx: 340, cy: 700, r: 180, layers: 4 },
@@ -405,6 +406,7 @@ export default function servicesAI() {
                     <HeaderDesktop />
                 </div>
                 <HeroAi />
+                {/* <MainDirectionsAi /> */}
                 <CanBeDevelopedAi />
                 <SolvingBusninessProblemsAi />
                 <DevelopmentStagesAi />

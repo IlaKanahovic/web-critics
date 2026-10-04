@@ -24,7 +24,7 @@ export function Footer() {
                             <li><a href="/" className="hover:text-white transition-colors duration-200">Главная</a></li>
                             <li><a href="/catalog" className="hover:text-white transition-colors duration-200">Каталог</a></li>
                             <li><a href="/portfolio" className="hover:text-white transition-colors duration-200">Кейсы</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Услуги</a></li>
+                            <li><a href="/#services" className="hover:text-white transition-colors duration-200">Услуги</a></li>
                             <li><a href="/contacts" className="hover:text-white transition-colors duration-200">Контакты</a></li>
                         </ul>
                     </div>
@@ -32,11 +32,11 @@ export function Footer() {
                     <div>
                         <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Услуги</h4>
                         <ul className="space-y-2.5">
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Веб-разработка</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Автоматизация</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Рост и аналитика</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">AI</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors duration-200">Надёжность и масштабирование</a></li>
+                            <li><a href="/services/web-development" className="hover:text-white transition-colors duration-200">Веб-разработка</a></li>
+                            <li><a href="/services/automation" className="hover:text-white transition-colors duration-200">Автоматизация</a></li>
+                            <li><a href="/services/growth-analytics" className="hover:text-white transition-colors duration-200">Рост и аналитика</a></li>
+                            <li><a href="/services/ai" className="hover:text-white transition-colors duration-200">AI</a></li>
+                            <li><a href="/services/reliability" className="hover:text-white transition-colors duration-200">Надёжность и масштабирование</a></li>
                         </ul>
                     </div>
 

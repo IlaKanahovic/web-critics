@@ -51,7 +51,7 @@ const services = [
 
 export function OverviewOfServices() {
     return (
-        <div className="mt-81.5 relative rounded-xl p-px overflow-visible">
+        <div id="services" className="mt-81.5 relative rounded-xl p-px overflow-visible">
             <div className="relative rounded-xl p-6 container">
                 <div className="absolute top-32 left-1/2 -translate-x-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none z-10"></div>
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-0.5 bg-linear-to-r from-transparent via-white/40 to-transparent pointer-events-none z-10"></div>

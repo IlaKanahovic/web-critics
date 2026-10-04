@@ -7,6 +7,7 @@ import { DevelopmentStagesAutomation } from "./components/DevelopmentStagesAutom
 import { HowWeWorkAutomation } from "./components/HowWeWorkAutomation";
 import { FAQandCTAByAutomation } from "./components/FAQandCTAByAutomation";
 import { Footer } from "@/components/layout/footer/Footer";
+import { MainDirectionsAutomation } from "./components/MainDirectionsAutomation";
 
 const nodes = [
     { x: 320, y: 950 }, { x: 480, y: 1030 }, { x: 640, y: 940 }, { x: 800, y: 1050 }, { x: 960, y: 970 },
@@ -276,6 +277,7 @@ export default function servicesAutomation() {
                     <HeaderDesktop />
                 </div>
                 <HeroAutomation />
+                {/* <MainDirectionsAutomation /> */}
                 <CanBeDevelopedAutomation />
                 <SolvingBusninessProblemsAutomation />
                 <DevelopmentStagesAutomation />

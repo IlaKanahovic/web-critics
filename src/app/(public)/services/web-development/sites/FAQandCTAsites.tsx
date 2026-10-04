@@ -1,9 +1,16 @@
 'use client'
 
-
 import { faqWebDevelopmentSites } from '@/constants/constants-services/faqAndCta'
 import Link from 'next/link'
 import { useState } from 'react'
+import { IoIosArrowForward } from 'react-icons/io'
+
+const otherDirections = [
+    { num: "01", title: "Интернет-магазины", href: "/services/web-development/online-stores" },
+    { num: "02", title: "Интерфейсы", href: "/services/web-development/interfaces" },
+    { num: "03", title: "Веб-приложения", href: "/services/web-development/web-application" },
+    { num: "04", title: "Сложные веб-продукты", href: "/services/web-development/complex-webproducts" },
+]
 
 export function FAQandCTAsites() {
     const [open, setOpen] = useState<number | null>(0)
@@ -81,7 +88,56 @@ export function FAQandCTAsites() {
                 </div>
             </div>
 
-            <div className="relative py-20 md:py-32 lg:py-40">
+            <div className="relative pb-20 md:pb-32 lg:pb-40">
+                <div className="container px-4 md:px-10 lg:px-35">
+                    <div className="mb-10 md:mb-14 flex items-center gap-4">
+                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                        <span className="text-white/40 text-xs uppercase tracking-widest">Другие направления</span>
+                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                        <div className="lg:col-span-5">
+                            <h3 className="text-white text-font-space text-3xl md:text-4xl leading-[1.15]">
+                                Не уверены, какое направление вам нужно?
+                            </h3>
+
+                            <p className="text-white/50 text-font-inter text-sm md:text-base leading-relaxed mt-5 max-w-md">
+                                Опишите задачу - разберёмся, что лучше использовать, и определим, с чего имеет смысл начать.
+                            </p>
+
+                            <Link href="/contacts">
+                                <button className="button-main-styles inline-flex items-center gap-2 mt-8">
+                                    Обсудить проблему
+                                    <IoIosArrowForward className="size-4" />
+                                </button>
+                            </Link>
+                        </div>
+
+                        <div className="lg:col-span-7">
+                            <div className="flex flex-col gap-2">
+                                {otherDirections.map((item, i) => (
+                                    <Link key={i} href={item.href}>
+                                        <div className="group relative flex items-center gap-5 md:gap-6 py-4 md:py-5 pl-5 md:pl-6 pr-4 md:pr-5 border-l-2 border-white/10 hover:border-white/40 bg-white/1 hover:bg-white/3 transition-all duration-500 cursor-pointer">
+                                            <span className="text-white/25 font-mono text-xs md:text-sm tracking-[0.2em] group-hover:text-white/70 transition-colors duration-500">
+                                                {item.num}
+                                            </span>
+
+                                            <span className="flex-1 text-white text-base md:text-lg font-medium leading-snug group-hover:translate-x-1 transition-transform duration-500">
+                                                {item.title}
+                                            </span>
+
+                                            <IoIosArrowForward className="size-4 text-white/20 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-500" />
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="relative pb-20 md:pb-32 lg:pb-40">
                 <div className="container px-4 md:px-10 lg:px-35">
                     <div className="relative rounded-3xl border border-white/8 bg-linear-to-br from-white/4 via-white/2 to-transparent overflow-hidden">
                         <div className="absolute -top-1/3 -right-1/4 w-175 h-175 rounded-full bg-violet-500/10 blur-[140px] pointer-events-none" />

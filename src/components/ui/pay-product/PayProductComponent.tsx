@@ -175,7 +175,7 @@ export function PayProductComponent() {
                                 {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                             </div>
                             <div className="md:col-span-2">
-                                <label className="text-white/70 text-sm font-medium block mb-1.5">Сфера бизнеса, регион работы, адрес действующего сайта и витрины</label>
+                                <label className="text-white/70 text-sm font-medium block mb-1.5">Сфера бизнеса, регион работы, адрес действующего сайта и витрины (необязательно)</label>
                                 <textarea
                                     rows={3}
                                     placeholder="Например: интернет-магазин, Москва, site.ru"

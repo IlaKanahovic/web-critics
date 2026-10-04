@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useFormValidation } from '@/hooks/useFormValidation'
 import { FaInstagram, FaTelegram, FaWhatsapp, FaEnvelope } from "react-icons/fa"
+import { IoIosArrowForward } from "react-icons/io"
 
 export function ContactsForm() {
     const [minBudget, setMinBudget] = useState(5000)
@@ -36,6 +37,14 @@ export function ContactsForm() {
         { Icon: FaEnvelope, href: "mailto:info@site.ru", label: "Email" },
         { Icon: FaTelegram, href: "https://t.me/username", label: "Telegram" },
         { Icon: FaWhatsapp, href: "https://wa.me/79000000000", label: "WhatsApp" },
+    ]
+
+    const steps = [
+        "Бесплатная консультация - обсудим задачу и ответим на вопросы",
+        "Предварительный разбор - определим, где может быть проблема",
+        "Варианты решения - предложим подходящий формат",
+        "Расчёт - сориентируем по стоимости и срокам",
+        "План действий - объясним, с чего начать",
     ]
 
     const [selectedServices, setSelectedServices] = useState<string[]>([])
@@ -72,7 +81,7 @@ export function ContactsForm() {
 
                             <div className="mt-8">
                                 <label className="text-white/80 text-font-inter text-sm font-medium block mb-2">
-                                    Бюджет проекта
+                                    Бюджет проекта (необязательно)
                                 </label>
 
                                 <div className="space-y-4">
@@ -158,7 +167,7 @@ export function ContactsForm() {
                                 </div>
                                 <div className="md:col-span-2">
                                     <label className="text-white/80 text-font-inter text-sm font-medium block mb-1.5">
-                                        Сфера бизнеса, регион работы, адрес действующего сайта и витрины
+                                        Сфера бизнеса, регион работы, адрес действующего сайта и витрины (необязательно)
                                     </label>
                                     <textarea
                                         rows={3}
@@ -231,12 +240,42 @@ export function ContactsForm() {
                                     <span className="absolute inset-0 bg-linear-to-r from-gray-200 to-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                                 </button>
                             </div>
-                            <p className="text-white/70 text-font-inter text-center text-[12px] mt-2">
+
+                            <div className="mt-16 pt-10 border-t border-white/8">
+                                <div className="flex items-center gap-3 mb-8">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                                    <span className="text-white/40 text-[10px] uppercase tracking-[0.35em] font-mono">
+                                        Что дальше
+                                    </span>
+                                </div>
+
+                                <h3 className="text-white text-font-space text-2xl md:text-3xl leading-tight">
+                                    Что вы получите после обращения
+                                </h3>
+
+                                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1">
+                                    {steps.map((step, i) => (
+                                        <div
+                                            key={i}
+                                            className="group flex items-start gap-3 py-3 border-b border-white/8 hover:border-white/25 transition-colors duration-500"
+                                        >
+                                            <IoIosArrowForward className="size-3.5 text-white/30 mt-1.5 shrink-0 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-500" />
+
+                                            <span className="text-white/65 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                                                {step}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <p className="text-white/40 text-font-inter text-center text-[12px] mt-8">
                                 *Если вы пока не знаете, какое решение вам нужно — это нормально. Начнём с проблемы.
                             </p>
                         </form>
                     </div>
                 </div>
+
                 <p className="text-white mt-24 text-font-space text-3xl md:text-3xl lg:text-4xl text-center">
                     Не хотите заполнять форму?
                 </p>

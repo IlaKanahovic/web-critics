@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useFormValidation } from '@/hooks/useFormValidation'
+import { FaCheck } from "react-icons/fa"
 
 export function ContactsMainPage() {
     const [minBudget, setMinBudget] = useState(5000)
@@ -28,6 +29,14 @@ export function ContactsMainPage() {
         'Автоматизация',
         'Тестирование',
         'Микросервисы'
+    ]
+
+    const benefits = [
+        "Разбор вашей задачи и ответы на вопросы",
+        "Понимание, где именно находится проблема",
+        "Подходящий формат решения под ваш случай",
+        "Ориентир по стоимости и срокам",
+        "План первых шагов - с чего начать",
     ]
 
     const [selectedServices, setSelectedServices] = useState<string[]>([])
@@ -70,7 +79,7 @@ export function ContactsMainPage() {
 
                             <div className="mt-8">
                                 <label className="text-white/80 text-font-inter text-sm font-medium block mb-2">
-                                    Бюджет проекта
+                                    Бюджет проекта (необязательно)
                                 </label>
 
                                 <div className="space-y-4">
@@ -156,7 +165,7 @@ export function ContactsMainPage() {
                                 </div>
                                 <div className="md:col-span-2">
                                     <label className="text-white/80 text-font-inter text-sm font-medium block mb-1.5">
-                                        Сфера бизнеса, регион работы, адрес действующего сайта и витрины
+                                        Сфера бизнеса, регион работы, адрес действующего сайта и витрины (необязательно)
                                     </label>
                                     <textarea
                                         rows={3}
@@ -229,8 +238,43 @@ export function ContactsMainPage() {
                                     <span className="absolute inset-0 bg-linear-to-r from-gray-200 to-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                                 </button>
                             </div>
-                            <p className="text-white/70 text-font-inter text-center text-[12px] mt-2">
-                                *Если вы пока не знаете, какое решение вам нужно — это нормально. Начнём с проблемы.
+
+                            <div className="mt-16 pt-10 border-t border-white/10">
+                                <div className="relative rounded-2xl border border-violet-400/20 bg-violet-500/3 p-6 md:p-8 overflow-hidden">
+                                    <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-violet-500/10 blur-3xl pointer-events-none" />
+
+                                    <div className="relative flex items-center gap-3 mb-6">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-violet-400 shadow-[0_0_10px_rgba(167,139,250,0.8)]" />
+                                        <span className="text-violet-200/80 text-[10px] uppercase tracking-[0.35em] font-mono">
+                                            Бесплатно
+                                        </span>
+                                    </div>
+
+                                    <h3 className="relative text-white text-2xl md:text-3xl font-semibold leading-snug">
+                                        Что вы получите, оставив заявку
+                                    </h3>
+
+                                    <p className="relative text-white/60 text-sm md:text-base leading-relaxed mt-3">
+                                        Разбор задачи, варианты решения, ориентир по стоимости - и всё это без оплаты и обязательств.
+                                    </p>
+
+                                    <ul className="relative mt-7 space-y-4">
+                                        {benefits.map((benefit, i) => (
+                                            <li key={i} className="flex items-start gap-4">
+                                                <span className="shrink-0 mt-0.5 w-6 h-6 rounded-full bg-violet-500/10 border border-violet-400/30 flex items-center justify-center">
+                                                    <FaCheck className="text-violet-300 size-3" />
+                                                </span>
+                                                <span className="text-white/85 text-sm md:text-base leading-relaxed">
+                                                    {benefit}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <p className="text-white/50 text-font-inter text-center text-[12px] mt-8">
+                                *Если вы пока не знаете, какое решение вам нужно - это нормально. Начнём с проблемы.
                             </p>
                         </form>
                     </div>

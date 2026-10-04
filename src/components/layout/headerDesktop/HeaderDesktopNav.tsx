@@ -1,6 +1,9 @@
 'use client'
 
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { IoIosArrowForward } from "react-icons/io"
+import { FaCogs, FaChartLine, FaShieldAlt } from "react-icons/fa"
+import { GiArtificialIntelligence } from "react-icons/gi"
 
 export function HeaderDesktopNav() {
     return (
@@ -16,68 +19,92 @@ export function HeaderDesktopNav() {
                     Услуги
                     <MdOutlineKeyboardArrowDown className="size-4 duration-300 group-hover:translate-y-0.5" />
                 </p>
+
                 <div className="fixed left-1/2 -translate-x-1/2 top-17 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                    <div className="bg-[#111111] border border-white/10 rounded-xl shadow-2xl shadow-black/50 p-6 w-5xl max-w-[calc(100vw-2rem)] backdrop-blur-sm">
-                        <div className="grid grid-cols-5 gap-8 text-sm">
-                            <div>
-                                <a href="/services/web-development" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
+                    <div className="bg-[#111111] border border-white/10 rounded-2xl shadow-2xl shadow-black/50 p-6 w-5xl max-w-[calc(100vw-2rem)] backdrop-blur-sm">
+                        <div className="grid grid-cols-12 gap-6">
+                            <div className="col-span-5 relative rounded-xl border border-white/8 bg-white/1.5 p-5">
+                                <a
+                                    href="/services/web-development"
+                                    className="block text-white text-xl font-semibold hover:text-violet-300 transition-colors duration-300 mb-5"
+                                >
                                     Веб-разработка
                                 </a>
-                                <ul className="space-y-2">
-                                    <li><a href="/services/web-development/sites" className="text-white/50 hover:text-white transition-colors">Сайты</a></li>
-                                    <li><a href="/services/web-development/web-application" className="text-white/50 hover:text-white transition-colors">Веб-приложения</a></li>
-                                    <li><a href="/services/web-development/interfaces" className="text-white/50 hover:text-white transition-colors">Интерфейсы</a></li>
-                                    <li><a href="/services/web-development/online-stores" className="text-white/50 hover:text-white transition-colors">Интернет-магазины</a></li>
-                                    <li><a href="/services/web-development/complex-webproducts" className="text-white/50 hover:text-white transition-colors">Сложные веб-продукты</a></li>
+                                <ul className="space-y-1">
+                                    <li>
+                                        <a href="/services/web-development/sites" className="group/link flex items-center gap-3 py-2 text-white/55 hover:text-white text-sm transition-all duration-300">
+                                            <span className="text-white/20 font-mono text-[10px] group-hover/link:text-white/60 transition-colors duration-300 w-5">01</span>
+                                            <span className="group-hover/link:translate-x-0.5 transition-transform duration-300">Сайты</span>
+                                            <IoIosArrowForward className="size-3 text-white/15 ml-auto opacity-0 group-hover/link:opacity-100 group-hover/link:text-white/60 transition-all duration-300" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/web-development/web-application" className="group/link flex items-center gap-3 py-2 text-white/55 hover:text-white text-sm transition-all duration-300">
+                                            <span className="text-white/20 font-mono text-[10px] group-hover/link:text-white/60 transition-colors duration-300 w-5">02</span>
+                                            <span className="group-hover/link:translate-x-0.5 transition-transform duration-300">Веб-приложения</span>
+                                            <IoIosArrowForward className="size-3 text-white/15 ml-auto opacity-0 group-hover/link:opacity-100 group-hover/link:text-white/60 transition-all duration-300" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/web-development/interfaces" className="group/link flex items-center gap-3 py-2 text-white/55 hover:text-white text-sm transition-all duration-300">
+                                            <span className="text-white/20 font-mono text-[10px] group-hover/link:text-white/60 transition-colors duration-300 w-5">03</span>
+                                            <span className="group-hover/link:translate-x-0.5 transition-transform duration-300">Интерфейсы</span>
+                                            <IoIosArrowForward className="size-3 text-white/15 ml-auto opacity-0 group-hover/link:opacity-100 group-hover/link:text-white/60 transition-all duration-300" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/web-development/online-stores" className="group/link flex items-center gap-3 py-2 text-white/55 hover:text-white text-sm transition-all duration-300">
+                                            <span className="text-white/20 font-mono text-[10px] group-hover/link:text-white/60 transition-colors duration-300 w-5">04</span>
+                                            <span className="group-hover/link:translate-x-0.5 transition-transform duration-300">Интернет-магазины</span>
+                                            <IoIosArrowForward className="size-3 text-white/15 ml-auto opacity-0 group-hover/link:opacity-100 group-hover/link:text-white/60 transition-all duration-300" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/web-development/complex-webproducts" className="group/link flex items-center gap-3 py-2 text-white/55 hover:text-white text-sm transition-all duration-300">
+                                            <span className="text-white/20 font-mono text-[10px] group-hover/link:text-white/60 transition-colors duration-300 w-5">05</span>
+                                            <span className="group-hover/link:translate-x-0.5 transition-transform duration-300">Сложные веб-продукты</span>
+                                            <IoIosArrowForward className="size-3 text-white/15 ml-auto opacity-0 group-hover/link:opacity-100 group-hover/link:text-white/60 transition-all duration-300" />
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
-
-                            <div>
-                                <a href="/services/automation" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
-                                    Автоматизация
+                            <div className="col-span-7 grid grid-cols-2 gap-4">
+                                <a href="/services/automation" className="group/svc relative rounded-xl border border-white/8 bg-white/1.5 hover:border-white/25 hover:bg-white/3 p-5 transition-all duration-500 flex flex-col min-h-32.5 overflow-hidden">
+                                    <div className="flex items-start justify-between mb-4">
+                                        <FaCogs className="text-white/30 group-hover/svc:text-white/60 size-5 transition-colors duration-500" />
+                                        <IoIosArrowForward className="size-3.5 text-white/15 group-hover/svc:text-white/70 group-hover/svc:translate-x-0.5 transition-all duration-500" />
+                                    </div>
+                                    <span className="text-white text-base font-semibold leading-snug mt-auto">
+                                        Автоматизация
+                                    </span>
                                 </a>
-                                <ul className="space-y-2">
-                                    <li><a href="/services/automation/process-automation" className="text-white/50 hover:text-white transition-colors">Автоматизация процессов</a></li>
-                                    <li><a href="/services/automation/integrations" className="text-white/50 hover:text-white transition-colors">Интеграции</a></li>
-                                    <li><a href="/services/automation/crm" className="text-white/50 hover:text-white transition-colors">CRM</a></li>
-                                    <li><a href="/services/automation/bots" className="text-white/50 hover:text-white transition-colors">Боты</a></li>
-                                    <li><a href="/services/automation/notifications" className="text-white/50 hover:text-white transition-colors">Уведомления</a></li>
-                                    <li><a href="/services/automation/internal-tools" className="text-white/50 hover:text-white transition-colors">Внутренние инструменты</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <a href="/services/growth-analytics" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
-                                    Рост и аналитика
+                                <a href="/services/growth-analytics" className="group/svc relative rounded-xl border border-white/8 bg-white/1.5 hover:border-white/25 hover:bg-white/3 p-5 transition-all duration-500 flex flex-col min-h-32.5 overflow-hidden">
+                                    <div className="flex items-start justify-between mb-4">
+                                        <FaChartLine className="text-white/30 group-hover/svc:text-white/60 size-5 transition-colors duration-500" />
+                                        <IoIosArrowForward className="size-3.5 text-white/15 group-hover/svc:text-white/70 group-hover/svc:translate-x-0.5 transition-all duration-500" />
+                                    </div>
+                                    <span className="text-white text-base font-semibold leading-snug mt-auto">
+                                        Рост и аналитика
+                                    </span>
                                 </a>
-                                <ul className="space-y-2">
-                                    <li><a href="/services/growth-analytics/seo" className="text-white/50 hover:text-white transition-colors">SEO</a></li>
-                                    <li><a href="/services/growth-analytics/analytics" className="text-white/50 hover:text-white transition-colors">Аналитика</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <a href="/services/reliability" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
-                                    Надёжность и масштабирование
+                                <a href="/services/reliability" className="group/svc relative rounded-xl border border-white/8 bg-white/1.5 hover:border-white/25 hover:bg-white/3 p-5 transition-all duration-500 flex flex-col min-h-32.5 overflow-hidden">
+                                    <div className="flex items-start justify-between mb-4">
+                                        <FaShieldAlt className="text-white/30 group-hover/svc:text-white/60 size-5 transition-colors duration-500" />
+                                        <IoIosArrowForward className="size-3.5 text-white/15 group-hover/svc:text-white/70 group-hover/svc:translate-x-0.5 transition-all duration-500" />
+                                    </div>
+                                    <span className="text-white text-base font-semibold leading-snug mt-auto">
+                                        Надёжность и масштабирование
+                                    </span>
                                 </a>
-                                <ul className="space-y-2">
-                                    <li><a href="/services/reliability/security" className="text-white/50 hover:text-white transition-colors">Безопасность</a></li>
-                                    <li><a href="/services/reliability/testing" className="text-white/50 hover:text-white transition-colors">Тестирование</a></li>
-                                    <li><a href="/services/reliability/architecture" className="text-white/50 hover:text-white transition-colors">Архитектура</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <a href="/services/ai" className="text-white font-medium hover:text-white/80 transition-colors block mb-3">
-                                    AI
+                                <a href="/services/ai" className="group/svc relative rounded-xl border border-white/8 bg-white/1.5 hover:border-white/25 hover:bg-white/3 p-5 transition-all duration-500 flex flex-col min-h-32.5 overflow-hidden">
+                                    <div className="flex items-start justify-between mb-4">
+                                        <GiArtificialIntelligence className="text-white/30 group-hover/svc:text-white/60 size-5 transition-colors duration-500" />
+                                        <IoIosArrowForward className="size-3.5 text-white/15 group-hover/svc:text-white/70 group-hover/svc:translate-x-0.5 transition-all duration-500" />
+                                    </div>
+                                    <span className="text-white text-base font-semibold leading-snug mt-auto">
+                                        AI
+                                    </span>
                                 </a>
-                                <ul className="space-y-2">
-                                    <li><a href="/services/ai/ai-assistants" className="text-white/50 hover:text-white transition-colors">AI-ассистенты</a></li>
-                                    <li><a href="/services/ai/ai-bots" className="text-white/50 hover:text-white transition-colors">AI-боты</a></li>
-                                    <li><a href="/services/ai/model-integration" className="text-white/50 hover:text-white transition-colors">Интеграция моделей</a></li>
-                                    <li><a href="/services/ai/data-processing" className="text-white/50 hover:text-white transition-colors">Обработка данных</a></li>
-                                    <li><a href="/services/ai/ai-automation" className="text-white/50 hover:text-white transition-colors">AI-автоматизация</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>

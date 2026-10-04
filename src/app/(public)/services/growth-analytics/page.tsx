@@ -10,6 +10,7 @@ import { SolvingBusninessProblemsGrowthAnalytics } from "./components/SolvingBus
 import { CanBeDevelopedGrowthAnalytics } from "./components/CanBeDevelopedGrowthAnalytics";
 import { HeroGrowthAnalytics } from "./components/HeroGrowthAnalytics";
 import { Footer } from "@/components/layout/footer/Footer";
+import { MainDirectionsGrowthAnalytics } from "./components/MainDirectionsGrowthAnalytics";
 
 export default function servicesGrowthAnalytics() {
     return (
@@ -434,6 +435,7 @@ export default function servicesGrowthAnalytics() {
                     <HeaderDesktop />
                 </div>
                 <HeroGrowthAnalytics />
+                {/* <MainDirectionsGrowthAnalytics /> */}
                 <CanBeDevelopedGrowthAnalytics />
                 <SolvingBusninessProblemsGrowthAnalytics />
                 <DevelopmentStagesGrowthAnalytics />

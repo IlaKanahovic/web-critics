@@ -10,6 +10,7 @@ import { HowWeWorkReliability } from "./components/HowWeWorkReliability";
 import { FAQandCTAByReliability } from "./components/FAQandCTAByReliability";
 import { Footer } from "@/components/layout/footer/Footer";
 import { WhatCanWeCheckSpecifically } from "./components/WhatCanWeCheckSpecifically";
+import { MainDirectionsReliability } from "./components/MainDirectionsReliability";
 
 export default function servicesReliability() {
     return (
@@ -110,6 +111,7 @@ export default function servicesReliability() {
                     <HeaderDesktop />
                 </div>
                 <HeroReliability />
+                {/* <MainDirectionsReliability /> */}
                 <CanBeDevelopedReliability />
                 <SolvingBusninessProblemsReliability />
                 <DevelopmentStagesReliability />
