@@ -5,9 +5,9 @@ export function AlsoOnTheSiteAbout() {
     const links = [
         {
             num: "01",
-            title: "Как всё начиналось",
-            desc: "История развития KILLCRITIC",
-            href: "/about/history-webcritics",
+            title: "Наше портфолио",
+            desc: "Портфолио KILLCRITIC",
+            href: "/portfolio",
         },
         {
             num: "02",

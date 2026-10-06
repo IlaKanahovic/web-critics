@@ -145,7 +145,7 @@ export function FAQandCTAinteraface() {
                         <div className="absolute -bottom-1/3 -left-1/4 w-150 h-150 rounded-full bg-blue-500/8 blur-[140px] pointer-events-none" />
 
                         <span className="absolute -top-8 -left-4 text-[200px] md:text-[320px] font-bold text-white/2.5 leading-none select-none pointer-events-none">
-                            09
+                            I
                         </span>
 
                         <div className="relative p-8 md:p-16 lg:p-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
