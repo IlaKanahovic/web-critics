@@ -7,7 +7,7 @@ export function HeroLeft() {
         <div className="pt-32">
             <div className="relative p-px rounded-2xl bg-linear-to-r from-[#0a126f] via-[#ffb52b] to-[#6502b6] max-w-max cursor-pointer transition-shadow duration-400 hover:shadow-[0_0_15px_rgba(2,252,239,0.35),0_0_30px_rgba(255,181,43,0.25),0_0_45px_rgba(160,43,254,0.15)]">
                 <div className="flex items-center justify-around px-3 py-1.25 rounded-2xl bg-[#171716]">
-                    <span className="text-btn-hero-offers">Выгодные предложения</span>
+                    <a href="/blog/stocks"><span className="text-btn-hero-offers">Выгодные предложения</span></a>
                     <IoIosArrowForward className="text-white size-3 mt-0.75 ml-1.5" />
                 </div>
             </div>
