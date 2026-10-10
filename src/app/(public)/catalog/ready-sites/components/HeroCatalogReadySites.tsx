@@ -1,29 +1,9 @@
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
 import { CardProductCatalogReadySites } from "./CardProductCatalogReadySites"
 
-export const dataReadySites = [
-    {
-        id: 1,
-        title: "Сайт для студии красоты",
-        description: "Для салонов и частных мастеров",
-        features: ["Онлайн-запись", "Каталог услуг", "Адаптивная версия"],
-        price: 15000,
-        priceMounth: '7 500₽ + 3 990₽/мес.',
-        previewBg: "bg-gradient-to-br from-pink-500/20 to-purple-500/20",
-        slug: 'beauty-studio-site',
-    },
-    {
-        id: 2,
-        title: "Лендинг для ресторана",
-        description: "Для ресторанов, кафе и доставки",
-        features: ["Меню", "Бронирование", "Интеграция с доставкой"],
-        price: 15000,
-        priceMounth: '7 500₽ + 3 990₽/мес.',
-        previewBg: "bg-gradient-to-br from-orange-500/20 to-red-500/20",
-        slug: 'restaurant-site',
-    },
-]
+export async function HeroCatalogReadySites() {
 
-export function HeroCatalogReadySites() {
+    const [ readySitesProducts ] = await dbCatalogProduct()
 
     const forWhowArray = ["Все", "Услуги", "Красота", "Рестораны", "Специалисты", "Медицина", "E-commerce", "Другое"]
     const opportunitiesArray = ["Все", "Форма заявки", "Онлайн-запись", "Каталог", "Интернет-магазин", "Блог", "Интеграции"]
@@ -43,7 +23,7 @@ export function HeroCatalogReadySites() {
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                     <div className="flex flex-wrap items-center gap-4 flex-1">
-                        <span className="text-white/60 text-sm whitespace-nowrap">Найдено решений: 2</span>
+                        <span className="text-white/60 text-sm whitespace-nowrap">Найдено решений: { readySitesProducts.length } </span>
                         <details className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
                                 Тип бизнеса: Все
@@ -126,7 +106,7 @@ export function HeroCatalogReadySites() {
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {dataReadySites.map((site) => (
+                    {readySitesProducts.map((site) => (
                         <CardProductCatalogReadySites key={site.id} {...site} />
                     ))}
                 </div>

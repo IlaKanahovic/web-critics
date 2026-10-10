@@ -1,6 +1,6 @@
 
 
-export function OtherProductReadySites() {
+export function OtherProductReadySites({product}: any) {
     return (
         <div className="container">
             <div className="pt-12">

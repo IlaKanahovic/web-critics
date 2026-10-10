@@ -36,11 +36,10 @@ model CatalogPurchases {
     email         String
     descriprion   String?
     advertisement Boolean
+    nameProduct   String   @map("name_product")
     createdAt     DateTime @default(now()) @map("created_at")
     ownerId       String   @map("owner_id")
     owner         User     @relation(fields: [ownerId], references: [id])
 
     @@map("catalog_purchases")
 }
-
-

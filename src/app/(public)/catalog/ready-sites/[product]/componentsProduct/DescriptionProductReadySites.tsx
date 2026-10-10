@@ -1,6 +1,6 @@
 
 
-export function DescriptionProductReadySites() {
+export function DescriptionProductReadySites({product}: any) {
     return (
         <div className="container">
             <div className="pt-12">

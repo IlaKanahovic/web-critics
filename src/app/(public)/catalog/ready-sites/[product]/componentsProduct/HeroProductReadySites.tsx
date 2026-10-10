@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 import { StarRating } from "@/lib/utils/StarRating"
 
-export function HeroProductReadySites() {
+export function HeroProductReadySites({product}: any) {
     const params = useParams()
 
     return (
@@ -18,7 +18,7 @@ export function HeroProductReadySites() {
                     <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
                 </div>
 
-                <h1 className="text-font-cormorant text-[#f0f0f0] text-center text-[80px]">"Название сайта"</h1>
+                <h1 className="text-font-cormorant text-[#f0f0f0] text-center text-[80px]">{product.title}</h1>
 
                 <div className="bg-[#111111] border border-white/10 rounded-2xl overflow-hidden shadow-inner shadow-white/5 transition-all duration-300 hover:shadow-2xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 md:p-8">

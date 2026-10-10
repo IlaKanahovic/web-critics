@@ -1,17 +1,8 @@
 import { IoIosArrowForward } from "react-icons/io"
 import { FaCheck, FaCalendarAlt, FaShoppingCart } from "react-icons/fa"
 import Link from "next/link"
+import type { CardData } from "@/lib/db/catalog/dbCatalogProduct"
 
-interface CardData {
-    id: number
-    title: string
-    description: string
-    features: string[]
-    price: number
-    priceMounth: string
-    previewBg?: string
-    slug: string
-}
 
 export function CardProductCatalogReadySites(site: CardData) {
     return (
@@ -34,21 +25,25 @@ export function CardProductCatalogReadySites(site: CardData) {
                     <div className="bg-white/5 rounded-lg p-3 text-center transition-colors hover:bg-white/10">
                         <FaShoppingCart className="text-white/40 mx-auto mb-1.5 size-4" />
                         <span className="text-white/60 text-[10px] uppercase tracking-wider font-medium">Разово</span>
-                        <p className="text-white font-semibold text-[15px] mt-0.5">{site.price.toLocaleString()} ₽</p>
+                        <p className="text-white font-semibold text-[15px] mt-0.5">{site.singlePrice.toLocaleString()} ₽</p>
                         <p className="text-white/40 text-[10px]">покупка готового сайта</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-3 text-center transition-colors hover:bg-white/10">
                         <FaCalendarAlt className="text-white/40 mx-auto mb-1.5 size-4" />
                         <span className="text-white/60 text-[10px] uppercase tracking-wider font-medium">Подписка</span>
-                        <p className="text-white font-semibold text-[15px] mt-0.5">{site.priceMounth}</p>
+                        <p className="text-white font-semibold text-[15px] mt-0.5">{site.mounthPrice}</p>
                         <p className="text-white/40 text-[10px]">подписка на готовый сайт</p>
                     </div>
                 </div>
-                <Link href={`/catalog/ready-sites/${site.slug}`}>
-                    <button className="mt-4 w-full inline-flex items-center justify-center gap-1 text-white/70 hover:text-white text-sm font-medium transition-colors duration-200 group/btn cursor-pointer border border-white/10 rounded-full py-2 hover:bg-white/5">
-                        Посмотреть
-                        <IoIosArrowForward className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
-                    </button>
+                <Link
+                    href={{
+                        pathname: `/catalog/ready-sites/${site.slug}`,
+                        query: { id: site.id }
+                    }}
+                    className="mt-4 w-full inline-flex items-center justify-center gap-1 text-white/70 hover:text-white text-sm font-medium transition-colors duration-200 group/btn cursor-pointer border border-white/10 rounded-full py-2 hover:bg-white/5"
+                >
+                    Посмотреть
+                    <IoIosArrowForward className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
                 </Link>
             </div>
         </div >

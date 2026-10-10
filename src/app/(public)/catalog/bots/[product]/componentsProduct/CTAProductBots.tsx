@@ -1,9 +1,11 @@
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
-import { dataBots } from "../../components/HeroCatalogBots"
 import { CardProductCatalogBots } from "../../components/CardProductCatalogBots"
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
 
-export function CTAProductBots() {
+export async function CTAProductBots() {
+    const [botsProducts] = await dbCatalogProduct()
+
     return (
         <div className="container">
             <div className="pt-12">
@@ -12,7 +14,7 @@ export function CTAProductBots() {
                     <h2 className="text-white text-font-space text-3xl md:text-4xl text-center">Возможно, подойдёт ещё</h2>
                     {/* ДИНАМИЧЕСКИЕ КАРТОЧКИ: другие товары из той же категории */}
                     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {dataBots.map((bot) => (
+                        {botsProducts.map((bot) => (
                             <CardProductCatalogBots key={bot.id} {...bot} />
                         ))}
                     </div>

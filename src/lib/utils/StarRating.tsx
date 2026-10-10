@@ -1,19 +1,17 @@
-import { FaStar, FaStarHalf } from 'react-icons/fa';
+import { FaStar, FaStarHalf } from 'react-icons/fa'
 
 interface StarRatingProps {
     ratingValue: string
 }
 
 export const StarRating = ({ ratingValue }: StarRatingProps) => {
-    const parts = ratingValue.split('/').map((p) => Number(p.trim()))
-    const [num, den] = parts
-    if (!num || !den || Number.isNaN(num) || Number.isNaN(den) || den <= 0) {
+    const num = Number(ratingValue.trim())
+    if (Number.isNaN(num) || num <= 0) {
         return null
     }
-    let rating = (num / den) * 5
-    rating = Math.max(0, Math.min(5, rating))
+    const rating = Math.max(0, Math.min(5, num))
     const fullStars = Math.floor(rating)
-    const hasHalfStar = rating % 1 > 0.001
+    const hasHalfStar = rating % 1 >= 0.25
     return (
         <div className="flex text-yellow-400 text-sm gap-0.5" role="img" aria-label={`Рейтинг: ${ratingValue}`}>
             {Array.from({ length: 5 }, (_, i) => {

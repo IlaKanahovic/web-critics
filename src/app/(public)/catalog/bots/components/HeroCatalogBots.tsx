@@ -1,29 +1,9 @@
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
 import { CardProductCatalogBots } from "./CardProductCatalogBots"
 
-export const dataBots = [
-    {
-        id: 1,
-        title: "Бот для обработки заявок",
-        description: "Собирает обращения клиентов, задаёт необходимые вопросы и передаёт готовую заявку вам или в CRM.",
-        features: ["Сбор заявок", "Уведомления", "Интеграция с CRM"],
-        price: 13000,
-        priceMounth: '6 500₽ + 2 990₽/мес.',
-        previewBg: "bg-gradient-to-br from-pink-500/20 to-purple-500/20",
-        slug: 'processing-of-applications-bots',
-    },
-    {
-        id: 2,
-        title: "Автоуведомления клентам",
-        description: "Telegram-бот, который сам напоминает клиентам о записи, подтверждает визит и снижает неявки.",
-        features: ["Уведомления", "Автоматические вопросы", "Telegram-бот"],
-        price: 13000,
-        priceMounth: '6 500₽ + 2 990₽/мес.',
-        previewBg: "bg-gradient-to-br from-orange-500/20 to-red-500/20",
-        slug: 'auto‑notifications-to-clients',
-    },
-]
+export async function HeroCatalogBots() {
 
-export function HeroCatalogBots() {
+    const [ , botsProducts ] = await dbCatalogProduct()
 
     const forWhowArray = ["Все", "Продажи", "Запись", "Уведомления", "Автоматизация", "Внутренние задачи"]
     const opportunitiesArray = ["Все", "Диалог", "Формы", "Уведомления", "Каталог", "Заявки", "Работа с данными", "AI"]
@@ -43,7 +23,7 @@ export function HeroCatalogBots() {
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                     <div className="flex flex-wrap items-center gap-4 flex-1">
-                        <span className="text-white/60 text-sm whitespace-nowrap">Найдено решений: 2</span>
+                        <span className="text-white/60 text-sm whitespace-nowrap">Найдено решений: { botsProducts.length } </span>
                         <details className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
                                 Тип бизнеса: Все
@@ -126,7 +106,7 @@ export function HeroCatalogBots() {
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {dataBots.map((bot) => (
+                    {botsProducts.map((bot) => (
                         <CardProductCatalogBots key={bot.id} {...bot} />
                     ))}
                 </div>

@@ -1,16 +1,18 @@
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
-import { dataReadySites } from "../../components/HeroCatalogReadySites"
 import { CardProductCatalogReadySites } from "../../components/CardProductCatalogReadySites"
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
 
-export function CTAProductReadySites() {
+export async function CTAProductReadySites() {
+    const [readySitesProduct] = await dbCatalogProduct()
+
     return (
         <div className="container">
             <div className="pt-12">
                 <div>
                     <h2 className="text-white text-font-space text-3xl md:text-4xl text-center">Возможно, подойдёт ещё</h2>
                     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {dataReadySites.map((site) => (
+                        {readySitesProduct.map((site) => (
                             <CardProductCatalogReadySites key={site.id} {...site} />
                         ))}
                     </div>

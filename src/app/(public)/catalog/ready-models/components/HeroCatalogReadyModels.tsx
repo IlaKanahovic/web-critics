@@ -1,20 +1,10 @@
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
 import { CardProductCatalogReadyModels } from "./CardProductCatalogReadyModels"
 
 
-export const dataReadyModels = [
-    {
-        id: 1,
-        title: "Генератор отчётов",
-        description: "Собирает данные из нескольких источников и автоматически формирует понятный отчёт по заданному шаблону.",
-        features: ["Автоматические отчёты", "Экспорт данных", "Сбор данных"],
-        price: 12000,
-        priceMounth: "6 000₽ + 1 990₽/мес.",
-        previewBg: "bg-gradient-to-br from-pink-500/20 to-purple-500/20",
-        slug: 'report-generator-tool'
-    }
-]
+export async function HeroCatalogReadyModels() {
 
-export function HeroCatalogReadyModels() {
+    const [ , , readyModelsProducts ] = await dbCatalogProduct()
 
     const forWhowArray = ["Все", "Автоматизация", "Работа с данными", "Аналитика", "Интеграции", "Внутренние процессы", "Контроль и мониторинг", "Работа с контентом"]
     const opportunitiesArray = ["Все", "Обработка данных", "Сбор данных", "Генерация отчётов", "Уведомления", "Интеграции", "API", "AI", "Планирование"]
@@ -35,7 +25,7 @@ export function HeroCatalogReadyModels() {
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                     <div className="flex flex-wrap items-center gap-4 flex-1">
-                        <span className="text-white/60 text-sm whitespace-nowrap">Найдено решений: 1</span>
+                        <span className="text-white/60 text-sm whitespace-nowrap">Найдено решений: { readyModelsProducts.length }</span>
                         <details className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
                                 Тип бизнеса: Все
@@ -133,7 +123,7 @@ export function HeroCatalogReadyModels() {
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {dataReadyModels.map((tool) => (
+                    {readyModelsProducts.map((tool) => (
                         <CardProductCatalogReadyModels key={tool.id} {...tool} />
                     ))}
                 </div>

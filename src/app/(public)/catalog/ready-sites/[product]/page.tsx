@@ -5,8 +5,17 @@ import { DescriptionProductReadySites } from "./componentsProduct/DescriptionPro
 import { OtherProductReadySites } from "./componentsProduct/OtherProductReadySites";
 import { Footer } from "@/components/layout/footer/Footer";
 import { CTAProductReadySites } from "./componentsProduct/CTAProductReadySites";
+import { dbCatalogProductId } from "@/lib/db/catalog/dbCatalogProductId";
 
-export default function Product() {
+type SearchParams = { id: string }
+interface IProductParamsProps {
+    searchParams: Promise<SearchParams>
+}
+
+export default async function Product({ searchParams }: IProductParamsProps) {
+    const { id } = await searchParams
+    const siteProduct = await dbCatalogProductId({ id })
+
     return (
         <div className="relative min-h-screen bg-black">
             <div
@@ -23,9 +32,9 @@ export default function Product() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <HeroProductReadySites />
-                <DescriptionProductReadySites />
-                <OtherProductReadySites />
+                <HeroProductReadySites product={siteProduct}/>
+                <DescriptionProductReadySites product={siteProduct}/>
+                <OtherProductReadySites product={siteProduct}/>
                 <CTAProductReadySites />
                 <Footer />
             </div>
