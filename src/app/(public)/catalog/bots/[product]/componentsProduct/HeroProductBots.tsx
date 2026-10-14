@@ -5,8 +5,14 @@ import { FaCheck, FaPlus } from "react-icons/fa"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { StarRating } from "@/lib/utils/StarRating"
+import type { Product } from "../../../../../../../prisma/generated/prisma"
 
-export function HeroProductBots({ product }: any) {
+interface IHeroProductBots {
+    product: Product | null
+}
+
+export function HeroProductBots({ product }: IHeroProductBots) {
+    if (!product) return null
     const params = useParams()
 
     return (
@@ -32,10 +38,10 @@ export function HeroProductBots({ product }: any) {
                             <p className="text-white/70 text-font-inter text-sm md:text-base mt-3 leading-relaxed">
                                 {product.description}
                             </p>
-                            <button className="inline-flex items-center gap-1 text-white/70 hover:text-white text-sm font-medium transition-colors duration-200 mt-4 group">
+                            <div className="inline-flex items-center gap-1 text-white/70 hover:text-white text-sm font-medium transition-colors duration-200 mt-4 group">
                                 <a href={`/catalog/bots/${product.demoUrl}`}>Посмотреть демо</a>
                                 <IoIosArrowForward className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                            </button>
+                            </div>
                             <div
                                 className="w-full h-100 flex items-center mt-6 justify-center border border-white/10 rounded-2x"
                                 style={{ backgroundColor: product.previewBg }}
@@ -48,7 +54,7 @@ export function HeroProductBots({ product }: any) {
                                     <span className="text-white/70 font-medium"> {product.estimation} </span>
                                     <StarRating ratingValue={product.estimation} />
                                 </div>
-                                {product.positive.map((item: string, idx: string) => (
+                                {product.positive.map((item: string, idx: number) => (
                                     <div key={idx}>
                                         <span className="w-px h-4 bg-white/10" />
                                         <span>{item}</span>
@@ -67,7 +73,7 @@ export function HeroProductBots({ product }: any) {
                                             <span className="text-white text-3xl font-bold">{product.singlePrice} ₽</span>
                                             <span className="text-white/40 text-sm ml-1">/ запуск</span>
                                         </div>
-                                        <p className="text-white/40 text-[10px] mt-0.5">запуск от (количество) дней</p>
+                                        <p className="text-white/40 text-[10px] mt-0.5">запуск от {product.launchFromSingle} дней</p>
                                         <Link href={`/catalog/bots/${params.product}/payproduct`}>
                                             <button className="button-main-styles w-full mt-3 justify-center">
                                                 Купить
@@ -80,7 +86,7 @@ export function HeroProductBots({ product }: any) {
                                             <span className="text-white text-3xl font-bold">{product.mounthPrice} ₽</span>
                                             <span className="text-white/40 text-sm ml-1">/ месяц</span>
                                         </div>
-                                        <p className="text-white/40 text-[10px] mt-0.5">ежемесячно, без скрытых платежей</p>
+                                        <p className="text-white/40 text-[10px] mt-0.5">запуск от {product.launchFromMounth} дней + поддержка</p>
                                         <Link href={`/catalog/bots/${params.product}/payproduct`}>
                                             <button className="button-main-styles w-full mt-3 justify-center">
                                                 Оформить
@@ -88,15 +94,15 @@ export function HeroProductBots({ product }: any) {
                                         </Link>
                                     </div>
                                 </div>
-                                <button className="text-white/70 hover:text-white text-sm font-medium transition-colors duration-200 group inline-flex items-center gap-1 self-center">
+                                <div className="text-white/70 hover:text-white text-sm font-medium transition-colors duration-200 group inline-flex items-center gap-1 self-center">
                                     <a href={`/catalog/bots/${product.demoUrl}`}>Посмотреть демо</a>
                                     <IoIosArrowForward className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                                </button>
+                                </div>
                             </div>
                             <div className="mt-6">
                                 <h4 className="text-white/40 text-xs uppercase tracking-wider font-medium">В комплект входит</h4>
                                 <ul className="mt-3 space-y-1.5">
-                                    {product.included.map((item: string, idx: string) => (
+                                    {product.included.map((item: string, idx: number) => (
                                         <li key={idx} className="flex items-center gap-2 text-white/70 text-sm">
                                             <FaCheck className="text-green-400 size-3.5 shrink-0" />
                                             <span>{item}</span>
@@ -107,7 +113,7 @@ export function HeroProductBots({ product }: any) {
                             <div className="mt-6 pt-6 border-t border-white/5">
                                 <h4 className="text-white/40 text-xs uppercase tracking-wider font-medium">Можно изменить</h4>
                                 <ul className="mt-3 space-y-1.5">
-                                    {product.possibleSettings.map((item: string, idx: string) => (
+                                    {product.possibleSettings.map((item: string, idx: number) => (
                                         <li key={idx} className="flex items-center gap-2 text-white/50 text-sm">
                                             <FaPlus className="text-white/20 size-3.5 shrink-0" />
                                             <span>{item}</span>
@@ -118,7 +124,7 @@ export function HeroProductBots({ product }: any) {
                             <div className="mt-6 pt-6 border-t border-white/5">
                                 <h4 className="text-white/40 text-xs uppercase tracking-wider font-medium">Дополнительно</h4>
                                 <ul className="mt-3 space-y-1.5">
-                                    {product.additionally.map((item: string, idx: string) => (
+                                    {product.additionally.map((item: string, idx: number) => (
                                         <li key={idx} className="flex items-center gap-2 text-white/40 text-sm">
                                             <span className="text-white/20 text-lg leading-none">+</span>
                                             <span>{item}</span>

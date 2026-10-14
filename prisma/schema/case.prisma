@@ -1,14 +1,15 @@
 model Case {
-    id          String   @id @default(cuid())
-    title       String
-    service     String
-    type        String
-    previewBg   String   @map("preview_bg")
-    slug        String
-    url         String?
-    tasks       String[]
-    popups      String[]
-    interesting String[]
+    id             String   @id @default(cuid())
+    title          String
+    service        String
+    type           String
+    previewBg      String   @map("preview_bg")
+    previewProject String[] @map("preview_project")
+    slug           String
+    url            String?
+    tasks          String[]
+    popups         String[]
+    interesting    String[]
 
     @@map("cases")
 }

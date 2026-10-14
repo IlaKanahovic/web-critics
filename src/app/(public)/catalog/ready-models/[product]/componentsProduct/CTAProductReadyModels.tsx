@@ -1,16 +1,18 @@
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
-import { dataReadyModels } from "../../components/HeroCatalogReadyModels"
 import { CardProductCatalogReadyModels } from "../../components/CardProductCatalogReadyModels"
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
 
-export function CTAProductReadyModels() {
+export async function CTAProductReadyModels() {
+    const [ , , readyModelsProducts] = await dbCatalogProduct()
+
     return (
         <div className="container">
             <div className="pt-12">
                 <div>
                     <h2 className="text-white text-font-space text-3xl md:text-4xl text-center">Возможно, подойдёт ещё</h2>
                     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {dataReadyModels.map((tool) => (
+                        {readyModelsProducts.map((tool) => (
                             <CardProductCatalogReadyModels key={tool.id} {...tool} />
                         ))}
                     </div>

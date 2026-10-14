@@ -3,8 +3,12 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlogCases } from "./MainPageBlogCases";
 import { Footer } from "@/components/layout/footer/Footer";
 import { letters } from "../page";
+import { dbGetArticlesCases } from "@/lib/db/blog/dbGetArticles";
 
-export default function BlogCases() {
+export default async function BlogCases() {
+    const rawArticlesCases = await dbGetArticlesCases()
+    const articlesCases = JSON.parse(JSON.stringify(rawArticlesCases))
+
     return (
         <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -101,7 +105,7 @@ export default function BlogCases() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <MainPageBlogCases />
+                <MainPageBlogCases articlesCases={articlesCases}/>
                 <Footer />
             </div>
         </div>

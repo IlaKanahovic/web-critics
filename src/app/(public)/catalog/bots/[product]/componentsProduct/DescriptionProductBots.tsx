@@ -1,6 +1,12 @@
+import type { Product } from "../../../../../../../prisma/generated/prisma"
 
+interface IDescriptionProductBots {
+    product: Product | null
+}
 
-export function DescriptionProductBots({ product }: any) {
+export function DescriptionProductBots({ product }: IDescriptionProductBots ) {
+    if (!product) return null
+
     return (
         <div className="container">
             <div className="pt-12">
@@ -16,7 +22,7 @@ export function DescriptionProductBots({ product }: any) {
                             <div>
                                 <h3 className="text-white/50 text-xs uppercase tracking-wider font-medium mb-2">Подойдёт</h3>
                                 <ul className="space-y-1.5 text-white/80 text-sm">
-                                    {product.suitable.map((item: string, idx: string) => (
+                                    {product.suitable.map((item: string, idx: number) => (
                                         <li key={idx} className="flex items-start gap-2">
                                             <span className="text-green-400 text-sm">✓</span>
                                             <span>{item}</span>
@@ -27,7 +33,7 @@ export function DescriptionProductBots({ product }: any) {
                             <div className="pt-3 border-t border-white/5">
                                 <h3 className="text-white/50 text-xs uppercase tracking-wider font-medium mb-2">Не подойдёт</h3>
                                 <ul className="space-y-1.5 text-white/80 text-sm">
-                                    {product.notSuitable.map((item: string, idx: string) => (
+                                    {product.notSuitable.map((item: string, idx: number) => (
                                         <li key={idx} className="flex items-start gap-2">
                                             <span className="text-red-400 text-sm">✗</span>
                                             <span>{item}</span>
@@ -49,7 +55,7 @@ export function DescriptionProductBots({ product }: any) {
                         <h3 className="text-white/50 text-xs uppercase tracking-wider font-medium mb-3">Характеристики</h3>
                         <table className="w-full text-sm">
                             <tbody>
-                                {product.specifications.map((item: string, idx: string) => {
+                                {product.specifications.map((item: string, idx: number) => {
                                     const [label, ...rest] = item.split(':')
                                     return (<tr key={idx} className="border-b border-white/5 last:border-0">
                                         <td className="text-white/40 py-1.5 pr-4 whitespace-nowrap">{label}</td>

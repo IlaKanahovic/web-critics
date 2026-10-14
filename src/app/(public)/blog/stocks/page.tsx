@@ -3,8 +3,12 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { Footer } from "@/components/layout/footer/Footer";
 import { letters } from "../page";
 import { MainPageBlogStocks } from "./MainPageBlogStocks";
+import { dbGetArticlesStocks } from "@/lib/db/blog/dbGetArticles";
 
-export default function BlogStocks() {
+export default async function BlogStocks() {
+    const rawArticlesStocks = await dbGetArticlesStocks()
+    const articlesStocks = JSON.parse(JSON.stringify(rawArticlesStocks))
+
     return (
         <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -101,7 +105,7 @@ export default function BlogStocks() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <MainPageBlogStocks />
+                <MainPageBlogStocks articlesStocks={articlesStocks}/>
                 <Footer />
             </div>
         </div>

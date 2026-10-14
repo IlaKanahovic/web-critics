@@ -1,6 +1,12 @@
+import type { Product } from "../../../../../../../prisma/generated/prisma"
 
+interface IOtherProductReadySites {
+    product: Product | null
+}
 
-export function OtherProductReadySites({product}: any) {
+export function OtherProductReadySites({ product }: IOtherProductReadySites) {
+    if (!product) return null
+
     return (
         <div className="container">
             <div className="pt-12">
@@ -31,7 +37,7 @@ export function OtherProductReadySites({product}: any) {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-white text-font-space text-3xl md:text-4xl text-center">Что потребуется от вас</h2>
                     <p className="text-white/70 text-font-inter text-center text-sm mt-3 leading-relaxed">
-                        (свои требования)
+                        {product.requirements}
                     </p>
                     <p className="text-white/50 text-font-inter text-center text-xs mt-1">
                         Если каких-то материалов нет - поможем подготовить их.
@@ -42,11 +48,9 @@ export function OtherProductReadySites({product}: any) {
                             Требования
                         </p>
                         <ul className="flex flex-wrap gap-2 justify-center text-white/80 text-sm">
-                            <li className="px-3 py-1 rounded-full bg-white/5 border border-white/10">(свои данные)</li>
-                            <li className="px-3 py-1 rounded-full bg-white/5 border border-white/10">(свои данные)</li>
-                            <li className="px-3 py-1 rounded-full bg-white/5 border border-white/10">(свои данные)</li>
-                            <li className="px-3 py-1 rounded-full bg-white/5 border border-white/10">(свои данные)</li>
-                            <li className="px-3 py-1 rounded-full bg-white/5 border border-white/10">(свои данные)</li>
+                            {product.valuesRequirements.map((item: string, idx: number) => (
+                                <li key={idx} className="px-3 py-1 rounded-full bg-white/5 border border-white/10">{item}</li>
+                            ))}
                         </ul>
                     </div>
                 </div>

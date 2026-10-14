@@ -24,6 +24,9 @@ export interface CardData {
     specifications: string[]
     requirements: string
     valuesRequirements: string[]
+    businessType: string
+    launchFromMounth: string
+    launchFromSingle: string
 }
 
 export const dbCatalogProduct = async () => {

@@ -1,0 +1,129 @@
+model Article {
+  id          String   @id @default(cuid())
+  type        String
+  slug        String
+  title       String
+  description String
+  previewBg   String   @map("preview_bg")
+  avatar      String
+  nameAuthor  String   @map("name_author")
+  date        DateTime
+  readingTime String   @map("reading_time")
+
+  @@map("articles")
+}
+
+model Case {
+  id             String   @id @default(cuid())
+  title          String
+  service        String
+  type           String
+  previewBg      String   @map("preview_bg")
+  previewProject String[] @map("preview_project")
+  slug           String
+  url            String?
+  tasks          String[]
+  popups         String[]
+  interesting    String[]
+
+  @@map("cases")
+}
+
+model Product {
+  id                 String   @id @default(cuid())
+  title              String   @unique
+  type               String
+  businessType       String   @map("business_type")
+  description        String
+  features           String[]
+  singlePrice        String   @map("single_price")
+  mounthPrice        String   @map("mounth_price")
+  previewBg          String   @map("preview_bg")
+  slug               String
+  demoUrl            String   @map("demp_url")
+  categoryDesc       String   @map("category_desc")
+  estimation         String
+  positive           String[]
+  included           String[]
+  possibleSettings   String[] @map("possible_settings")
+  additionally       String[]
+  desciptionPurpose  String   @map("description_purpose")
+  suitable           String[]
+  notSuitable        String[] @map("not_suitable")
+  howItWorks         String   @map("how_it_works")
+  specifications     String[]
+  requirements       String
+  valuesRequirements String[] @map("values_requirements")
+  launchFromMounth   String   @map("launch_from_mounth")
+  launchFromSingle   String   @map("launch_from_single")
+
+  @@map("products")
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  name        String
+  nameCompany String
+  avatar      String
+  date        DateTime
+  estimation  String
+  categoty    String
+  description String
+
+  @@map("reviews")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id               String             @id @default(cuid())
+  username         String
+  phone            String             @unique
+  email            String             @unique
+  createdAt        DateTime           @default(now()) @map("created_at")
+  leads            Lead[]
+  catalogPurchases CatalogPurchases[]
+
+  @@map("users")
+}
+
+model Lead {
+  id                   String   @id @default(cuid())
+  username             String
+  phone                String
+  email                String
+  budgetFrom           String   @map("budget_from")
+  budgetTo             String   @map("budget_to")
+  descriprion          String?
+  services             String[]
+  advertisement        Boolean
+  quantityApplications String   @map("quantity_applications")
+  createdAt            DateTime @default(now()) @map("created_at")
+  ownerId              String   @map("owner_id")
+  owner                User     @relation(fields: [ownerId], references: [id])
+
+  @@map("leads")
+}
+
+model CatalogPurchases {
+  id            String   @id @default(cuid())
+  format        String
+  username      String
+  phone         String
+  email         String
+  descriprion   String?
+  advertisement Boolean
+  nameProduct   String   @map("name_product")
+  createdAt     DateTime @default(now()) @map("created_at")
+  ownerId       String   @map("owner_id")
+  owner         User     @relation(fields: [ownerId], references: [id])
+
+  @@map("catalog_purchases")
+}

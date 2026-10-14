@@ -1,5 +1,11 @@
+import type { Product } from "../../../../../../../prisma/generated/prisma"
 
-export function OtherProductBots({ product }: any) {
+interface IOtherProductBots {
+    product: Product | null
+}
+
+export function OtherProductBots({ product }: IOtherProductBots) {
+    if (!product) return null
     return (
         <div className="container">
             <div className="pt-12">
@@ -41,7 +47,7 @@ export function OtherProductBots({ product }: any) {
                             Требования
                         </p>
                         <ul className="flex flex-wrap gap-2 justify-center text-white/80 text-sm">
-                            {product.valuesRequirements.map((item: string, idx: string) => (
+                            {product.valuesRequirements.map((item: string, idx: number) => (
                                 <li key={idx} className="px-3 py-1 rounded-full bg-white/5 border border-white/10">{item}</li>
                             ))}
                         </ul>

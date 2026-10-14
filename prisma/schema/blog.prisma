@@ -1,0 +1,14 @@
+model Article {
+    id          String   @id @default(cuid())
+    type        String
+    slug        String
+    title       String
+    description String
+    previewBg   String   @map("preview_bg")
+    avatar      String
+    nameAuthor  String   @map("name_author")
+    date        DateTime
+    readingTime String   @map("reading_time")
+
+    @@map("articles")
+}

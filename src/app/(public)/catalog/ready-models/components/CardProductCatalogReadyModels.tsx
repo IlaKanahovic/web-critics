@@ -6,7 +6,10 @@ import type { CardData } from "@/lib/db/catalog/dbCatalogProduct"
 export function CardProductCatalogReadyModels(tool: CardData) {
     return (
         <div className="group relative rounded-xl bg-[#111111] border border-white/10 shadow-inner shadow-white/5 transition-all duration-300 hover:shadow-2xl hover:border-white/10 overflow-hidden flex flex-col">
-            <div className={`w-full h-48 flex items-center justify-center ${tool.previewBg || "bg-white/5"} border-b border-white/5`}>
+            <div
+                className={`w-full h-48 flex items-center justify-center ${tool.previewBg || "bg-white/5"} border-b border-white/5`}
+                style={{ backgroundColor: tool.previewBg }}
+            >
                 <span className="text-white/30 text-sm font-medium">Превью инструмента</span>
             </div>
 
@@ -33,7 +36,7 @@ export function CardProductCatalogReadyModels(tool: CardData) {
                     <div className="bg-white/5 rounded-lg p-3 text-center transition-colors hover:bg-white/10">
                         <FaCalendarAlt className="text-white/40 mx-auto mb-1.5 size-4" />
                         <span className="text-white/60 text-[10px] uppercase tracking-wider font-medium">Подписка</span>
-                        <p className="text-white font-semibold text-[15px] mt-0.5">{tool.mounthPrice}</p>
+                        <p className="text-white font-semibold text-[15px] mt-0.5">{tool.mounthPrice} ₽/мес.</p>
                         <p className="text-white/40 text-[10px]">подписка на инструмент</p>
                     </div>
                 </div>

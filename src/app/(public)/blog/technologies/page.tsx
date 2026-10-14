@@ -3,8 +3,12 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlogTechnologies } from "./MainPageBlogTechnologies";
 import { Footer } from "@/components/layout/footer/Footer";
 import { letters } from "../page";
+import { dbGetArticlesTechnologies } from "@/lib/db/blog/dbGetArticles";
 
-export default function BlogTechnologies() {
+export default async function BlogTechnologies() {
+    const rawArticlesTechnologies = await dbGetArticlesTechnologies()
+    const articlesTechnologies = JSON.parse(JSON.stringify(rawArticlesTechnologies))
+
     return (
         <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -101,7 +105,7 @@ export default function BlogTechnologies() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <MainPageBlogTechnologies />
+                <MainPageBlogTechnologies articlesTechnologies={articlesTechnologies} />
                 <Footer />
             </div>
         </div>

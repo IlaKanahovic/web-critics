@@ -23,6 +23,8 @@ model Product {
     specifications     String[]
     requirements       String
     valuesRequirements String[] @map("values_requirements")
+    launchFromMounth   String   @map("launch_from_mounth")
+    launchFromSingle   String   @map("launch_from_single")
 
     @@map("products")
 }

@@ -11,7 +11,5 @@ export const dbCatalogProductId = async (props: IProductId) => {
         }
     })
 
-    console.log(props.id, product)
-
     return product
 }

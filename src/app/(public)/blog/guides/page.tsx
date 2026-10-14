@@ -3,8 +3,12 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlogGuides } from "./MainPageBlogGuides";
 import { Footer } from "@/components/layout/footer/Footer";
 import { letters } from "../page";
+import { dbGetArticlesGuides } from "@/lib/db/blog/dbGetArticles";
 
-export default function BlogGuides() {
+export default async function BlogGuides() {
+    const rawArticlesGuides = await dbGetArticlesGuides()
+    const articlesGuides = JSON.parse(JSON.stringify(rawArticlesGuides))
+
     return (
         <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -101,7 +105,7 @@ export default function BlogGuides() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <MainPageBlogGuides />
+                <MainPageBlogGuides articlesGuides={articlesGuides}/>
                 <Footer />
             </div>
         </div>

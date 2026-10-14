@@ -2,8 +2,17 @@ import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { Footer } from "@/components/layout/footer/Footer";
 import { PortfolioProjectComponent } from "./PortfolioProjectComponent";
+import { dbGetProjectById } from "@/lib/db/portfolio/dbGetProjectById";
 
-export default function Portfolio() {
+type SearchParams = { id: string }
+interface IProductParamsProps {
+    searchParams: Promise<SearchParams>
+}
+
+export default async function Portfolio( { searchParams }: IProductParamsProps ) {
+    const { id } = await searchParams 
+    const project = await dbGetProjectById(id) 
+
     return (
         <div className="relative min-h-screen bg-[#050505] overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -88,7 +97,7 @@ export default function Portfolio() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <PortfolioProjectComponent />
+                <PortfolioProjectComponent project={project}/>
                 <Footer />
             </div>
         </div>

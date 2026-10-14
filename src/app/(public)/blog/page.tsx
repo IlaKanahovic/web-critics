@@ -2,6 +2,7 @@ import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlog } from "./MainPageBlog";
 import { Footer } from "@/components/layout/footer/Footer";
+import { dbGetArticlesEverything } from "@/lib/db/blog/dbGetArticles";
 
 export const letters = [
     { char: "B", top: "6%", left: "4%", size: 420, rotate: -8, delay: 0 },
@@ -13,7 +14,10 @@ export const letters = [
     { char: "O", top: "92%", left: "14%", size: 380, rotate: -4, delay: 2.5 },
 ]
 
-export default function Blog() {
+export default async function Blog() {
+    const rawArticles = await dbGetArticlesEverything()
+    const articles = JSON.parse(JSON.stringify(rawArticles))
+
     return (
         <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -110,7 +114,7 @@ export default function Blog() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <MainPageBlog />
+                <MainPageBlog articles={articles} />
                 <Footer />
             </div>
         </div>

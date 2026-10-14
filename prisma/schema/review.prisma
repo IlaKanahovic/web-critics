@@ -1,0 +1,12 @@
+model Review {
+    id          String @id @default(cuid())
+    name        String
+    nameCompany String
+    avatar      String
+    date        DateTime
+    estimation  String
+    categoty    String
+    description String
+
+    @@map("reviews")
+}

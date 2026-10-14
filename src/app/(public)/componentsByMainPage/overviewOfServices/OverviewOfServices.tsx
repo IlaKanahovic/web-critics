@@ -34,7 +34,7 @@ const services = [
         icon: VscDeveloperTools,
     },
     {
-        href: "/services/growt-analytics",
+        href: "/services/growth-analytics",
         title: "Есть трафик, но мало клиентов?",
         description: "Посетители приходят, но не покупают? Разберём путь пользователя, найдём точки потери и исправим то, что мешает конверсии.",
         btnDesc: "Найти причину",
