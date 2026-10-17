@@ -3,7 +3,8 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { Footer } from "@/components/layout/footer/Footer";
 import { dbGetArticle } from "@/lib/db/blog/dbGetArticle";
 import { MainArticleComponent } from "./MainArticleComponent";
-import { letters } from "../page";
+import { letters } from "../../page";
+
 
 type SearchParams = { id: string }
 interface IProductParamsProps {
