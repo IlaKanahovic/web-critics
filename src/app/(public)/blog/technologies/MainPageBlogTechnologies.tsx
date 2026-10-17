@@ -109,7 +109,13 @@ export function MainPageBlogTechnologies({ articlesTechnologies }: IMainPageBlog
 
                         <div className="space-y-6">
                             {filteredArticles.map((article) => (
-                                <Link key={article.id} href={`/blog/${article.slug}`}>
+                                <Link
+                                    key={article.id}
+                                    href={{
+                                        pathname: `/blog/${article.slug}`,
+                                        query: { id: article.id }
+                                    }
+                                    }>
                                     <article className="group relative bg-[#111111] border mt-6 border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-white/25 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
                                         <div className="relative h-56 md:h-64 bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border-b border-white/5 overflow-hidden">
                                             <div
