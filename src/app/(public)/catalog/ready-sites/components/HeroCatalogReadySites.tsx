@@ -23,8 +23,8 @@ export async function HeroCatalogReadySites() {
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                     <div className="flex flex-wrap items-center gap-4 flex-1">
-                        <span className="text-white/60 text-sm whitespace-nowrap">Найдено решений: { readySitesProducts.length } </span>
-                        <details className="relative group">
+                        <span className="text-white/60 text-lg whitespace-nowrap">Найдено решений: { readySitesProducts.length } </span>
+                        {/* <details className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
                                 Тип бизнеса: Все
                                 <svg className="w-3 h-3 ml-1 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@ export async function HeroCatalogReadySites() {
                                     </div>
                                 ))}
                             </div>
-                        </details>
+                        </details> */}
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="text-white/40 text-xs uppercase tracking-wider">Сортировка:</span>

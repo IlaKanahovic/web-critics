@@ -9,6 +9,7 @@ model Article {
   nameAuthor  String   @map("name_author")
   date        DateTime
   readingTime String   @map("reading_time")
+  content     String
 
   @@map("articles")
 }

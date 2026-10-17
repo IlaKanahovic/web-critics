@@ -130,7 +130,8 @@ exports.Prisma.ArticleScalarFieldEnum = {
   avatar: 'avatar',
   nameAuthor: 'nameAuthor',
   date: 'date',
-  readingTime: 'readingTime'
+  readingTime: 'readingTime',
+  content: 'content'
 };
 
 exports.Prisma.CaseScalarFieldEnum = {

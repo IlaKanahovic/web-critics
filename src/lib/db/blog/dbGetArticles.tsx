@@ -1,15 +1,38 @@
 import { prisma } from "../prisma"
 
 export const dbGetArticlesEverything = async () => {
-    const articles = await prisma.article.findMany()
+    const articles = await prisma.article.findMany({
+        select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            type: true,
+            nameAuthor: true,
+            date: true,
+            readingTime: true,
+            previewBg: true,
+        }
+    })
 
     return articles
 }
 
 export const dbGetArticlesTechnologies = async () => {
     const articlesTechnologies = await prisma.article.findMany({
-        where: { 
+        where: {
             type: "technologies"
+        },
+        select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            type: true,
+            nameAuthor: true,
+            date: true,
+            readingTime: true,
+            previewBg: true,
         }
     })
 
@@ -18,8 +41,19 @@ export const dbGetArticlesTechnologies = async () => {
 
 export const dbGetArticlesStocks = async () => {
     const articlesStocks = await prisma.article.findMany({
-        where: { 
+        where: {
             type: "stocks"
+        },
+        select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            type: true,
+            nameAuthor: true,
+            date: true,
+            readingTime: true,
+            previewBg: true,
         }
     })
 
@@ -28,8 +62,19 @@ export const dbGetArticlesStocks = async () => {
 
 export const dbGetArticlesGuides = async () => {
     const articlesGuides = await prisma.article.findMany({
-        where: { 
+        where: {
             type: "guides"
+        },
+        select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            type: true,
+            nameAuthor: true,
+            date: true,
+            readingTime: true,
+            previewBg: true,
         }
     })
 
@@ -38,8 +83,19 @@ export const dbGetArticlesGuides = async () => {
 
 export const dbGetArticlesCases = async () => {
     const articlesCases = await prisma.article.findMany({
-        where: { 
+        where: {
             type: "cases"
+        },
+        select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            type: true,
+            nameAuthor: true,
+            date: true,
+            readingTime: true,
+            previewBg: true,
         }
     })
 
@@ -48,8 +104,19 @@ export const dbGetArticlesCases = async () => {
 
 export const dbGetArticlesBusinessSolutions = async () => {
     const articlesBusinessSolution = await prisma.article.findMany({
-        where: { 
+        where: {
             type: "business-solutions"
+        },
+        select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            type: true,
+            nameAuthor: true,
+            date: true,
+            readingTime: true,
+            previewBg: true,
         }
     })
 

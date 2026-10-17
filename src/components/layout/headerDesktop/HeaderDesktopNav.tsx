@@ -145,9 +145,6 @@ export function HeaderDesktopNav() {
                             <li><a href="/blog/business-solutions" className="text-white/50 hover:text-white transition-colors block">Бизнес-решения</a></li>
                             <li><a href="/blog/technologies" className="text-white/50 hover:text-white transition-colors block">Технологии</a></li>
                             <li><a href="/blog/guides" className="text-white/50 hover:text-white transition-colors block">Гайды</a></li>
-                            <li className="pt-2 border-t border-white/5 mt-2">
-                                <a href="/about/history-webcritics" className="text-white/50 hover:text-white transition-colors block">История WebCRitic</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

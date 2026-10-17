@@ -1500,6 +1500,7 @@ export namespace Prisma {
     nameAuthor: string | null
     date: Date | null
     readingTime: string | null
+    content: string | null
   }
 
   export type ArticleMaxAggregateOutputType = {
@@ -1513,6 +1514,7 @@ export namespace Prisma {
     nameAuthor: string | null
     date: Date | null
     readingTime: string | null
+    content: string | null
   }
 
   export type ArticleCountAggregateOutputType = {
@@ -1526,6 +1528,7 @@ export namespace Prisma {
     nameAuthor: number
     date: number
     readingTime: number
+    content: number
     _all: number
   }
 
@@ -1541,6 +1544,7 @@ export namespace Prisma {
     nameAuthor?: true
     date?: true
     readingTime?: true
+    content?: true
   }
 
   export type ArticleMaxAggregateInputType = {
@@ -1554,6 +1558,7 @@ export namespace Prisma {
     nameAuthor?: true
     date?: true
     readingTime?: true
+    content?: true
   }
 
   export type ArticleCountAggregateInputType = {
@@ -1567,6 +1572,7 @@ export namespace Prisma {
     nameAuthor?: true
     date?: true
     readingTime?: true
+    content?: true
     _all?: true
   }
 
@@ -1653,6 +1659,7 @@ export namespace Prisma {
     nameAuthor: string
     date: Date
     readingTime: string
+    content: string
     _count: ArticleCountAggregateOutputType | null
     _min: ArticleMinAggregateOutputType | null
     _max: ArticleMaxAggregateOutputType | null
@@ -1683,6 +1690,7 @@ export namespace Prisma {
     nameAuthor?: boolean
     date?: boolean
     readingTime?: boolean
+    content?: boolean
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1696,6 +1704,7 @@ export namespace Prisma {
     nameAuthor?: boolean
     date?: boolean
     readingTime?: boolean
+    content?: boolean
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1709,6 +1718,7 @@ export namespace Prisma {
     nameAuthor?: boolean
     date?: boolean
     readingTime?: boolean
+    content?: boolean
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectScalar = {
@@ -1722,9 +1732,10 @@ export namespace Prisma {
     nameAuthor?: boolean
     date?: boolean
     readingTime?: boolean
+    content?: boolean
   }
 
-  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "slug" | "title" | "description" | "previewBg" | "avatar" | "nameAuthor" | "date" | "readingTime", ExtArgs["result"]["article"]>
+  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "slug" | "title" | "description" | "previewBg" | "avatar" | "nameAuthor" | "date" | "readingTime" | "content", ExtArgs["result"]["article"]>
 
   export type $ArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Article"
@@ -1740,6 +1751,7 @@ export namespace Prisma {
       nameAuthor: string
       date: Date
       readingTime: string
+      content: string
     }, ExtArgs["result"]["article"]>
     composites: {}
   }
@@ -2173,6 +2185,7 @@ export namespace Prisma {
     readonly nameAuthor: FieldRef<"Article", 'String'>
     readonly date: FieldRef<"Article", 'DateTime'>
     readonly readingTime: FieldRef<"Article", 'String'>
+    readonly content: FieldRef<"Article", 'String'>
   }
     
 
@@ -9287,7 +9300,8 @@ export namespace Prisma {
     avatar: 'avatar',
     nameAuthor: 'nameAuthor',
     date: 'date',
-    readingTime: 'readingTime'
+    readingTime: 'readingTime',
+    content: 'content'
   };
 
   export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
@@ -9496,6 +9510,7 @@ export namespace Prisma {
     nameAuthor?: StringFilter<"Article"> | string
     date?: DateTimeFilter<"Article"> | Date | string
     readingTime?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
   }
 
   export type ArticleOrderByWithRelationInput = {
@@ -9509,6 +9524,7 @@ export namespace Prisma {
     nameAuthor?: SortOrder
     date?: SortOrder
     readingTime?: SortOrder
+    content?: SortOrder
   }
 
   export type ArticleWhereUniqueInput = Prisma.AtLeast<{
@@ -9525,6 +9541,7 @@ export namespace Prisma {
     nameAuthor?: StringFilter<"Article"> | string
     date?: DateTimeFilter<"Article"> | Date | string
     readingTime?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
   }, "id">
 
   export type ArticleOrderByWithAggregationInput = {
@@ -9538,6 +9555,7 @@ export namespace Prisma {
     nameAuthor?: SortOrder
     date?: SortOrder
     readingTime?: SortOrder
+    content?: SortOrder
     _count?: ArticleCountOrderByAggregateInput
     _max?: ArticleMaxOrderByAggregateInput
     _min?: ArticleMinOrderByAggregateInput
@@ -9557,6 +9575,7 @@ export namespace Prisma {
     nameAuthor?: StringWithAggregatesFilter<"Article"> | string
     date?: DateTimeWithAggregatesFilter<"Article"> | Date | string
     readingTime?: StringWithAggregatesFilter<"Article"> | string
+    content?: StringWithAggregatesFilter<"Article"> | string
   }
 
   export type CaseWhereInput = {
@@ -10104,6 +10123,7 @@ export namespace Prisma {
     nameAuthor: string
     date: Date | string
     readingTime: string
+    content: string
   }
 
   export type ArticleUncheckedCreateInput = {
@@ -10117,6 +10137,7 @@ export namespace Prisma {
     nameAuthor: string
     date: Date | string
     readingTime: string
+    content: string
   }
 
   export type ArticleUpdateInput = {
@@ -10130,6 +10151,7 @@ export namespace Prisma {
     nameAuthor?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     readingTime?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArticleUncheckedUpdateInput = {
@@ -10143,6 +10165,7 @@ export namespace Prisma {
     nameAuthor?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     readingTime?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArticleCreateManyInput = {
@@ -10156,6 +10179,7 @@ export namespace Prisma {
     nameAuthor: string
     date: Date | string
     readingTime: string
+    content: string
   }
 
   export type ArticleUpdateManyMutationInput = {
@@ -10169,6 +10193,7 @@ export namespace Prisma {
     nameAuthor?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     readingTime?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArticleUncheckedUpdateManyInput = {
@@ -10182,6 +10207,7 @@ export namespace Prisma {
     nameAuthor?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     readingTime?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
   export type CaseCreateInput = {
@@ -10857,6 +10883,7 @@ export namespace Prisma {
     nameAuthor?: SortOrder
     date?: SortOrder
     readingTime?: SortOrder
+    content?: SortOrder
   }
 
   export type ArticleMaxOrderByAggregateInput = {
@@ -10870,6 +10897,7 @@ export namespace Prisma {
     nameAuthor?: SortOrder
     date?: SortOrder
     readingTime?: SortOrder
+    content?: SortOrder
   }
 
   export type ArticleMinOrderByAggregateInput = {
@@ -10883,6 +10911,7 @@ export namespace Prisma {
     nameAuthor?: SortOrder
     date?: SortOrder
     readingTime?: SortOrder
+    content?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {

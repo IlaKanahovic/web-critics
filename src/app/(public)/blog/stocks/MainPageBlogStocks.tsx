@@ -5,12 +5,16 @@ import { FaRegClock, FaSearch, FaUser } from "react-icons/fa"
 import { IoIosArrowForward } from "react-icons/io"
 import { categories } from "@/constants/blogCategories/categoryBlog"
 import type { Article } from "../../../../../prisma/generated/prisma"
+import { searchWithinTheTextBlog } from "@/lib/utils/SearchWithinTheTextBlog"
+import { useState } from "react"
 
 interface IMainPageBlogStocks {
     articlesStocks: Article[] | null
 }
 
 export function MainPageBlogStocks({ articlesStocks }: IMainPageBlogStocks) {
+    const [searchText, setSearchText] = useState("")
+
     if (!articlesStocks) return (
         <div className="container">
             <div className="pt-10 md:pt-18 pb-20 md:pb-32">
@@ -25,7 +29,7 @@ export function MainPageBlogStocks({ articlesStocks }: IMainPageBlogStocks) {
                 </h1>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-                    <div className="lg:col-span-8">
+                    <div className="lg:col-span-8 order-2 lg:order-1">
                         <div className="relative mb-10 md:mb-12">
                             <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 size-4 pointer-events-none" />
                             <input
@@ -36,7 +40,7 @@ export function MainPageBlogStocks({ articlesStocks }: IMainPageBlogStocks) {
                         </div>
                     </div>
 
-                    <aside className="lg:col-span-4">
+                    <aside className="lg:col-span-4 order-1 lg:order-2">
                         <div className="lg:sticky lg:top-24">
                             <div className="flex items-center gap-3 mb-8">
                                 <span className="w-1.5 h-1.5 rounded-full bg-violet-400/60" />
@@ -75,6 +79,8 @@ export function MainPageBlogStocks({ articlesStocks }: IMainPageBlogStocks) {
         </div>
     )
 
+    const filteredArticles = searchWithinTheTextBlog(searchText, articlesStocks) || []
+
     return (
         <div className="container">
             <div className="pt-10 md:pt-18 pb-20 md:pb-32">
@@ -89,18 +95,20 @@ export function MainPageBlogStocks({ articlesStocks }: IMainPageBlogStocks) {
                 </h1>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-                    <div className="lg:col-span-8">
+                    <div className="lg:col-span-8 order-2 lg:order-1">
                         <div className="relative mb-10 md:mb-12">
                             <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 size-4 pointer-events-none" />
                             <input
                                 type="text"
                                 placeholder="Поиск по акциям"
                                 className="w-full pl-12 pr-5 py-4 bg-[#111111] border border-white/10 rounded-full text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors"
+                                value={searchText}
+                                onChange={(event) => setSearchText(event.target.value)}
                             />
                         </div>
 
                         <div className="space-y-6">
-                            {articlesStocks.map((article) => (
+                            {filteredArticles.map((article) => (
                                 <Link key={article.id} href={`/blog/${article.slug}`}>
                                     <article className="group relative bg-[#111111] border mt-6 border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-white/25 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
                                         <div className="relative h-56 md:h-64 bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border-b border-white/5 overflow-hidden">
@@ -153,10 +161,15 @@ export function MainPageBlogStocks({ articlesStocks }: IMainPageBlogStocks) {
                                     </article>
                                 </Link>
                             ))}
+                            {filteredArticles.length === 0 && (
+                                <p className="text-white/50 text-center py-10">
+                                    По запросу «{searchText}» ничего не найдено.
+                                </p>
+                            )}
                         </div>
                     </div>
 
-                    <aside className="lg:col-span-4">
+                    <aside className="lg:col-span-4 order-1 lg:order-2">
                         <div className="lg:sticky lg:top-24">
                             <div className="flex items-center gap-3 mb-8">
                                 <span className="w-1.5 h-1.5 rounded-full bg-violet-400/60" />
