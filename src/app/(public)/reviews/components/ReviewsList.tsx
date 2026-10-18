@@ -7,7 +7,7 @@ import type { Review } from "../../../../../prisma/generated/prisma"
 import { FiltersReviewsUtils } from "@/lib/utils/FiltersReviewsUtils"
 
 const ratingFilters = ["Все", "5", "4", "3 и ниже"]
-const typeFilters = ["Все", "Сайты", "Боты", "Автоматизация", "Веб-приложения"]
+const typeFilters = ["Все", "Готовые сайты", "Боты", "Готовые инструменты", "Автоматизация", "Веб-разработка", "Рост и аналитика", "AI", "Надежность и масштабирование"]
 
 interface IReviewsList {
     reviews: Review[] | null

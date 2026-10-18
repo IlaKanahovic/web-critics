@@ -8,9 +8,15 @@ import { PriceAssessmentReadyModels } from "./components/PriceAssessmentReadyMod
 import { FAQByReadyModels } from "./components/FAQByReadyModels";
 import { ReviewsReadyModels } from "./components/ReviewsReadyModels";
 import { CTAByFooterReadyModels } from "./components/CTAByFooterReadyModels";
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct";
+import { dbGetReviewsByCatalogReadyModels } from "@/lib/db/review/dbGetReviewsByCatalog";
 
 
-export default function ReadModelsCatalog() {
+export default async function ReadModelsCatalog() {
+    const [, , readyModelsProducts] = await dbCatalogProduct()
+    const rawReviews = await dbGetReviewsByCatalogReadyModels()
+    const reviews = JSON.parse(JSON.stringify(rawReviews))
+
     return (
         <div className="relative min-h-screen bg-black">
             <div
@@ -27,11 +33,11 @@ export default function ReadModelsCatalog() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <HeroCatalogReadyModels />
+                <HeroCatalogReadyModels readyModelsProducts={readyModelsProducts} />
                 <SubscriptionByReadyModels />
                 <PriceAssessmentReadyModels />
                 <FAQByReadyModels />
-                <ReviewsReadyModels />
+                <ReviewsReadyModels reviews={reviews}/>
                 <CTAByFooterReadyModels />
                 <Footer />
             </div>

@@ -12,7 +12,7 @@ interface ModalAddReviewProps {
     onClose: () => void
 }
 
-const categories = ["Сайты", "Боты", "Автоматизация", "Веб-приложения"]
+const categories = ["Готовые сайты", "Боты", "Готовые инструменты", "Автоматизация", "Веб-разработка", "Рост и аналитика", "AI", "Надежность и масштабирование"]
 
 export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
     const { form, errors, handleChange, validateForm, setErrors } = useReviewFormValidation()

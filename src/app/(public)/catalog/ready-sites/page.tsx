@@ -7,9 +7,15 @@ import { PriceAssessmentReadySites } from "./components/PriceAssessmentReadySite
 import { FAQByReadySites } from "./components/FAQByReadySites";
 import { ReviewsReadySites } from "./components/ReviewsReadySites";
 import { CTAByFooterReadySites } from "./components/CTAByFooterReadySites";
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
+import { dbGetReviewsByCatalogReadySites } from "@/lib/db/review/dbGetReviewsByCatalog";
 
 
-export default function ReadySitesCatalog() {
+export default async function ReadySitesCatalog() {
+    const [readySitesProducts] = await dbCatalogProduct()
+    const rawReviews = await dbGetReviewsByCatalogReadySites()
+    const reviews = JSON.parse(JSON.stringify(rawReviews))
+
     return (
         <div className="relative min-h-screen bg-black">
             <div
@@ -26,11 +32,11 @@ export default function ReadySitesCatalog() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <HeroCatalogReadySites />
+                <HeroCatalogReadySites readySitesProducts={readySitesProducts}/>
                 <SubscriptionByReadySites />
                 <PriceAssessmentReadySites />
                 <FAQByReadySites />
-                <ReviewsReadySites />
+                <ReviewsReadySites reviews={reviews}/>
                 <CTAByFooterReadySites />
                 <Footer />
             </div>

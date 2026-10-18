@@ -3,21 +3,29 @@
 import { FaUser, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
+import type { Review } from "../../../../../prisma/generated/prisma"
+import { useState } from "react"
 
-const reviews = [
-    {
-        id: 1,
-        name: "Анна Смирнова",
-        company: "Студия красоты «Lux»",
-        category: "Сайты",
-        avatar: null, // или можно использовать иконку
-        rating: 5,
-        text: "Заказали готовый сайт для салона — всё сделали за 3 дня, адаптировали под наш стиль. Клиенты теперь записываются онлайн, брони больше не теряются. Очень довольны результатом!",
-        date: "15 августа 2026",
-    },
-]
+interface IReviewsCatalog {
+    reviews: Review[] | null
+}
 
-export function ReviewsCatalog() {
+export function ReviewsCatalog({ reviews }: IReviewsCatalog) {
+    const [active, setActive] = useState("Все")
+
+    if (!reviews) return null
+
+    const filters = [
+        { label: "Все", value: "Все" },
+        { label: "Сайты", value: "Готовые сайты" },
+        { label: "Боты", value: "Боты" },
+        { label: "Инструменты", value: "Готовые инструменты" },
+    ]
+
+    const filteredReviews = active === "Все"
+        ? reviews
+        : reviews.filter(review => review.category === active)
+
     return (
         <div className="container">
             <div className="pt-42">
@@ -33,54 +41,69 @@ export function ReviewsCatalog() {
                     </p>
                 </div>
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white text-black border-white transition-all duration-300 cursor-pointer">
-                        Все
-                    </button>
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white/5 text-white/80 border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                        Сайты
-                    </button>
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white/5 text-white/80 border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                        Боты
-                    </button>
-                    <button className="px-5 py-2 rounded-full border text-sm font-medium bg-white/5 text-white/80 border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer">
-                        Инструменты
-                    </button>
-                </div>
-                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {reviews.map((review) => (
-                        <div
-                            key={review.id}
-                            className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all flex flex-col"
+                    {filters.map((filter) => (
+                        <button
+                            key={filter.value}
+                            onClick={() => setActive(filter.value)}
+                            className={`px-5 py-2 rounded-full border text-sm font-medium transition-all duration-300 cursor-pointer ${active === filter.value
+                                ? "bg-white text-black border-white"
+                                : "bg-white/5 text-white/80 border-white/20 hover:bg-white/10 hover:border-white/40"
+                                }`}
                         >
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                                    <FaUser className="text-white/40 size-5" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                                        <span className="text-white font-medium text-base truncate">{review.name}</span>
-                                        <span className="text-white/40 text-xs">{review.company}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 mt-0.5">
-                                        <div className="flex text-yellow-400 text-sm">
-                                            {[...Array(5)].map((_, i) => {
-                                                if (i < Math.floor(review.rating)) return <FaStar key={i} />
-                                                if (i < Math.ceil(review.rating)) return <FaStarHalfAlt key={i} />
-                                                return <FaRegStar key={i} />
-                                            })}
-                                        </div>
-                                        <span className="text-white/30 text-xs ml-1">{review.date}</span>
-                                    </div>
-                                </div>
-                                <span className="shrink-0 px-2.5 py-0.5 rounded-full border border-white/10 text-white/40 text-[10px] uppercase tracking-wider">
-                                    {review.category}
-                                </span>
-                            </div>
-                            <p className="text-white/70 text-font-inter text-sm leading-relaxed mt-4 flex-1">
-                                {review.text}
-                            </p>
-                        </div>
+                            {filter.label}
+                        </button>
                     ))}
+                </div>
+                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredReviews.length > 0 ? (
+                        filteredReviews.map((review) => (
+                            <div key={review.id} className="bg-[#111111] border border-white/10 rounded-xl p-6 transition-all duration-300 hover:border-white/25 hover:shadow-2xl flex flex-col">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                        <div className="shrink-0 w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                                            {review.avatar ? (
+                                                <img
+                                                    src={review.avatar}
+                                                    alt={review.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ) : (
+                                                <FaUser className="text-white/40 size-4" />
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                                            <span className="text-white font-medium text-base truncate">{review.name}</span>
+                                            <span className="text-white/40 text-xs">{review.nameCompany}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 mt-0.5">
+                                            <div className="flex text-yellow-400 text-sm">
+                                                {[...Array(5)].map((_, i) => {
+                                                    if (i < Math.floor(Number(review.estimation))) return <FaStar key={i} />
+                                                    if (i < Math.ceil(Number(review.estimation))) return <FaStarHalfAlt key={i} />
+                                                    return <FaRegStar key={i} />
+                                                })}
+                                            </div>
+                                            <span className="text-white/30 text-xs ml-1">
+                                                {new Date(review.date as unknown as string).toLocaleDateString('ru-RU')}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span className="shrink-0 px-2.5 py-0.5 rounded-full border border-white/10 text-white/40 text-[10px] uppercase tracking-wider">
+                                        {review.category}
+                                    </span>
+                                </div>
+                                <p className="text-white/70 text-font-inter text-sm leading-relaxed mt-4 flex-1">
+                                    {review.description}
+                                </p>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="col-span-full text-center text-white/50 py-10">
+                            Отзывов в этой категории пока нет.
+                        </div>
+                    )}
                 </div>
                 <div className="mt-10 flex justify-center">
                     <Link href="/reviews" className="button-main-styles inline-flex items-center">

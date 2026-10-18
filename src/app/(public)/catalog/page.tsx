@@ -5,8 +5,12 @@ import { TableCatalog } from "./catalogMainPage/TableCatalog";
 import { DontFindCatalog } from "./catalogMainPage/DontFindCatalog";
 import { ReviewsCatalog } from "./catalogMainPage/ReviewsCatalog";
 import { Footer } from "@/components/layout/footer/Footer";
+import { dbGetReviewsByCatalog } from "@/lib/db/review/dbGetReviewsByCatalog";
 
-export default function Catalog() {
+export default async function Catalog() {
+    const rawReviews = await dbGetReviewsByCatalog()
+    const reviews = JSON.parse(JSON.stringify(rawReviews))
+
     return (
         <div className="relative min-h-screen bg-black">
             <div
@@ -26,7 +30,7 @@ export default function Catalog() {
                 <HeroCatalogMainPage />
                 <TableCatalog />
                 <DontFindCatalog />
-                <ReviewsCatalog />
+                <ReviewsCatalog reviews={reviews}/>
                 <Footer />
             </div>
         </div>

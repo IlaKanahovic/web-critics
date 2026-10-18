@@ -7,9 +7,15 @@ import { PriceAssessmentBots } from "./components/PriceAssessmentBots";
 import { ReviewsBots } from "./components/ReviewsBots";
 import { CTAByFooterBots } from "./components/CTAByFooterBots";
 import { FAQByBots } from "./components/FAQByBots";
+import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct";
+import { dbGetReviewsByCatalogBots } from "@/lib/db/review/dbGetReviewsByCatalog";
 
 
-export default function BotsCatalog() {
+export default async function BotsCatalog() {
+    const [, botsProducts] = await dbCatalogProduct()
+    const rawReviews = await dbGetReviewsByCatalogBots()
+    const reviews = JSON.parse(JSON.stringify(rawReviews))
+
     return (
         <div className="relative min-h-screen bg-black">
             <div
@@ -26,11 +32,11 @@ export default function BotsCatalog() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <HeroCatalogBots />
+                <HeroCatalogBots botsProducts={botsProducts} />
                 <SubscriptionByBots />
                 <PriceAssessmentBots />
                 <FAQByBots />
-                <ReviewsBots />
+                <ReviewsBots reviews={reviews}/>
                 <CTAByFooterBots />
                 <Footer />
             </div>

@@ -1,15 +1,62 @@
-import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
+'use client'
+
+import { useRef, useState } from "react"
+import type { Product } from "../../../../../../prisma/generated/prisma"
 import { CardProductCatalogReadySites } from "./CardProductCatalogReadySites"
+import { filteredReadySitesProductsUtils } from "@/lib/utils/filteredReadySitesProductsUtils"
 
-export async function HeroCatalogReadySites() {
+interface IHeroCatalogReadySites {
+    readySitesProducts: Product[] | null
+}
 
-    const [ readySitesProducts ] = await dbCatalogProduct()
+export function HeroCatalogReadySites({ readySitesProducts }: IHeroCatalogReadySites) {
+    const [sorting, setSorting] = useState("Сначала новые")
+    const detailsRef = useRef<HTMLDetailsElement>(null)
 
-    const forWhowArray = ["Все", "Услуги", "Красота", "Рестораны", "Специалисты", "Медицина", "E-commerce", "Другое"]
-    const opportunitiesArray = ["Все", "Форма заявки", "Онлайн-запись", "Каталог", "Интернет-магазин", "Блог", "Интеграции"]
-    const priceArray = ["Все", "До 10 000 ₽", "10 000–20 000 ₽", "20 000–30 000 ₽", "30 000 ₽+"]
-    const quantityArray = ["Все", "5", "10", "25", "50"]
-    const sortingArray = ["По популярности", "По цене ↑", "По цене ↓", "По новизне"]
+    const filteredReadySitesProducts = filteredReadySitesProductsUtils(readySitesProducts, sorting)
+
+    // const forWhowArray = ["Все", "Услуги", "Красота", "Рестораны", "Специалисты", "Медицина", "E-commerce", "Другое"]
+    // const opportunitiesArray = ["Все", "Форма заявки", "Онлайн-запись", "Каталог", "Интернет-магазин", "Блог", "Интеграции"]
+    // const priceArray = ["Все", "До 10 000 ₽", "10 000–20 000 ₽", "20 000–30 000 ₽", "30 000 ₽+"]
+    // const quantityArray = ["Все", "5", "10", "25", "50"]
+    const sortingArray = ["Сначала новые", "По цене ↑", "По цене ↓"]
+
+    if (!readySitesProducts) return (
+        <div className="container">
+            <div className="pt-24">
+                <h1 className="text-font-cormorant text-[#f0f0f0] text-center text-[80px] leading-24 mt-8">Сайт уже готов. Осталось сделать его вашим.</h1>
+                <h2 className="text-font-inter text-[#bcbebe] text-[18px] text-center mt-2">
+                    Выберите подходящий вариант,
+                    <br />
+                    адаптируйте его под свой бизнес и запустите быстрее, чем индивидуальную разработку.
+                </h2>
+
+                <div className="mt-10 flex flex-wrap items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-4 flex-1">
+                        <span className="text-white/60 text-lg whitespace-nowrap">Найдено решений: 0 </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span className="text-white/40 text-xs uppercase tracking-wider">Сортировка:</span>
+                        <details className="relative group">
+                            <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
+                                Сначала новые
+                                <svg className="w-3 h-3 ml-1 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div className="absolute right-0 top-full mt-2 z-50 bg-[#111111] border border-white/10 rounded-xl shadow-2xl p-2 min-w-40 backdrop-blur-sm">
+                                {sortingArray.map((item) => (
+                                    <div key={item} className="px-3 py-1.5 text-white/80 hover:text-white hover:bg-white/5 rounded-lg text-sm cursor-pointer transition-colors">
+                                        {item}
+                                    </div>
+                                ))}
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 
     return (
         <div className="container">
@@ -23,7 +70,7 @@ export async function HeroCatalogReadySites() {
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                     <div className="flex flex-wrap items-center gap-4 flex-1">
-                        <span className="text-white/60 text-lg whitespace-nowrap">Найдено решений: { readySitesProducts.length } </span>
+                        <span className="text-white/60 text-lg whitespace-nowrap">Найдено решений: {readySitesProducts.length} </span>
                         {/* <details className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
                                 Тип бизнеса: Все
@@ -87,16 +134,27 @@ export async function HeroCatalogReadySites() {
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="text-white/40 text-xs uppercase tracking-wider">Сортировка:</span>
-                        <details className="relative group">
+                        <details ref={detailsRef} className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
-                                По популярности
+                                {sorting}
                                 <svg className="w-3 h-3 ml-1 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                 </svg>
                             </summary>
+
                             <div className="absolute right-0 top-full mt-2 z-50 bg-[#111111] border border-white/10 rounded-xl shadow-2xl p-2 min-w-40 backdrop-blur-sm">
                                 {sortingArray.map((item) => (
-                                    <div key={item} className="px-3 py-1.5 text-white/80 hover:text-white hover:bg-white/5 rounded-lg text-sm cursor-pointer transition-colors">
+                                    <div
+                                        key={item}
+                                        onClick={() => {
+                                            setSorting(item)
+                                            if (detailsRef.current) {
+                                                detailsRef.current.removeAttribute('open')
+                                                
+                                            }
+                                        }}
+                                        className="px-3 py-1.5 text-white/80 hover:text-white hover:bg-white/5 rounded-lg text-sm cursor-pointer transition-colors"
+                                    >
                                         {item}
                                     </div>
                                 ))}
@@ -106,7 +164,7 @@ export async function HeroCatalogReadySites() {
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {readySitesProducts.map((site) => (
+                    {filteredReadySitesProducts.map((site: Product) => (
                         <CardProductCatalogReadySites key={site.id} {...site} />
                     ))}
                 </div>

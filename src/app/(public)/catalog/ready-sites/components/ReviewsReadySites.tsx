@@ -1,29 +1,15 @@
 import Link from "next/link"
 import { FaUser, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"
 import { IoIosArrowForward } from "react-icons/io"
+import type { Review } from "../../../../../../prisma/generated/prisma"
 
-const reviews = [
-    {
-        id: 1,
-        name: "Анна Смирнова",
-        company: "Студия красоты «Lux»",
-        avatar: null,
-        rating: 5,
-        text: "Заказали готовый сайт для салона — всё сделали за 3 дня, адаптировали под наш стиль. Клиенты теперь записываются онлайн, брони больше не теряются. Очень довольны результатом!",
-        date: "15 августа 2026",
-    },
-    {
-        id: 2,
-        name: "Михаил Петров",
-        company: "Ресторан «Вкус»",
-        avatar: null,
-        rating: 5,
-        text: "Готовый лендинг для ресторана — запустили за 4 дня. Всё работает отлично, бронирование столиков через сайт приносит новых гостей. Отдельное спасибо за интеграцию с доставкой.",
-        date: "2 сентября 2026",
-    }
-]
+interface IReviewsReadySites {
+    reviews: Review[] | null
+}
 
-export function ReviewsReadySites() {
+export function ReviewsReadySites({ reviews }: IReviewsReadySites) {
+    if (!reviews) return null
+
     return (
         <div className="container">
             <div className="pt-42">
@@ -33,7 +19,7 @@ export function ReviewsReadySites() {
                     <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
                 </div>
 
-            <div className="text-center max-w-2xl mx-auto">
+                <div className="text-center max-w-2xl mx-auto">
                     <h2 className="text-white text-font-space text-4xl md:text-5xl">Что говорят владельцы сайтов</h2>
                     <p className="text-white/60 text-font-inter text-base mt-3">
                         Реальный опыт клиентов, которые выбрали готовое решение вместо разработки с нуля.
@@ -47,27 +33,39 @@ export function ReviewsReadySites() {
                         >
                             <div className="flex items-start gap-4">
                                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                                    <FaUser className="text-white/40 size-5" />
+                                    <div className="shrink-0 w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                                        {review.avatar ? (
+                                            <img
+                                                src={review.avatar}
+                                                alt={review.name}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        ) : (
+                                            <FaUser className="text-white/40 size-4" />
+                                        )}
+                                    </div>
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                                         <span className="text-white font-medium text-base truncate">{review.name}</span>
-                                        <span className="text-white/40 text-xs">{review.company}</span>
+                                        <span className="text-white/40 text-xs">{review.nameCompany}</span>
                                     </div>
                                     <div className="flex items-center gap-2 mt-0.5">
                                         <div className="flex text-yellow-400 text-sm">
                                             {[...Array(5)].map((_, i) => {
-                                                if (i < Math.floor(review.rating)) return <FaStar key={i} />
-                                                if (i < Math.ceil(review.rating)) return <FaStarHalfAlt key={i} />
+                                                if (i < Math.floor(Number(review.estimation))) return <FaStar key={i} />
+                                                if (i < Math.ceil(Number(review.estimation))) return <FaStarHalfAlt key={i} />
                                                 return <FaRegStar key={i} />
                                             })}
                                         </div>
-                                        <span className="text-white/30 text-xs ml-1">{review.date}</span>
+                                        <span className="text-white/30 text-xs ml-1">
+                                            {new Date(review.date as unknown as string).toLocaleDateString('ru-RU')}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <p className="text-white/70 text-font-inter text-sm leading-relaxed mt-4 flex-1">
-                                {review.text}
+                                {review.description}
                             </p>
                         </div>
                     ))}

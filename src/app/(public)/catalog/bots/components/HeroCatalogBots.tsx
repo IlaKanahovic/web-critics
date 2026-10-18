@@ -1,15 +1,25 @@
-import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct"
+'use client'
+
+import { useRef, useState } from "react"
+import type { Product } from "../../../../../../prisma/generated/prisma"
 import { CardProductCatalogBots } from "./CardProductCatalogBots"
+import { filteredReadySitesProductsUtils } from "@/lib/utils/filteredReadySitesProductsUtils"
 
-export async function HeroCatalogBots() {
+interface IHeroCatalogBots {
+    botsProducts: Product[] | null
+}
 
-    const [ , botsProducts ] = await dbCatalogProduct()
+export function HeroCatalogBots({ botsProducts }: IHeroCatalogBots) {
+    const [sorting, setSorting] = useState("Сначала новые")
+    const detailsRef = useRef<HTMLDetailsElement>(null)
 
-    const forWhowArray = ["Все", "Продажи", "Запись", "Уведомления", "Автоматизация", "Внутренние задачи"]
-    const opportunitiesArray = ["Все", "Диалог", "Формы", "Уведомления", "Каталог", "Заявки", "Работа с данными", "AI"]
-    const priceArray = ["Все", "До 5 000 ₽", "5 000–10 000 ₽", "10 000–20 000 ₽", "20 000-35 000 ₽", "35 000+ ₽"]
-    const quantityArray = ["Все", "5", "10", "25", "50"]
-    const sortingArray = ["По популярности", "По цене ↑", "По цене ↓", "По новизне"]
+    const filteredBots = filteredReadySitesProductsUtils(botsProducts, sorting)
+
+    // const forWhowArray = ["Все", "Продажи", "Запись", "Уведомления", "Автоматизация", "Внутренние задачи"]
+    // const opportunitiesArray = ["Все", "Диалог", "Формы", "Уведомления", "Каталог", "Заявки", "Работа с данными", "AI"]
+    // const priceArray = ["Все", "До 5 000 ₽", "5 000–10 000 ₽", "10 000–20 000 ₽", "20 000-35 000 ₽", "35 000+ ₽"]
+    // const quantityArray = ["Все", "5", "10", "25", "50"]
+    const sortingArray = ["Сначала новые", "По цене ↑", "По цене ↓"]
 
     return (
         <div className="container">
@@ -23,7 +33,7 @@ export async function HeroCatalogBots() {
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                     <div className="flex flex-wrap items-center gap-4 flex-1">
-                        <span className="text-white/60 text-lg whitespace-nowrap">Найдено решений: { botsProducts.length } </span>
+                        <span className="text-white/60 text-lg whitespace-nowrap">Найдено решений: {botsProducts?.length || 0} </span>
                         {/* <details className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
                                 Тип бизнеса: Все
@@ -87,16 +97,25 @@ export async function HeroCatalogBots() {
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="text-white/40 text-xs uppercase tracking-wider">Сортировка:</span>
-                        <details className="relative group">
+                        <details ref={detailsRef} className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
-                                По популярности
+                                {sorting}
                                 <svg className="w-3 h-3 ml-1 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                 </svg>
                             </summary>
                             <div className="absolute right-0 top-full mt-2 z-50 bg-[#111111] border border-white/10 rounded-xl shadow-2xl p-2 min-w-40 backdrop-blur-sm">
                                 {sortingArray.map((item) => (
-                                    <div key={item} className="px-3 py-1.5 text-white/80 hover:text-white hover:bg-white/5 rounded-lg text-sm cursor-pointer transition-colors">
+                                    <div
+                                        key={item}
+                                        onClick={() => {
+                                            setSorting(item)
+                                            if (detailsRef.current) {
+                                                detailsRef.current.removeAttribute('open')
+                                            }
+                                        }}
+                                        className="px-3 py-1.5 text-white/80 hover:text-white hover:bg-white/5 rounded-lg text-sm cursor-pointer transition-colors"
+                                    >
                                         {item}
                                     </div>
                                 ))}
@@ -106,7 +125,7 @@ export async function HeroCatalogBots() {
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {botsProducts.map((bot) => (
+                    {filteredBots.map((bot) => (
                         <CardProductCatalogBots key={bot.id} {...bot} />
                     ))}
                 </div>
@@ -114,4 +133,3 @@ export async function HeroCatalogBots() {
         </div>
     )
 }
-
