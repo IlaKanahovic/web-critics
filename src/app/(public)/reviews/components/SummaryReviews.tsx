@@ -1,18 +1,14 @@
 import { FaStar } from "react-icons/fa"
 
-export function SummaryReviews() {
-    const averageRating = 4.8
-    const totalReviews = 24
+interface ISummaryReviewsProps {
+    totalReviews: number
+    averageRating: number
+    distribution: { stars: number; count: number; }[]
+}
 
-    const distribution = [
-        { stars: 5, count: 18 },
-        { stars: 4, count: 4 },
-        { stars: 3, count: 2 },
-        { stars: 2, count: 0 },
-        { stars: 1, count: 0 },
-    ]
+export function SummaryReviews(props: ISummaryReviewsProps) {
 
-    const maxCount = Math.max(...distribution.map((d) => d.count))
+    const maxCount = Math.max(...props.distribution.map((d) => d.count))
 
     return (
         <div className="container">
@@ -30,7 +26,7 @@ export function SummaryReviews() {
                         <div className="flex flex-col items-center text-center">
                             <div className="flex items-baseline gap-2">
                                 <span className="text-white text-6xl md:text-7xl font-semibold leading-none tracking-tight">
-                                    {averageRating.toFixed(1)}
+                                    {props.averageRating.toFixed(1)}
                                 </span>
                                 <span className="text-white/40 text-xl md:text-2xl font-mono">
                                     / 5
@@ -41,7 +37,7 @@ export function SummaryReviews() {
                                 {[1, 2, 3, 4, 5].map((s) => (
                                     <FaStar
                                         key={s}
-                                        className={`size-5 md:size-6 ${s <= Math.round(averageRating)
+                                        className={`size-5 md:size-6 ${s <= Math.round(props.averageRating)
                                                 ? "text-yellow-400"
                                                 : "text-white/15"
                                             }`}
@@ -50,12 +46,12 @@ export function SummaryReviews() {
                             </div>
 
                             <span className="text-white/45 text-sm mt-3">
-                                на основе {totalReviews} отзывов
+                                на основе {props.totalReviews} отзывов
                             </span>
                         </div>
 
                         <div className="mt-10 pt-8 border-t border-white/8 space-y-3">
-                            {distribution.map((row, i) => (
+                            {props.distribution.map((row, i) => (
                                 <div key={i} className="flex items-center gap-4">
                                     <div className="flex items-center gap-1.5 w-12 shrink-0 justify-end">
                                         <span className="text-white/60 text-sm font-medium">

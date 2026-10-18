@@ -1,7 +1,13 @@
+'use client'
+
+import { ModalAddReview } from "@/components/ui/modals/ModalAddReview"
+import { useOpenModalByReviews } from "@/hooks/review/useOpenModelByReviews"
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
 
 export function CTAreviews() {
+    const { openModal, setOpenModal } = useOpenModalByReviews()
+
     return (
         <div className="container">
             <div className="pt-20 md:pt-32 pb-20 md:pb-32">
@@ -31,6 +37,7 @@ export function CTAreviews() {
                             <div className="flex flex-wrap items-center gap-4 mt-10">
                                 <button
                                     type="button"
+                                    onClick={() => setOpenModal(!openModal)}
                                     className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-white text-black font-medium text-base md:text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-95 cursor-pointer"
                                 >
                                     <span className="relative z-10">Оставить отзыв</span>
@@ -52,6 +59,10 @@ export function CTAreviews() {
                     </div>
                 </div>
             </div>
+            {openModal && <ModalAddReview
+                isOpen={openModal}
+                onClose={() => setOpenModal(!openModal)}
+            />}
         </div>
     )
 }

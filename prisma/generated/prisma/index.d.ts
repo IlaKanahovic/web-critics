@@ -4873,8 +4873,9 @@ export namespace Prisma {
     avatar: string | null
     date: Date | null
     estimation: string | null
-    categoty: string | null
+    category: string | null
     description: string | null
+    caseHref: string | null
   }
 
   export type ReviewMaxAggregateOutputType = {
@@ -4884,8 +4885,9 @@ export namespace Prisma {
     avatar: string | null
     date: Date | null
     estimation: string | null
-    categoty: string | null
+    category: string | null
     description: string | null
+    caseHref: string | null
   }
 
   export type ReviewCountAggregateOutputType = {
@@ -4895,8 +4897,9 @@ export namespace Prisma {
     avatar: number
     date: number
     estimation: number
-    categoty: number
+    category: number
     description: number
+    caseHref: number
     _all: number
   }
 
@@ -4908,8 +4911,9 @@ export namespace Prisma {
     avatar?: true
     date?: true
     estimation?: true
-    categoty?: true
+    category?: true
     description?: true
+    caseHref?: true
   }
 
   export type ReviewMaxAggregateInputType = {
@@ -4919,8 +4923,9 @@ export namespace Prisma {
     avatar?: true
     date?: true
     estimation?: true
-    categoty?: true
+    category?: true
     description?: true
+    caseHref?: true
   }
 
   export type ReviewCountAggregateInputType = {
@@ -4930,8 +4935,9 @@ export namespace Prisma {
     avatar?: true
     date?: true
     estimation?: true
-    categoty?: true
+    category?: true
     description?: true
+    caseHref?: true
     _all?: true
   }
 
@@ -5014,8 +5020,9 @@ export namespace Prisma {
     avatar: string
     date: Date
     estimation: string
-    categoty: string
+    category: string
     description: string
+    caseHref: string | null
     _count: ReviewCountAggregateOutputType | null
     _min: ReviewMinAggregateOutputType | null
     _max: ReviewMaxAggregateOutputType | null
@@ -5042,8 +5049,9 @@ export namespace Prisma {
     avatar?: boolean
     date?: boolean
     estimation?: boolean
-    categoty?: boolean
+    category?: boolean
     description?: boolean
+    caseHref?: boolean
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5053,8 +5061,9 @@ export namespace Prisma {
     avatar?: boolean
     date?: boolean
     estimation?: boolean
-    categoty?: boolean
+    category?: boolean
     description?: boolean
+    caseHref?: boolean
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5064,8 +5073,9 @@ export namespace Prisma {
     avatar?: boolean
     date?: boolean
     estimation?: boolean
-    categoty?: boolean
+    category?: boolean
     description?: boolean
+    caseHref?: boolean
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectScalar = {
@@ -5075,11 +5085,12 @@ export namespace Prisma {
     avatar?: boolean
     date?: boolean
     estimation?: boolean
-    categoty?: boolean
+    category?: boolean
     description?: boolean
+    caseHref?: boolean
   }
 
-  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nameCompany" | "avatar" | "date" | "estimation" | "categoty" | "description", ExtArgs["result"]["review"]>
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nameCompany" | "avatar" | "date" | "estimation" | "category" | "description" | "caseHref", ExtArgs["result"]["review"]>
 
   export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Review"
@@ -5091,8 +5102,9 @@ export namespace Prisma {
       avatar: string
       date: Date
       estimation: string
-      categoty: string
+      category: string
       description: string
+      caseHref: string | null
     }, ExtArgs["result"]["review"]>
     composites: {}
   }
@@ -5522,8 +5534,9 @@ export namespace Prisma {
     readonly avatar: FieldRef<"Review", 'String'>
     readonly date: FieldRef<"Review", 'DateTime'>
     readonly estimation: FieldRef<"Review", 'String'>
-    readonly categoty: FieldRef<"Review", 'String'>
+    readonly category: FieldRef<"Review", 'String'>
     readonly description: FieldRef<"Review", 'String'>
+    readonly caseHref: FieldRef<"Review", 'String'>
   }
     
 
@@ -9363,8 +9376,9 @@ export namespace Prisma {
     avatar: 'avatar',
     date: 'date',
     estimation: 'estimation',
-    categoty: 'categoty',
-    description: 'description'
+    category: 'category',
+    description: 'description',
+    caseHref: 'caseHref'
   };
 
   export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -9827,8 +9841,9 @@ export namespace Prisma {
     avatar?: StringFilter<"Review"> | string
     date?: DateTimeFilter<"Review"> | Date | string
     estimation?: StringFilter<"Review"> | string
-    categoty?: StringFilter<"Review"> | string
+    category?: StringFilter<"Review"> | string
     description?: StringFilter<"Review"> | string
+    caseHref?: StringNullableFilter<"Review"> | string | null
   }
 
   export type ReviewOrderByWithRelationInput = {
@@ -9838,8 +9853,9 @@ export namespace Prisma {
     avatar?: SortOrder
     date?: SortOrder
     estimation?: SortOrder
-    categoty?: SortOrder
+    category?: SortOrder
     description?: SortOrder
+    caseHref?: SortOrderInput | SortOrder
   }
 
   export type ReviewWhereUniqueInput = Prisma.AtLeast<{
@@ -9852,8 +9868,9 @@ export namespace Prisma {
     avatar?: StringFilter<"Review"> | string
     date?: DateTimeFilter<"Review"> | Date | string
     estimation?: StringFilter<"Review"> | string
-    categoty?: StringFilter<"Review"> | string
+    category?: StringFilter<"Review"> | string
     description?: StringFilter<"Review"> | string
+    caseHref?: StringNullableFilter<"Review"> | string | null
   }, "id">
 
   export type ReviewOrderByWithAggregationInput = {
@@ -9863,8 +9880,9 @@ export namespace Prisma {
     avatar?: SortOrder
     date?: SortOrder
     estimation?: SortOrder
-    categoty?: SortOrder
+    category?: SortOrder
     description?: SortOrder
+    caseHref?: SortOrderInput | SortOrder
     _count?: ReviewCountOrderByAggregateInput
     _max?: ReviewMaxOrderByAggregateInput
     _min?: ReviewMinOrderByAggregateInput
@@ -9880,8 +9898,9 @@ export namespace Prisma {
     avatar?: StringWithAggregatesFilter<"Review"> | string
     date?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     estimation?: StringWithAggregatesFilter<"Review"> | string
-    categoty?: StringWithAggregatesFilter<"Review"> | string
+    category?: StringWithAggregatesFilter<"Review"> | string
     description?: StringWithAggregatesFilter<"Review"> | string
+    caseHref?: StringNullableWithAggregatesFilter<"Review"> | string | null
   }
 
   export type UserWhereInput = {
@@ -10518,8 +10537,9 @@ export namespace Prisma {
     avatar: string
     date: Date | string
     estimation: string
-    categoty: string
+    category: string
     description: string
+    caseHref?: string | null
   }
 
   export type ReviewUncheckedCreateInput = {
@@ -10529,8 +10549,9 @@ export namespace Prisma {
     avatar: string
     date: Date | string
     estimation: string
-    categoty: string
+    category: string
     description: string
+    caseHref?: string | null
   }
 
   export type ReviewUpdateInput = {
@@ -10540,8 +10561,9 @@ export namespace Prisma {
     avatar?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
-    categoty?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    caseHref?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReviewUncheckedUpdateInput = {
@@ -10551,8 +10573,9 @@ export namespace Prisma {
     avatar?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
-    categoty?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    caseHref?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReviewCreateManyInput = {
@@ -10562,8 +10585,9 @@ export namespace Prisma {
     avatar: string
     date: Date | string
     estimation: string
-    categoty: string
+    category: string
     description: string
+    caseHref?: string | null
   }
 
   export type ReviewUpdateManyMutationInput = {
@@ -10573,8 +10597,9 @@ export namespace Prisma {
     avatar?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
-    categoty?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    caseHref?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReviewUncheckedUpdateManyInput = {
@@ -10584,8 +10609,9 @@ export namespace Prisma {
     avatar?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
-    categoty?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    caseHref?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateInput = {
@@ -11102,8 +11128,9 @@ export namespace Prisma {
     avatar?: SortOrder
     date?: SortOrder
     estimation?: SortOrder
-    categoty?: SortOrder
+    category?: SortOrder
     description?: SortOrder
+    caseHref?: SortOrder
   }
 
   export type ReviewMaxOrderByAggregateInput = {
@@ -11113,8 +11140,9 @@ export namespace Prisma {
     avatar?: SortOrder
     date?: SortOrder
     estimation?: SortOrder
-    categoty?: SortOrder
+    category?: SortOrder
     description?: SortOrder
+    caseHref?: SortOrder
   }
 
   export type ReviewMinOrderByAggregateInput = {
@@ -11124,8 +11152,9 @@ export namespace Prisma {
     avatar?: SortOrder
     date?: SortOrder
     estimation?: SortOrder
-    categoty?: SortOrder
+    category?: SortOrder
     description?: SortOrder
+    caseHref?: SortOrder
   }
 
   export type LeadListRelationFilter = {

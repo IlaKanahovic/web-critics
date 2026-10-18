@@ -1,6 +1,12 @@
+'use client'
+
+import { ModalAddReview } from "@/components/ui/modals/ModalAddReview"
+import { useOpenModalByReviews } from "@/hooks/review/useOpenModelByReviews"
 import { IoIosArrowForward } from "react-icons/io"
 
 export function HeroReviews() {
+    const { openModal, setOpenModal } = useOpenModalByReviews()
+
     return (
         <div className="container">
             <div className="pt-10 md:pt-42 max-w-4xl">
@@ -23,12 +29,19 @@ export function HeroReviews() {
                 </p>
 
                 <div className="mt-10">
-                    <button className="button-main-styles inline-flex items-center gap-2">
+                    <button
+                        className="button-main-styles inline-flex items-center gap-2"
+                        onClick={() => setOpenModal(!openModal)}
+                    >
                         Оставить отзыв
                         <IoIosArrowForward className="size-4" />
                     </button>
                 </div>
             </div>
+            {openModal && <ModalAddReview
+                isOpen={openModal}
+                onClose={() => setOpenModal(!openModal)}
+            />}
         </div>
     )
 }

@@ -6,8 +6,9 @@ import { HeroReviews } from "./components/HeroReviews";
 import { SummaryReviews } from "./components/SummaryReviews";
 import { ReviewsList } from "./components/ReviewsList";
 import { CTAreviews } from "./components/CTAreviews";
+import { dbGetReviewsAll } from "@/lib/db/review/dbGetReviewsAll"
 
-export default function Reviews() {
+export default async function Reviews() {
     const stars = [
         { top: "6%", right: "8%", size: 320, opacity: 0.06, delay: 0, rotate: -8, position: "right" },
         { top: "14%", left: "10%", size: 200, opacity: 0.05, delay: 1.5, rotate: 6, position: "left" },
@@ -16,6 +17,29 @@ export default function Reviews() {
         { top: "76%", right: "10%", size: 220, opacity: 0.05, delay: 2.2, rotate: -6, position: "right" },
         { top: "90%", left: "18%", size: 280, opacity: 0.06, delay: 1.2, rotate: 4, position: "left" },
     ]
+
+    const rawReviews = await dbGetReviewsAll()
+    const reviews = JSON.parse(JSON.stringify(rawReviews))
+    const totalReviews = rawReviews.length
+
+    const averageRating = totalReviews > 0
+        ? rawReviews.reduce((sum, item) => sum + Number(item.estimation), 0) / totalReviews
+        : 0
+
+    const distribution = [
+        { stars: 5, count: 0 },
+        { stars: 4, count: 0 },
+        { stars: 3, count: 0 },
+        { stars: 2, count: 0 },
+        { stars: 1, count: 0 },
+    ]
+
+    rawReviews.forEach(item => {
+        const target = distribution.find(d => d.stars === Number(item.estimation))
+        if (target) {
+            target.count++
+        }
+    })
 
     return (
         <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
@@ -134,8 +158,12 @@ export default function Reviews() {
                     <HeaderDesktop />
                 </div>
                 <HeroReviews />
-                <SummaryReviews />
-                <ReviewsList />
+                <SummaryReviews
+                    totalReviews={totalReviews}
+                    averageRating={averageRating}
+                    distribution={distribution}
+                />
+                <ReviewsList reviews={reviews} />
                 <CTAreviews />
                 <Footer />
             </div>

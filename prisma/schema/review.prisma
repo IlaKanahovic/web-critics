@@ -1,12 +1,13 @@
 model Review {
-    id          String @id @default(cuid())
+    id          String   @id @default(cuid())
     name        String
-    nameCompany String
-    avatar      String
+    nameCompany String?   @map("name_company")
+    avatar      String?
     date        DateTime
     estimation  String
-    categoty    String
+    category    String
     description String
+    caseHref    String?
 
     @@map("reviews")
 }
