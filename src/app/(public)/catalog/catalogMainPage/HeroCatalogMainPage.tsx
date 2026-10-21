@@ -3,6 +3,7 @@
 import { FaGlobe, FaRocket, FaCubes } from "react-icons/fa"
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
+import { LoadingHint } from "@/components/LoadingHint"
 
 const cardClass = "group relative rounded-xl bg-[#111111] border border-white/10 shadow-inner shadow-white/5 transition-all duration-300 hover:border-white/20 flex flex-col items-start p-6 min-h-[340px] cursor-pointer"
 
@@ -43,7 +44,7 @@ export function HeroCatalogMainPage() {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
                     {items.map((item, idx) => (
-                        <Link key={idx} href={item.href}>
+                        <Link key={idx} href={item.href} prefetch={false}>
                             <div className={cardClass}>
                                 <div className="mb-4 p-3 rounded-full bg-white/5 border border-white/10 group-hover:border-white/30 transition-all duration-300">
                                     <item.icon className="text-white/70 size-6 group-hover:text-white group-hover:scale-110 transition-all duration-300" />

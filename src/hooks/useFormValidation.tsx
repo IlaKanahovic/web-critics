@@ -15,7 +15,7 @@ interface Errors {
     phone?: string
     email?: string
     consent?: string
-    offer?: string 
+    offer?: string
 }
 
 export function useFormValidation() {
@@ -89,11 +89,122 @@ export function useFormValidation() {
         return isValid
     }, [form, validateField])
 
+    const resetForm = useCallback(() => {
+        setForm({
+            name: '',
+            phone: '',
+            email: '',
+            consent: false,
+            offer: false
+        })
+        setErrors({})
+    }, [])
+
     return {
         form,
         errors,
         handleChange,
         validateForm,
+        resetForm,
+        setErrors,
+    }
+}
+
+interface FormStateNoOffer {
+    name: string
+    phone: string
+    email: string
+    consent: boolean
+}
+
+interface ErrorsNoOffer {
+    name?: string
+    phone?: string
+    email?: string
+    consent?: string
+}
+
+export function useFormValidationNoOffer() {
+    const [form, setForm] = useState<FormStateNoOffer>({
+        name: '',
+        phone: '',
+        email: '',
+        consent: false,
+    })
+
+    const [errors, setErrors] = useState<Errors>({})
+
+    const validateField = useCallback((field: keyof FormStateNoOffer, value: any): string | undefined => {
+        if (field === 'name') {
+            if (!value.trim()) return 'это поле необходимо заполнить'
+            if (value.trim().split(/\s+/).length < 2) return 'введите полное имя (минимум два слова)'
+            return undefined
+        }
+
+        if (field === 'phone') {
+            const cleaned = value.replace(/[\s\-()]/g, '')
+            if (!cleaned) return 'это поле необходимо заполнить'
+            const phoneRegex = /^(\+7|8)?\d{10}$/
+            if (!phoneRegex.test(cleaned)) return 'введите корректный номер телефона'
+            return undefined
+        }
+
+        if (field === 'email') {
+            if (!value.trim()) return 'это поле необходимо заполнить'
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            if (!emailRegex.test(value.trim())) return 'введите корректный email'
+            return undefined
+        }
+
+        if (field === 'consent') {
+            if (!value) return 'необходимо дать согласие на обработку персональных данных'
+            return undefined
+        }
+
+        return undefined
+    }, [])
+
+    const handleChange = useCallback(
+        (field: keyof FormStateNoOffer, value: any) => {
+            setForm((prev) => ({ ...prev, [field]: value }))
+
+            setErrors((prev) => ({ ...prev, [field]: undefined }))
+        },
+        []
+    )
+
+    const validateForm = useCallback((): boolean => {
+        const newErrors: ErrorsNoOffer = {}
+        let isValid = true
+
+            ; (Object.keys(form) as Array<keyof FormStateNoOffer>).forEach((field) => {
+                const error = validateField(field, form[field])
+                if (error) {
+                    newErrors[field] = error
+                    isValid = false
+                }
+            })
+
+        setErrors(newErrors)
+        return isValid
+    }, [form, validateField])
+
+    const resetForm = useCallback(() => {
+        setForm({
+            name: '',
+            phone: '',
+            email: '',
+            consent: false,
+        })
+        setErrors({})
+    }, [])
+
+    return {
+        form,
+        errors,
+        handleChange,
+        validateForm,
+        resetForm,
         setErrors,
     }
 }

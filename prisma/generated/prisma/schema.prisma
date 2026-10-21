@@ -31,32 +31,34 @@ model Case {
 }
 
 model Product {
-  id                 String   @id @default(cuid())
-  title              String   @unique
-  type               String
-  businessType       String   @map("business_type")
-  description        String
-  features           String[]
-  singlePrice        String   @map("single_price")
-  mounthPrice        String   @map("mounth_price")
-  previewBg          String   @map("preview_bg")
-  slug               String
-  demoUrl            String   @map("demp_url")
-  categoryDesc       String   @map("category_desc")
-  estimation         String
-  positive           String[]
-  included           String[]
-  possibleSettings   String[] @map("possible_settings")
-  additionally       String[]
-  desciptionPurpose  String   @map("description_purpose")
-  suitable           String[]
-  notSuitable        String[] @map("not_suitable")
-  howItWorks         String   @map("how_it_works")
-  specifications     String[]
-  requirements       String
-  valuesRequirements String[] @map("values_requirements")
-  launchFromMounth   String   @map("launch_from_mounth")
-  launchFromSingle   String   @map("launch_from_single")
+  id                      String   @id @default(cuid())
+  title                   String   @unique
+  type                    String
+  businessType            String   @map("business_type")
+  description             String
+  features                String[]
+  singlePrice             String   @map("single_price")
+  mounthPrice             String   @map("mounth_price")
+  previewBg               String   @map("preview_bg")
+  slug                    String
+  demoUrl                 String   @map("demp_url")
+  categoryDesc            String   @map("category_desc")
+  estimation              String
+  positive                String[]
+  included                String[]
+  possibleSettings        String[] @map("possible_settings")
+  additionally            String[]
+  desciptionPurpose       String   @map("description_purpose")
+  suitable                String[]
+  notSuitable             String[] @map("not_suitable")
+  howItWorks              String   @map("how_it_works")
+  specifications          String[]
+  requirements            String
+  valuesRequirements      String[] @map("values_requirements")
+  launchFromMounth        String   @map("launch_from_mounth")
+  launchFromSingle        String   @map("launch_from_single")
+  onetimePurchaseIncludes String[] @map("onetime_purchase_includes")
+  subscriptionIncludes    String[] @map("subscription_includes")
 
   @@map("products")
 }
@@ -64,8 +66,8 @@ model Product {
 model Review {
   id          String   @id @default(cuid())
   name        String
-  nameCompany String   @map("name_company")
-  avatar      String
+  nameCompany String?  @map("name_company")
+  avatar      String?
   date        DateTime
   estimation  String
   category    String

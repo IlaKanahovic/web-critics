@@ -3,7 +3,6 @@
 import { IoIosArrowForward } from "react-icons/io"
 import { FaCheck, FaPlus } from "react-icons/fa"
 import Link from "next/link"
-import { useParams } from "next/navigation"
 import { StarRating } from "@/lib/utils/StarRating"
 import type { Product } from "../../../../../../../prisma/generated/prisma"
 
@@ -13,7 +12,6 @@ interface IHeroProductBots {
 
 export function HeroProductBots({ product }: IHeroProductBots) {
     if (!product) return null
-    const params = useParams()
 
     return (
         <div className="container">
@@ -74,7 +72,10 @@ export function HeroProductBots({ product }: IHeroProductBots) {
                                             <span className="text-white/40 text-sm ml-1">/ запуск</span>
                                         </div>
                                         <p className="text-white/40 text-[10px] mt-0.5">запуск от {product.launchFromSingle} дней</p>
-                                        <Link href={`/catalog/bots/${params.product}/payproduct`}>
+                                        <Link href={{
+                                            pathname: `/catalog/bots/${product.slug}/payproduct`,
+                                            query: { id: product.id }
+                                        }}>
                                             <button className="button-main-styles w-full mt-3 justify-center">
                                                 Купить
                                             </button>
@@ -87,9 +88,12 @@ export function HeroProductBots({ product }: IHeroProductBots) {
                                             <span className="text-white/40 text-sm ml-1">/ месяц</span>
                                         </div>
                                         <p className="text-white/40 text-[10px] mt-0.5">запуск от {product.launchFromMounth} дней + поддержка</p>
-                                        <Link href={`/catalog/bots/${params.product}/payproduct`}>
+                                        <Link href={{
+                                            pathname: `/catalog/bots/${product.slug}/payproduct`,
+                                            query: { id: product.id }
+                                        }}>
                                             <button className="button-main-styles w-full mt-3 justify-center">
-                                                Оформить
+                                                Купить
                                             </button>
                                         </Link>
                                     </div>

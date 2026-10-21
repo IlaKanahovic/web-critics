@@ -3696,6 +3696,8 @@ export namespace Prisma {
     valuesRequirements: number
     launchFromMounth: number
     launchFromSingle: number
+    onetimePurchaseIncludes: number
+    subscriptionIncludes: number
     _all: number
   }
 
@@ -3767,6 +3769,8 @@ export namespace Prisma {
     valuesRequirements?: true
     launchFromMounth?: true
     launchFromSingle?: true
+    onetimePurchaseIncludes?: true
+    subscriptionIncludes?: true
     _all?: true
   }
 
@@ -3869,6 +3873,8 @@ export namespace Prisma {
     valuesRequirements: string[]
     launchFromMounth: string
     launchFromSingle: string
+    onetimePurchaseIncludes: string[]
+    subscriptionIncludes: string[]
     _count: ProductCountAggregateOutputType | null
     _min: ProductMinAggregateOutputType | null
     _max: ProductMaxAggregateOutputType | null
@@ -3915,6 +3921,8 @@ export namespace Prisma {
     valuesRequirements?: boolean
     launchFromMounth?: boolean
     launchFromSingle?: boolean
+    onetimePurchaseIncludes?: boolean
+    subscriptionIncludes?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3944,6 +3952,8 @@ export namespace Prisma {
     valuesRequirements?: boolean
     launchFromMounth?: boolean
     launchFromSingle?: boolean
+    onetimePurchaseIncludes?: boolean
+    subscriptionIncludes?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3973,6 +3983,8 @@ export namespace Prisma {
     valuesRequirements?: boolean
     launchFromMounth?: boolean
     launchFromSingle?: boolean
+    onetimePurchaseIncludes?: boolean
+    subscriptionIncludes?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectScalar = {
@@ -4002,9 +4014,11 @@ export namespace Prisma {
     valuesRequirements?: boolean
     launchFromMounth?: boolean
     launchFromSingle?: boolean
+    onetimePurchaseIncludes?: boolean
+    subscriptionIncludes?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "type" | "businessType" | "description" | "features" | "singlePrice" | "mounthPrice" | "previewBg" | "slug" | "demoUrl" | "categoryDesc" | "estimation" | "positive" | "included" | "possibleSettings" | "additionally" | "desciptionPurpose" | "suitable" | "notSuitable" | "howItWorks" | "specifications" | "requirements" | "valuesRequirements" | "launchFromMounth" | "launchFromSingle", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "type" | "businessType" | "description" | "features" | "singlePrice" | "mounthPrice" | "previewBg" | "slug" | "demoUrl" | "categoryDesc" | "estimation" | "positive" | "included" | "possibleSettings" | "additionally" | "desciptionPurpose" | "suitable" | "notSuitable" | "howItWorks" | "specifications" | "requirements" | "valuesRequirements" | "launchFromMounth" | "launchFromSingle" | "onetimePurchaseIncludes" | "subscriptionIncludes", ExtArgs["result"]["product"]>
 
   export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Product"
@@ -4036,6 +4050,8 @@ export namespace Prisma {
       valuesRequirements: string[]
       launchFromMounth: string
       launchFromSingle: string
+      onetimePurchaseIncludes: string[]
+      subscriptionIncludes: string[]
     }, ExtArgs["result"]["product"]>
     composites: {}
   }
@@ -4485,6 +4501,8 @@ export namespace Prisma {
     readonly valuesRequirements: FieldRef<"Product", 'String[]'>
     readonly launchFromMounth: FieldRef<"Product", 'String'>
     readonly launchFromSingle: FieldRef<"Product", 'String'>
+    readonly onetimePurchaseIncludes: FieldRef<"Product", 'String[]'>
+    readonly subscriptionIncludes: FieldRef<"Product", 'String[]'>
   }
     
 
@@ -5016,8 +5034,8 @@ export namespace Prisma {
   export type ReviewGroupByOutputType = {
     id: string
     name: string
-    nameCompany: string
-    avatar: string
+    nameCompany: string | null
+    avatar: string | null
     date: Date
     estimation: string
     category: string
@@ -5098,8 +5116,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      nameCompany: string
-      avatar: string
+      nameCompany: string | null
+      avatar: string | null
       date: Date
       estimation: string
       category: string
@@ -9363,7 +9381,9 @@ export namespace Prisma {
     requirements: 'requirements',
     valuesRequirements: 'valuesRequirements',
     launchFromMounth: 'launchFromMounth',
-    launchFromSingle: 'launchFromSingle'
+    launchFromSingle: 'launchFromSingle',
+    onetimePurchaseIncludes: 'onetimePurchaseIncludes',
+    subscriptionIncludes: 'subscriptionIncludes'
   };
 
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -9704,6 +9724,8 @@ export namespace Prisma {
     valuesRequirements?: StringNullableListFilter<"Product">
     launchFromMounth?: StringFilter<"Product"> | string
     launchFromSingle?: StringFilter<"Product"> | string
+    onetimePurchaseIncludes?: StringNullableListFilter<"Product">
+    subscriptionIncludes?: StringNullableListFilter<"Product">
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -9733,6 +9755,8 @@ export namespace Prisma {
     valuesRequirements?: SortOrder
     launchFromMounth?: SortOrder
     launchFromSingle?: SortOrder
+    onetimePurchaseIncludes?: SortOrder
+    subscriptionIncludes?: SortOrder
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -9765,6 +9789,8 @@ export namespace Prisma {
     valuesRequirements?: StringNullableListFilter<"Product">
     launchFromMounth?: StringFilter<"Product"> | string
     launchFromSingle?: StringFilter<"Product"> | string
+    onetimePurchaseIncludes?: StringNullableListFilter<"Product">
+    subscriptionIncludes?: StringNullableListFilter<"Product">
   }, "id" | "title">
 
   export type ProductOrderByWithAggregationInput = {
@@ -9794,6 +9820,8 @@ export namespace Prisma {
     valuesRequirements?: SortOrder
     launchFromMounth?: SortOrder
     launchFromSingle?: SortOrder
+    onetimePurchaseIncludes?: SortOrder
+    subscriptionIncludes?: SortOrder
     _count?: ProductCountOrderByAggregateInput
     _max?: ProductMaxOrderByAggregateInput
     _min?: ProductMinOrderByAggregateInput
@@ -9829,6 +9857,8 @@ export namespace Prisma {
     valuesRequirements?: StringNullableListFilter<"Product">
     launchFromMounth?: StringWithAggregatesFilter<"Product"> | string
     launchFromSingle?: StringWithAggregatesFilter<"Product"> | string
+    onetimePurchaseIncludes?: StringNullableListFilter<"Product">
+    subscriptionIncludes?: StringNullableListFilter<"Product">
   }
 
   export type ReviewWhereInput = {
@@ -9837,8 +9867,8 @@ export namespace Prisma {
     NOT?: ReviewWhereInput | ReviewWhereInput[]
     id?: StringFilter<"Review"> | string
     name?: StringFilter<"Review"> | string
-    nameCompany?: StringFilter<"Review"> | string
-    avatar?: StringFilter<"Review"> | string
+    nameCompany?: StringNullableFilter<"Review"> | string | null
+    avatar?: StringNullableFilter<"Review"> | string | null
     date?: DateTimeFilter<"Review"> | Date | string
     estimation?: StringFilter<"Review"> | string
     category?: StringFilter<"Review"> | string
@@ -9849,8 +9879,8 @@ export namespace Prisma {
   export type ReviewOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    nameCompany?: SortOrder
-    avatar?: SortOrder
+    nameCompany?: SortOrderInput | SortOrder
+    avatar?: SortOrderInput | SortOrder
     date?: SortOrder
     estimation?: SortOrder
     category?: SortOrder
@@ -9864,8 +9894,8 @@ export namespace Prisma {
     OR?: ReviewWhereInput[]
     NOT?: ReviewWhereInput | ReviewWhereInput[]
     name?: StringFilter<"Review"> | string
-    nameCompany?: StringFilter<"Review"> | string
-    avatar?: StringFilter<"Review"> | string
+    nameCompany?: StringNullableFilter<"Review"> | string | null
+    avatar?: StringNullableFilter<"Review"> | string | null
     date?: DateTimeFilter<"Review"> | Date | string
     estimation?: StringFilter<"Review"> | string
     category?: StringFilter<"Review"> | string
@@ -9876,8 +9906,8 @@ export namespace Prisma {
   export type ReviewOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    nameCompany?: SortOrder
-    avatar?: SortOrder
+    nameCompany?: SortOrderInput | SortOrder
+    avatar?: SortOrderInput | SortOrder
     date?: SortOrder
     estimation?: SortOrder
     category?: SortOrder
@@ -9894,8 +9924,8 @@ export namespace Prisma {
     NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Review"> | string
     name?: StringWithAggregatesFilter<"Review"> | string
-    nameCompany?: StringWithAggregatesFilter<"Review"> | string
-    avatar?: StringWithAggregatesFilter<"Review"> | string
+    nameCompany?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    avatar?: StringNullableWithAggregatesFilter<"Review"> | string | null
     date?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     estimation?: StringWithAggregatesFilter<"Review"> | string
     category?: StringWithAggregatesFilter<"Review"> | string
@@ -10354,6 +10384,8 @@ export namespace Prisma {
     valuesRequirements?: ProductCreatevaluesRequirementsInput | string[]
     launchFromMounth: string
     launchFromSingle: string
+    onetimePurchaseIncludes?: ProductCreateonetimePurchaseIncludesInput | string[]
+    subscriptionIncludes?: ProductCreatesubscriptionIncludesInput | string[]
   }
 
   export type ProductUncheckedCreateInput = {
@@ -10383,6 +10415,8 @@ export namespace Prisma {
     valuesRequirements?: ProductCreatevaluesRequirementsInput | string[]
     launchFromMounth: string
     launchFromSingle: string
+    onetimePurchaseIncludes?: ProductCreateonetimePurchaseIncludesInput | string[]
+    subscriptionIncludes?: ProductCreatesubscriptionIncludesInput | string[]
   }
 
   export type ProductUpdateInput = {
@@ -10412,6 +10446,8 @@ export namespace Prisma {
     valuesRequirements?: ProductUpdatevaluesRequirementsInput | string[]
     launchFromMounth?: StringFieldUpdateOperationsInput | string
     launchFromSingle?: StringFieldUpdateOperationsInput | string
+    onetimePurchaseIncludes?: ProductUpdateonetimePurchaseIncludesInput | string[]
+    subscriptionIncludes?: ProductUpdatesubscriptionIncludesInput | string[]
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -10441,6 +10477,8 @@ export namespace Prisma {
     valuesRequirements?: ProductUpdatevaluesRequirementsInput | string[]
     launchFromMounth?: StringFieldUpdateOperationsInput | string
     launchFromSingle?: StringFieldUpdateOperationsInput | string
+    onetimePurchaseIncludes?: ProductUpdateonetimePurchaseIncludesInput | string[]
+    subscriptionIncludes?: ProductUpdatesubscriptionIncludesInput | string[]
   }
 
   export type ProductCreateManyInput = {
@@ -10470,6 +10508,8 @@ export namespace Prisma {
     valuesRequirements?: ProductCreatevaluesRequirementsInput | string[]
     launchFromMounth: string
     launchFromSingle: string
+    onetimePurchaseIncludes?: ProductCreateonetimePurchaseIncludesInput | string[]
+    subscriptionIncludes?: ProductCreatesubscriptionIncludesInput | string[]
   }
 
   export type ProductUpdateManyMutationInput = {
@@ -10499,6 +10539,8 @@ export namespace Prisma {
     valuesRequirements?: ProductUpdatevaluesRequirementsInput | string[]
     launchFromMounth?: StringFieldUpdateOperationsInput | string
     launchFromSingle?: StringFieldUpdateOperationsInput | string
+    onetimePurchaseIncludes?: ProductUpdateonetimePurchaseIncludesInput | string[]
+    subscriptionIncludes?: ProductUpdatesubscriptionIncludesInput | string[]
   }
 
   export type ProductUncheckedUpdateManyInput = {
@@ -10528,13 +10570,15 @@ export namespace Prisma {
     valuesRequirements?: ProductUpdatevaluesRequirementsInput | string[]
     launchFromMounth?: StringFieldUpdateOperationsInput | string
     launchFromSingle?: StringFieldUpdateOperationsInput | string
+    onetimePurchaseIncludes?: ProductUpdateonetimePurchaseIncludesInput | string[]
+    subscriptionIncludes?: ProductUpdatesubscriptionIncludesInput | string[]
   }
 
   export type ReviewCreateInput = {
     id?: string
     name: string
-    nameCompany: string
-    avatar: string
+    nameCompany?: string | null
+    avatar?: string | null
     date: Date | string
     estimation: string
     category: string
@@ -10545,8 +10589,8 @@ export namespace Prisma {
   export type ReviewUncheckedCreateInput = {
     id?: string
     name: string
-    nameCompany: string
-    avatar: string
+    nameCompany?: string | null
+    avatar?: string | null
     date: Date | string
     estimation: string
     category: string
@@ -10557,8 +10601,8 @@ export namespace Prisma {
   export type ReviewUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    nameCompany?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    nameCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -10569,8 +10613,8 @@ export namespace Prisma {
   export type ReviewUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    nameCompany?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    nameCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -10581,8 +10625,8 @@ export namespace Prisma {
   export type ReviewCreateManyInput = {
     id?: string
     name: string
-    nameCompany: string
-    avatar: string
+    nameCompany?: string | null
+    avatar?: string | null
     date: Date | string
     estimation: string
     category: string
@@ -10593,8 +10637,8 @@ export namespace Prisma {
   export type ReviewUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    nameCompany?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    nameCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -10605,8 +10649,8 @@ export namespace Prisma {
   export type ReviewUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    nameCompany?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    nameCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimation?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -11079,6 +11123,8 @@ export namespace Prisma {
     valuesRequirements?: SortOrder
     launchFromMounth?: SortOrder
     launchFromSingle?: SortOrder
+    onetimePurchaseIncludes?: SortOrder
+    subscriptionIncludes?: SortOrder
   }
 
   export type ProductMaxOrderByAggregateInput = {
@@ -11385,6 +11431,14 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type ProductCreateonetimePurchaseIncludesInput = {
+    set: string[]
+  }
+
+  export type ProductCreatesubscriptionIncludesInput = {
+    set: string[]
+  }
+
   export type ProductUpdatefeaturesInput = {
     set?: string[]
     push?: string | string[]
@@ -11426,6 +11480,16 @@ export namespace Prisma {
   }
 
   export type ProductUpdatevaluesRequirementsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type ProductUpdateonetimePurchaseIncludesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type ProductUpdatesubscriptionIncludesInput = {
     set?: string[]
     push?: string | string[]
   }

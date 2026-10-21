@@ -2,8 +2,13 @@ import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { PayProductComponent } from "./PayProductComponent";
 import { Footer } from "@/components/layout/footer/Footer";
+import type { Product } from "../../../../prisma/generated/prisma";
 
-export function PayProductPage({ group, product }: { group: string; product: string }) {
+export interface IPayProductPage {
+    product: Product | null
+}
+
+export function PayProductPage({ product } : IPayProductPage) {
     return (
         <div className="relative min-h-screen bg-black">
             <div className="absolute inset-0 pointer-events-none">
@@ -23,7 +28,7 @@ export function PayProductPage({ group, product }: { group: string; product: str
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <PayProductComponent />
+                <PayProductComponent product={product}/>
                 <Footer />
             </div>
         </div>

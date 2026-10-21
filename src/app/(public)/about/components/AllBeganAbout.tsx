@@ -62,7 +62,7 @@ export function AllBeganAbout() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
                     <div className="lg:col-span-3">
                         <span className="text-violet-300/50 text-[10px] uppercase tracking-[0.35em] font-mono">
-                            Идея KILLCRITIC
+                            Идея WEBCRITIC
                         </span>
                     </div>
 

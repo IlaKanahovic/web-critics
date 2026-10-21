@@ -174,7 +174,9 @@ exports.Prisma.ProductScalarFieldEnum = {
   requirements: 'requirements',
   valuesRequirements: 'valuesRequirements',
   launchFromMounth: 'launchFromMounth',
-  launchFromSingle: 'launchFromSingle'
+  launchFromSingle: 'launchFromSingle',
+  onetimePurchaseIncludes: 'onetimePurchaseIncludes',
+  subscriptionIncludes: 'subscriptionIncludes'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {

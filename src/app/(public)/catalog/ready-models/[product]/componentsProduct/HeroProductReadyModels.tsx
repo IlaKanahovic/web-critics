@@ -13,7 +13,6 @@ interface IHeroProductReadyModels {
 
 export function HeroProductReadyModels({ product }: IHeroProductReadyModels) {
     if (!product) return null
-    const params = useParams()
 
     return (
         <div className="container">
@@ -74,9 +73,12 @@ export function HeroProductReadyModels({ product }: IHeroProductReadyModels) {
                                             <span className="text-white/40 text-sm ml-1">/ запуск</span>
                                         </div>
                                         <p className="text-white/40 text-[10px] mt-0.5">запуск от {product.launchFromSingle} дней</p>
-                                        <Link href={`/catalog/bots/${params.product}/payproduct`}>
+                                        <Link href={{
+                                            pathname: `/catalog/ready-models/${product.slug}/payproduct`,
+                                            query: { id: product.id }
+                                        }}>
                                             <button className="button-main-styles w-full mt-3 justify-center">
-                                                Купить
+                                                Оформить
                                             </button>
                                         </Link>
                                     </div>
@@ -87,7 +89,10 @@ export function HeroProductReadyModels({ product }: IHeroProductReadyModels) {
                                             <span className="text-white/40 text-sm ml-1">/ месяц</span>
                                         </div>
                                         <p className="text-white/40 text-[10px] mt-0.5">запуск от {product.launchFromMounth} дней + поддержка</p>
-                                        <Link href={`/catalog/bots/${params.product}/payproduct`}>
+                                        <Link href={{
+                                            pathname: `/catalog/ready-models/${product.slug}/payproduct`,
+                                            query: { id: product.id }
+                                        }}>
                                             <button className="button-main-styles w-full mt-3 justify-center">
                                                 Оформить
                                             </button>

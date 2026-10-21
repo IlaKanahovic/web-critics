@@ -1,5 +1,14 @@
 import { PayProductPage } from "@/components/ui/pay-product/PayProductPage";
+import { dbCatalogProductId } from "@/lib/db/catalog/dbCatalogProductId";
 
-export default function PayPage({ params }: { params: { product: string } }) {
-    return <PayProductPage group="ready-sites" product={params.product} />
+type SearchParams = { id: string }
+interface IProductParamsProps {
+    searchParams: Promise<SearchParams>
+}
+
+export default async function PayPage({ searchParams }: IProductParamsProps) {
+    const { id } = await searchParams
+    const product = await dbCatalogProductId({ id })
+
+    return <PayProductPage product={product} />
 }
