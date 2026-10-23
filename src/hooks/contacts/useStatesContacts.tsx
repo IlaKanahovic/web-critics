@@ -2,27 +2,37 @@ import { useState } from "react"
 
 
 export function useStatesContacts() {
-    const [minBudget, setMinBudget] = useState(5000)
-    const [maxBudget, setMaxBudget] = useState(100000)
+    const [budgetFrom, setBudgetFrom] = useState(5000)
+    const [budgetTo, setBudgetTo] = useState(100000)
     const [description, setDescription] = useState('')
-    const [advertising, setAdvertising] = useState(false)
-    const [selectedFormat, setSelectedFormat] = useState<'one-time' | 'subscription'>('one-time')
+    const [advertisingConsent, setAdvertisingConsent] = useState(false)
+    const [format, setFormat] = useState<'one-time' | 'subscription'>('one-time')
+    const [offer, serOffer] = useState(false)
 
-    const [popup, setPopup] = useState<{ isOpen: boolean; type: 'success' | 'error' }>({
+    const [popup, setPopup] = useState<{
+        isOpen: boolean;
+        type: 'success' | 'error';
+        title?: string;
+        description?: string;
+    }>({
         isOpen: false,
         type: 'success'
     })
 
-    const [selectedServices, setSelectedServices] = useState<string[]>([])
+    const [services, setServices] = useState<string[]>([])
+
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     return {
-        minBudget, setMinBudget,
-        maxBudget, setMaxBudget,
+        budgetFrom, setBudgetFrom,
+        budgetTo, setBudgetTo,
         description, setDescription,
-        advertising, setAdvertising,
+        advertisingConsent, setAdvertisingConsent,
         popup, setPopup,
-        selectedServices, setSelectedServices,
-        selectedFormat, setSelectedFormat
+        services, setServices,
+        format, setFormat,
+        isSubmitting, setIsSubmitting,
+        offer, serOffer
     }
 
 }

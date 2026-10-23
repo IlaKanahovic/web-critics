@@ -56,10 +56,7 @@ export function OverviewOfServices() {
                 <div className="absolute top-32 left-1/2 -translate-x-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none z-10"></div>
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-0.5 bg-linear-to-r from-transparent via-white/40 to-transparent pointer-events-none z-10"></div>
                 <div>
-                    <div className="w-full h-auto pt-6">
-                        <CodeIcon3D />
-                    </div>
-                    <h1 className="text-white text-center text-font-space text-6xl">Услуги</h1>
+                    <h1 className="text-white text-center text-font-space text-6xl pt-12">Услуги</h1>
                     <h2 className="text-[#a1a4a5] text-font-inter text-center text-2xl pt-4">Какая задача стоит перед вами?</h2>
                     <div className="pt-8">
                         <div className="flex flex-wrap gap-6 justify-center">

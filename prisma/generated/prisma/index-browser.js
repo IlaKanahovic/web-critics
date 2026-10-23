@@ -193,37 +193,36 @@ exports.Prisma.ReviewScalarFieldEnum = {
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  username: 'username',
+  name: 'name',
   phone: 'phone',
   email: 'email',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  consentedAt: 'consentedAt',
+  consentVersion: 'consentVersion',
+  consentIp: 'consentIp',
+  advertisingConsent: 'advertisingConsent',
+  advertisingConsentedAt: 'advertisingConsentedAt'
 };
 
 exports.Prisma.LeadScalarFieldEnum = {
   id: 'id',
-  username: 'username',
-  phone: 'phone',
-  email: 'email',
   budgetFrom: 'budgetFrom',
   budgetTo: 'budgetTo',
-  descriprion: 'descriprion',
+  description: 'description',
   services: 'services',
-  advertisement: 'advertisement',
-  quantityApplications: 'quantityApplications',
+  status: 'status',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   ownerId: 'ownerId'
 };
 
 exports.Prisma.CatalogPurchasesScalarFieldEnum = {
   id: 'id',
   format: 'format',
-  username: 'username',
-  phone: 'phone',
-  email: 'email',
-  descriprion: 'descriprion',
-  advertisement: 'advertisement',
+  description: 'description',
   nameProduct: 'nameProduct',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   ownerId: 'ownerId'
 };
 
@@ -241,7 +240,12 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.LeadStatus = exports.$Enums.LeadStatus = {
+  NEW: 'NEW',
+  IN_PROGRESS: 'IN_PROGRESS',
+  WON: 'WON',
+  LOST: 'LOST'
+};
 
 exports.Prisma.ModelName = {
   Article: 'Article',

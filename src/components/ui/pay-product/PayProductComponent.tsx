@@ -8,39 +8,95 @@ import { PhoneInput } from "../PhoneInput"
 import type { IPayProductPage } from "./PayProductPage"
 import { useStatesContacts } from "@/hooks/contacts/useStatesContacts"
 import { StatusPopup } from "../popups/StatusPopup"
+import { submitPurchase } from "@/lib/actions/user/purchases"
 
 export function PayProductComponent({ product }: IPayProductPage) {
     const {
         description, setDescription,
-        advertising, setAdvertising,
+        advertisingConsent, setAdvertisingConsent,
         popup, setPopup,
-        selectedFormat, setSelectedFormat
+        format, setFormat,
+        isSubmitting, setIsSubmitting,
     } = useStatesContacts()
 
-    const { form, errors, handleChange, validateForm, resetForm } = useFormValidation()
+    const { form, errors, handleChange, validateForm, resetForm, setErrors } = useFormValidation()
+
+    if (!product) return null
 
     const handleFormatSelect = (format: 'one-time' | 'subscription') => {
-        setSelectedFormat(format)
+        setFormat(format)
     }
 
-    const handlePay = async (e: React.FormEvent) => {
-        e.preventDefault()
+    const handlePay = async (event: React.SubmitEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const formData = new FormData(event.currentTarget)
+        const website = formData.get('website')
 
         const valid = validateForm()
-        if (valid) {
-            console.log('Данные:', { ...form })
-            try {
-                setPopup({ isOpen: true, type: 'success' })
+        if (!valid) return
 
+        setIsSubmitting(true)
+
+        try {
+            const price = format === 'one-time'
+                ? Number(String(product.singlePrice).replace(/\D/g, ''))
+                : Number(String(product.mounthPrice).replace(/\D/g, ''))
+
+            const payload = {
+                name: form.name,
+                phone: form.phone,
+                email: form.email,
+                description: description,
+                advertisingConsent: advertisingConsent,
+                format: format === 'one-time' ? 'ONE_TIME' : 'SUBSCRIPTION',
+                nameProduct: product.title,
+                price: price,
+                offer: form.offer,
+                consent: form.consent,
+                website: website
+            }
+
+            const res = await submitPurchase(payload)
+
+            if (res.error) {
+                if (res.error.fields) {
+                    const formattedErrors: Record<string, string> = {}
+                    Object.entries(res.error.fields).forEach(([field, messages]) => {
+                        if (messages && messages.length > 0) {
+                            formattedErrors[field] = messages[0]
+                        }
+                    })
+                    setErrors((prev) => ({ ...prev, ...formattedErrors }))
+                }
+
+                setPopup({
+                    isOpen: true,
+                    type: 'error',
+                    description: res.error.message
+                })
+                return
+            }
+
+            if (res.data) {
+                setPopup({
+                    isOpen: true,
+                    type: 'success',
+                    title: 'Заказ оформлен',
+                    description: 'Мы свяжемся с вами в ближайшее время для уточнения деталей.'
+                })
                 resetForm()
                 setDescription('')
-                setAdvertising(false)
-            } catch (err) {
-                setPopup({ isOpen: true, type: 'error' })
+                setAdvertisingConsent(false)
             }
+
+        } catch (error) {
+            console.error(error)
+            setPopup({ isOpen: true, type: "error" })
+        } finally {
+            setIsSubmitting(false)
         }
     }
-    if (!product) return null
 
     return (
         <div className="container">
@@ -72,7 +128,7 @@ export function PayProductComponent({ product }: IPayProductPage) {
                     <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div
                             onClick={() => handleFormatSelect('one-time')}
-                            className={`bg-[#111111] border rounded-xl p-6 transition-all duration-300 flex flex-col cursor-pointer ${selectedFormat === 'one-time'
+                            className={`bg-[#111111] border rounded-xl p-6 transition-all duration-300 flex flex-col cursor-pointer ${format === 'one-time'
                                 ? 'border-white/30 bg-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)]'
                                 : 'border-white/10 hover:border-white/20'
                                 }`}
@@ -92,7 +148,7 @@ export function PayProductComponent({ product }: IPayProductPage) {
                         </div>
                         <div
                             onClick={() => handleFormatSelect('subscription')}
-                            className={`bg-[#111111] border rounded-xl p-6 transition-all duration-300 flex flex-col cursor-pointer ${selectedFormat === 'subscription'
+                            className={`bg-[#111111] border rounded-xl p-6 transition-all duration-300 flex flex-col cursor-pointer ${format === 'subscription'
                                 ? 'border-white/30 bg-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)]'
                                 : 'border-white/10 hover:border-white/20'
                                 }`}
@@ -152,9 +208,9 @@ export function PayProductComponent({ product }: IPayProductPage) {
                         <p className="text-white text-xl font-semibold">{product.title}</p>
                         <p className="text-white/50 text-sm">{product.businessType}</p>
                         <p className="text-white/60 text-sm mt-1">
-                            {selectedFormat === 'one-time' ? 'Разовая покупка' : 'Подписка'}
+                            {format === 'one-time' ? 'Разовая покупка' : 'Подписка'}
                         </p>
-                        <p className="text-white text-3xl font-bold mt-4"> {selectedFormat === 'one-time' ? product.singlePrice + ' ₽' : product.mounthPrice + ' ₽ / месяц'} </p>
+                        <p className="text-white text-3xl font-bold mt-4"> {format === 'one-time' ? product.singlePrice + ' ₽' : product.mounthPrice + ' ₽ / месяц'} </p>
                     </div>
                 </div>
 
@@ -200,6 +256,19 @@ export function PayProductComponent({ product }: IPayProductPage) {
                                         className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors resize-y"
                                     />
                                 </div>
+                                <div
+                                    style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}
+                                    aria-hidden="true"
+                                >
+                                    <label htmlFor="website">Не заполняйте это поле</label>
+                                    <input
+                                        type="text"
+                                        id="website"
+                                        name="website"
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                    />
+                                </div>
                             </div>
 
                             <div className="space-y-2">
@@ -232,14 +301,14 @@ export function PayProductComponent({ product }: IPayProductPage) {
                                 <label className="flex items-start gap-3 cursor-pointer group">
                                     <input
                                         type="checkbox"
-                                        checked={advertising}
-                                        onChange={(e) => setAdvertising(e.target.checked)}
+                                        checked={advertisingConsent}
+                                        onChange={(e) => setAdvertisingConsent(e.target.checked)}
                                         className="mt-0.5 w-4 h-4 bg-black/40 border border-white/20 rounded checked:bg-white checked:border-white focus:ring-0 focus:ring-offset-0 accent-white cursor-pointer"
                                     />
                                     <span className="text-white/60 text-xs leading-relaxed">
                                         Я даю
                                         <a href="/consent-receive-advertising" className="text-white/90 hover:text-white underline underline-offset-2">
-                                            согласие
+                                            {' '} согласие {' '}
                                         </a>
                                         получать рекламные и информационные материалы.
                                     </span>
@@ -254,8 +323,8 @@ export function PayProductComponent({ product }: IPayProductPage) {
                         <h2 className="text-white text-font-space text-2xl md:text-3xl text-center">Проверьте заказ</h2>
                         <div className="mt-4 text-center">
                             <p className="text-white text-xl font-semibold">{product.title}</p>
-                            <p className="text-white/50 text-sm">{selectedFormat === 'one-time' ? 'Разовая покупка' : 'Подписка'}</p>
-                            <p className="text-white text-3xl font-bold mt-2"> {selectedFormat === 'one-time' ? product.singlePrice + ' ₽' : product.mounthPrice + ' ₽ / месяц'} </p>
+                            <p className="text-white/50 text-sm">{format === 'one-time' ? 'Разовая покупка' : 'Подписка'}</p>
+                            <p className="text-white text-3xl font-bold mt-2"> {format === 'one-time' ? product.singlePrice + ' ₽' : product.mounthPrice + ' ₽ / месяц'} </p>
                         </div>
                         <div className="mt-4">
                             <p className="text-white/70 text-sm font-medium">В стоимость входит</p>
@@ -289,9 +358,10 @@ export function PayProductComponent({ product }: IPayProductPage) {
                         <p className="text-white/40 text-xs text-center mt-4">Дополнительные работы. Если во время обсуждения потребуется что-то сверх выбранной комплектации, мы согласуем стоимость до начала работ.</p>
                         <button
                             type="submit"
-                            className="button-main-styles w-full justify-center mt-4"
+                            disabled={isSubmitting}
+                            className="button-main-styles w-full justify-center mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Оплатить
+                            {isSubmitting ? 'Оформление...' : 'Оплатить'}
                         </button>
                     </div>
                 </form>
@@ -337,6 +407,8 @@ export function PayProductComponent({ product }: IPayProductPage) {
                     isOpen={popup.isOpen}
                     onClose={() => setPopup(prev => ({ ...prev, isOpen: false }))}
                     type={popup.type}
+                    title={popup.title}
+                    description={popup.description}
                 />
             </div>
         </div>

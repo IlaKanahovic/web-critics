@@ -1,45 +1,60 @@
 model User {
-    id               String             @id @default(cuid())
-    username         String
-    phone            String             @unique
-    email            String             @unique
-    createdAt        DateTime           @default(now()) @map("created_at")
-    leads            Lead[]
-    catalogPurchases CatalogPurchases[]
+    id                     String             @id @default(cuid())
+    name                   String
+    phone                  String             @unique
+    email                  String             @unique
+    createdAt              DateTime           @default(now()) @map("created_at")
+    consentedAt            DateTime?
+    consentVersion         String?
+    consentIp              String?
+    advertisingConsent     Boolean            @default(false)
+    advertisingConsentedAt DateTime?
+    leads                  Lead[]
+    catalogPurchases       CatalogPurchases[]
 
     @@map("users")
 }
 
-model Lead {
-    id                   String   @id @default(cuid())
-    username             String
-    phone                String
-    email                String
-    budgetFrom           String   @map("budget_from")
-    budgetTo             String   @map("budget_to")
-    descriprion          String?
-    services             String[]
-    advertisement        Boolean
-    quantityApplications String   @map("quantity_applications")
-    createdAt            DateTime @default(now()) @map("created_at")
-    ownerId              String   @map("owner_id")
-    owner                User     @relation(fields: [ownerId], references: [id])
+enum LeadStatus {
+    NEW
+    IN_PROGRESS
+    WON
+    LOST
+}
 
+model Lead {
+    id          String     @id @default(cuid())
+    budgetFrom  Int        @map("budget_from")
+    budgetTo    Int        @map("budget_to")
+    description String?
+    services    String[]
+    status      LeadStatus @default(NEW)
+    createdAt   DateTime   @default(now()) @map("created_at")
+    updatedAt   DateTime   @updatedAt @map("updated_at")
+    ownerId     String     @map("owner_id")
+    owner       User       @relation(fields: [ownerId], references: [id])
+
+    @@index([ownerId])
     @@map("leads")
 }
 
-model CatalogPurchases {
-    id            String   @id @default(cuid())
-    format        String
-    username      String
-    phone         String
-    email         String
-    descriprion   String?
-    advertisement Boolean
-    nameProduct   String   @map("name_product")
-    createdAt     DateTime @default(now()) @map("created_at")
-    ownerId       String   @map("owner_id")
-    owner         User     @relation(fields: [ownerId], references: [id])
+enum PurchaseFormat {
+    ONE_TIME
+    SUBSCRIPTION
+}
 
+model CatalogPurchases {
+    id              String         @id @default(cuid())
+    format          PurchaseFormat
+    description     String?
+    nameProduct     String         @map("name_product")
+    price           Int
+    offerAcceptedAt DateTime       @map("offer_accepted_at")
+    createdAt       DateTime       @default(now()) @map("created_at")
+    updatedAt       DateTime       @updatedAt @map("updated_at")
+    ownerId         String         @map("owner_id")
+    owner           User           @relation(fields: [ownerId], references: [id])
+
+    @@index([ownerId])
     @@map("catalog_purchases")
 }

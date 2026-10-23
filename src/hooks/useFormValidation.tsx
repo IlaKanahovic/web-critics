@@ -118,10 +118,7 @@ interface FormStateNoOffer {
 }
 
 interface ErrorsNoOffer {
-    name?: string
-    phone?: string
-    email?: string
-    consent?: string
+    [key: string]: string | undefined
 }
 
 export function useFormValidationNoOffer() {

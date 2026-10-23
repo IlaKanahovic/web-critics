@@ -50,6 +50,25 @@ export type Lead = $Result.DefaultSelection<Prisma.$LeadPayload>
 export type CatalogPurchases = $Result.DefaultSelection<Prisma.$CatalogPurchasesPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const LeadStatus: {
+  NEW: 'NEW',
+  IN_PROGRESS: 'IN_PROGRESS',
+  WON: 'WON',
+  LOST: 'LOST'
+};
+
+export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]
+
+}
+
+export type LeadStatus = $Enums.LeadStatus
+
+export const LeadStatus: typeof $Enums.LeadStatus
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -5938,52 +5957,82 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
-    username: string | null
+    name: string | null
     phone: string | null
     email: string | null
     createdAt: Date | null
+    consentedAt: Date | null
+    consentVersion: string | null
+    consentIp: string | null
+    advertisingConsent: boolean | null
+    advertisingConsentedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
-    username: string | null
+    name: string | null
     phone: string | null
     email: string | null
     createdAt: Date | null
+    consentedAt: Date | null
+    consentVersion: string | null
+    consentIp: string | null
+    advertisingConsent: boolean | null
+    advertisingConsentedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    username: number
+    name: number
     phone: number
     email: number
     createdAt: number
+    consentedAt: number
+    consentVersion: number
+    consentIp: number
+    advertisingConsent: number
+    advertisingConsentedAt: number
     _all: number
   }
 
 
   export type UserMinAggregateInputType = {
     id?: true
-    username?: true
+    name?: true
     phone?: true
     email?: true
     createdAt?: true
+    consentedAt?: true
+    consentVersion?: true
+    consentIp?: true
+    advertisingConsent?: true
+    advertisingConsentedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    username?: true
+    name?: true
     phone?: true
     email?: true
     createdAt?: true
+    consentedAt?: true
+    consentVersion?: true
+    consentIp?: true
+    advertisingConsent?: true
+    advertisingConsentedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    username?: true
+    name?: true
     phone?: true
     email?: true
     createdAt?: true
+    consentedAt?: true
+    consentVersion?: true
+    consentIp?: true
+    advertisingConsent?: true
+    advertisingConsentedAt?: true
     _all?: true
   }
 
@@ -6061,10 +6110,15 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt: Date
+    consentedAt: Date | null
+    consentVersion: string | null
+    consentIp: string | null
+    advertisingConsent: boolean
+    advertisingConsentedAt: Date | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -6086,10 +6140,15 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
+    name?: boolean
     phone?: boolean
     email?: boolean
     createdAt?: boolean
+    consentedAt?: boolean
+    consentVersion?: boolean
+    consentIp?: boolean
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: boolean
     leads?: boolean | User$leadsArgs<ExtArgs>
     catalogPurchases?: boolean | User$catalogPurchasesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -6097,29 +6156,44 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
+    name?: boolean
     phone?: boolean
     email?: boolean
     createdAt?: boolean
+    consentedAt?: boolean
+    consentVersion?: boolean
+    consentIp?: boolean
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
+    name?: boolean
     phone?: boolean
     email?: boolean
     createdAt?: boolean
+    consentedAt?: boolean
+    consentVersion?: boolean
+    consentIp?: boolean
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    username?: boolean
+    name?: boolean
     phone?: boolean
     email?: boolean
     createdAt?: boolean
+    consentedAt?: boolean
+    consentVersion?: boolean
+    consentIp?: boolean
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "phone" | "email" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "email" | "createdAt" | "consentedAt" | "consentVersion" | "consentIp" | "advertisingConsent" | "advertisingConsentedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leads?: boolean | User$leadsArgs<ExtArgs>
     catalogPurchases?: boolean | User$catalogPurchasesArgs<ExtArgs>
@@ -6136,10 +6210,15 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      username: string
+      name: string
       phone: string
       email: string
       createdAt: Date
+      consentedAt: Date | null
+      consentVersion: string | null
+      consentIp: string | null
+      advertisingConsent: boolean
+      advertisingConsentedAt: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -6566,10 +6645,15 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
-    readonly username: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
     readonly phone: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly consentedAt: FieldRef<"User", 'DateTime'>
+    readonly consentVersion: FieldRef<"User", 'String'>
+    readonly consentIp: FieldRef<"User", 'String'>
+    readonly advertisingConsent: FieldRef<"User", 'Boolean'>
+    readonly advertisingConsentedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -7035,95 +7119,99 @@ export namespace Prisma {
 
   export type AggregateLead = {
     _count: LeadCountAggregateOutputType | null
+    _avg: LeadAvgAggregateOutputType | null
+    _sum: LeadSumAggregateOutputType | null
     _min: LeadMinAggregateOutputType | null
     _max: LeadMaxAggregateOutputType | null
   }
 
+  export type LeadAvgAggregateOutputType = {
+    budgetFrom: number | null
+    budgetTo: number | null
+  }
+
+  export type LeadSumAggregateOutputType = {
+    budgetFrom: number | null
+    budgetTo: number | null
+  }
+
   export type LeadMinAggregateOutputType = {
     id: string | null
-    username: string | null
-    phone: string | null
-    email: string | null
-    budgetFrom: string | null
-    budgetTo: string | null
-    descriprion: string | null
-    advertisement: boolean | null
-    quantityApplications: string | null
+    budgetFrom: number | null
+    budgetTo: number | null
+    description: string | null
+    status: $Enums.LeadStatus | null
     createdAt: Date | null
+    updatedAt: Date | null
     ownerId: string | null
   }
 
   export type LeadMaxAggregateOutputType = {
     id: string | null
-    username: string | null
-    phone: string | null
-    email: string | null
-    budgetFrom: string | null
-    budgetTo: string | null
-    descriprion: string | null
-    advertisement: boolean | null
-    quantityApplications: string | null
+    budgetFrom: number | null
+    budgetTo: number | null
+    description: string | null
+    status: $Enums.LeadStatus | null
     createdAt: Date | null
+    updatedAt: Date | null
     ownerId: string | null
   }
 
   export type LeadCountAggregateOutputType = {
     id: number
-    username: number
-    phone: number
-    email: number
     budgetFrom: number
     budgetTo: number
-    descriprion: number
+    description: number
     services: number
-    advertisement: number
-    quantityApplications: number
+    status: number
     createdAt: number
+    updatedAt: number
     ownerId: number
     _all: number
   }
 
 
-  export type LeadMinAggregateInputType = {
-    id?: true
-    username?: true
-    phone?: true
-    email?: true
+  export type LeadAvgAggregateInputType = {
     budgetFrom?: true
     budgetTo?: true
-    descriprion?: true
-    advertisement?: true
-    quantityApplications?: true
+  }
+
+  export type LeadSumAggregateInputType = {
+    budgetFrom?: true
+    budgetTo?: true
+  }
+
+  export type LeadMinAggregateInputType = {
+    id?: true
+    budgetFrom?: true
+    budgetTo?: true
+    description?: true
+    status?: true
     createdAt?: true
+    updatedAt?: true
     ownerId?: true
   }
 
   export type LeadMaxAggregateInputType = {
     id?: true
-    username?: true
-    phone?: true
-    email?: true
     budgetFrom?: true
     budgetTo?: true
-    descriprion?: true
-    advertisement?: true
-    quantityApplications?: true
+    description?: true
+    status?: true
     createdAt?: true
+    updatedAt?: true
     ownerId?: true
   }
 
   export type LeadCountAggregateInputType = {
     id?: true
-    username?: true
-    phone?: true
-    email?: true
     budgetFrom?: true
     budgetTo?: true
-    descriprion?: true
+    description?: true
     services?: true
-    advertisement?: true
-    quantityApplications?: true
+    status?: true
     createdAt?: true
+    updatedAt?: true
     ownerId?: true
     _all?: true
   }
@@ -7166,6 +7254,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: LeadAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LeadSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: LeadMinAggregateInputType
@@ -7196,24 +7296,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: LeadCountAggregateInputType | true
+    _avg?: LeadAvgAggregateInputType
+    _sum?: LeadSumAggregateInputType
     _min?: LeadMinAggregateInputType
     _max?: LeadMaxAggregateInputType
   }
 
   export type LeadGroupByOutputType = {
     id: string
-    username: string
-    phone: string
-    email: string
-    budgetFrom: string
-    budgetTo: string
-    descriprion: string | null
+    budgetFrom: number
+    budgetTo: number
+    description: string | null
     services: string[]
-    advertisement: boolean
-    quantityApplications: string
+    status: $Enums.LeadStatus
     createdAt: Date
+    updatedAt: Date
     ownerId: string
     _count: LeadCountAggregateOutputType | null
+    _avg: LeadAvgAggregateOutputType | null
+    _sum: LeadSumAggregateOutputType | null
     _min: LeadMinAggregateOutputType | null
     _max: LeadMaxAggregateOutputType | null
   }
@@ -7234,68 +7335,56 @@ export namespace Prisma {
 
   export type LeadSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
     budgetFrom?: boolean
     budgetTo?: boolean
-    descriprion?: boolean
+    description?: boolean
     services?: boolean
-    advertisement?: boolean
-    quantityApplications?: boolean
+    status?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lead"]>
 
   export type LeadSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
     budgetFrom?: boolean
     budgetTo?: boolean
-    descriprion?: boolean
+    description?: boolean
     services?: boolean
-    advertisement?: boolean
-    quantityApplications?: boolean
+    status?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lead"]>
 
   export type LeadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
     budgetFrom?: boolean
     budgetTo?: boolean
-    descriprion?: boolean
+    description?: boolean
     services?: boolean
-    advertisement?: boolean
-    quantityApplications?: boolean
+    status?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lead"]>
 
   export type LeadSelectScalar = {
     id?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
     budgetFrom?: boolean
     budgetTo?: boolean
-    descriprion?: boolean
+    description?: boolean
     services?: boolean
-    advertisement?: boolean
-    quantityApplications?: boolean
+    status?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
   }
 
-  export type LeadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "phone" | "email" | "budgetFrom" | "budgetTo" | "descriprion" | "services" | "advertisement" | "quantityApplications" | "createdAt" | "ownerId", ExtArgs["result"]["lead"]>
+  export type LeadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "budgetFrom" | "budgetTo" | "description" | "services" | "status" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["lead"]>
   export type LeadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -7313,16 +7402,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      username: string
-      phone: string
-      email: string
-      budgetFrom: string
-      budgetTo: string
-      descriprion: string | null
+      budgetFrom: number
+      budgetTo: number
+      description: string | null
       services: string[]
-      advertisement: boolean
-      quantityApplications: string
+      status: $Enums.LeadStatus
       createdAt: Date
+      updatedAt: Date
       ownerId: string
     }, ExtArgs["result"]["lead"]>
     composites: {}
@@ -7749,16 +7835,13 @@ export namespace Prisma {
    */
   interface LeadFieldRefs {
     readonly id: FieldRef<"Lead", 'String'>
-    readonly username: FieldRef<"Lead", 'String'>
-    readonly phone: FieldRef<"Lead", 'String'>
-    readonly email: FieldRef<"Lead", 'String'>
-    readonly budgetFrom: FieldRef<"Lead", 'String'>
-    readonly budgetTo: FieldRef<"Lead", 'String'>
-    readonly descriprion: FieldRef<"Lead", 'String'>
+    readonly budgetFrom: FieldRef<"Lead", 'Int'>
+    readonly budgetTo: FieldRef<"Lead", 'Int'>
+    readonly description: FieldRef<"Lead", 'String'>
     readonly services: FieldRef<"Lead", 'String[]'>
-    readonly advertisement: FieldRef<"Lead", 'Boolean'>
-    readonly quantityApplications: FieldRef<"Lead", 'String'>
+    readonly status: FieldRef<"Lead", 'LeadStatus'>
     readonly createdAt: FieldRef<"Lead", 'DateTime'>
+    readonly updatedAt: FieldRef<"Lead", 'DateTime'>
     readonly ownerId: FieldRef<"Lead", 'String'>
   }
     
@@ -8192,39 +8275,30 @@ export namespace Prisma {
   export type CatalogPurchasesMinAggregateOutputType = {
     id: string | null
     format: string | null
-    username: string | null
-    phone: string | null
-    email: string | null
-    descriprion: string | null
-    advertisement: boolean | null
+    description: string | null
     nameProduct: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     ownerId: string | null
   }
 
   export type CatalogPurchasesMaxAggregateOutputType = {
     id: string | null
     format: string | null
-    username: string | null
-    phone: string | null
-    email: string | null
-    descriprion: string | null
-    advertisement: boolean | null
+    description: string | null
     nameProduct: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     ownerId: string | null
   }
 
   export type CatalogPurchasesCountAggregateOutputType = {
     id: number
     format: number
-    username: number
-    phone: number
-    email: number
-    descriprion: number
-    advertisement: number
+    description: number
     nameProduct: number
     createdAt: number
+    updatedAt: number
     ownerId: number
     _all: number
   }
@@ -8233,39 +8307,30 @@ export namespace Prisma {
   export type CatalogPurchasesMinAggregateInputType = {
     id?: true
     format?: true
-    username?: true
-    phone?: true
-    email?: true
-    descriprion?: true
-    advertisement?: true
+    description?: true
     nameProduct?: true
     createdAt?: true
+    updatedAt?: true
     ownerId?: true
   }
 
   export type CatalogPurchasesMaxAggregateInputType = {
     id?: true
     format?: true
-    username?: true
-    phone?: true
-    email?: true
-    descriprion?: true
-    advertisement?: true
+    description?: true
     nameProduct?: true
     createdAt?: true
+    updatedAt?: true
     ownerId?: true
   }
 
   export type CatalogPurchasesCountAggregateInputType = {
     id?: true
     format?: true
-    username?: true
-    phone?: true
-    email?: true
-    descriprion?: true
-    advertisement?: true
+    description?: true
     nameProduct?: true
     createdAt?: true
+    updatedAt?: true
     ownerId?: true
     _all?: true
   }
@@ -8345,13 +8410,10 @@ export namespace Prisma {
   export type CatalogPurchasesGroupByOutputType = {
     id: string
     format: string
-    username: string
-    phone: string
-    email: string
-    descriprion: string | null
-    advertisement: boolean
+    description: string | null
     nameProduct: string
     createdAt: Date
+    updatedAt: Date
     ownerId: string
     _count: CatalogPurchasesCountAggregateOutputType | null
     _min: CatalogPurchasesMinAggregateOutputType | null
@@ -8375,13 +8437,10 @@ export namespace Prisma {
   export type CatalogPurchasesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     format?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
-    descriprion?: boolean
-    advertisement?: boolean
+    description?: boolean
     nameProduct?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["catalogPurchases"]>
@@ -8389,13 +8448,10 @@ export namespace Prisma {
   export type CatalogPurchasesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     format?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
-    descriprion?: boolean
-    advertisement?: boolean
+    description?: boolean
     nameProduct?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["catalogPurchases"]>
@@ -8403,13 +8459,10 @@ export namespace Prisma {
   export type CatalogPurchasesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     format?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
-    descriprion?: boolean
-    advertisement?: boolean
+    description?: boolean
     nameProduct?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["catalogPurchases"]>
@@ -8417,17 +8470,14 @@ export namespace Prisma {
   export type CatalogPurchasesSelectScalar = {
     id?: boolean
     format?: boolean
-    username?: boolean
-    phone?: boolean
-    email?: boolean
-    descriprion?: boolean
-    advertisement?: boolean
+    description?: boolean
     nameProduct?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     ownerId?: boolean
   }
 
-  export type CatalogPurchasesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "format" | "username" | "phone" | "email" | "descriprion" | "advertisement" | "nameProduct" | "createdAt" | "ownerId", ExtArgs["result"]["catalogPurchases"]>
+  export type CatalogPurchasesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "format" | "description" | "nameProduct" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["catalogPurchases"]>
   export type CatalogPurchasesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -8446,13 +8496,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       format: string
-      username: string
-      phone: string
-      email: string
-      descriprion: string | null
-      advertisement: boolean
+      description: string | null
       nameProduct: string
       createdAt: Date
+      updatedAt: Date
       ownerId: string
     }, ExtArgs["result"]["catalogPurchases"]>
     composites: {}
@@ -8880,13 +8927,10 @@ export namespace Prisma {
   interface CatalogPurchasesFieldRefs {
     readonly id: FieldRef<"CatalogPurchases", 'String'>
     readonly format: FieldRef<"CatalogPurchases", 'String'>
-    readonly username: FieldRef<"CatalogPurchases", 'String'>
-    readonly phone: FieldRef<"CatalogPurchases", 'String'>
-    readonly email: FieldRef<"CatalogPurchases", 'String'>
-    readonly descriprion: FieldRef<"CatalogPurchases", 'String'>
-    readonly advertisement: FieldRef<"CatalogPurchases", 'Boolean'>
+    readonly description: FieldRef<"CatalogPurchases", 'String'>
     readonly nameProduct: FieldRef<"CatalogPurchases", 'String'>
     readonly createdAt: FieldRef<"CatalogPurchases", 'DateTime'>
+    readonly updatedAt: FieldRef<"CatalogPurchases", 'DateTime'>
     readonly ownerId: FieldRef<"CatalogPurchases", 'String'>
   }
     
@@ -9406,10 +9450,15 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    username: 'username',
+    name: 'name',
     phone: 'phone',
     email: 'email',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    consentedAt: 'consentedAt',
+    consentVersion: 'consentVersion',
+    consentIp: 'consentIp',
+    advertisingConsent: 'advertisingConsent',
+    advertisingConsentedAt: 'advertisingConsentedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9417,16 +9466,13 @@ export namespace Prisma {
 
   export const LeadScalarFieldEnum: {
     id: 'id',
-    username: 'username',
-    phone: 'phone',
-    email: 'email',
     budgetFrom: 'budgetFrom',
     budgetTo: 'budgetTo',
-    descriprion: 'descriprion',
+    description: 'description',
     services: 'services',
-    advertisement: 'advertisement',
-    quantityApplications: 'quantityApplications',
+    status: 'status',
     createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     ownerId: 'ownerId'
   };
 
@@ -9436,13 +9482,10 @@ export namespace Prisma {
   export const CatalogPurchasesScalarFieldEnum: {
     id: 'id',
     format: 'format',
-    username: 'username',
-    phone: 'phone',
-    email: 'email',
-    descriprion: 'descriprion',
-    advertisement: 'advertisement',
+    description: 'description',
     nameProduct: 'nameProduct',
     createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     ownerId: 'ownerId'
   };
 
@@ -9524,6 +9567,34 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'LeadStatus'
+   */
+  export type EnumLeadStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LeadStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'LeadStatus[]'
+   */
+  export type ListEnumLeadStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LeadStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -9938,20 +10009,30 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    username?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
     phone?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    consentedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    consentVersion?: StringNullableFilter<"User"> | string | null
+    consentIp?: StringNullableFilter<"User"> | string | null
+    advertisingConsent?: BoolFilter<"User"> | boolean
+    advertisingConsentedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     leads?: LeadListRelationFilter
     catalogPurchases?: CatalogPurchasesListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     phone?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
+    consentedAt?: SortOrderInput | SortOrder
+    consentVersion?: SortOrderInput | SortOrder
+    consentIp?: SortOrderInput | SortOrder
+    advertisingConsent?: SortOrder
+    advertisingConsentedAt?: SortOrderInput | SortOrder
     leads?: LeadOrderByRelationAggregateInput
     catalogPurchases?: CatalogPurchasesOrderByRelationAggregateInput
   }
@@ -9963,18 +10044,28 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    username?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    consentedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    consentVersion?: StringNullableFilter<"User"> | string | null
+    consentIp?: StringNullableFilter<"User"> | string | null
+    advertisingConsent?: BoolFilter<"User"> | boolean
+    advertisingConsentedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     leads?: LeadListRelationFilter
     catalogPurchases?: CatalogPurchasesListRelationFilter
   }, "id" | "phone" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     phone?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
+    consentedAt?: SortOrderInput | SortOrder
+    consentVersion?: SortOrderInput | SortOrder
+    consentIp?: SortOrderInput | SortOrder
+    advertisingConsent?: SortOrder
+    advertisingConsentedAt?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -9985,10 +10076,15 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    username?: StringWithAggregatesFilter<"User"> | string
+    name?: StringWithAggregatesFilter<"User"> | string
     phone?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    consentedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    consentVersion?: StringNullableWithAggregatesFilter<"User"> | string | null
+    consentIp?: StringNullableWithAggregatesFilter<"User"> | string | null
+    advertisingConsent?: BoolWithAggregatesFilter<"User"> | boolean
+    advertisingConsentedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type LeadWhereInput = {
@@ -9996,32 +10092,26 @@ export namespace Prisma {
     OR?: LeadWhereInput[]
     NOT?: LeadWhereInput | LeadWhereInput[]
     id?: StringFilter<"Lead"> | string
-    username?: StringFilter<"Lead"> | string
-    phone?: StringFilter<"Lead"> | string
-    email?: StringFilter<"Lead"> | string
-    budgetFrom?: StringFilter<"Lead"> | string
-    budgetTo?: StringFilter<"Lead"> | string
-    descriprion?: StringNullableFilter<"Lead"> | string | null
+    budgetFrom?: IntFilter<"Lead"> | number
+    budgetTo?: IntFilter<"Lead"> | number
+    description?: StringNullableFilter<"Lead"> | string | null
     services?: StringNullableListFilter<"Lead">
-    advertisement?: BoolFilter<"Lead"> | boolean
-    quantityApplications?: StringFilter<"Lead"> | string
+    status?: EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
     createdAt?: DateTimeFilter<"Lead"> | Date | string
+    updatedAt?: DateTimeFilter<"Lead"> | Date | string
     ownerId?: StringFilter<"Lead"> | string
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type LeadOrderByWithRelationInput = {
     id?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
     budgetFrom?: SortOrder
     budgetTo?: SortOrder
-    descriprion?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     services?: SortOrder
-    advertisement?: SortOrder
-    quantityApplications?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     ownerId?: SortOrder
     owner?: UserOrderByWithRelationInput
   }
@@ -10031,36 +10121,32 @@ export namespace Prisma {
     AND?: LeadWhereInput | LeadWhereInput[]
     OR?: LeadWhereInput[]
     NOT?: LeadWhereInput | LeadWhereInput[]
-    username?: StringFilter<"Lead"> | string
-    phone?: StringFilter<"Lead"> | string
-    email?: StringFilter<"Lead"> | string
-    budgetFrom?: StringFilter<"Lead"> | string
-    budgetTo?: StringFilter<"Lead"> | string
-    descriprion?: StringNullableFilter<"Lead"> | string | null
+    budgetFrom?: IntFilter<"Lead"> | number
+    budgetTo?: IntFilter<"Lead"> | number
+    description?: StringNullableFilter<"Lead"> | string | null
     services?: StringNullableListFilter<"Lead">
-    advertisement?: BoolFilter<"Lead"> | boolean
-    quantityApplications?: StringFilter<"Lead"> | string
+    status?: EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
     createdAt?: DateTimeFilter<"Lead"> | Date | string
+    updatedAt?: DateTimeFilter<"Lead"> | Date | string
     ownerId?: StringFilter<"Lead"> | string
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type LeadOrderByWithAggregationInput = {
     id?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
     budgetFrom?: SortOrder
     budgetTo?: SortOrder
-    descriprion?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     services?: SortOrder
-    advertisement?: SortOrder
-    quantityApplications?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     ownerId?: SortOrder
     _count?: LeadCountOrderByAggregateInput
+    _avg?: LeadAvgOrderByAggregateInput
     _max?: LeadMaxOrderByAggregateInput
     _min?: LeadMinOrderByAggregateInput
+    _sum?: LeadSumOrderByAggregateInput
   }
 
   export type LeadScalarWhereWithAggregatesInput = {
@@ -10068,16 +10154,13 @@ export namespace Prisma {
     OR?: LeadScalarWhereWithAggregatesInput[]
     NOT?: LeadScalarWhereWithAggregatesInput | LeadScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Lead"> | string
-    username?: StringWithAggregatesFilter<"Lead"> | string
-    phone?: StringWithAggregatesFilter<"Lead"> | string
-    email?: StringWithAggregatesFilter<"Lead"> | string
-    budgetFrom?: StringWithAggregatesFilter<"Lead"> | string
-    budgetTo?: StringWithAggregatesFilter<"Lead"> | string
-    descriprion?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    budgetFrom?: IntWithAggregatesFilter<"Lead"> | number
+    budgetTo?: IntWithAggregatesFilter<"Lead"> | number
+    description?: StringNullableWithAggregatesFilter<"Lead"> | string | null
     services?: StringNullableListFilter<"Lead">
-    advertisement?: BoolWithAggregatesFilter<"Lead"> | boolean
-    quantityApplications?: StringWithAggregatesFilter<"Lead"> | string
+    status?: EnumLeadStatusWithAggregatesFilter<"Lead"> | $Enums.LeadStatus
     createdAt?: DateTimeWithAggregatesFilter<"Lead"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Lead"> | Date | string
     ownerId?: StringWithAggregatesFilter<"Lead"> | string
   }
 
@@ -10087,13 +10170,10 @@ export namespace Prisma {
     NOT?: CatalogPurchasesWhereInput | CatalogPurchasesWhereInput[]
     id?: StringFilter<"CatalogPurchases"> | string
     format?: StringFilter<"CatalogPurchases"> | string
-    username?: StringFilter<"CatalogPurchases"> | string
-    phone?: StringFilter<"CatalogPurchases"> | string
-    email?: StringFilter<"CatalogPurchases"> | string
-    descriprion?: StringNullableFilter<"CatalogPurchases"> | string | null
-    advertisement?: BoolFilter<"CatalogPurchases"> | boolean
+    description?: StringNullableFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringFilter<"CatalogPurchases"> | string
     createdAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
+    updatedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringFilter<"CatalogPurchases"> | string
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -10101,13 +10181,10 @@ export namespace Prisma {
   export type CatalogPurchasesOrderByWithRelationInput = {
     id?: SortOrder
     format?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    descriprion?: SortOrderInput | SortOrder
-    advertisement?: SortOrder
+    description?: SortOrderInput | SortOrder
     nameProduct?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     ownerId?: SortOrder
     owner?: UserOrderByWithRelationInput
   }
@@ -10118,13 +10195,10 @@ export namespace Prisma {
     OR?: CatalogPurchasesWhereInput[]
     NOT?: CatalogPurchasesWhereInput | CatalogPurchasesWhereInput[]
     format?: StringFilter<"CatalogPurchases"> | string
-    username?: StringFilter<"CatalogPurchases"> | string
-    phone?: StringFilter<"CatalogPurchases"> | string
-    email?: StringFilter<"CatalogPurchases"> | string
-    descriprion?: StringNullableFilter<"CatalogPurchases"> | string | null
-    advertisement?: BoolFilter<"CatalogPurchases"> | boolean
+    description?: StringNullableFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringFilter<"CatalogPurchases"> | string
     createdAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
+    updatedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringFilter<"CatalogPurchases"> | string
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -10132,13 +10206,10 @@ export namespace Prisma {
   export type CatalogPurchasesOrderByWithAggregationInput = {
     id?: SortOrder
     format?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    descriprion?: SortOrderInput | SortOrder
-    advertisement?: SortOrder
+    description?: SortOrderInput | SortOrder
     nameProduct?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     ownerId?: SortOrder
     _count?: CatalogPurchasesCountOrderByAggregateInput
     _max?: CatalogPurchasesMaxOrderByAggregateInput
@@ -10151,13 +10222,10 @@ export namespace Prisma {
     NOT?: CatalogPurchasesScalarWhereWithAggregatesInput | CatalogPurchasesScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CatalogPurchases"> | string
     format?: StringWithAggregatesFilter<"CatalogPurchases"> | string
-    username?: StringWithAggregatesFilter<"CatalogPurchases"> | string
-    phone?: StringWithAggregatesFilter<"CatalogPurchases"> | string
-    email?: StringWithAggregatesFilter<"CatalogPurchases"> | string
-    descriprion?: StringNullableWithAggregatesFilter<"CatalogPurchases"> | string | null
-    advertisement?: BoolWithAggregatesFilter<"CatalogPurchases"> | boolean
+    description?: StringNullableWithAggregatesFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringWithAggregatesFilter<"CatalogPurchases"> | string
     createdAt?: DateTimeWithAggregatesFilter<"CatalogPurchases"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringWithAggregatesFilter<"CatalogPurchases"> | string
   }
 
@@ -10660,259 +10728,252 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt?: Date | string
+    consentedAt?: Date | string | null
+    consentVersion?: string | null
+    consentIp?: string | null
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: Date | string | null
     leads?: LeadCreateNestedManyWithoutOwnerInput
     catalogPurchases?: CatalogPurchasesCreateNestedManyWithoutOwnerInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt?: Date | string
+    consentedAt?: Date | string | null
+    consentVersion?: string | null
+    consentIp?: string | null
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: Date | string | null
     leads?: LeadUncheckedCreateNestedManyWithoutOwnerInput
     catalogPurchases?: CatalogPurchasesUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     leads?: LeadUpdateManyWithoutOwnerNestedInput
     catalogPurchases?: CatalogPurchasesUpdateManyWithoutOwnerNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     leads?: LeadUncheckedUpdateManyWithoutOwnerNestedInput
     catalogPurchases?: CatalogPurchasesUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt?: Date | string
+    consentedAt?: Date | string | null
+    consentVersion?: string | null
+    consentIp?: string | null
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type LeadCreateInput = {
     id?: string
-    username: string
-    phone: string
-    email: string
-    budgetFrom: string
-    budgetTo: string
-    descriprion?: string | null
+    budgetFrom: number
+    budgetTo: number
+    description?: string | null
     services?: LeadCreateservicesInput | string[]
-    advertisement: boolean
-    quantityApplications: string
+    status?: $Enums.LeadStatus
     createdAt?: Date | string
+    updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutLeadsInput
   }
 
   export type LeadUncheckedCreateInput = {
     id?: string
-    username: string
-    phone: string
-    email: string
-    budgetFrom: string
-    budgetTo: string
-    descriprion?: string | null
+    budgetFrom: number
+    budgetTo: number
+    description?: string | null
     services?: LeadCreateservicesInput | string[]
-    advertisement: boolean
-    quantityApplications: string
+    status?: $Enums.LeadStatus
     createdAt?: Date | string
+    updatedAt?: Date | string
     ownerId: string
   }
 
   export type LeadUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    budgetFrom?: StringFieldUpdateOperationsInput | string
-    budgetTo?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
+    budgetFrom?: IntFieldUpdateOperationsInput | number
+    budgetTo?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     services?: LeadUpdateservicesInput | string[]
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
-    quantityApplications?: StringFieldUpdateOperationsInput | string
+    status?: EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutLeadsNestedInput
   }
 
   export type LeadUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    budgetFrom?: StringFieldUpdateOperationsInput | string
-    budgetTo?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
+    budgetFrom?: IntFieldUpdateOperationsInput | number
+    budgetTo?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     services?: LeadUpdateservicesInput | string[]
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
-    quantityApplications?: StringFieldUpdateOperationsInput | string
+    status?: EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type LeadCreateManyInput = {
     id?: string
-    username: string
-    phone: string
-    email: string
-    budgetFrom: string
-    budgetTo: string
-    descriprion?: string | null
+    budgetFrom: number
+    budgetTo: number
+    description?: string | null
     services?: LeadCreateservicesInput | string[]
-    advertisement: boolean
-    quantityApplications: string
+    status?: $Enums.LeadStatus
     createdAt?: Date | string
+    updatedAt?: Date | string
     ownerId: string
   }
 
   export type LeadUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    budgetFrom?: StringFieldUpdateOperationsInput | string
-    budgetTo?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
+    budgetFrom?: IntFieldUpdateOperationsInput | number
+    budgetTo?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     services?: LeadUpdateservicesInput | string[]
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
-    quantityApplications?: StringFieldUpdateOperationsInput | string
+    status?: EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LeadUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    budgetFrom?: StringFieldUpdateOperationsInput | string
-    budgetTo?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
+    budgetFrom?: IntFieldUpdateOperationsInput | number
+    budgetTo?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     services?: LeadUpdateservicesInput | string[]
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
-    quantityApplications?: StringFieldUpdateOperationsInput | string
+    status?: EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CatalogPurchasesCreateInput = {
     id?: string
     format: string
-    username: string
-    phone: string
-    email: string
-    descriprion?: string | null
-    advertisement: boolean
+    description?: string | null
     nameProduct: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCatalogPurchasesInput
   }
 
   export type CatalogPurchasesUncheckedCreateInput = {
     id?: string
     format: string
-    username: string
-    phone: string
-    email: string
-    descriprion?: string | null
-    advertisement: boolean
+    description?: string | null
     nameProduct: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     ownerId: string
   }
 
   export type CatalogPurchasesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     format?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCatalogPurchasesNestedInput
   }
 
   export type CatalogPurchasesUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     format?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CatalogPurchasesCreateManyInput = {
     id?: string
     format: string
-    username: string
-    phone: string
-    email: string
-    descriprion?: string | null
-    advertisement: boolean
+    description?: string | null
     nameProduct: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     ownerId: string
   }
 
   export type CatalogPurchasesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     format?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogPurchasesUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     format?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -11203,6 +11264,22 @@ export namespace Prisma {
     caseHref?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type LeadListRelationFilter = {
     every?: LeadWhereInput
     some?: LeadWhereInput
@@ -11225,79 +11302,55 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     phone?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
+    consentedAt?: SortOrder
+    consentVersion?: SortOrder
+    consentIp?: SortOrder
+    advertisingConsent?: SortOrder
+    advertisingConsentedAt?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     phone?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
+    consentedAt?: SortOrder
+    consentVersion?: SortOrder
+    consentIp?: SortOrder
+    advertisingConsent?: SortOrder
+    advertisingConsentedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     phone?: SortOrder
     email?: SortOrder
     createdAt?: SortOrder
+    consentedAt?: SortOrder
+    consentVersion?: SortOrder
+    consentIp?: SortOrder
+    advertisingConsent?: SortOrder
+    advertisingConsentedAt?: SortOrder
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
-  export type LeadCountOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    budgetFrom?: SortOrder
-    budgetTo?: SortOrder
-    descriprion?: SortOrder
-    services?: SortOrder
-    advertisement?: SortOrder
-    quantityApplications?: SortOrder
-    createdAt?: SortOrder
-    ownerId?: SortOrder
-  }
-
-  export type LeadMaxOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    budgetFrom?: SortOrder
-    budgetTo?: SortOrder
-    descriprion?: SortOrder
-    advertisement?: SortOrder
-    quantityApplications?: SortOrder
-    createdAt?: SortOrder
-    ownerId?: SortOrder
-  }
-
-  export type LeadMinOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    budgetFrom?: SortOrder
-    budgetTo?: SortOrder
-    descriprion?: SortOrder
-    advertisement?: SortOrder
-    quantityApplications?: SortOrder
-    createdAt?: SortOrder
-    ownerId?: SortOrder
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11308,42 +11361,126 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type EnumLeadStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.LeadStatus | EnumLeadStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLeadStatusFilter<$PrismaModel> | $Enums.LeadStatus
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type LeadCountOrderByAggregateInput = {
+    id?: SortOrder
+    budgetFrom?: SortOrder
+    budgetTo?: SortOrder
+    description?: SortOrder
+    services?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ownerId?: SortOrder
+  }
+
+  export type LeadAvgOrderByAggregateInput = {
+    budgetFrom?: SortOrder
+    budgetTo?: SortOrder
+  }
+
+  export type LeadMaxOrderByAggregateInput = {
+    id?: SortOrder
+    budgetFrom?: SortOrder
+    budgetTo?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ownerId?: SortOrder
+  }
+
+  export type LeadMinOrderByAggregateInput = {
+    id?: SortOrder
+    budgetFrom?: SortOrder
+    budgetTo?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ownerId?: SortOrder
+  }
+
+  export type LeadSumOrderByAggregateInput = {
+    budgetFrom?: SortOrder
+    budgetTo?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumLeadStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LeadStatus | EnumLeadStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLeadStatusWithAggregatesFilter<$PrismaModel> | $Enums.LeadStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLeadStatusFilter<$PrismaModel>
+    _max?: NestedEnumLeadStatusFilter<$PrismaModel>
+  }
+
   export type CatalogPurchasesCountOrderByAggregateInput = {
     id?: SortOrder
     format?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    descriprion?: SortOrder
-    advertisement?: SortOrder
+    description?: SortOrder
     nameProduct?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     ownerId?: SortOrder
   }
 
   export type CatalogPurchasesMaxOrderByAggregateInput = {
     id?: SortOrder
     format?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    descriprion?: SortOrder
-    advertisement?: SortOrder
+    description?: SortOrder
     nameProduct?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     ownerId?: SortOrder
   }
 
   export type CatalogPurchasesMinOrderByAggregateInput = {
     id?: SortOrder
     format?: SortOrder
-    username?: SortOrder
-    phone?: SortOrder
-    email?: SortOrder
-    descriprion?: SortOrder
-    advertisement?: SortOrder
+    description?: SortOrder
     nameProduct?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     ownerId?: SortOrder
   }
 
@@ -11522,6 +11659,14 @@ export namespace Prisma {
     connect?: CatalogPurchasesWhereUniqueInput | CatalogPurchasesWhereUniqueInput[]
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type LeadUpdateManyWithoutOwnerNestedInput = {
     create?: XOR<LeadCreateWithoutOwnerInput, LeadUncheckedCreateWithoutOwnerInput> | LeadCreateWithoutOwnerInput[] | LeadUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: LeadCreateOrConnectWithoutOwnerInput | LeadCreateOrConnectWithoutOwnerInput[]
@@ -11588,13 +11733,21 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type LeadUpdateservicesInput = {
     set?: string[]
     push?: string | string[]
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type EnumLeadStatusFieldUpdateOperationsInput = {
+    set?: $Enums.LeadStatus
   }
 
   export type UserUpdateOneRequiredWithoutLeadsNestedInput = {
@@ -11728,9 +11881,34 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11741,32 +11919,70 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedEnumLeadStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.LeadStatus | EnumLeadStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLeadStatusFilter<$PrismaModel> | $Enums.LeadStatus
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumLeadStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LeadStatus | EnumLeadStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LeadStatus[] | ListEnumLeadStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumLeadStatusWithAggregatesFilter<$PrismaModel> | $Enums.LeadStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLeadStatusFilter<$PrismaModel>
+    _max?: NestedEnumLeadStatusFilter<$PrismaModel>
+  }
+
   export type LeadCreateWithoutOwnerInput = {
     id?: string
-    username: string
-    phone: string
-    email: string
-    budgetFrom: string
-    budgetTo: string
-    descriprion?: string | null
+    budgetFrom: number
+    budgetTo: number
+    description?: string | null
     services?: LeadCreateservicesInput | string[]
-    advertisement: boolean
-    quantityApplications: string
+    status?: $Enums.LeadStatus
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type LeadUncheckedCreateWithoutOwnerInput = {
     id?: string
-    username: string
-    phone: string
-    email: string
-    budgetFrom: string
-    budgetTo: string
-    descriprion?: string | null
+    budgetFrom: number
+    budgetTo: number
+    description?: string | null
     services?: LeadCreateservicesInput | string[]
-    advertisement: boolean
-    quantityApplications: string
+    status?: $Enums.LeadStatus
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type LeadCreateOrConnectWithoutOwnerInput = {
@@ -11782,25 +11998,19 @@ export namespace Prisma {
   export type CatalogPurchasesCreateWithoutOwnerInput = {
     id?: string
     format: string
-    username: string
-    phone: string
-    email: string
-    descriprion?: string | null
-    advertisement: boolean
+    description?: string | null
     nameProduct: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type CatalogPurchasesUncheckedCreateWithoutOwnerInput = {
     id?: string
     format: string
-    username: string
-    phone: string
-    email: string
-    descriprion?: string | null
-    advertisement: boolean
+    description?: string | null
     nameProduct: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type CatalogPurchasesCreateOrConnectWithoutOwnerInput = {
@@ -11834,16 +12044,13 @@ export namespace Prisma {
     OR?: LeadScalarWhereInput[]
     NOT?: LeadScalarWhereInput | LeadScalarWhereInput[]
     id?: StringFilter<"Lead"> | string
-    username?: StringFilter<"Lead"> | string
-    phone?: StringFilter<"Lead"> | string
-    email?: StringFilter<"Lead"> | string
-    budgetFrom?: StringFilter<"Lead"> | string
-    budgetTo?: StringFilter<"Lead"> | string
-    descriprion?: StringNullableFilter<"Lead"> | string | null
+    budgetFrom?: IntFilter<"Lead"> | number
+    budgetTo?: IntFilter<"Lead"> | number
+    description?: StringNullableFilter<"Lead"> | string | null
     services?: StringNullableListFilter<"Lead">
-    advertisement?: BoolFilter<"Lead"> | boolean
-    quantityApplications?: StringFilter<"Lead"> | string
+    status?: EnumLeadStatusFilter<"Lead"> | $Enums.LeadStatus
     createdAt?: DateTimeFilter<"Lead"> | Date | string
+    updatedAt?: DateTimeFilter<"Lead"> | Date | string
     ownerId?: StringFilter<"Lead"> | string
   }
 
@@ -11869,31 +12076,38 @@ export namespace Prisma {
     NOT?: CatalogPurchasesScalarWhereInput | CatalogPurchasesScalarWhereInput[]
     id?: StringFilter<"CatalogPurchases"> | string
     format?: StringFilter<"CatalogPurchases"> | string
-    username?: StringFilter<"CatalogPurchases"> | string
-    phone?: StringFilter<"CatalogPurchases"> | string
-    email?: StringFilter<"CatalogPurchases"> | string
-    descriprion?: StringNullableFilter<"CatalogPurchases"> | string | null
-    advertisement?: BoolFilter<"CatalogPurchases"> | boolean
+    description?: StringNullableFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringFilter<"CatalogPurchases"> | string
     createdAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
+    updatedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringFilter<"CatalogPurchases"> | string
   }
 
   export type UserCreateWithoutLeadsInput = {
     id?: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt?: Date | string
+    consentedAt?: Date | string | null
+    consentVersion?: string | null
+    consentIp?: string | null
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: Date | string | null
     catalogPurchases?: CatalogPurchasesCreateNestedManyWithoutOwnerInput
   }
 
   export type UserUncheckedCreateWithoutLeadsInput = {
     id?: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt?: Date | string
+    consentedAt?: Date | string | null
+    consentVersion?: string | null
+    consentIp?: string | null
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: Date | string | null
     catalogPurchases?: CatalogPurchasesUncheckedCreateNestedManyWithoutOwnerInput
   }
 
@@ -11915,37 +12129,57 @@ export namespace Prisma {
 
   export type UserUpdateWithoutLeadsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     catalogPurchases?: CatalogPurchasesUpdateManyWithoutOwnerNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLeadsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     catalogPurchases?: CatalogPurchasesUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type UserCreateWithoutCatalogPurchasesInput = {
     id?: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt?: Date | string
+    consentedAt?: Date | string | null
+    consentVersion?: string | null
+    consentIp?: string | null
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: Date | string | null
     leads?: LeadCreateNestedManyWithoutOwnerInput
   }
 
   export type UserUncheckedCreateWithoutCatalogPurchasesInput = {
     id?: string
-    username: string
+    name: string
     phone: string
     email: string
     createdAt?: Date | string
+    consentedAt?: Date | string | null
+    consentVersion?: string | null
+    consentIp?: string | null
+    advertisingConsent?: boolean
+    advertisingConsentedAt?: Date | string | null
     leads?: LeadUncheckedCreateNestedManyWithoutOwnerInput
   }
 
@@ -11967,124 +12201,110 @@ export namespace Prisma {
 
   export type UserUpdateWithoutCatalogPurchasesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     leads?: LeadUpdateManyWithoutOwnerNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCatalogPurchasesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consentVersion?: NullableStringFieldUpdateOperationsInput | string | null
+    consentIp?: NullableStringFieldUpdateOperationsInput | string | null
+    advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
+    advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     leads?: LeadUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type LeadCreateManyOwnerInput = {
     id?: string
-    username: string
-    phone: string
-    email: string
-    budgetFrom: string
-    budgetTo: string
-    descriprion?: string | null
+    budgetFrom: number
+    budgetTo: number
+    description?: string | null
     services?: LeadCreateservicesInput | string[]
-    advertisement: boolean
-    quantityApplications: string
+    status?: $Enums.LeadStatus
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type CatalogPurchasesCreateManyOwnerInput = {
     id?: string
     format: string
-    username: string
-    phone: string
-    email: string
-    descriprion?: string | null
-    advertisement: boolean
+    description?: string | null
     nameProduct: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type LeadUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    budgetFrom?: StringFieldUpdateOperationsInput | string
-    budgetTo?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
+    budgetFrom?: IntFieldUpdateOperationsInput | number
+    budgetTo?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     services?: LeadUpdateservicesInput | string[]
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
-    quantityApplications?: StringFieldUpdateOperationsInput | string
+    status?: EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LeadUncheckedUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    budgetFrom?: StringFieldUpdateOperationsInput | string
-    budgetTo?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
+    budgetFrom?: IntFieldUpdateOperationsInput | number
+    budgetTo?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     services?: LeadUpdateservicesInput | string[]
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
-    quantityApplications?: StringFieldUpdateOperationsInput | string
+    status?: EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LeadUncheckedUpdateManyWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    budgetFrom?: StringFieldUpdateOperationsInput | string
-    budgetTo?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
+    budgetFrom?: IntFieldUpdateOperationsInput | number
+    budgetTo?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     services?: LeadUpdateservicesInput | string[]
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
-    quantityApplications?: StringFieldUpdateOperationsInput | string
+    status?: EnumLeadStatusFieldUpdateOperationsInput | $Enums.LeadStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogPurchasesUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     format?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogPurchasesUncheckedUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     format?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogPurchasesUncheckedUpdateManyWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     format?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    descriprion?: NullableStringFieldUpdateOperationsInput | string | null
-    advertisement?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
