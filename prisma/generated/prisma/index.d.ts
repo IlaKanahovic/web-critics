@@ -62,11 +62,23 @@ export namespace $Enums {
 
 export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]
 
+
+export const PurchaseFormat: {
+  ONE_TIME: 'ONE_TIME',
+  SUBSCRIPTION: 'SUBSCRIPTION'
+};
+
+export type PurchaseFormat = (typeof PurchaseFormat)[keyof typeof PurchaseFormat]
+
 }
 
 export type LeadStatus = $Enums.LeadStatus
 
 export const LeadStatus: typeof $Enums.LeadStatus
+
+export type PurchaseFormat = $Enums.PurchaseFormat
+
+export const PurchaseFormat: typeof $Enums.PurchaseFormat
 
 /**
  * ##  Prisma Client ʲˢ
@@ -8268,15 +8280,27 @@ export namespace Prisma {
 
   export type AggregateCatalogPurchases = {
     _count: CatalogPurchasesCountAggregateOutputType | null
+    _avg: CatalogPurchasesAvgAggregateOutputType | null
+    _sum: CatalogPurchasesSumAggregateOutputType | null
     _min: CatalogPurchasesMinAggregateOutputType | null
     _max: CatalogPurchasesMaxAggregateOutputType | null
   }
 
+  export type CatalogPurchasesAvgAggregateOutputType = {
+    price: number | null
+  }
+
+  export type CatalogPurchasesSumAggregateOutputType = {
+    price: number | null
+  }
+
   export type CatalogPurchasesMinAggregateOutputType = {
     id: string | null
-    format: string | null
+    format: $Enums.PurchaseFormat | null
     description: string | null
     nameProduct: string | null
+    price: number | null
+    offerAcceptedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     ownerId: string | null
@@ -8284,9 +8308,11 @@ export namespace Prisma {
 
   export type CatalogPurchasesMaxAggregateOutputType = {
     id: string | null
-    format: string | null
+    format: $Enums.PurchaseFormat | null
     description: string | null
     nameProduct: string | null
+    price: number | null
+    offerAcceptedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     ownerId: string | null
@@ -8297,6 +8323,8 @@ export namespace Prisma {
     format: number
     description: number
     nameProduct: number
+    price: number
+    offerAcceptedAt: number
     createdAt: number
     updatedAt: number
     ownerId: number
@@ -8304,11 +8332,21 @@ export namespace Prisma {
   }
 
 
+  export type CatalogPurchasesAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type CatalogPurchasesSumAggregateInputType = {
+    price?: true
+  }
+
   export type CatalogPurchasesMinAggregateInputType = {
     id?: true
     format?: true
     description?: true
     nameProduct?: true
+    price?: true
+    offerAcceptedAt?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -8319,6 +8357,8 @@ export namespace Prisma {
     format?: true
     description?: true
     nameProduct?: true
+    price?: true
+    offerAcceptedAt?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -8329,6 +8369,8 @@ export namespace Prisma {
     format?: true
     description?: true
     nameProduct?: true
+    price?: true
+    offerAcceptedAt?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -8373,6 +8415,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CatalogPurchasesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CatalogPurchasesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CatalogPurchasesMinAggregateInputType
@@ -8403,19 +8457,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CatalogPurchasesCountAggregateInputType | true
+    _avg?: CatalogPurchasesAvgAggregateInputType
+    _sum?: CatalogPurchasesSumAggregateInputType
     _min?: CatalogPurchasesMinAggregateInputType
     _max?: CatalogPurchasesMaxAggregateInputType
   }
 
   export type CatalogPurchasesGroupByOutputType = {
     id: string
-    format: string
+    format: $Enums.PurchaseFormat
     description: string | null
     nameProduct: string
+    price: number
+    offerAcceptedAt: Date
     createdAt: Date
     updatedAt: Date
     ownerId: string
     _count: CatalogPurchasesCountAggregateOutputType | null
+    _avg: CatalogPurchasesAvgAggregateOutputType | null
+    _sum: CatalogPurchasesSumAggregateOutputType | null
     _min: CatalogPurchasesMinAggregateOutputType | null
     _max: CatalogPurchasesMaxAggregateOutputType | null
   }
@@ -8439,6 +8499,8 @@ export namespace Prisma {
     format?: boolean
     description?: boolean
     nameProduct?: boolean
+    price?: boolean
+    offerAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -8450,6 +8512,8 @@ export namespace Prisma {
     format?: boolean
     description?: boolean
     nameProduct?: boolean
+    price?: boolean
+    offerAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -8461,6 +8525,8 @@ export namespace Prisma {
     format?: boolean
     description?: boolean
     nameProduct?: boolean
+    price?: boolean
+    offerAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -8472,12 +8538,14 @@ export namespace Prisma {
     format?: boolean
     description?: boolean
     nameProduct?: boolean
+    price?: boolean
+    offerAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
   }
 
-  export type CatalogPurchasesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "format" | "description" | "nameProduct" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["catalogPurchases"]>
+  export type CatalogPurchasesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "format" | "description" | "nameProduct" | "price" | "offerAcceptedAt" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["catalogPurchases"]>
   export type CatalogPurchasesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -8495,9 +8563,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      format: string
+      format: $Enums.PurchaseFormat
       description: string | null
       nameProduct: string
+      price: number
+      offerAcceptedAt: Date
       createdAt: Date
       updatedAt: Date
       ownerId: string
@@ -8926,9 +8996,11 @@ export namespace Prisma {
    */
   interface CatalogPurchasesFieldRefs {
     readonly id: FieldRef<"CatalogPurchases", 'String'>
-    readonly format: FieldRef<"CatalogPurchases", 'String'>
+    readonly format: FieldRef<"CatalogPurchases", 'PurchaseFormat'>
     readonly description: FieldRef<"CatalogPurchases", 'String'>
     readonly nameProduct: FieldRef<"CatalogPurchases", 'String'>
+    readonly price: FieldRef<"CatalogPurchases", 'Int'>
+    readonly offerAcceptedAt: FieldRef<"CatalogPurchases", 'DateTime'>
     readonly createdAt: FieldRef<"CatalogPurchases", 'DateTime'>
     readonly updatedAt: FieldRef<"CatalogPurchases", 'DateTime'>
     readonly ownerId: FieldRef<"CatalogPurchases", 'String'>
@@ -9484,6 +9556,8 @@ export namespace Prisma {
     format: 'format',
     description: 'description',
     nameProduct: 'nameProduct',
+    price: 'price',
+    offerAcceptedAt: 'offerAcceptedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     ownerId: 'ownerId'
@@ -9581,6 +9655,20 @@ export namespace Prisma {
    * Reference to a field of type 'LeadStatus[]'
    */
   export type ListEnumLeadStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LeadStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PurchaseFormat'
+   */
+  export type EnumPurchaseFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PurchaseFormat'>
+    
+
+
+  /**
+   * Reference to a field of type 'PurchaseFormat[]'
+   */
+  export type ListEnumPurchaseFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PurchaseFormat[]'>
     
 
 
@@ -10169,9 +10257,11 @@ export namespace Prisma {
     OR?: CatalogPurchasesWhereInput[]
     NOT?: CatalogPurchasesWhereInput | CatalogPurchasesWhereInput[]
     id?: StringFilter<"CatalogPurchases"> | string
-    format?: StringFilter<"CatalogPurchases"> | string
+    format?: EnumPurchaseFormatFilter<"CatalogPurchases"> | $Enums.PurchaseFormat
     description?: StringNullableFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringFilter<"CatalogPurchases"> | string
+    price?: IntFilter<"CatalogPurchases"> | number
+    offerAcceptedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     createdAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringFilter<"CatalogPurchases"> | string
@@ -10183,6 +10273,8 @@ export namespace Prisma {
     format?: SortOrder
     description?: SortOrderInput | SortOrder
     nameProduct?: SortOrder
+    price?: SortOrder
+    offerAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -10194,9 +10286,11 @@ export namespace Prisma {
     AND?: CatalogPurchasesWhereInput | CatalogPurchasesWhereInput[]
     OR?: CatalogPurchasesWhereInput[]
     NOT?: CatalogPurchasesWhereInput | CatalogPurchasesWhereInput[]
-    format?: StringFilter<"CatalogPurchases"> | string
+    format?: EnumPurchaseFormatFilter<"CatalogPurchases"> | $Enums.PurchaseFormat
     description?: StringNullableFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringFilter<"CatalogPurchases"> | string
+    price?: IntFilter<"CatalogPurchases"> | number
+    offerAcceptedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     createdAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringFilter<"CatalogPurchases"> | string
@@ -10208,12 +10302,16 @@ export namespace Prisma {
     format?: SortOrder
     description?: SortOrderInput | SortOrder
     nameProduct?: SortOrder
+    price?: SortOrder
+    offerAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
     _count?: CatalogPurchasesCountOrderByAggregateInput
+    _avg?: CatalogPurchasesAvgOrderByAggregateInput
     _max?: CatalogPurchasesMaxOrderByAggregateInput
     _min?: CatalogPurchasesMinOrderByAggregateInput
+    _sum?: CatalogPurchasesSumOrderByAggregateInput
   }
 
   export type CatalogPurchasesScalarWhereWithAggregatesInput = {
@@ -10221,9 +10319,11 @@ export namespace Prisma {
     OR?: CatalogPurchasesScalarWhereWithAggregatesInput[]
     NOT?: CatalogPurchasesScalarWhereWithAggregatesInput | CatalogPurchasesScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CatalogPurchases"> | string
-    format?: StringWithAggregatesFilter<"CatalogPurchases"> | string
+    format?: EnumPurchaseFormatWithAggregatesFilter<"CatalogPurchases"> | $Enums.PurchaseFormat
     description?: StringNullableWithAggregatesFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringWithAggregatesFilter<"CatalogPurchases"> | string
+    price?: IntWithAggregatesFilter<"CatalogPurchases"> | number
+    offerAcceptedAt?: DateTimeWithAggregatesFilter<"CatalogPurchases"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"CatalogPurchases"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringWithAggregatesFilter<"CatalogPurchases"> | string
@@ -10910,9 +11010,11 @@ export namespace Prisma {
 
   export type CatalogPurchasesCreateInput = {
     id?: string
-    format: string
+    format: $Enums.PurchaseFormat
     description?: string | null
     nameProduct: string
+    price: number
+    offerAcceptedAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCatalogPurchasesInput
@@ -10920,9 +11022,11 @@ export namespace Prisma {
 
   export type CatalogPurchasesUncheckedCreateInput = {
     id?: string
-    format: string
+    format: $Enums.PurchaseFormat
     description?: string | null
     nameProduct: string
+    price: number
+    offerAcceptedAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: string
@@ -10930,9 +11034,11 @@ export namespace Prisma {
 
   export type CatalogPurchasesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    format?: StringFieldUpdateOperationsInput | string
+    format?: EnumPurchaseFormatFieldUpdateOperationsInput | $Enums.PurchaseFormat
     description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    offerAcceptedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCatalogPurchasesNestedInput
@@ -10940,9 +11046,11 @@ export namespace Prisma {
 
   export type CatalogPurchasesUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    format?: StringFieldUpdateOperationsInput | string
+    format?: EnumPurchaseFormatFieldUpdateOperationsInput | $Enums.PurchaseFormat
     description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    offerAcceptedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
@@ -10950,9 +11058,11 @@ export namespace Prisma {
 
   export type CatalogPurchasesCreateManyInput = {
     id?: string
-    format: string
+    format: $Enums.PurchaseFormat
     description?: string | null
     nameProduct: string
+    price: number
+    offerAcceptedAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: string
@@ -10960,18 +11070,22 @@ export namespace Prisma {
 
   export type CatalogPurchasesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    format?: StringFieldUpdateOperationsInput | string
+    format?: EnumPurchaseFormatFieldUpdateOperationsInput | $Enums.PurchaseFormat
     description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    offerAcceptedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogPurchasesUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    format?: StringFieldUpdateOperationsInput | string
+    format?: EnumPurchaseFormatFieldUpdateOperationsInput | $Enums.PurchaseFormat
     description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    offerAcceptedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
@@ -11454,14 +11568,27 @@ export namespace Prisma {
     _max?: NestedEnumLeadStatusFilter<$PrismaModel>
   }
 
+  export type EnumPurchaseFormatFilter<$PrismaModel = never> = {
+    equals?: $Enums.PurchaseFormat | EnumPurchaseFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumPurchaseFormatFilter<$PrismaModel> | $Enums.PurchaseFormat
+  }
+
   export type CatalogPurchasesCountOrderByAggregateInput = {
     id?: SortOrder
     format?: SortOrder
     description?: SortOrder
     nameProduct?: SortOrder
+    price?: SortOrder
+    offerAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
+  }
+
+  export type CatalogPurchasesAvgOrderByAggregateInput = {
+    price?: SortOrder
   }
 
   export type CatalogPurchasesMaxOrderByAggregateInput = {
@@ -11469,6 +11596,8 @@ export namespace Prisma {
     format?: SortOrder
     description?: SortOrder
     nameProduct?: SortOrder
+    price?: SortOrder
+    offerAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -11479,9 +11608,25 @@ export namespace Prisma {
     format?: SortOrder
     description?: SortOrder
     nameProduct?: SortOrder
+    price?: SortOrder
+    offerAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
+  }
+
+  export type CatalogPurchasesSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type EnumPurchaseFormatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PurchaseFormat | EnumPurchaseFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumPurchaseFormatWithAggregatesFilter<$PrismaModel> | $Enums.PurchaseFormat
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPurchaseFormatFilter<$PrismaModel>
+    _max?: NestedEnumPurchaseFormatFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -11764,6 +11909,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type EnumPurchaseFormatFieldUpdateOperationsInput = {
+    set?: $Enums.PurchaseFormat
+  }
+
   export type UserUpdateOneRequiredWithoutCatalogPurchasesNestedInput = {
     create?: XOR<UserCreateWithoutCatalogPurchasesInput, UserUncheckedCreateWithoutCatalogPurchasesInput>
     connectOrCreate?: UserCreateOrConnectWithoutCatalogPurchasesInput
@@ -11963,6 +12112,23 @@ export namespace Prisma {
     _max?: NestedEnumLeadStatusFilter<$PrismaModel>
   }
 
+  export type NestedEnumPurchaseFormatFilter<$PrismaModel = never> = {
+    equals?: $Enums.PurchaseFormat | EnumPurchaseFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumPurchaseFormatFilter<$PrismaModel> | $Enums.PurchaseFormat
+  }
+
+  export type NestedEnumPurchaseFormatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PurchaseFormat | EnumPurchaseFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PurchaseFormat[] | ListEnumPurchaseFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumPurchaseFormatWithAggregatesFilter<$PrismaModel> | $Enums.PurchaseFormat
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPurchaseFormatFilter<$PrismaModel>
+    _max?: NestedEnumPurchaseFormatFilter<$PrismaModel>
+  }
+
   export type LeadCreateWithoutOwnerInput = {
     id?: string
     budgetFrom: number
@@ -11997,18 +12163,22 @@ export namespace Prisma {
 
   export type CatalogPurchasesCreateWithoutOwnerInput = {
     id?: string
-    format: string
+    format: $Enums.PurchaseFormat
     description?: string | null
     nameProduct: string
+    price: number
+    offerAcceptedAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CatalogPurchasesUncheckedCreateWithoutOwnerInput = {
     id?: string
-    format: string
+    format: $Enums.PurchaseFormat
     description?: string | null
     nameProduct: string
+    price: number
+    offerAcceptedAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12075,9 +12245,11 @@ export namespace Prisma {
     OR?: CatalogPurchasesScalarWhereInput[]
     NOT?: CatalogPurchasesScalarWhereInput | CatalogPurchasesScalarWhereInput[]
     id?: StringFilter<"CatalogPurchases"> | string
-    format?: StringFilter<"CatalogPurchases"> | string
+    format?: EnumPurchaseFormatFilter<"CatalogPurchases"> | $Enums.PurchaseFormat
     description?: StringNullableFilter<"CatalogPurchases"> | string | null
     nameProduct?: StringFilter<"CatalogPurchases"> | string
+    price?: IntFilter<"CatalogPurchases"> | number
+    offerAcceptedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     createdAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     updatedAt?: DateTimeFilter<"CatalogPurchases"> | Date | string
     ownerId?: StringFilter<"CatalogPurchases"> | string
@@ -12240,9 +12412,11 @@ export namespace Prisma {
 
   export type CatalogPurchasesCreateManyOwnerInput = {
     id?: string
-    format: string
+    format: $Enums.PurchaseFormat
     description?: string | null
     nameProduct: string
+    price: number
+    offerAcceptedAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12282,27 +12456,33 @@ export namespace Prisma {
 
   export type CatalogPurchasesUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    format?: StringFieldUpdateOperationsInput | string
+    format?: EnumPurchaseFormatFieldUpdateOperationsInput | $Enums.PurchaseFormat
     description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    offerAcceptedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogPurchasesUncheckedUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    format?: StringFieldUpdateOperationsInput | string
+    format?: EnumPurchaseFormatFieldUpdateOperationsInput | $Enums.PurchaseFormat
     description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    offerAcceptedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CatalogPurchasesUncheckedUpdateManyWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    format?: StringFieldUpdateOperationsInput | string
+    format?: EnumPurchaseFormatFieldUpdateOperationsInput | $Enums.PurchaseFormat
     description?: NullableStringFieldUpdateOperationsInput | string | null
     nameProduct?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    offerAcceptedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

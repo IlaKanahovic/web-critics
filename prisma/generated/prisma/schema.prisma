@@ -126,15 +126,22 @@ model Lead {
   @@map("leads")
 }
 
+enum PurchaseFormat {
+  ONE_TIME
+  SUBSCRIPTION
+}
+
 model CatalogPurchases {
-  id          String   @id @default(cuid())
-  format      String
-  description String?
-  nameProduct String   @map("name_product")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  ownerId     String   @map("owner_id")
-  owner       User     @relation(fields: [ownerId], references: [id])
+  id              String         @id @default(cuid())
+  format          PurchaseFormat
+  description     String?
+  nameProduct     String         @map("name_product")
+  price           Int
+  offerAcceptedAt DateTime       @map("offer_accepted_at")
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
+  ownerId         String         @map("owner_id")
+  owner           User           @relation(fields: [ownerId], references: [id])
 
   @@index([ownerId])
   @@map("catalog_purchases")

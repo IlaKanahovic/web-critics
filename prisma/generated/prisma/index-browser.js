@@ -221,6 +221,8 @@ exports.Prisma.CatalogPurchasesScalarFieldEnum = {
   format: 'format',
   description: 'description',
   nameProduct: 'nameProduct',
+  price: 'price',
+  offerAcceptedAt: 'offerAcceptedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   ownerId: 'ownerId'
@@ -245,6 +247,11 @@ exports.LeadStatus = exports.$Enums.LeadStatus = {
   IN_PROGRESS: 'IN_PROGRESS',
   WON: 'WON',
   LOST: 'LOST'
+};
+
+exports.PurchaseFormat = exports.$Enums.PurchaseFormat = {
+  ONE_TIME: 'ONE_TIME',
+  SUBSCRIPTION: 'SUBSCRIPTION'
 };
 
 exports.Prisma.ModelName = {
