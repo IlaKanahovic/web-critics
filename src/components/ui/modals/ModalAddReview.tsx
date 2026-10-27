@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { IoClose } from "react-icons/io5"
 import { FaStar, FaCloudUploadAlt, FaTrash } from "react-icons/fa"
 import { useReviewFormValidation } from "@/hooks/review/useReviewFormValidation"
-import { dbAddReview } from "@/lib/db/review/dbAddReview"
+import { submitReview } from "@/lib/actions/review/submitReview"
+import { StatusPopup } from "@/components/ui/popups/StatusPopup"
 
 interface ModalAddReviewProps {
     isOpen: boolean
@@ -15,7 +16,13 @@ interface ModalAddReviewProps {
 const categories = ["Готовые сайты", "Боты", "Готовые инструменты", "Автоматизация", "Веб-разработка", "Рост и аналитика", "AI", "Надежность и масштабирование"]
 
 export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
-    const { form, errors, handleChange, validateForm, setErrors } = useReviewFormValidation()
+    const { form, errors, handleChange, validateForm, resetForm, setErrors } = useReviewFormValidation()
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [popup, setPopup] = useState<{
+        isOpen: boolean
+        type: 'success' | 'error'
+        description?: string
+    }>({ isOpen: false, type: 'success' })
     const fileInputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
@@ -58,25 +65,61 @@ export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
         if (fileInputRef.current) fileInputRef.current.value = ''
     }
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (validateForm()) {
-            try {
-                const dbData = {
-                    name: form.name,
-                    nameCompany: form.nameCompany || null,
-                    avatar: form.avatar || "",
-                    estimation: String(form.estimation),
-                    category: form.category,
-                    description: form.description,
-                    caseHref: form.caseHref || null,
+
+        if (!validateForm()) return
+
+        const formData = new FormData(e.currentTarget)
+        const website = formData.get('website')
+        setIsSubmitting(true)
+
+        try {
+            const payload = {
+                name: form.name,
+                nameCompany: form.nameCompany,
+                avatar: form.avatar,
+                estimation: form.estimation,
+                category: form.category,
+                description: form.description,
+                caseHref: form.caseHref,
+                consent: form.consent,
+                website
+            }
+
+            const res = await submitReview(payload)
+
+            if (res.error) {
+                if (res.error.fields) {
+                    const formattedErrors: Record<string, string> = {}
+
+                    Object.entries(res.error.fields).forEach(([field, messages]) => {
+                        if (messages && messages.length > 0) {
+                            formattedErrors[field] = messages[0]
+                        }
+                    })
+
+                    setErrors((prev) => ({ ...prev, ...formattedErrors }))
                 }
 
-                await dbAddReview(dbData)
-                onClose()
-            } catch (error) {
-                console.error("ошибка при добавлении отзыва:", error)
+                setPopup({
+                    isOpen: true,
+                    type: 'error',
+                    description: res.error.message
+                })
+                return
             }
+
+            if (res.data) {
+                resetForm()
+                if (fileInputRef.current) fileInputRef.current.value = ''
+                setPopup({ isOpen: true, type: 'success' })
+            }
+        } catch (error) {
+            console.error('ошибка при добавлении отзыва:', error)
+            setPopup({ isOpen: true, type: 'error' })
+        } finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -208,7 +251,7 @@ export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
                                                 <button
                                                     key={star}
                                                     type="button"
-                                                    onClick={() => handleChange('estimation', star)}
+                                                    onClick={() => handleChange('estimation', String(star))}
                                                     className="cursor-pointer focus:outline-none transition-transform hover:scale-110"
                                                 >
                                                     <FaStar
@@ -252,6 +295,20 @@ export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
                                 </div>
                             </div>
 
+                            <div
+                                style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}
+                                aria-hidden="true"
+                            >
+                                <label htmlFor="website">Не заполняйте это поле</label>
+                                <input
+                                    type="text"
+                                    id="website"
+                                    name="website"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                />
+                            </div>
+
                             <div className="mt-8">
                                 <label className="flex items-start gap-3 cursor-pointer group">
                                     <input
@@ -278,13 +335,24 @@ export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
                             <div className="mt-8 md:mt-10">
                                 <button
                                     type="submit"
-                                    className="group relative w-full inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-xl font-medium overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.01] active:scale-95 cursor-pointer"
+                                    disabled={isSubmitting}
+                                    className="group relative w-full inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-xl font-medium overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.01] active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    <span className="relative z-10 text-base">Отправить отзыв</span>
+                                    <span className="relative z-10 text-base">{isSubmitting ? 'Отправка...' : 'Отправить отзыв'}</span>
                                     <span className="absolute inset-0 bg-linear-to-r from-gray-200 to-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                                 </button>
                             </div>
                         </form>
+
+                        <StatusPopup
+                            isOpen={popup.isOpen}
+                            onClose={() => {
+                                setPopup(prev => ({ ...prev, isOpen: false }))
+                                if (popup.type === 'success') onClose()
+                            }}
+                            type={popup.type}
+                            description={popup.description}
+                        />
                     </motion.div>
                 </div>
             )}

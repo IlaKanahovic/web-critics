@@ -4925,6 +4925,7 @@ export namespace Prisma {
     category: string | null
     description: string | null
     caseHref: string | null
+    consentedAt: Date | null
   }
 
   export type ReviewMaxAggregateOutputType = {
@@ -4937,6 +4938,7 @@ export namespace Prisma {
     category: string | null
     description: string | null
     caseHref: string | null
+    consentedAt: Date | null
   }
 
   export type ReviewCountAggregateOutputType = {
@@ -4949,6 +4951,7 @@ export namespace Prisma {
     category: number
     description: number
     caseHref: number
+    consentedAt: number
     _all: number
   }
 
@@ -4963,6 +4966,7 @@ export namespace Prisma {
     category?: true
     description?: true
     caseHref?: true
+    consentedAt?: true
   }
 
   export type ReviewMaxAggregateInputType = {
@@ -4975,6 +4979,7 @@ export namespace Prisma {
     category?: true
     description?: true
     caseHref?: true
+    consentedAt?: true
   }
 
   export type ReviewCountAggregateInputType = {
@@ -4987,6 +4992,7 @@ export namespace Prisma {
     category?: true
     description?: true
     caseHref?: true
+    consentedAt?: true
     _all?: true
   }
 
@@ -5072,6 +5078,7 @@ export namespace Prisma {
     category: string
     description: string
     caseHref: string | null
+    consentedAt: Date | null
     _count: ReviewCountAggregateOutputType | null
     _min: ReviewMinAggregateOutputType | null
     _max: ReviewMaxAggregateOutputType | null
@@ -5101,6 +5108,7 @@ export namespace Prisma {
     category?: boolean
     description?: boolean
     caseHref?: boolean
+    consentedAt?: boolean
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5113,6 +5121,7 @@ export namespace Prisma {
     category?: boolean
     description?: boolean
     caseHref?: boolean
+    consentedAt?: boolean
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5125,6 +5134,7 @@ export namespace Prisma {
     category?: boolean
     description?: boolean
     caseHref?: boolean
+    consentedAt?: boolean
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectScalar = {
@@ -5137,9 +5147,10 @@ export namespace Prisma {
     category?: boolean
     description?: boolean
     caseHref?: boolean
+    consentedAt?: boolean
   }
 
-  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nameCompany" | "avatar" | "date" | "estimation" | "category" | "description" | "caseHref", ExtArgs["result"]["review"]>
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nameCompany" | "avatar" | "date" | "estimation" | "category" | "description" | "caseHref" | "consentedAt", ExtArgs["result"]["review"]>
 
   export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Review"
@@ -5154,6 +5165,7 @@ export namespace Prisma {
       category: string
       description: string
       caseHref: string | null
+      consentedAt: Date | null
     }, ExtArgs["result"]["review"]>
     composites: {}
   }
@@ -5586,6 +5598,7 @@ export namespace Prisma {
     readonly category: FieldRef<"Review", 'String'>
     readonly description: FieldRef<"Review", 'String'>
     readonly caseHref: FieldRef<"Review", 'String'>
+    readonly consentedAt: FieldRef<"Review", 'DateTime'>
   }
     
 
@@ -9514,7 +9527,8 @@ export namespace Prisma {
     estimation: 'estimation',
     category: 'category',
     description: 'description',
-    caseHref: 'caseHref'
+    caseHref: 'caseHref',
+    consentedAt: 'consentedAt'
   };
 
   export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -10033,6 +10047,7 @@ export namespace Prisma {
     category?: StringFilter<"Review"> | string
     description?: StringFilter<"Review"> | string
     caseHref?: StringNullableFilter<"Review"> | string | null
+    consentedAt?: DateTimeNullableFilter<"Review"> | Date | string | null
   }
 
   export type ReviewOrderByWithRelationInput = {
@@ -10045,6 +10060,7 @@ export namespace Prisma {
     category?: SortOrder
     description?: SortOrder
     caseHref?: SortOrderInput | SortOrder
+    consentedAt?: SortOrderInput | SortOrder
   }
 
   export type ReviewWhereUniqueInput = Prisma.AtLeast<{
@@ -10060,6 +10076,7 @@ export namespace Prisma {
     category?: StringFilter<"Review"> | string
     description?: StringFilter<"Review"> | string
     caseHref?: StringNullableFilter<"Review"> | string | null
+    consentedAt?: DateTimeNullableFilter<"Review"> | Date | string | null
   }, "id">
 
   export type ReviewOrderByWithAggregationInput = {
@@ -10072,6 +10089,7 @@ export namespace Prisma {
     category?: SortOrder
     description?: SortOrder
     caseHref?: SortOrderInput | SortOrder
+    consentedAt?: SortOrderInput | SortOrder
     _count?: ReviewCountOrderByAggregateInput
     _max?: ReviewMaxOrderByAggregateInput
     _min?: ReviewMinOrderByAggregateInput
@@ -10090,6 +10108,7 @@ export namespace Prisma {
     category?: StringWithAggregatesFilter<"Review"> | string
     description?: StringWithAggregatesFilter<"Review"> | string
     caseHref?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    consentedAt?: DateTimeNullableWithAggregatesFilter<"Review"> | Date | string | null
   }
 
   export type UserWhereInput = {
@@ -10747,11 +10766,12 @@ export namespace Prisma {
     name: string
     nameCompany?: string | null
     avatar?: string | null
-    date: Date | string
+    date?: Date | string
     estimation: string
     category: string
     description: string
     caseHref?: string | null
+    consentedAt?: Date | string | null
   }
 
   export type ReviewUncheckedCreateInput = {
@@ -10759,11 +10779,12 @@ export namespace Prisma {
     name: string
     nameCompany?: string | null
     avatar?: string | null
-    date: Date | string
+    date?: Date | string
     estimation: string
     category: string
     description: string
     caseHref?: string | null
+    consentedAt?: Date | string | null
   }
 
   export type ReviewUpdateInput = {
@@ -10776,6 +10797,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     caseHref?: NullableStringFieldUpdateOperationsInput | string | null
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReviewUncheckedUpdateInput = {
@@ -10788,6 +10810,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     caseHref?: NullableStringFieldUpdateOperationsInput | string | null
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReviewCreateManyInput = {
@@ -10795,11 +10818,12 @@ export namespace Prisma {
     name: string
     nameCompany?: string | null
     avatar?: string | null
-    date: Date | string
+    date?: Date | string
     estimation: string
     category: string
     description: string
     caseHref?: string | null
+    consentedAt?: Date | string | null
   }
 
   export type ReviewUpdateManyMutationInput = {
@@ -10812,6 +10836,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     caseHref?: NullableStringFieldUpdateOperationsInput | string | null
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ReviewUncheckedUpdateManyInput = {
@@ -10824,6 +10849,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     caseHref?: NullableStringFieldUpdateOperationsInput | string | null
+    consentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserCreateInput = {
@@ -11342,6 +11368,17 @@ export namespace Prisma {
     launchFromSingle?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type ReviewCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -11352,6 +11389,7 @@ export namespace Prisma {
     category?: SortOrder
     description?: SortOrder
     caseHref?: SortOrder
+    consentedAt?: SortOrder
   }
 
   export type ReviewMaxOrderByAggregateInput = {
@@ -11364,6 +11402,7 @@ export namespace Prisma {
     category?: SortOrder
     description?: SortOrder
     caseHref?: SortOrder
+    consentedAt?: SortOrder
   }
 
   export type ReviewMinOrderByAggregateInput = {
@@ -11376,9 +11415,10 @@ export namespace Prisma {
     category?: SortOrder
     description?: SortOrder
     caseHref?: SortOrder
+    consentedAt?: SortOrder
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -11386,7 +11426,10 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -11451,20 +11494,6 @@ export namespace Prisma {
     consentIp?: SortOrder
     advertisingConsent?: SortOrder
     advertisingConsentedAt?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11776,6 +11805,10 @@ export namespace Prisma {
     push?: string | string[]
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type LeadCreateNestedManyWithoutOwnerInput = {
     create?: XOR<LeadCreateWithoutOwnerInput, LeadUncheckedCreateWithoutOwnerInput> | LeadCreateWithoutOwnerInput[] | LeadUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: LeadCreateOrConnectWithoutOwnerInput | LeadCreateOrConnectWithoutOwnerInput[]
@@ -11802,10 +11835,6 @@ export namespace Prisma {
     connectOrCreate?: CatalogPurchasesCreateOrConnectWithoutOwnerInput | CatalogPurchasesCreateOrConnectWithoutOwnerInput[]
     createMany?: CatalogPurchasesCreateManyOwnerInputEnvelope
     connect?: CatalogPurchasesWhereUniqueInput | CatalogPurchasesWhereUniqueInput[]
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -12041,11 +12070,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -12058,6 +12082,11 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {

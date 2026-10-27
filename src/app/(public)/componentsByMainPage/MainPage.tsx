@@ -85,9 +85,9 @@ export function MainPage() {
             <Hero />
             <OverviewOfServices />
             <AboutMyWork />
-            <TeaserCatalog />
+            {/* <TeaserCatalog /> */}
             <ApplicationLaunch />
-            <Portfolio />
+            {/* <Portfolio /> */}
             <ContactsMainPage />
             <Footer />
         </div>

@@ -64,15 +64,16 @@ model Product {
 }
 
 model Review {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   name        String
-  nameCompany String?  @map("name_company")
+  nameCompany String?   @map("name_company")
   avatar      String?
-  date        DateTime
+  date        DateTime  @default(now())
   estimation  String
   category    String
   description String
   caseHref    String?
+  consentedAt DateTime?
 
   @@map("reviews")
 }

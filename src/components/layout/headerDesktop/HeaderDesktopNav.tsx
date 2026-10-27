@@ -140,6 +140,7 @@ export function HeaderDesktopNav() {
                     <div className="bg-[#111111] border border-white/10 rounded-xl shadow-2xl shadow-black/50 p-6 w-65 backdrop-blur-sm">
                         <ul className="space-y-2 text-sm">
                             <li><a href="/blog" className="text-white/50 hover:text-white transition-colors block">Блог</a></li>
+                            <li><a href="/reviews" className="text-white/50 hover:text-white transition-colors block">Отзывы</a></li>
                             <li><a href="/blog/stocks" className="text-white/50 hover:text-white transition-colors block">Акции</a></li>
                             <li><a href="/blog/cases" className="text-white/50 hover:text-white transition-colors block">Кейсы</a></li>
                             <li><a href="/blog/business-solutions" className="text-white/50 hover:text-white transition-colors block">Бизнес-решения</a></li>

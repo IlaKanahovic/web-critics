@@ -188,7 +188,8 @@ exports.Prisma.ReviewScalarFieldEnum = {
   estimation: 'estimation',
   category: 'category',
   description: 'description',
-  caseHref: 'caseHref'
+  caseHref: 'caseHref',
+  consentedAt: 'consentedAt'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
