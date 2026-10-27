@@ -5,6 +5,8 @@ import { letters } from "../page";
 import { MainPageBlogStocks } from "./MainPageBlogStocks";
 import { dbGetArticlesStocks } from "@/lib/db/blog/dbGetArticles";
 
+export const dynamic = 'force-dynamic'
+
 export default async function BlogStocks() {
     const rawArticlesStocks = await dbGetArticlesStocks()
     const articlesStocks = JSON.parse(JSON.stringify(rawArticlesStocks))

@@ -5,6 +5,8 @@ import { Footer } from "@/components/layout/footer/Footer";
 import { letters } from "../page";
 import { dbGetArticlesTechnologies } from "@/lib/db/blog/dbGetArticles";
 
+export const dynamic = 'force-dynamic'
+
 export default async function BlogTechnologies() {
     const rawArticlesTechnologies = await dbGetArticlesTechnologies()
     const articlesTechnologies = JSON.parse(JSON.stringify(rawArticlesTechnologies))

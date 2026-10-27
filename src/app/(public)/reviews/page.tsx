@@ -8,6 +8,8 @@ import { ReviewsList } from "./components/ReviewsList";
 import { CTAreviews } from "./components/CTAreviews";
 import { dbGetReviewsAll } from "@/lib/db/review/dbGetReviewsAll"
 
+export const dynamic = 'force-dynamic'
+
 export default async function Reviews() {
     const stars = [
         { top: "6%", right: "8%", size: 320, opacity: 0.06, delay: 0, rotate: -8, position: "right" },

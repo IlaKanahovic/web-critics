@@ -11,6 +11,7 @@ import { CTAByFooterReadyModels } from "./components/CTAByFooterReadyModels";
 import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct";
 import { dbGetReviewsByCatalogReadyModels } from "@/lib/db/review/dbGetReviewsByCatalog";
 
+export const dynamic = 'force-dynamic'
 
 export default async function ReadModelsCatalog() {
     const [, , readyModelsProducts] = await dbCatalogProduct()

@@ -10,6 +10,7 @@ import { FAQByBots } from "./components/FAQByBots";
 import { dbCatalogProduct } from "@/lib/db/catalog/dbCatalogProduct";
 import { dbGetReviewsByCatalogBots } from "@/lib/db/review/dbGetReviewsByCatalog";
 
+export const dynamic = 'force-dynamic'
 
 export default async function BotsCatalog() {
     const [, botsProducts] = await dbCatalogProduct()
