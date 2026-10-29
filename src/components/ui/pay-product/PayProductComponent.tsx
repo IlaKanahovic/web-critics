@@ -281,7 +281,7 @@ export function PayProductComponent({ product }: IPayProductPage) {
                                     />
                                     <span className="text-white/60 text-xs leading-relaxed">
                                         Я даю согласие на обработку персональных данных на условиях{' '}
-                                        <a href="/personal-data-processing-policy" className="text-white/90 hover:text-white underline underline-offset-2">Политики обработки персональных данных</a>.
+                                        <a href="/documents/legal/consent-personal-data" className="text-white/90 hover:text-white underline underline-offset-2">Политики обработки персональных данных</a>.
                                     </span>
                                 </label>
                                 {errors.consent && <p className="text-red-400 text-xs mt-1">{errors.consent}</p>}
@@ -294,7 +294,7 @@ export function PayProductComponent({ product }: IPayProductPage) {
                                     />
                                     <span className="text-white/60 text-xs leading-relaxed">
                                         Я принимаю условия{' '}
-                                        <a href="/offer" className="text-white/90 hover:text-white underline underline-offset-2">публичной оферты</a>.
+                                        <a href="/documents/legal/offer" className="text-white/90 hover:text-white underline underline-offset-2">публичной оферты</a>.
                                     </span>
                                 </label>
                                 {errors.offer && <p className="text-red-400 text-xs mt-1">{errors.offer}</p>}
@@ -307,7 +307,7 @@ export function PayProductComponent({ product }: IPayProductPage) {
                                     />
                                     <span className="text-white/60 text-xs leading-relaxed">
                                         Я даю
-                                        <a href="/consent-receive-advertising" className="text-white/90 hover:text-white underline underline-offset-2">
+                                        <a href="/documents/legal/consent-receive-advertising" className="text-white/90 hover:text-white underline underline-offset-2">
                                             {' '} согласие {' '}
                                         </a>
                                         получать рекламные и информационные материалы.

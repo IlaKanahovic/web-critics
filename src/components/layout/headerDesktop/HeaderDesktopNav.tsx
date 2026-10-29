@@ -111,7 +111,7 @@ export function HeaderDesktopNav() {
                 </div>
             </div>
 
-            <div className="relative group">
+            {/* <div className="relative group">
                 <a href="/catalog" className="link_nav-header group flex items-center gap-0.5">
                     Каталог
                     <MdOutlineKeyboardArrowDown className="size-4 duration-300 group-hover:translate-y-0.5" />
@@ -125,7 +125,7 @@ export function HeaderDesktopNav() {
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <a className="link_nav-header group" href="/portfolio">
                 Портфолио

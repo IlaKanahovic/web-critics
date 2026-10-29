@@ -290,7 +290,7 @@ export function LeadForm() {
                                         />
                                         <span className="text-white/70 text-font-inter text-xs leading-relaxed">
                                             Я даю согласие на обработку персональных данных на условиях{' '}
-                                            <a href="/personal-data-processing-policy" className="text-white/90 hover:text-white underline underline-offset-2">
+                                            <a href="/documents/legal/consent-personal-data" className="text-white/90 hover:text-white underline underline-offset-2">
                                                 Политики обработки персональных данных
                                             </a>
                                             .
@@ -309,7 +309,7 @@ export function LeadForm() {
                                         />
                                         <span className="text-white/70 text-font-inter text-xs leading-relaxed">
                                             Я даю
-                                            <a href="/consent-receive-advertising" className="text-white/90 hover:text-white underline underline-offset-2"> согласие </a>
+                                            <a href="/documents/legal/consent-receive-advertising" className="text-white/90 hover:text-white underline underline-offset-2"> согласие </a>
                                             получать рекламные и информационные материалы.
                                         </span>
                                     </label>

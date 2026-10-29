@@ -45,10 +45,10 @@ export function CookieBanner() {
                 <p className="text-white/60 text-font-inter text-xs mt-3 leading-relaxed">
                     Чтобы сайт работал корректно и мы понимали, что улучшить. Продолжая пользоваться сайтом, вы соглашаетесь с{' '}
                     <a
-                        href="/personal-data-processing-policy"
+                        href="/documents/legal/cookie-policy"
                         className="text-white/90 hover:text-white underline underline-offset-2 transition-colors"
                     >
-                        политикой обработки данных
+                        политикой использования файлов cookie
                     </a>
                     .
                 </p>

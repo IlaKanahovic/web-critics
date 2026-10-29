@@ -11,7 +11,7 @@ export function Footer() {
             </div>
 
             <div className="container px-4 md:px-0">
-                <div className="py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
+                <div className="py-16 grid grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-10">
                     <div className="col-span-2 md:col-span-1">
                         <div className="mb-6">
                             <BrandIdentityLogo />
@@ -40,19 +40,20 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Продукты</h4>
                         <ul className="space-y-2.5">
                             <li><a href="/catalog/ready-sites" className="hover:text-white transition-colors duration-200">Готовые сайты</a></li>
                             <li><a href="/catalog/bots" className="hover:text-white transition-colors duration-200">Боты</a></li>
                             <li><a href="/catalog/ready-models" className="hover:text-white transition-colors duration-200">Готовые инструменты</a></li>
                         </ul>
-                    </div>
+                    </div> */}
 
                     <div>
                         <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Компания</h4>
                         <ul className="space-y-2.5">
                             <li><a href="/about" className="hover:text-white transition-colors duration-200">О студии</a></li>
+                            <li><a href="/reviews" className="hover:text-white transition-colors duration-200">Отзывы</a></li>
                             <li><a href="/portfolio" className="hover:text-white transition-colors duration-200">Портфолио</a></li>
                             <li><a href="/blog" className="hover:text-white transition-colors duration-200">Блог</a></li>
                             <li><a href="/documents/legal" className="hover:text-white transition-colors duration-200">Документы и памятки</a></li>
@@ -100,8 +101,8 @@ export function Footer() {
                 <div className="border-t border-white/5 py-7 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-white/40 text-xs">WebCRitic: Ваша проблема — наше решение!</p>
                     <div className="flex gap-6 text-xs">
-                        <a href="/privacy" className="text-white/30 hover:text-white transition-colors duration-200">Политика конфиденциальности</a>
-                        <a href="/offer" className="text-white/30 hover:text-white transition-colors duration-200">Оферта</a>
+                        <a href="/documents/legal/consent-personal-data" className="text-white/30 hover:text-white transition-colors duration-200">Политика конфиденциальности</a>
+                        {/* <a href="/documents/legal/offer" className="text-white/30 hover:text-white transition-colors duration-200">Оферта</a> */}
                     </div>
                 </div>
             </div>

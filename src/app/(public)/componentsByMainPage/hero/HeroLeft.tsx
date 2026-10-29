@@ -38,18 +38,31 @@ export function HeroLeft() {
                     <span>выполненных работ</span>
                 </div>
                 <div className="hidden sm:block w-px h-5 bg-white/10" />
-                <div className="flex items-center gap-3 text-white/50">
-                    <span className="text-white/70 font-medium">4.8 / 5</span>
-                    <span>Средняя оценка</span>
+
+                <Link
+                    href="/reviews"
+                    className="relative z-10 pointer-events-auto group inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 cursor-pointer"
+                    aria-label="Перейти к отзывам клиентов"
+                >
+                    <span className="text-white/90 font-semibold group-hover:text-white transition-colors duration-300">
+                        4.8 / 5
+                    </span>
+                    <span className="text-sm">Средняя оценка</span>
+
                     <div className="flex text-yellow-400 text-sm gap-0.5">
                         {[...Array(4)].map((_, i) => (
                             <FaStar key={i} size={14} />
                         ))}
                         <div className="relative w-3.5 h-3.5 overflow-hidden">
-                            <FaStar className="absolute inset-0 text-yellow-400" style={{ clipPath: 'inset(0 20% 0 0)' }} />
+                            <FaStar
+                                className="absolute inset-0 text-yellow-400"
+                                style={{ clipPath: 'inset(0 20% 0 0)' }}
+                            />
                         </div>
                     </div>
-                </div>
+
+                    <IoIosArrowForward className="size-3.5 text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
+                </Link>
             </div>
         </div>
     )

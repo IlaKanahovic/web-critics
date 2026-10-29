@@ -104,11 +104,11 @@ export function HeaderBurgerNav() {
                     </div>
                 </div>
 
-                <hr className="border border-[#111111]" />
+                {/* <hr className="border border-[#111111]" />
                 <a href="/catalog" className="text-mobile-nav">
                     <div>Каталог</div>
                     <FaArrowRightLong className="size-5" />
-                </a>
+                </a> */}
                 <hr className="border border-[#111111]" />
                 <a href="/portfolio" className="text-mobile-nav">
                     <div>Портфолио</div>

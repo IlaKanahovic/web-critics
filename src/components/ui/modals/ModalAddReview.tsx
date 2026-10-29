@@ -320,7 +320,7 @@ export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
                                     <span className="text-white/50 text-xs md:text-sm leading-relaxed group-hover:text-white/70 transition-colors">
                                         Я согласен на обработку персональных данных в соответствии с{" "}
                                         <a
-                                            href="/personal-data-processing-policy"
+                                            href="/documents/legal/consent-personal-data"
                                             target="_blank"
                                             className="text-white/80 hover:text-white underline underline-offset-2 transition-colors"
                                         >
