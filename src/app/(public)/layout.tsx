@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: 'WebCRitics',
     images: [
       {
-        url: '/img/avatar.svg',
+        url: '/img/avatar.png',
         width: 1200,
         height: 630,
         alt: 'WebCRitics: Ваша проблема - наше решение!',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/img/avatar.svg',
+    icon: '/img/avatar.png',
   },
 }
 
@@ -86,9 +86,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'WebProducts',
-              url: 'https://web-products.ru',
-              logo: 'https://web-products.ru/img/avatar.svg',
+              name: 'WebCRitic',
+              url: 'https://web-critics.ru',
+              logo: 'https://web-critics.ru/img/avatar.png',
             }),
           }}
         />

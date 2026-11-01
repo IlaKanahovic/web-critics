@@ -4,15 +4,15 @@ import { Footer } from "@/components/layout/footer/Footer";
 import { dbGetArticle } from "@/lib/db/blog/dbGetArticle";
 import { MainArticleComponent } from "./MainArticleComponent";
 import { letters } from "../page";
+import { notFound } from "next/navigation";
 
-type SearchParams = { id: string }
-interface IProductParamsProps {
-    searchParams: Promise<SearchParams>
-}
+export default async function Article({ params }: { params: Promise<{ article: string }> }) {
+    const { article } = await params
+    const articleSlug = await dbGetArticle(article)
 
-export default async function Article({ searchParams }: IProductParamsProps) {
-    const { id } = await searchParams
-    const article = await dbGetArticle(id)
+    if (!article) {
+        notFound()
+    }
 
     return (
         <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
@@ -110,7 +110,7 @@ export default async function Article({ searchParams }: IProductParamsProps) {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <MainArticleComponent article={article}/>
+                <MainArticleComponent article={articleSlug} />
                 <Footer />
             </div>
         </div>

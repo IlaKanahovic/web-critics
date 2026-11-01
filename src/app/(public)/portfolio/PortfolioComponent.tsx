@@ -79,10 +79,7 @@ export async function PortfolioComponent() {
                         {projects.map((project: Case) => (
                             <Link
                                 key={project.id}
-                                href={{
-                                    pathname: `/portfolio/${project.slug}`,
-                                    query: {id: project.id}
-                                }}
+                                href={`/portfolio/${project.slug}`}
                             >
                                 <div className="group relative rounded-xl bg-[#111111] border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/25 hover:shadow-2xl cursor-pointer">
                                     <div className="relative w-full h-60 bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border-b border-white/5 overflow-hidden">

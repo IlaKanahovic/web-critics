@@ -3,15 +3,28 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { Footer } from "@/components/layout/footer/Footer";
 import { PortfolioProjectComponent } from "./PortfolioProjectComponent";
 import { dbGetProjectById } from "@/lib/db/portfolio/dbGetProjectById";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
-type SearchParams = { id: string }
-interface IProductParamsProps {
-    searchParams: Promise<SearchParams>
+export async function generateMetadata({ params }: { params: Promise<{ project: string }> }): Promise<Metadata> {
+    const { project } = await params
+    const projectSlug = await dbGetProjectById(project)
+
+    if (!projectSlug) return { title: 'Проект не найден' }
+
+    return {
+        title: projectSlug.title,
+        description: `Кейс из портфолио WebCRitic: ${projectSlug.title}. Услуга: ${projectSlug.service}`,
+    }
 }
 
-export default async function Portfolio( { searchParams }: IProductParamsProps ) {
-    const { id } = await searchParams 
-    const project = await dbGetProjectById(id) 
+export default async function Project({ params }: { params: Promise<{ project: string }> }) {
+    const { project } = await params
+    const projectSlug = await dbGetProjectById(project)
+
+    if (!projectSlug) {
+        notFound()
+    }
 
     return (
         <div className="relative min-h-screen bg-[#050505] overflow-hidden" style={{ isolation: "isolate" }}>
@@ -97,7 +110,7 @@ export default async function Portfolio( { searchParams }: IProductParamsProps )
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <PortfolioProjectComponent project={project}/>
+                <PortfolioProjectComponent project={projectSlug} />
                 <Footer />
             </div>
         </div>

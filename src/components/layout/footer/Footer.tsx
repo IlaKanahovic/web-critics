@@ -1,5 +1,5 @@
 import { BrandIdentityLogo } from '@/components/ui/logo/BrandIdentityLogo'
-import { FaTelegram, FaWhatsapp, FaGithub, FaInstagram } from 'react-icons/fa'
+import { FaPhoneAlt, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 
 export function Footer() {
@@ -22,7 +22,7 @@ export function Footer() {
                         </div>
                         <ul className="space-y-2.5">
                             <li><a href="/" className="hover:text-white transition-colors duration-200">Главная</a></li>
-                            <li><a href="/catalog" className="hover:text-white transition-colors duration-200">Каталог</a></li>
+                            {/* <li><a href="/catalog" className="hover:text-white transition-colors duration-200">Каталог</a></li> */}
                             <li><a href="/portfolio" className="hover:text-white transition-colors duration-200">Кейсы</a></li>
                             <li><a href="/#services" className="hover:text-white transition-colors duration-200">Услуги</a></li>
                             <li><a href="/contacts" className="hover:text-white transition-colors duration-200">Контакты</a></li>
@@ -60,38 +60,25 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* доделать ссылки */}
                     <div>
                         <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Контакты</h4>
                         <ul className="space-y-3">
                             <li>
-                                <a href="#" className="flex items-center gap-3 hover:text-white transition-colors duration-200">
+                                <a href="https://t.me/WebCriticBot" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
                                     <FaTelegram className="text-white/30 group-hover:text-white transition-colors duration-200" size={18} />
                                     <span>Telegram</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="flex items-center gap-3 hover:text-white transition-colors duration-200">
-                                    <FaWhatsapp className="text-white/30 group-hover:text-white transition-colors duration-200" size={18} />
-                                    <span>WhatsApp</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailto:info@site.ru" className="flex items-center gap-3 hover:text-white transition-colors duration-200">
+                                <a href="mailto:webcritic.company@gmail.com" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
                                     <HiOutlineMail className="text-white/30 group-hover:text-white transition-colors duration-200" size={20} />
                                     <span>Email</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="flex items-center gap-3 hover:text-white transition-colors duration-200">
-                                    <FaGithub className="text-white/30 group-hover:text-white transition-colors duration-200" size={18} />
-                                    <span>GitHub</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="flex items-center gap-3 hover:text-white transition-colors duration-200">
-                                    <FaInstagram className="text-white/30 group-hover:text-white transition-colors duration-200" size={18} />
-                                    <span>Instagram</span>
+                                <a href="tel:+79249965191" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
+                                    <FaPhoneAlt className="text-white/30 group-hover:text-white transition-colors duration-200" size={16} />
+                                    <span>+7 (924) 996 51-91</span>
                                 </a>
                             </li>
                         </ul>

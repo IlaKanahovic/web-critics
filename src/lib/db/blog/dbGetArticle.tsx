@@ -1,12 +1,12 @@
 import { prisma } from "../prisma"
 
 
-export const dbGetArticle = async (id: string) => {
-    const article = await prisma.article.findUnique({
+export const dbGetArticle = async (article: string) => {
+    const articleSlug = await prisma.article.findUnique({
         where: {
-            id: id
+            slug: article
         }
     })
 
-    return article
+    return articleSlug
 }

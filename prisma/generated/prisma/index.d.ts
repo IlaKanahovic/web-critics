@@ -53,7 +53,15 @@ export type CatalogPurchases = $Result.DefaultSelection<Prisma.$CatalogPurchases
  * Enums
  */
 export namespace $Enums {
-  export const LeadStatus: {
+  export const Role: {
+  USER: 'USER',
+  ADMIN: 'ADMIN'
+};
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const LeadStatus: {
   NEW: 'NEW',
   IN_PROGRESS: 'IN_PROGRESS',
   WON: 'WON',
@@ -71,6 +79,10 @@ export const PurchaseFormat: {
 export type PurchaseFormat = (typeof PurchaseFormat)[keyof typeof PurchaseFormat]
 
 }
+
+export type Role = $Enums.Role
+
+export const Role: typeof $Enums.Role
 
 export type LeadStatus = $Enums.LeadStatus
 
@@ -5991,6 +6003,7 @@ export namespace Prisma {
     consentIp: string | null
     advertisingConsent: boolean | null
     advertisingConsentedAt: Date | null
+    role: $Enums.Role | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -6004,6 +6017,7 @@ export namespace Prisma {
     consentIp: string | null
     advertisingConsent: boolean | null
     advertisingConsentedAt: Date | null
+    role: $Enums.Role | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -6017,6 +6031,7 @@ export namespace Prisma {
     consentIp: number
     advertisingConsent: number
     advertisingConsentedAt: number
+    role: number
     _all: number
   }
 
@@ -6032,6 +6047,7 @@ export namespace Prisma {
     consentIp?: true
     advertisingConsent?: true
     advertisingConsentedAt?: true
+    role?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -6045,6 +6061,7 @@ export namespace Prisma {
     consentIp?: true
     advertisingConsent?: true
     advertisingConsentedAt?: true
+    role?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -6058,6 +6075,7 @@ export namespace Prisma {
     consentIp?: true
     advertisingConsent?: true
     advertisingConsentedAt?: true
+    role?: true
     _all?: true
   }
 
@@ -6144,6 +6162,7 @@ export namespace Prisma {
     consentIp: string | null
     advertisingConsent: boolean
     advertisingConsentedAt: Date | null
+    role: $Enums.Role
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -6174,6 +6193,7 @@ export namespace Prisma {
     consentIp?: boolean
     advertisingConsent?: boolean
     advertisingConsentedAt?: boolean
+    role?: boolean
     leads?: boolean | User$leadsArgs<ExtArgs>
     catalogPurchases?: boolean | User$catalogPurchasesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -6190,6 +6210,7 @@ export namespace Prisma {
     consentIp?: boolean
     advertisingConsent?: boolean
     advertisingConsentedAt?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6203,6 +6224,7 @@ export namespace Prisma {
     consentIp?: boolean
     advertisingConsent?: boolean
     advertisingConsentedAt?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -6216,9 +6238,10 @@ export namespace Prisma {
     consentIp?: boolean
     advertisingConsent?: boolean
     advertisingConsentedAt?: boolean
+    role?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "email" | "createdAt" | "consentedAt" | "consentVersion" | "consentIp" | "advertisingConsent" | "advertisingConsentedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "email" | "createdAt" | "consentedAt" | "consentVersion" | "consentIp" | "advertisingConsent" | "advertisingConsentedAt" | "role", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leads?: boolean | User$leadsArgs<ExtArgs>
     catalogPurchases?: boolean | User$catalogPurchasesArgs<ExtArgs>
@@ -6244,6 +6267,7 @@ export namespace Prisma {
       consentIp: string | null
       advertisingConsent: boolean
       advertisingConsentedAt: Date | null
+      role: $Enums.Role
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -6679,6 +6703,7 @@ export namespace Prisma {
     readonly consentIp: FieldRef<"User", 'String'>
     readonly advertisingConsent: FieldRef<"User", 'Boolean'>
     readonly advertisingConsentedAt: FieldRef<"User", 'DateTime'>
+    readonly role: FieldRef<"User", 'Role'>
   }
     
 
@@ -9544,7 +9569,8 @@ export namespace Prisma {
     consentVersion: 'consentVersion',
     consentIp: 'consentIp',
     advertisingConsent: 'advertisingConsent',
-    advertisingConsentedAt: 'advertisingConsentedAt'
+    advertisingConsentedAt: 'advertisingConsentedAt',
+    role: 'role'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9645,6 +9671,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Role'
+   */
+  export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+  /**
+   * Reference to a field of type 'Role[]'
+   */
+  export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -9736,11 +9776,11 @@ export namespace Prisma {
 
   export type ArticleWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: ArticleWhereInput | ArticleWhereInput[]
     OR?: ArticleWhereInput[]
     NOT?: ArticleWhereInput | ArticleWhereInput[]
     type?: StringFilter<"Article"> | string
-    slug?: StringFilter<"Article"> | string
     title?: StringFilter<"Article"> | string
     description?: StringFilter<"Article"> | string
     previewBg?: StringFilter<"Article"> | string
@@ -9749,7 +9789,7 @@ export namespace Prisma {
     date?: DateTimeFilter<"Article"> | Date | string
     readingTime?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
-  }, "id">
+  }, "id" | "slug">
 
   export type ArticleOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9818,6 +9858,7 @@ export namespace Prisma {
 
   export type CaseWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: CaseWhereInput | CaseWhereInput[]
     OR?: CaseWhereInput[]
     NOT?: CaseWhereInput | CaseWhereInput[]
@@ -9826,12 +9867,11 @@ export namespace Prisma {
     type?: StringFilter<"Case"> | string
     previewBg?: StringFilter<"Case"> | string
     previewProject?: StringNullableListFilter<"Case">
-    slug?: StringFilter<"Case"> | string
     url?: StringNullableFilter<"Case"> | string | null
     tasks?: StringNullableListFilter<"Case">
     popups?: StringNullableListFilter<"Case">
     interesting?: StringNullableListFilter<"Case">
-  }, "id">
+  }, "id" | "slug">
 
   export type CaseOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9935,6 +9975,7 @@ export namespace Prisma {
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     title?: string
+    slug?: string
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
@@ -9945,7 +9986,6 @@ export namespace Prisma {
     singlePrice?: StringFilter<"Product"> | string
     mounthPrice?: StringFilter<"Product"> | string
     previewBg?: StringFilter<"Product"> | string
-    slug?: StringFilter<"Product"> | string
     demoUrl?: StringFilter<"Product"> | string
     categoryDesc?: StringFilter<"Product"> | string
     estimation?: StringFilter<"Product"> | string
@@ -9964,7 +10004,7 @@ export namespace Prisma {
     launchFromSingle?: StringFilter<"Product"> | string
     onetimePurchaseIncludes?: StringNullableListFilter<"Product">
     subscriptionIncludes?: StringNullableListFilter<"Product">
-  }, "id" | "title">
+  }, "id" | "title" | "slug">
 
   export type ProductOrderByWithAggregationInput = {
     id?: SortOrder
@@ -10125,6 +10165,7 @@ export namespace Prisma {
     consentIp?: StringNullableFilter<"User"> | string | null
     advertisingConsent?: BoolFilter<"User"> | boolean
     advertisingConsentedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
     leads?: LeadListRelationFilter
     catalogPurchases?: CatalogPurchasesListRelationFilter
   }
@@ -10140,6 +10181,7 @@ export namespace Prisma {
     consentIp?: SortOrderInput | SortOrder
     advertisingConsent?: SortOrder
     advertisingConsentedAt?: SortOrderInput | SortOrder
+    role?: SortOrder
     leads?: LeadOrderByRelationAggregateInput
     catalogPurchases?: CatalogPurchasesOrderByRelationAggregateInput
   }
@@ -10158,6 +10200,7 @@ export namespace Prisma {
     consentIp?: StringNullableFilter<"User"> | string | null
     advertisingConsent?: BoolFilter<"User"> | boolean
     advertisingConsentedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
     leads?: LeadListRelationFilter
     catalogPurchases?: CatalogPurchasesListRelationFilter
   }, "id" | "phone" | "email">
@@ -10173,6 +10216,7 @@ export namespace Prisma {
     consentIp?: SortOrderInput | SortOrder
     advertisingConsent?: SortOrder
     advertisingConsentedAt?: SortOrderInput | SortOrder
+    role?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -10192,6 +10236,7 @@ export namespace Prisma {
     consentIp?: StringNullableWithAggregatesFilter<"User"> | string | null
     advertisingConsent?: BoolWithAggregatesFilter<"User"> | boolean
     advertisingConsentedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   }
 
   export type LeadWhereInput = {
@@ -10863,6 +10908,7 @@ export namespace Prisma {
     consentIp?: string | null
     advertisingConsent?: boolean
     advertisingConsentedAt?: Date | string | null
+    role?: $Enums.Role
     leads?: LeadCreateNestedManyWithoutOwnerInput
     catalogPurchases?: CatalogPurchasesCreateNestedManyWithoutOwnerInput
   }
@@ -10878,6 +10924,7 @@ export namespace Prisma {
     consentIp?: string | null
     advertisingConsent?: boolean
     advertisingConsentedAt?: Date | string | null
+    role?: $Enums.Role
     leads?: LeadUncheckedCreateNestedManyWithoutOwnerInput
     catalogPurchases?: CatalogPurchasesUncheckedCreateNestedManyWithoutOwnerInput
   }
@@ -10893,6 +10940,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     leads?: LeadUpdateManyWithoutOwnerNestedInput
     catalogPurchases?: CatalogPurchasesUpdateManyWithoutOwnerNestedInput
   }
@@ -10908,6 +10956,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     leads?: LeadUncheckedUpdateManyWithoutOwnerNestedInput
     catalogPurchases?: CatalogPurchasesUncheckedUpdateManyWithoutOwnerNestedInput
   }
@@ -10923,6 +10972,7 @@ export namespace Prisma {
     consentIp?: string | null
     advertisingConsent?: boolean
     advertisingConsentedAt?: Date | string | null
+    role?: $Enums.Role
   }
 
   export type UserUpdateManyMutationInput = {
@@ -10936,6 +10986,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -10949,6 +11000,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type LeadCreateInput = {
@@ -11437,6 +11489,13 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type EnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
   export type LeadListRelationFilter = {
     every?: LeadWhereInput
     some?: LeadWhereInput
@@ -11468,6 +11527,7 @@ export namespace Prisma {
     consentIp?: SortOrder
     advertisingConsent?: SortOrder
     advertisingConsentedAt?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -11481,6 +11541,7 @@ export namespace Prisma {
     consentIp?: SortOrder
     advertisingConsent?: SortOrder
     advertisingConsentedAt?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -11494,6 +11555,7 @@ export namespace Prisma {
     consentIp?: SortOrder
     advertisingConsent?: SortOrder
     advertisingConsentedAt?: SortOrder
+    role?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11502,6 +11564,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -11841,6 +11913,10 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type EnumRoleFieldUpdateOperationsInput = {
+    set?: $Enums.Role
+  }
+
   export type LeadUpdateManyWithoutOwnerNestedInput = {
     create?: XOR<LeadCreateWithoutOwnerInput, LeadUncheckedCreateWithoutOwnerInput> | LeadCreateWithoutOwnerInput[] | LeadUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: LeadCreateOrConnectWithoutOwnerInput | LeadCreateOrConnectWithoutOwnerInput[]
@@ -12089,12 +12165,29 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
   export type NestedEnumLeadStatusFilter<$PrismaModel = never> = {
@@ -12295,6 +12388,7 @@ export namespace Prisma {
     consentIp?: string | null
     advertisingConsent?: boolean
     advertisingConsentedAt?: Date | string | null
+    role?: $Enums.Role
     catalogPurchases?: CatalogPurchasesCreateNestedManyWithoutOwnerInput
   }
 
@@ -12309,6 +12403,7 @@ export namespace Prisma {
     consentIp?: string | null
     advertisingConsent?: boolean
     advertisingConsentedAt?: Date | string | null
+    role?: $Enums.Role
     catalogPurchases?: CatalogPurchasesUncheckedCreateNestedManyWithoutOwnerInput
   }
 
@@ -12339,6 +12434,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     catalogPurchases?: CatalogPurchasesUpdateManyWithoutOwnerNestedInput
   }
 
@@ -12353,6 +12449,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     catalogPurchases?: CatalogPurchasesUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
@@ -12367,6 +12464,7 @@ export namespace Prisma {
     consentIp?: string | null
     advertisingConsent?: boolean
     advertisingConsentedAt?: Date | string | null
+    role?: $Enums.Role
     leads?: LeadCreateNestedManyWithoutOwnerInput
   }
 
@@ -12381,6 +12479,7 @@ export namespace Prisma {
     consentIp?: string | null
     advertisingConsent?: boolean
     advertisingConsentedAt?: Date | string | null
+    role?: $Enums.Role
     leads?: LeadUncheckedCreateNestedManyWithoutOwnerInput
   }
 
@@ -12411,6 +12510,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     leads?: LeadUpdateManyWithoutOwnerNestedInput
   }
 
@@ -12425,6 +12525,7 @@ export namespace Prisma {
     consentIp?: NullableStringFieldUpdateOperationsInput | string | null
     advertisingConsent?: BoolFieldUpdateOperationsInput | boolean
     advertisingConsentedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     leads?: LeadUncheckedUpdateManyWithoutOwnerNestedInput
   }
 

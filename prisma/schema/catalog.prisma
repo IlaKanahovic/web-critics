@@ -8,7 +8,7 @@ model Product {
     singlePrice             String   @map("single_price")
     mounthPrice             String   @map("mounth_price")
     previewBg               String   @map("preview_bg")
-    slug                    String
+    slug                    String   @unique
     demoUrl                 String   @map("demp_url")
     categoryDesc            String   @map("category_desc")
     estimation              String

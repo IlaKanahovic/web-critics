@@ -149,7 +149,8 @@ export function ModalAddReview({ isOpen, onClose }: ModalAddReviewProps) {
 
                         <button
                             onClick={onClose}
-                            className="absolute top-5 right-5 text-white/40 hover:text-white transition-colors duration-200 cursor-pointer z-10"
+                            className="absolute top-5 right-5 text-white/40 hover:text-white transition-colors duration-200 cursor-pointer z-10 "
+                            aria-label="Закрыть окно"
                         >
                             <IoClose size={28} />
                         </button>

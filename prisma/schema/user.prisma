@@ -11,8 +11,14 @@ model User {
     advertisingConsentedAt DateTime?
     leads                  Lead[]
     catalogPurchases       CatalogPurchases[]
+    role                   Role               @default(USER)
 
     @@map("users")
+}
+
+enum Role {
+    USER
+    ADMIN
 }
 
 enum LeadStatus {

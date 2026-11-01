@@ -202,7 +202,8 @@ exports.Prisma.UserScalarFieldEnum = {
   consentVersion: 'consentVersion',
   consentIp: 'consentIp',
   advertisingConsent: 'advertisingConsent',
-  advertisingConsentedAt: 'advertisingConsentedAt'
+  advertisingConsentedAt: 'advertisingConsentedAt',
+  role: 'role'
 };
 
 exports.Prisma.LeadScalarFieldEnum = {
@@ -243,6 +244,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Role = exports.$Enums.Role = {
+  USER: 'USER',
+  ADMIN: 'ADMIN'
+};
+
 exports.LeadStatus = exports.$Enums.LeadStatus = {
   NEW: 'NEW',
   IN_PROGRESS: 'IN_PROGRESS',

@@ -1,13 +1,13 @@
 import { prisma } from "../prisma"
 
 interface IProductId {
-    id: string
+    product: string
 }
 
 export const dbCatalogProductId = async (props: IProductId) => {
     const product = await prisma.product.findUnique({
         where: {
-            id: props.id
+            slug: props.product
         }
     })
 

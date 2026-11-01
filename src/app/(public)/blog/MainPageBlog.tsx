@@ -10,9 +10,10 @@ import { useState } from "react"
 
 interface IMainPageBlog {
     articles: Article[] | null
+    title?: string
 }
 
-export function MainPageBlog({ articles }: IMainPageBlog) {
+export function MainPageBlog({ articles, title = "Самое новое"  }: IMainPageBlog) {
     const [searchText, setSearchText] = useState("")
 
     if (!articles) return (
@@ -91,7 +92,7 @@ export function MainPageBlog({ articles }: IMainPageBlog) {
                 </div>
 
                 <h1 className="text-white text-font-space text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-10 md:mb-18">
-                    Самое новое
+                    {title}
                 </h1>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
@@ -111,11 +112,8 @@ export function MainPageBlog({ articles }: IMainPageBlog) {
                             {filteredArticles.map((article: Article) => (
                                 <Link
                                     key={article.id}
-                                    href={{
-                                        pathname: `/blog/${article.slug}`,
-                                        query: { id: article.id }
-                                    }
-                                    }>
+                                    href={`/blog/${article.slug}`}
+                                >
                                     <article className="group relative bg-[#111111] border mt-6 border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-white/25 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
                                         <div className="relative h-56 md:h-64 bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border-b border-white/5 overflow-hidden">
                                             <div

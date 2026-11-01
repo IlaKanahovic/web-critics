@@ -43,10 +43,8 @@ export function LeadForm() {
     ]
 
     const socials = [
-        { Icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-        { Icon: FaEnvelope, href: "mailto:info@site.ru", label: "Email" },
-        { Icon: FaTelegram, href: "https://t.me/username", label: "Telegram" },
-        { Icon: FaWhatsapp, href: "https://wa.me/79000000000", label: "WhatsApp" },
+        { Icon: FaEnvelope, href: "mailto:webcritic.company@gmail.com", label: "Email" },
+        { Icon: FaTelegram, href: "https://t.me/WebCriticBot", label: "Telegram" },
     ]
 
     const steps = [
@@ -149,10 +147,10 @@ export function LeadForm() {
                         <div className="relative rounded-xl bg-[#111111] border border-white/10 shadow-inner shadow-white/5 before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-12 before:h-12 before:bg-white/20 before:rounded-full before:blur-2xl before:pointer-events-none after:absolute after:top-0 after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:h-px after:bg-linear-to-r after:from-transparent after:via-white/30 after:to-transparent after:pointer-events-none transition-all duration-300 hover:shadow-2xl flex flex-col items-center p-6 md:p-8 lg:p-10">
                             <form className="w-full max-w-3xl" onSubmit={handleSubmit} noValidate>
                                 <h1 className="text-white text-font-space text-3xl md:text-3xl lg:text-4xl text-center">
-                                    Есть проблема? Давайте разберёмся
+                                    Есть проблема? Давайте ее решим
                                 </h1>
                                 <p className="text-white/70 text-font-inter text-center text-sm md:text-base mt-2">
-                                    Не обязательно знать, какой именно инструмент вам нужен. Расскажите о задаче — мы разберёмся в ситуации и предложим подходящее решение.
+                                    Не обязательно знать, какой именно инструмент вам нужен. Расскажите о задаче - мы разберёмся в ситуации и предложим подходящее решение.
                                 </p>
 
                                 <div className="mt-8">

@@ -1,10 +1,9 @@
 import { prisma } from "../prisma"
 
-
-export const dbGetProjectById = async (id: string) => {
+export const dbGetProjectById = async (slug: string) => {
     const project = await prisma.case.findUnique({
         where: {
-            id: id
+            slug: slug
         }
     })
 
