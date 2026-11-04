@@ -9,7 +9,7 @@ model Case {
     url            String?
     tasks          String[]
     popups         String[]
-    interesting    String[]
+    clientsObjective String @map("clients_objective")
 
     @@map("cases")
 }

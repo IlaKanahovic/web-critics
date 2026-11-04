@@ -17,6 +17,15 @@ body {
     background-color: #000000;
 }
 
+* {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;    
+}
+
+*::-webkit-scrollbar {
+    display: none;     
+}
+
 .link_nav-header {
   display: flex;
   font-family: var(--font-text);

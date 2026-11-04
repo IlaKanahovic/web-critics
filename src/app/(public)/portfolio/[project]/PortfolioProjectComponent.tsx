@@ -68,6 +68,13 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
                             </a>
 
                             <div>
+                                <h2 className="text-white text-2xl font-semibold">Какая была задача?</h2>
+                                <p className="text-white/80 text-sm mt-2 leading-relaxed">
+                                    {project.clientsObjective}
+                                </p>
+                            </div>
+
+                            <div>
                                 <h2 className="text-white text-2xl font-semibold">Какие велись работы?</h2>
                                 <ul className="mt-5 space-y-3">
                                     {project.tasks.map((i: string) => (
@@ -119,26 +126,6 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
                                         Обсудить решение
                                     </button>
                                 </Link>
-                            </div>
-
-                            <div className="pt-6 border-t border-white/8">
-                                <h3 className="text-white text-xl font-semibold">Может быть интересно</h3>
-                                <ul className="mt-5 space-y-2">
-                                    {project.interesting.map((i) => (
-                                        <li key={i}>
-                                            <Link
-                                                href="#"
-                                                className="group flex items-center gap-3 px-4 py-3 rounded-lg bg-white/3 border border-white/5 hover:bg-white/6 hover:border-white/15 transition-all duration-200"
-                                            >
-                                                <span className="shrink-0 w-2 h-2 rounded-full bg-white/20 group-hover:bg-violet-400/60 transition-colors" />
-                                                <span className="text-white/60 group-hover:text-white text-sm transition-colors">
-                                                    Связанный проект {i}
-                                                </span>
-                                                <IoIosArrowForward className="ml-auto size-3.5 text-white/20 group-hover:text-white/60 transition-all duration-200 group-hover:translate-x-0.5" />
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
                             </div>
                         </div>
                     </div>

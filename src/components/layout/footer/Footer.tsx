@@ -64,7 +64,7 @@ export function Footer() {
                         <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Контакты</h4>
                         <ul className="space-y-3">
                             <li>
-                                <a href="https://t.me/WebCriticBot" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
+                                <a href="https://t.me/ilcloud_dff" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
                                     <FaTelegram className="text-white/30 group-hover:text-white transition-colors duration-200" size={18} />
                                     <span>Telegram</span>
                                 </a>

@@ -145,7 +145,7 @@ exports.Prisma.CaseScalarFieldEnum = {
   url: 'url',
   tasks: 'tasks',
   popups: 'popups',
-  interesting: 'interesting'
+  clientsObjective: 'clientsObjective'
 };
 
 exports.Prisma.ProductScalarFieldEnum = {
@@ -203,7 +203,8 @@ exports.Prisma.UserScalarFieldEnum = {
   consentIp: 'consentIp',
   advertisingConsent: 'advertisingConsent',
   advertisingConsentedAt: 'advertisingConsentedAt',
-  role: 'role'
+  role: 'role',
+  passwordHash: 'passwordHash'
 };
 
 exports.Prisma.LeadScalarFieldEnum = {

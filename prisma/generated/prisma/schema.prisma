@@ -15,17 +15,17 @@ model Article {
 }
 
 model Case {
-  id             String   @id @default(cuid())
-  title          String
-  service        String
-  type           String
-  previewBg      String   @map("preview_bg")
-  previewProject String[] @map("preview_project")
-  slug           String   @unique
-  url            String?
-  tasks          String[]
-  popups         String[]
-  interesting    String[]
+  id               String   @id @default(cuid())
+  title            String
+  service          String
+  type             String
+  previewBg        String   @map("preview_bg")
+  previewProject   String[] @map("preview_project")
+  slug             String   @unique
+  url              String?
+  tasks            String[]
+  popups           String[]
+  clientsObjective String   @map("clients_objective")
 
   @@map("cases")
 }
@@ -101,6 +101,7 @@ model User {
   leads                  Lead[]
   catalogPurchases       CatalogPurchases[]
   role                   Role               @default(USER)
+  passwordHash           String?
 
   @@map("users")
 }

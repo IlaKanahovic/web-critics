@@ -44,7 +44,7 @@ export function LeadForm() {
 
     const socials = [
         { Icon: FaEnvelope, href: "mailto:webcritic.company@gmail.com", label: "Email" },
-        { Icon: FaTelegram, href: "https://t.me/WebCriticBot", label: "Telegram" },
+        { Icon: FaTelegram, href: "https://t.me/ilcloud_dff", label: "Telegram" },
     ]
 
     const steps = [

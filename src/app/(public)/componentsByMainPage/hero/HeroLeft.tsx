@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
 import { FaStar } from "react-icons/fa"
+import type { IProjectsLength } from "../MainPage"
 
-export function HeroLeft() {
+export function HeroLeft({ projectsLength }: IProjectsLength) {
     return (
         <div className="pt-12 md:pt-32">
             <div className="relative p-px rounded-2xl bg-linear-to-r from-[#0a126f] via-[#ffb52b] to-[#6502b6] max-w-max cursor-pointer transition-shadow duration-400 hover:shadow-[0_0_15px_rgba(2,252,239,0.35),0_0_30px_rgba(255,181,43,0.25),0_0_45px_rgba(160,43,254,0.15)]">
@@ -33,10 +34,18 @@ export function HeroLeft() {
             </div>
 
             <div className="flex flex-wrap items-center gap-6 pt-8 text-sm">
-                <div className="flex items-center gap-2 text-white/50">
-                    <span className="text-white/70 font-medium">Более 100</span>
-                    <span>выполненных работ</span>
-                </div>
+                <Link
+                    href="/portfolio"
+                    className="relative z-10 pointer-events-auto group inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 cursor-pointer"
+                    aria-label="Перейти к выполненным работам"
+                >
+                    <span className="text-white/90 font-semibold group-hover:text-white transition-colors duration-300">
+                        Более {projectsLength}
+                    </span>
+                    <span className="text-sm">выполненных работ</span>
+                    <IoIosArrowForward className="size-3.5 text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
+                </Link>
+
                 <div className="hidden sm:block w-px h-5 bg-white/10" />
 
                 <Link

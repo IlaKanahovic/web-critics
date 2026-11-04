@@ -17,7 +17,11 @@ const LightRays = dynamic(() => import('@/components/LightRays'), {
     loading: () => null,
 })
 
-export function MainPage() {
+export interface IProjectsLength {
+    projectsLength: number
+}
+
+export async function MainPage({ projectsLength }: IProjectsLength) {
     return (
         <div className="relative pt-18">
             <div
@@ -76,13 +80,13 @@ export function MainPage() {
                     distortion={0}
                 />
             </div>
-            <div className="mobile-only">
+            <div className="mobile-only">e
                 <HeaderMobile />
             </div>
             <div className="desktop-only">
                 <HeaderDesktop />
             </div>
-            <Hero />
+            <Hero projectsLength={projectsLength}/>
             <OverviewOfServices />
             <AboutMyWork />
             {/* <TeaserCatalog /> */}

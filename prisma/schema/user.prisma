@@ -12,6 +12,7 @@ model User {
     leads                  Lead[]
     catalogPurchases       CatalogPurchases[]
     role                   Role               @default(USER)
+    passwordHash           String?
 
     @@map("users")
 }
@@ -19,13 +20,6 @@ model User {
 enum Role {
     USER
     ADMIN
-}
-
-enum LeadStatus {
-    NEW
-    IN_PROGRESS
-    WON
-    LOST
 }
 
 model Lead {
@@ -42,6 +36,13 @@ model Lead {
 
     @@index([ownerId])
     @@map("leads")
+}
+
+enum LeadStatus {
+    NEW
+    IN_PROGRESS
+    WON
+    LOST
 }
 
 enum PurchaseFormat {

@@ -42,7 +42,7 @@ export async function PortfolioComponent() {
                     </p>
                 </div>
                 <div className="mt-10 md:mt-14">
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                    {/* <div className="flex flex-wrap items-center gap-3 mb-4">
                         <details className="relative group">
                             <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
                                 Услуга: Все
@@ -74,7 +74,7 @@ export async function PortfolioComponent() {
                                 ))}
                             </div>
                         </details>
-                    </div>
+                    </div> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                         {projects.map((project: Case) => (
                             <Link

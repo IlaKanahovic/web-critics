@@ -88,7 +88,7 @@ export default function DocumentsLegal() {
                         Документы
                     </h1>
 
-                    <div className="flex flex-wrap gap-3 mt-8">
+                    {/* <div className="flex flex-wrap gap-3 mt-8">
                         <Link
                             href="/documents/legal"
                             className="px-6 py-3 rounded-full bg-white text-black text-sm font-medium transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.25)]"
@@ -101,7 +101,7 @@ export default function DocumentsLegal() {
                         >
                             Памятки
                         </Link>
-                    </div>
+                    </div> */}
 
                     <div className="mt-16 md:mt-20 space-y-3">
                         {documents.map((doc, idx) => (
