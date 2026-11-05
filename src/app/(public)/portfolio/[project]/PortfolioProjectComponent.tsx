@@ -1,17 +1,47 @@
-import Link from "next/link"
-import { IoIosArrowForward } from "react-icons/io"
+'use client'
+
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { IoIosArrowForward, IoMdClose } from "react-icons/io"
 import { FaCheck, FaCode, FaPaintBrush, FaMobile, FaSearch, FaBullhorn, FaCog, FaRocket } from "react-icons/fa"
 import type { Case } from "../../../../../prisma/generated/prisma"
+
+export const dynamic = 'force-dynamic'
 
 interface IPortfolioProjectComponent {
     project: Case | null
 }
 
 export function PortfolioProjectComponent({ project }: IPortfolioProjectComponent) {
+    const [activeIndex, setActiveIndex] = useState(0)
+    const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+
+    useEffect(() => {
+        if (isLightboxOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isLightboxOpen])
+
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsLightboxOpen(false)
+        }
+        window.addEventListener('keydown', handleEsc)
+        return () => window.removeEventListener('keydown', handleEsc)
+    }, [])
+
     if (!project) return null
 
     const icons = [FaCode, FaPaintBrush, FaMobile, FaSearch, FaBullhorn, FaCog, FaRocket]
     const urlProject = project.url ?? "#"
+
+    const allImages = [project.previewBg, ...(project.previewProject || [])].filter(Boolean)
+    const currentImage = allImages[activeIndex] || null
 
     return (
         <div className="container">
@@ -22,40 +52,51 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
                 </h1>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mt-12">
-                    <div className="lg:col-span-8 space-y-6">
-                        <div className="relative w-full aspect-4/5 rounded-xl bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border border-white/10 overflow-hidden">
-                            <div
-                                className="absolute inset-0 opacity-20"
-                                style={{
-                                    backgroundImage: `
-                                        linear-gradient(rgba(167,139,250,0.15) 1px, transparent 1px),
-                                        linear-gradient(90deg, rgba(167,139,250,0.15) 1px, transparent 1px)
-                                    `,
-                                    backgroundSize: "40px 40px",
-                                }}
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="lg:col-span-8 space-y-4">
+                        <div
+                            className="relative w-full aspect-4/5 rounded-xl bg-[#0a0a0a] border border-white/10 overflow-hidden flex items-center justify-center p-2 group cursor-zoom-in"
+                            onClick={() => currentImage && setIsLightboxOpen(true)}
+                        >
+                            {currentImage ? (
+                                <>
+                                    <img
+                                        src={currentImage}
+                                        alt={`${project.title} - изображение ${activeIndex + 1}`}
+                                        className="w-full h-full object-contain"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                                        <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform duration-300 shadow-2xl">
+                                            <FaSearch className="text-white text-xl" />
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
                                 <span className="text-white/20 text-xs uppercase tracking-widest font-mono">
-                                    Главный превью
+                                    Нет изображения
                                 </span>
-                            </div>
+                            )}
                         </div>
 
-                        <div className="relative w-full aspect-4/5 rounded-xl bg-linear-to-br from-blue-500/10 via-violet-500/5 to-transparent border border-white/10 overflow-hidden">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-white/20 text-xs uppercase tracking-widest font-mono">
-                                    Превью 02
-                                </span>
+                        {allImages.length > 1 && (
+                            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-none">
+                                {allImages.map((img, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setActiveIndex(idx)}
+                                        className={`relative shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 cursor-pointer ${activeIndex === idx
+                                                ? 'border-violet-500 opacity-100 shadow-[0_0_15px_rgba(139,92,246,0.3)]'
+                                                : 'border-white/10 opacity-50 hover:opacity-100 hover:border-white/30'
+                                            }`}
+                                    >
+                                        <img
+                                            src={img}
+                                            alt={`Миниатюра ${idx + 1}`}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </button>
+                                ))}
                             </div>
-                        </div>
-
-                        <div className="relative w-full aspect-4/5 rounded-xl bg-linear-to-br from-violet-500/5 via-blue-500/10 to-transparent border border-white/10 overflow-hidden">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-white/20 text-xs uppercase tracking-widest font-mono">
-                                    Превью 03
-                                </span>
-                            </div>
-                        </div>
+                        )}
                     </div>
 
                     <div className="lg:col-span-4">
@@ -131,6 +172,27 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
                     </div>
                 </div>
             </div>
+
+            {isLightboxOpen && currentImage && (
+                <div
+                    className="fixed inset-0 z-100 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-200"
+                    onClick={() => setIsLightboxOpen(false)}
+                >
+                    <button
+                        className="absolute top-6 right-6 text-white/50 hover:text-white bg-white/5 hover:bg-white/10 rounded-full p-2 transition-all cursor-pointer"
+                        onClick={() => setIsLightboxOpen(false)}
+                    >
+                        <IoMdClose size={28} />
+                    </button>
+
+                    <img
+                        src={currentImage}
+                        alt={`${project.title} - увеличенное изображение`}
+                        className="max-w-full max-h-full object-contain rounded-md shadow-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                </div>
+            )}
         </div>
     )
 }

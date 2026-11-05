@@ -142,7 +142,7 @@ export function AddCaseForm() {
                 </div>
 
                 <div className="md:col-span-2">
-                    <label className="block text-white/70 text-sm mb-1.5">Изображения проекта (ровно 3 файла)</label>
+                    <label className="block text-white/70 text-sm mb-1.5">Изображения проекта (от 3 файлов)</label>
                     <input
                         name="previewProject"
                         type="file"

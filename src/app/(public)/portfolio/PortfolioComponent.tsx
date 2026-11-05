@@ -3,6 +3,7 @@ import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
 import type { Case } from "../../../../prisma/generated/prisma"
 
+export const dynamic = 'force-dynamic'
 
 const services = [
     "Все",
@@ -83,10 +84,12 @@ export async function PortfolioComponent() {
                             >
                                 <div className="group relative rounded-xl bg-[#111111] border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/25 hover:shadow-2xl cursor-pointer">
                                     <div className="relative w-full h-60 bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border-b border-white/5 overflow-hidden">
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-white/20 text-xs uppercase tracking-widest font-mono">
-                                                preview / video
-                                            </span>
+                                        <div className="absolute inset-0">
+                                            <img
+                                                src={project.previewBg}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover"
+                                            />
                                         </div>
                                         <div
                                             className="absolute inset-0 opacity-30"
