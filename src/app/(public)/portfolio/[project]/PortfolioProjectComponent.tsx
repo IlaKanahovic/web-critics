@@ -38,7 +38,6 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
     if (!project) return null
 
     const icons = [FaCode, FaPaintBrush, FaMobile, FaSearch, FaBullhorn, FaCog, FaRocket]
-    const urlProject = project.url ?? "#"
 
     const allImages = [project.previewBg, ...(project.previewProject || [])].filter(Boolean)
     const currentImage = allImages[activeIndex] || null
@@ -84,8 +83,8 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
                                         key={idx}
                                         onClick={() => setActiveIndex(idx)}
                                         className={`relative shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 cursor-pointer ${activeIndex === idx
-                                                ? 'border-violet-500 opacity-100 shadow-[0_0_15px_rgba(139,92,246,0.3)]'
-                                                : 'border-white/10 opacity-50 hover:opacity-100 hover:border-white/30'
+                                            ? 'border-violet-500 opacity-100 shadow-[0_0_15px_rgba(139,92,246,0.3)]'
+                                            : 'border-white/10 opacity-50 hover:opacity-100 hover:border-white/30'
                                             }`}
                                     >
                                         <img
@@ -101,12 +100,16 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
 
                     <div className="lg:col-span-4">
                         <div className="lg:sticky lg:top-24 space-y-8">
-                            <a
-                                href={urlProject}
-                                className="block text-white/50 hover:text-white text-sm font-mono underline underline-offset-4 decoration-white/20 transition-colors"
-                            >
-                                Ссылка на проект
-                            </a>
+                            {project.url && (
+                                <a
+                                    href={project.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-white/50 hover:text-white text-sm font-mono underline underline-offset-4 decoration-white/20 transition-colors"
+                                >
+                                    Ссылка на проект
+                                </a>
+                            )}
 
                             <div>
                                 <h2 className="text-white text-2xl font-semibold">Какая была задача?</h2>
