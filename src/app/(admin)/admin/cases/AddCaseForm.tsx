@@ -23,10 +23,11 @@ export function AddCaseForm() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const form = e.currentTarget
         setIsSubmitting(true)
         setErrors({})
 
-        const formData = new FormData(e.currentTarget)
+        const formData = new FormData(form)
         const previewBgFile = formData.get('previewBg') as File
         const previewProjectFiles = formData.getAll('previewProject') as File[]
 
@@ -65,6 +66,9 @@ export function AddCaseForm() {
                     alert(res.error.message)
                 }
             } else if (res.data) {
+                form.reset()
+                setTasks([''])
+                setPopups([''])
                 router.push('/admin/cases')
                 router.refresh()
             }
@@ -142,7 +146,7 @@ export function AddCaseForm() {
                 </div>
 
                 <div className="md:col-span-2">
-                    <label className="block text-white/70 text-sm mb-1.5">Изображения проекта (от 3 файлов)</label>
+                    <label className="block text-white/70 text-sm mb-1.5">Изображения проекта (от 3 до 25 файлов)</label>
                     <input
                         name="previewProject"
                         type="file"

@@ -29,10 +29,11 @@ export function AddArticleForm() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const form = e.currentTarget
         setIsSubmitting(true)
         setErrors({})
 
-        const formData = new FormData(e.currentTarget)
+        const formData = new FormData(form)
         const avatarFile = formData.get('avatar') as File
         const previewBgFile = formData.get('previewBg') as File
 
@@ -67,6 +68,7 @@ export function AddArticleForm() {
                     alert(res.error.message)
                 }
             } else if (res.data) {
+                form.reset()
                 router.push('/admin/articles')
                 router.refresh()
             }
