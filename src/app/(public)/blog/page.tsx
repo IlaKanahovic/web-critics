@@ -4,6 +4,8 @@ import { MainPageBlog } from "./MainPageBlog";
 import { Footer } from "@/components/layout/footer/Footer";
 import { dbGetArticlesEverything } from "@/lib/db/blog/dbGetArticles";
 
+export const dynamic = 'force-dynamic'
+
 export const letters = [
     { char: "B", top: "6%", left: "4%", size: 420, rotate: -8, delay: 0 },
     { char: "L", top: "18%", left: "76%", size: 360, rotate: 6, delay: 2 },

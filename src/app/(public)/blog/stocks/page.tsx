@@ -5,6 +5,8 @@ import { Footer } from "@/components/layout/footer/Footer";
 import { prisma } from "@/lib/db/prisma";
 import { letters } from "../page";
 
+export const dynamic = 'force-dynamic'
+
 export default async function CasesPage() {
     const rawArticles = await prisma.article.findMany({
         where: { type: 'stocks' },
