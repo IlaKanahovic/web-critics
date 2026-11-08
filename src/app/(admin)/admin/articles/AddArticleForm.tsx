@@ -6,11 +6,11 @@ import type { ArticleInput } from '@/lib/schema/articleSchema'
 import { AddArticle } from '@/lib/actions/admin/article'
 
 const ARTICLE_TYPES = [
-    "Кейсы клиентов",
-    "Бизнес-решения",
-    "Технологии WebCRitic",
-    "Акции",
-    "Руководства"
+    { value: "cases", label: "Кейсы клиентов" },
+    { value: "business-solutions", label: "Бизнес-решения" },
+    { value: "technologies", label: "Технологии WebCRitic" },
+    { value: "stocks", label: "Акции" },
+    { value: "guides", label: "Руководства" }
 ] as const
 
 const fileToBase64 = (file: File): Promise<string> => {
@@ -50,7 +50,7 @@ export function AddArticleForm() {
 
             const payload: ArticleInput = {
                 title: formData.get('title') as string,
-                type: formData.get('type') as typeof ARTICLE_TYPES[number],
+                type: formData.get('type') as any,
                 description: formData.get('description') as string,
                 content: formData.get('content') as string,
                 nameAuthor: formData.get('nameAuthor') as string,
@@ -108,7 +108,9 @@ export function AddArticleForm() {
                         >
                             <option value="" disabled>Выберите тип...</option>
                             {ARTICLE_TYPES.map(t => (
-                                <option key={t} value={t} className="bg-[#111]">{t}</option>
+                                <option key={t.value} value={t.value} className="bg-[#111]">
+                                    {t.label}
+                                </option>
                             ))}
                         </select>
                         <svg className="w-4 h-4 text-white/40 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">

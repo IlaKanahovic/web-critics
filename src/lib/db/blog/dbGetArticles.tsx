@@ -12,6 +12,7 @@ export const dbGetArticlesEverything = async () => {
             date: true,
             readingTime: true,
             previewBg: true,
+            avatar: true
         }
     })
 
@@ -33,6 +34,7 @@ export const dbGetArticlesTechnologies = async () => {
             date: true,
             readingTime: true,
             previewBg: true,
+            avatar: true
         }
     })
 
@@ -54,6 +56,7 @@ export const dbGetArticlesStocks = async () => {
             date: true,
             readingTime: true,
             previewBg: true,
+            avatar: true
         }
     })
 
@@ -75,6 +78,7 @@ export const dbGetArticlesGuides = async () => {
             date: true,
             readingTime: true,
             previewBg: true,
+            avatar: true
         }
     })
 
@@ -96,6 +100,7 @@ export const dbGetArticlesCases = async () => {
             date: true,
             readingTime: true,
             previewBg: true,
+            avatar: true
         }
     })
 
@@ -117,6 +122,7 @@ export const dbGetArticlesBusinessSolutions = async () => {
             date: true,
             readingTime: true,
             previewBg: true,
+            avatar: true
         }
     })
 

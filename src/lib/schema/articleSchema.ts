@@ -2,11 +2,11 @@ import DOMPurify from "isomorphic-dompurify"
 import * as z from "zod"
 
 const articleTypes = [
-    "Кейсы клиентов",
-    "Бизнес-решения",
-    "Технологии WebCRitic",
-    "Акции",
-    "Руководства"
+    "cases",
+    "business-solutions",
+    "technologies",
+    "stocks",
+    "guides"
 ] as const
 
 const sanitizeText = (value: string) => DOMPurify.sanitize(value, {

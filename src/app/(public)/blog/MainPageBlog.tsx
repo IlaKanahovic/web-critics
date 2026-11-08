@@ -13,7 +13,7 @@ interface IMainPageBlog {
     title?: string
 }
 
-export function MainPageBlog({ articles, title = "Самое новое"  }: IMainPageBlog) {
+export function MainPageBlog({ articles, title = "Самое новое" }: IMainPageBlog) {
     const [searchText, setSearchText] = useState("")
 
     if (!articles) return (
@@ -126,10 +126,12 @@ export function MainPageBlog({ articles, title = "Самое новое"  }: IMa
                                                     backgroundSize: "40px 40px",
                                                 }}
                                             />
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-white/15 text-xs uppercase tracking-widest font-mono">
-                                                    {article.previewBg}
-                                                </span>
+                                            <div className="absolute inset-0 w-full h-full">
+                                                <img
+                                                    src={article.previewBg}
+                                                    alt={article.title}
+                                                    className="w-full h-full object-cover"
+                                                />
                                             </div>
 
                                             <span className="absolute bottom-4 right-4 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-sm border border-white/10 text-white/80 text-[10px] uppercase tracking-widest">
@@ -147,8 +149,12 @@ export function MainPageBlog({ articles, title = "Самое новое"  }: IMa
                                             </p>
 
                                             <div className="flex flex-wrap items-center gap-3 mt-6 pt-6 border-t border-white/8">
-                                                <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                                                    <FaUser className="text-white/40 size-3" />
+                                                <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 shrink-0 overflow-hidden relative">
+                                                    <img
+                                                        src={article.avatar}
+                                                        alt={article.nameAuthor}
+                                                        className="absolute inset-0 w-full h-full object-cover"
+                                                    />
                                                 </div>
                                                 <span className="text-white/65 text-xs md:text-sm">{article.nameAuthor}</span>
                                                 <span className="text-white/15 text-xs">·</span>
