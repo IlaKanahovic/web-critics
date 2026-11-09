@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image" // <--- Добавили
 import { FaRegClock, FaSearch, FaUser } from "react-icons/fa"
 import { IoIosArrowForward } from "react-icons/io"
 import type { Article } from "../../../../prisma/generated/prisma"
@@ -135,7 +136,7 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                     <article className="group relative bg-[#111111] border mt-6 border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-white/25 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
                                         <div className="relative h-56 md:h-64 bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border-b border-white/5 overflow-hidden">
                                             <div
-                                                className="absolute inset-0 opacity-25"
+                                                className="absolute inset-0 opacity-25 z-0"
                                                 style={{
                                                     backgroundImage: `
                                                         linear-gradient(rgba(167,139,250,0.15) 1px, transparent 1px),
@@ -144,15 +145,19 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                                     backgroundSize: "40px 40px",
                                                 }}
                                             />
-                                            <div className="absolute inset-0 w-full h-full">
-                                                <img
-                                                    src={article.previewBg}
-                                                    alt={article.title}
-                                                    className="w-full h-full object-cover"
-                                                />
+                                            <div className="absolute inset-0 z-10">
+                                                {article.previewBg && (
+                                                    <Image
+                                                        src={article.previewBg}
+                                                        alt={article.title}
+                                                        fill
+                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                                                        className="object-cover"
+                                                    />
+                                                )}
                                             </div>
 
-                                            <span className="absolute bottom-4 right-4 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-sm border border-white/10 text-white/80 text-[10px] uppercase tracking-widest">
+                                            <span className="absolute bottom-4 right-4 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-sm border border-white/10 text-white/80 text-[10px] uppercase tracking-widest z-20">
                                                 {article.type}
                                             </span>
                                         </div>
@@ -167,12 +172,16 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                             </p>
 
                                             <div className="flex flex-wrap items-center gap-3 mt-6 pt-6 border-t border-white/8">
-                                                <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 shrink-0 overflow-hidden relative">
-                                                    <img
-                                                        src={article.avatar}
-                                                        alt={article.nameAuthor}
-                                                        className="absolute inset-0 w-full h-full object-cover"
-                                                    />
+                                                <div className="relative w-8 h-8 rounded-full bg-white/5 border border-white/10 shrink-0 overflow-hidden">
+                                                    {article.avatar && (
+                                                        <Image
+                                                            src={article.avatar}
+                                                            alt={article.nameAuthor}
+                                                            fill
+                                                            sizes="32px"
+                                                            className="object-cover"
+                                                        />
+                                                    )}
                                                 </div>
                                                 <span className="text-white/65 text-xs md:text-sm">{article.nameAuthor}</span>
                                                 <span className="text-white/15 text-xs">·</span>

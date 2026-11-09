@@ -66,20 +66,12 @@ export const Article = z.object({
         }),
 
     avatar: z
-        .string({ error: 'Загрузите аватар' })
-        .min(1, { message: 'Загрузите аватар' })
-        .max(3_000_000, { message: 'Файл слишком большой' })
-        .refine(validImageDataUrl, {
-            message: 'Допустимы только корректные изображения JPEG, PNG и WebP до 2 МБ'
-        }),
+        .string()
+        .url({ message: 'Некорректная ссылка на аватар' }),
 
     previewBg: z
-        .string({ error: 'Загрузите фоновое изображение' })
-        .min(1, { message: 'Загрузите фоновое изображение' })
-        .max(3_000_000, { message: 'Файл слишком большой' })
-        .refine(validImageDataUrl, {
-            message: 'Допустимы только корректные изображения JPEG, PNG и WebP до 2 МБ'
-        }),
+        .string()
+        .url({ message: 'Некорректная ссылка на фон' }),
 
     nameAuthor: z
         .string()

@@ -1,27 +1,17 @@
 import { dbGetPortfolioProjects } from "@/lib/db/portfolio/dbGetPortfolioProjects"
 import Link from "next/link"
+import Image from "next/image"
 import { IoIosArrowForward } from "react-icons/io"
 import type { Case } from "../../../../prisma/generated/prisma"
 
 export const dynamic = 'force-dynamic'
 
 const services = [
-    "Все",
-    "Веб-разработка",
-    "Автоматизация",
-    "AI",
-    "Аналитика",
-    "Надёжность",
+    "Все", "Веб-разработка", "Автоматизация", "AI", "Аналитика", "Надёжность",
 ]
 
-
 const filters = [
-    "Все",
-    "Сайты",
-    "Веб-приложения",
-    "Магазины",
-    "Боты",
-    "Интеграции",
+    "Все", "Сайты", "Веб-приложения", "Магазины", "Боты", "Интеграции",
 ]
 
 export async function PortfolioComponent() {
@@ -43,56 +33,22 @@ export async function PortfolioComponent() {
                     </p>
                 </div>
                 <div className="mt-10 md:mt-14">
-                    {/* <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <details className="relative group">
-                            <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
-                                Услуга: Все
-                                <svg className="w-3 h-3 ml-1 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </summary>
-                            <div className="absolute left-0 top-full mt-2 z-50 bg-[#111111] border border-white/10 rounded-xl shadow-2xl p-2 min-w-45 backdrop-blur-sm">
-                                {services.map((item) => (
-                                    <div key={item} className="px-3 py-1.5 text-white/80 hover:text-white hover:bg-white/5 rounded-lg text-sm cursor-pointer transition-colors">
-                                        {item}
-                                    </div>
-                                ))}
-                            </div>
-                        </details>
-
-                        <details className="relative group">
-                            <summary className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium cursor-pointer hover:bg-white/10 hover:border-white/30 transition-all duration-300 list-none">
-                                Тип: Все
-                                <svg className="w-3 h-3 ml-1 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </summary>
-                            <div className="absolute left-0 top-full mt-2 z-50 bg-[#111111] border border-white/10 rounded-xl shadow-2xl p-2 min-w-45 backdrop-blur-sm">
-                                {filters.map((item) => (
-                                    <div key={item} className="px-3 py-1.5 text-white/80 hover:text-white hover:bg-white/5 rounded-lg text-sm cursor-pointer transition-colors">
-                                        {item}
-                                    </div>
-                                ))}
-                            </div>
-                        </details>
-                    </div> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                         {projects.map((project: Case) => (
-                            <Link
-                                key={project.id}
-                                href={`/portfolio/${project.slug}`}
-                            >
+                            <Link key={project.id} href={`/portfolio/${project.slug}`}>
                                 <div className="group relative rounded-xl bg-[#111111] border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/25 hover:shadow-2xl cursor-pointer">
                                     <div className="relative w-full h-60 bg-linear-to-br from-violet-500/10 via-blue-500/5 to-transparent border-b border-white/5 overflow-hidden">
-                                        <div className="absolute inset-0">
-                                            <img
-                                                src={project.previewBg}
-                                                alt={project.title}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
+
+                                        <Image
+                                            src={project.previewBg}
+                                            alt={project.title}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            className="object-cover relative z-10"
+                                        />
+
                                         <div
-                                            className="absolute inset-0 opacity-30"
+                                            className="absolute inset-0 opacity-30 z-20 pointer-events-none"
                                             style={{
                                                 backgroundImage: `
                                                     linear-gradient(rgba(167,139,250,0.15) 1px, transparent 1px),
@@ -103,7 +59,7 @@ export async function PortfolioComponent() {
                                         />
                                     </div>
 
-                                    <div className="p-5">
+                                    <div className="p-5 relative z-30">
                                         <h3 className="text-white text-lg font-semibold">{project.title}</h3>
                                         <div className="flex">
                                             <p className="text-white/50 text-sm mt-1 mr-2">{project.service}</p>

@@ -1,9 +1,9 @@
 import Link from "next/link"
+import Image from "next/image" // <--- Добавили
 import { FaRegClock, FaUser } from "react-icons/fa"
 import { IoIosArrowBack } from "react-icons/io"
 import { articleStyleText } from "@/constants/styles/article"
 import { formatContent, type MainArticleComponentProps } from "@/lib/utils/ArticleUtils"
-
 
 export function MainArticleComponent({ article }: MainArticleComponentProps) {
     if (!article) return null
@@ -38,9 +38,15 @@ export function MainArticleComponent({ article }: MainArticleComponentProps) {
 
                         <div className="flex flex-wrap items-center gap-4 mt-8 pb-8 border-b border-white/10">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                                <div className="relative w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
                                     {article.avatar ? (
-                                        <img src={article.avatar} alt={article.nameAuthor} className="w-full h-full object-cover" />
+                                        <Image
+                                            src={article.avatar}
+                                            alt={article.nameAuthor}
+                                            fill
+                                            sizes="40px"
+                                            className="object-cover"
+                                        />
                                     ) : (
                                         <FaUser className="text-white/40 size-4" />
                                     )}
@@ -69,7 +75,7 @@ export function MainArticleComponent({ article }: MainArticleComponentProps) {
                 <div className="max-w-4xl mx-auto mb-14">
                     <div className="relative w-full aspect-21/9 md:aspect-2.5/1 rounded-2xl overflow-hidden border border-white/10 bg-[#111111]">
                         <div
-                            className="absolute inset-0 opacity-25"
+                            className="absolute inset-0 opacity-25 z-0"
                             style={{
                                 backgroundImage: `
                                     linear-gradient(rgba(167,139,250,0.15) 1px, transparent 1px),
@@ -78,12 +84,17 @@ export function MainArticleComponent({ article }: MainArticleComponentProps) {
                                 backgroundSize: "40px 40px",
                             }}
                         />
-                        <div className="absolute inset-0 w-full h-full">
-                            <img
-                                src={article.previewBg}
-                                alt={article.title}
-                                className="w-full h-full object-cover"
-                            />
+                        <div className="absolute inset-0 z-10">
+                            {article.previewBg && (
+                                <Image
+                                    src={article.previewBg}
+                                    alt={article.title}
+                                    fill
+                                    sizes="(max-width: 1024px) 100vw, 896px"
+                                    className="object-cover"
+                                    priority
+                                />
+                            )}
                         </div>
                     </div>
                 </div>

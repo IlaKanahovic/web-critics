@@ -11,6 +11,8 @@
     "contract:emit": "prisma contract emit"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1164.0",
+    "@aws-sdk/s3-request-presigner": "^3.1164.0",
     "@base-ui/react": "^1.7.0",
     "@fontsource-variable/inter": "^5.3.0",
     "@prisma/adapter-pg": "^7.10.0",
@@ -20,6 +22,7 @@
     "@react-three/postprocessing": "^3.1.0",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
+    "browser-image-compression": "^2.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",

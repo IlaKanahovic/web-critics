@@ -47,21 +47,13 @@ export const CaseSchema = z.object({
         .transform(sanitizeText),
 
     previewBg: z
-        .string({ error: 'Загрузите фоновое изображение' })
-        .min(1, { message: 'Загрузите фоновое изображение' })
-        .max(3_000_000, { message: 'Файл слишком большой' })
-        .refine(validImageDataUrl, {
-            message: 'Допустимы только корректные изображения JPEG, PNG и WebP до 2 МБ'
-        }),
+        .string()
+        .url({ message: 'Некорректная ссылка на фон' }),
 
     previewProject: z
-        .array(
-            z.string().refine(validImageDataUrl, {
-                message: 'Допустимы только корректные изображения JPEG, PNG и WebP до 2 МБ'
-            })
-        )
+        .array(z.string().url({ message: 'Некорректная ссылка на картинку' }))
         .min(3, { message: 'Необходимо загрузить минимум 3 изображения проекта' })
-        .max(25, { message: 'Максимум 25 изображений проекта' }),
+        .max(10, { message: 'Максимум 10 изображений проекта' }),
 
     url: z
         .union([
