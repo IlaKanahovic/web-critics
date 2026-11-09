@@ -3,10 +3,9 @@
 import Link from "next/link"
 import { FaRegClock, FaSearch, FaUser } from "react-icons/fa"
 import { IoIosArrowForward } from "react-icons/io"
-import { categories } from "@/constants/blogCategories/categoryBlog"
 import type { Article } from "../../../../prisma/generated/prisma"
 import { searchWithinTheTextBlog } from "@/lib/utils/SearchWithinTheTextBlog"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 
 interface IMainPageBlog {
     articles: Article[] | null
@@ -15,6 +14,25 @@ interface IMainPageBlog {
 
 export function MainPageBlog({ articles, title = "Самое новое" }: IMainPageBlog) {
     const [searchText, setSearchText] = useState("")
+
+    const counts = useMemo(() => {
+        const result: Record<string, number> = { all: articles?.length || 0 }
+        if (articles) {
+            for (const article of articles) {
+                result[article.type] = (result[article.type] || 0) + 1
+            }
+        }
+        return result
+    }, [articles])
+
+    const categories = [
+        { num: "01", label: "Самое новое", href: "/blog", type: "all" },
+        { num: "02", label: "Кейсы клиентов", href: "/blog/cases", type: "cases" },
+        { num: "03", label: "Бизнес-решения", href: "/blog/business-solutions", type: "business-solutions" },
+        { num: "04", label: "Технологии WebCRitic", href: "/blog/technologies", type: "technologies" },
+        { num: "05", label: "Акции", href: "/blog/stocks", type: "stocks" },
+        { num: "06", label: "Руководства", href: "/blog/guides", type: "guides" },
+    ]
 
     if (!articles) return (
         <div className="container">
@@ -64,7 +82,7 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                                 </span>
 
                                                 <span className="text-white/25 group-hover:text-white/60 text-xs font-mono transition-colors duration-500">
-                                                    {String(cat.count).padStart(2, "0")}
+                                                    {String(counts[cat.type] || 0).padStart(2, "0")}
                                                 </span>
 
                                                 <IoIosArrowForward className="size-3 text-white/15 group-hover:text-white/60 group-hover:translate-x-0.5 transition-all duration-500" />
@@ -201,7 +219,7 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                                 </span>
 
                                                 <span className="text-white/25 group-hover:text-white/60 text-xs font-mono transition-colors duration-500">
-                                                    {String(cat.count).padStart(2, "0")}
+                                                    {String(counts[cat.type] || 0).padStart(2, "0")}
                                                 </span>
 
                                                 <IoIosArrowForward className="size-3 text-white/15 group-hover:text-white/60 group-hover:translate-x-0.5 transition-all duration-500" />

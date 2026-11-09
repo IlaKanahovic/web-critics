@@ -78,10 +78,12 @@ export function MainArticleComponent({ article }: MainArticleComponentProps) {
                                 backgroundSize: "40px 40px",
                             }}
                         />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-white/20 text-sm uppercase tracking-widest font-mono">
-                                {article.previewBg}
-                            </span>
+                        <div className="absolute inset-0 w-full h-full">
+                            <img
+                                src={article.previewBg}
+                                alt={article.title}
+                                className="w-full h-full object-cover"
+                            />
                         </div>
                     </div>
                 </div>
