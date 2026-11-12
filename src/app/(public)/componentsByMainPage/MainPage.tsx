@@ -10,12 +10,7 @@ import { ContactsMainPage } from "./contactsMainPage/ContactsMainPage"
 import { Footer } from "@/components/layout/footer/Footer"
 import { TeaserCatalog } from "./teaserByCatalog/TeaserCatalog"
 import { ApplicationLaunch } from "./applicationToLaunch/ApplicationLaunch"
-import dynamic from "next/dynamic"
-
-const LightRays = dynamic(() => import('@/components/LightRays'), {
-    ssr: false,
-    loading: () => null,
-})
+import { DesktopOnlyLightRays } from "@/lib/utils/DesktopOnlyLightRays"
 
 export interface IProjectsLength {
     projectsLength: number
@@ -54,39 +49,14 @@ export async function MainPage({ projectsLength }: IProjectsLength) {
                     zIndex: -1,
                 }}
             />
-            <div
-                className="desktop-only"
-                style={{
-                    width: '100%',
-                    height: '1024px',
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    zIndex: 0,
-                }}
-            >
-                <LightRays
-                    raysOrigin="top-center"
-                    raysColor="#ffffff"
-                    raysSpeed={0.8}
-                    lightSpread={0.5}
-                    rayLength={0.5}
-                    pulsating={false}
-                    fadeDistance={1}
-                    saturation={0.8}
-                    followMouse
-                    mouseInfluence={0.05}
-                    noiseAmount={0.1}
-                    distortion={0}
-                />
-            </div>
+            <DesktopOnlyLightRays />
             <div className="mobile-only">e
                 <HeaderMobile />
             </div>
             <div className="desktop-only">
                 <HeaderDesktop />
             </div>
-            <Hero projectsLength={projectsLength}/>
+            <Hero projectsLength={projectsLength} />
             <OverviewOfServices />
             <AboutMyWork />
             {/* <TeaserCatalog /> */}
