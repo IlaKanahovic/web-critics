@@ -11,9 +11,9 @@ export function ApplicationLaunch() {
                     <span className="text-white/40 text-xs uppercase tracking-widest">Процесс</span>
                     <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
                 </div>
-                <h1 className="text-white text-center text-font-space text-4xl md:text-5xl">
+                <h2 className="text-white text-center text-font-space text-4xl md:text-5xl">
                     От проблемы до работающего решения
-                </h1>
+                </h2>
                 <div className="mobile-only">
                     <ApplicationToLaunchMobile />
                 </div>

@@ -9,9 +9,9 @@ export function AboutMyWork() {
                     <span className="text-white/40 text-xs uppercase tracking-widest">Принципы</span>
                     <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
                 </div>
-                <h1 className="text-white text-center text-font-space text-4xl md:text-5xl">
+                <h2 className="text-white text-center text-font-space text-4xl md:text-5xl">
                     Разбираемся в проблеме. Создаём решение.
-                </h1>
+                </h2>
                 <div className="mt-14 grid grid-cols-1 md:grid-cols-4 gap-y-8 md:gap-y-0 md:divide-x divide-white/10">
                     <div className="group flex flex-col items-start px-4 text-left">
                         <div className="flex items-center gap-3 mb-4">

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import CompressionPlugin from "compression-webpack-plugin";
 
 const nextConfig: NextConfig = {
+  turbopack: {},
   compress: true,
   experimental: {
     serverActions: {
