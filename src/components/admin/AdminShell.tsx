@@ -23,7 +23,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
             <aside className={`fixed inset-y-0 left-0 z-50 w-64 border-r border-[#222] bg-[#050505] flex flex-col shrink-0 transform transition-transform duration-300 md:relative md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="p-6 border-b border-[#222] flex items-center justify-between">
                     <Link href="/" target="_blank" className="text-white tracking-widest uppercase text-sm hover:text-violet-400 transition-colors">
-                        WebCRitic / Admin
+                        WebCRitics / Admin
                     </Link>
                     <button onClick={closeMenu} className="md:hidden text-[#888] hover:text-white transition-colors">
                         <X size={20} />
@@ -58,7 +58,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
             <div className="flex-1 flex flex-col overflow-hidden relative">
                 <header className="md:hidden flex items-center justify-between p-4 border-b border-[#222] bg-[#050505] z-30 shrink-0">
                     <Link href="/" target="_blank" className="text-white tracking-widest uppercase text-sm">
-                        WebCRitic / Admin
+                        WebCRitics / Admin
                     </Link>
                     <button onClick={() => setIsOpen(true)} className="text-[#888] hover:text-white transition-colors p-1">
                         <Menu size={24} />

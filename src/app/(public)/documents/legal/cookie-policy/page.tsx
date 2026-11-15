@@ -27,7 +27,7 @@ export default function CookiePolicy() {
                         <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">1. Введение</h2>
 
                         <p className="mb-3">
-                            1.1. Настоящая Политика использования файлов cookie (далее — «Политика») объясняет, как WebCRitic (далее — «Мы», «Наш», «Компания») использует файлы cookie и аналогичные технологии на нашем веб-сайте{' '}
+                            1.1. Настоящая Политика использования файлов cookie (далее — «Политика») объясняет, как WebCRitics (далее — «Мы», «Наш», «Компания») использует файлы cookie и аналогичные технологии на нашем веб-сайте{' '}
                             <a href="https://web-critics.ru" className="text-white/90 hover:text-white underline underline-offset-2">
                                 https://web-critics.ru
                             </a>
@@ -144,10 +144,10 @@ export default function CookiePolicy() {
                             <li>
                                 Email:{' '}
                                 <a
-                                    href="mailto:webcritic.company@gmail.com"
+                                    href="mailto:WebCRitics.company@gmail.com"
                                     className="text-white/90 hover:text-white underline underline-offset-2"
                                 >
-                                    webcritic.company@gmail.com
+                                    WebCRitics.company@gmail.com
                                 </a>
                             </li>
                             <li>Телефон: +7 924 996 51 91</li>

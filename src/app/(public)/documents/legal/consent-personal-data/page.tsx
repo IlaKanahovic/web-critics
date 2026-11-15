@@ -40,8 +40,8 @@ export default function ConsernPersonalData() {
                         </p>
                         <p>
                             1.5 Контакты для обращений субъектов персональных данных: e-mail:{' '}
-                            <a href="mailto:webcritic.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
-                                webcritic.company@gmail.com
+                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
+                                WebCRitics.company@gmail.com
                             </a>
                             ; телефон: +7 (924) 996-51-91; почтовый адрес: 664541, Иркутская обл, Иркутский р-н, с Оек, ул Коммунистическая, д 79. Политика действует с 2026-10-29 и размещается в свободном доступе на сайте.
                         </p>
@@ -219,8 +219,8 @@ export default function ConsernPersonalData() {
                         </p>
                         <p className="mb-3">
                             8.3 Пользователь вправе в любой момент отозвать согласие на обработку персональных данных, направив обращение на{' '}
-                            <a href="mailto:webcritic.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
-                                webcritic.company@gmail.com
+                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
+                                WebCRitics.company@gmail.com
                             </a>
                             . После отзыва Оператор прекращает обработку, за исключением случаев, когда обработка допускается без согласия субъекта в силу закона или иных правовых оснований.
                         </p>
@@ -291,8 +291,8 @@ export default function ConsernPersonalData() {
                         </p>
                         <p className="mb-3">
                             10.3 Субъект персональных данных вправе направить запрос о предоставлении информации по обработке его персональных данных и/или заявления об уточнении, блокировании, удалении. Запрос может быть направлен на адрес электронной почты{' '}
-                            <a href="mailto:webcritic.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
-                                webcritic.company@gmail.com
+                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
+                                WebCRitics.company@gmail.com
                             </a>{' '}
                             или по почтовому адресу: 664541, Иркутская обл, Иркутский р-н, с Оек, ул Коммунистическая, д 79.
                         </p>

@@ -35,7 +35,7 @@ export function BrandIdentityLogo({
                 <span
                     className={`font-bold tracking-tight text-[#d7d7d7] ${textSize} logo-web`}
                 >
-                    CRitic
+                    CRitics
                 </span>
             </div>
         </div>

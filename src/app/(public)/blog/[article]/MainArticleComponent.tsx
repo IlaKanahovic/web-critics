@@ -4,6 +4,7 @@ import { FaRegClock, FaUser } from "react-icons/fa"
 import { IoIosArrowBack } from "react-icons/io"
 import { articleStyleText } from "@/constants/styles/article"
 import { formatContent, type MainArticleComponentProps } from "@/lib/utils/ArticleUtils"
+import { ARTICLE_TYPE_LABELS } from "@/constants/blogCategories/articles"
 
 export function MainArticleComponent({ article }: MainArticleComponentProps) {
     if (!article) return null
@@ -29,7 +30,7 @@ export function MainArticleComponent({ article }: MainArticleComponentProps) {
 
                     <div className="mb-8">
                         <span className="inline-block px-3 py-1 rounded-full border border-white/15 bg-white/5 text-white/60 text-[10px] uppercase tracking-widest mb-6">
-                            {article.type}
+                            {ARTICLE_TYPE_LABELS[article.type] ?? article.type}
                         </span>
 
                         <h1 className="text-white text-font-space text-4xl md:text-5xl lg:text-6xl leading-[1.15]">

@@ -7,11 +7,21 @@ import { IoIosArrowForward } from "react-icons/io"
 import type { Article } from "../../../../prisma/generated/prisma"
 import { searchWithinTheTextBlog } from "@/lib/utils/SearchWithinTheTextBlog"
 import { useState, useMemo } from "react"
+import { ARTICLE_TYPE_LABELS } from "@/constants/blogCategories/articles"
 
 interface IMainPageBlog {
     articles: Article[] | null
     title?: string
 }
+
+const ARTICLE_TYPES = [
+    { value: "cases", label: "Кейсы клиентов" },
+    { value: "business-solutions", label: "Бизнес-решения" },
+    { value: "technologies", label: "Технологии WebCRitics" },
+    { value: "stocks", label: "Акции" },
+    { value: "guides", label: "Руководства" }
+] as const
+
 
 export function MainPageBlog({ articles, title = "Самое новое" }: IMainPageBlog) {
     const [searchText, setSearchText] = useState("")
@@ -30,7 +40,7 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
         { num: "01", label: "Самое новое", href: "/blog", type: "all" },
         { num: "02", label: "Кейсы клиентов", href: "/blog/cases", type: "cases" },
         { num: "03", label: "Бизнес-решения", href: "/blog/business-solutions", type: "business-solutions" },
-        { num: "04", label: "Технологии WebCRitic", href: "/blog/technologies", type: "technologies" },
+        { num: "04", label: "Технологии WebCRitics", href: "/blog/technologies", type: "technologies" },
         { num: "05", label: "Акции", href: "/blog/stocks", type: "stocks" },
         { num: "06", label: "Руководства", href: "/blog/guides", type: "guides" },
     ]
@@ -158,7 +168,7 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                             </div>
 
                                             <span className="absolute bottom-4 right-4 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-sm border border-white/10 text-white/80 text-[10px] uppercase tracking-widest z-20">
-                                                {article.type}
+                                                {ARTICLE_TYPE_LABELS[article.type] ?? article.type}
                                             </span>
                                         </div>
 

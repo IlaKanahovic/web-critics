@@ -9,7 +9,7 @@ import { uploadFileToS3 } from '@/lib/actions/admin/upload'
 const ARTICLE_TYPES = [
     { value: "cases", label: "Кейсы клиентов" },
     { value: "business-solutions", label: "Бизнес-решения" },
-    { value: "technologies", label: "Технологии WebCRitic" },
+    { value: "technologies", label: "Технологии WebCRitics" },
     { value: "stocks", label: "Акции" },
     { value: "guides", label: "Руководства" }
 ] as const

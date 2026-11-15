@@ -85,7 +85,7 @@ export function ToolsAbout() {
 
                 <div className="max-w-4xl mx-auto text-center">
                     <p className="text-white text-font-space text-3xl md:text-4xl lg:text-5xl leading-[1.15]">
-                        Технологии в WEBCRITIC - не витрина.
+                        Технологии в WebCRitics - не витрина.
                     </p>
                     <p className="text-white/40 text-font-space text-3xl md:text-4xl lg:text-5xl leading-[1.15] mt-2">
                         Это набор инструментов, из которого выбирается необходимый.

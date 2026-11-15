@@ -25,7 +25,7 @@ export function HeroReviews() {
                 </div>
 
                 <p className="text-white/55 text-font-inter text-base md:text-lg leading-relaxed mt-8 max-w-2xl">
-                    Здесь собраны впечатления клиентов о сотрудничестве с WebCRitic.
+                    Здесь собраны впечатления клиентов о сотрудничестве с WebCRitics.
                 </p>
 
                 <div className="mt-10">

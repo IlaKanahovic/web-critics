@@ -21,13 +21,13 @@ export function PersonalizedApproachAbout() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-20 md:mb-28">
                     <div className="lg:col-span-5">
                         <h2 className="text-white text-font-space text-4xl md:text-5xl lg:text-6xl leading-[1.1]">
-                            На раннем этапе WEBCRITIC - это действительно личная работа
+                            На раннем этапе WebCRitics - это действительно личная работа
                         </h2>
                     </div>
 
                     <div className="lg:col-span-7 space-y-5">
                         <p className="text-white/85 text-font-inter text-base md:text-lg leading-relaxed">
-                            На первом этапе WEBCRITIC я лично участвую в каждом проекте - от первого разговора до реализации.
+                            На первом этапе WebCRitics я лично участвую в каждом проекте - от первого разговора до реализации.
                         </p>
                         <p className="text-white/55 text-font-inter text-base md:text-lg leading-relaxed">
                             Здесь нечего скрывать: студия находится в начале пути, и это не мешает делать работу качественно - наоборот, задаёт правильный тон на будущее.
@@ -70,7 +70,7 @@ export function PersonalizedApproachAbout() {
                         </div>
 
                         <p className="relative text-white text-xl md:text-2xl lg:text-3xl leading-[1.3] font-medium max-w-3xl">
-                            WEBCRITIC сейчас строится не вокруг большого штата специалистов, а вокруг накопления собственной практики.
+                            WebCRitics сейчас строится не вокруг большого штата специалистов, а вокруг накопления собственной практики.
                         </p>
 
                         <div className="relative mt-10 pt-8 border-t border-white/10">

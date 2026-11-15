@@ -70,7 +70,7 @@ export function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:webcritic.company@gmail.com" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
+                                <a href="mailto:WebCRitics.company@gmail.com" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
                                     <HiOutlineMail className="text-white/30 group-hover:text-white transition-colors duration-200" size={20} />
                                     <span>Email</span>
                                 </a>
@@ -86,7 +86,7 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-white/5 py-7 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-white/40 text-xs">WebCRitic: Ваша проблема — наше решение!</p>
+                    <p className="text-white/40 text-xs">WebCRitics: Ваша проблема — наше решение!</p>
                     <div className="flex gap-6 text-xs">
                         <a href="/documents/legal/consent-personal-data" className="text-white/30 hover:text-white transition-colors duration-200">Политика конфиденциальности</a>
                         {/* <a href="/documents/legal/offer" className="text-white/30 hover:text-white transition-colors duration-200">Оферта</a> */}

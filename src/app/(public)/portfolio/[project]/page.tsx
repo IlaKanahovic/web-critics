@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ project: 
 
     return {
         title: projectSlug.title,
-        description: `Кейс из портфолио WebCRitic: ${projectSlug.title}. Услуга: ${projectSlug.service}`,
+        description: `Кейс из портфолио WebCRitics: ${projectSlug.title}. Услуга: ${projectSlug.service}`,
     }
 }
 

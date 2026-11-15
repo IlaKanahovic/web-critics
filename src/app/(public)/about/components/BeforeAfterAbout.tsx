@@ -125,7 +125,7 @@ export function BeforeAfterAbout() {
                 <div className="max-w-4xl mx-auto">
                     <div className="relative pl-8 md:pl-12 border-l-2 border-violet-400/40">
                         <p className="text-white text-2xl md:text-3xl lg:text-4xl font-space leading-[1.2]">
-                            Мы не хотим заранее решить, какой должна стать WEBCRITIC.
+                            Мы не хотим заранее решить, какой должна стать WebCRitics.
                         </p>
                         <p className="text-white/50 text-2xl md:text-3xl lg:text-4xl font-space leading-[1.2] mt-3">
                             Мы хотим построить её на основе реальных задач, которые действительно приходится решать.

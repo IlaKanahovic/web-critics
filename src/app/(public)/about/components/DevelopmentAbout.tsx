@@ -79,7 +79,7 @@ export function DevelopmentAbout() {
                     <div className="lg:col-span-7">
                         <div className="pl-6 border-l-2 border-violet-400/40">
                             <p className="text-white text-font-inter text-lg md:text-xl leading-[1.4]">
-                                Но каталог не должен определять, что WEBCRITIC умеет делать.
+                                Но каталог не должен определять, что WebCRitics умеет делать.
                             </p>
                         </div>
                     </div>

@@ -42,10 +42,10 @@ export default function MarketingConsern() {
                     <p>
                         Согласие необязательно для покупки и не связано с другими согласиями. Отказаться от рассылки можно в любой момент по ссылке «Отписаться» в каждом письме или направив письмо на{' '}
                         <a
-                            href="mailto:webcritic.company@gmail.com"
+                            href="mailto:WebCRitics.company@gmail.com"
                             className="text-white/90 hover:text-white underline underline-offset-2"
                         >
-                            webcritic.company@gmail.com
+                            WebCRitics.company@gmail.com
                         </a>
                         .
                     </p>

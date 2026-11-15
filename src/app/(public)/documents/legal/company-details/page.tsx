@@ -50,10 +50,10 @@ export default function CompanyDetails() {
                             </dt>
                             <dd>
                                 <a
-                                    href="mailto:webcritic.company@gmail.com"
+                                    href="mailto:WebCRitics.company@gmail.com"
                                     className="text-white/90 hover:text-white underline underline-offset-2"
                                 >
-                                    webcritic.company@gmail.com
+                                    WebCRitics.company@gmail.com
                                 </a>
                             </dd>
                         </div>

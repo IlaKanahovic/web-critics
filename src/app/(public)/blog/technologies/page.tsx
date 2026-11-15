@@ -41,7 +41,7 @@ export default async function CasesPage() {
                 <div className="desktop-only">
                     <HeaderDesktop />
                 </div>
-                <MainPageBlog articles={articles} title="Технологии WebCRitic" />
+                <MainPageBlog articles={articles} title="Технологии WebCRitics" />
                 <Footer />
             </div>
         </div>

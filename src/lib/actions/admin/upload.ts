@@ -15,7 +15,7 @@ export async function uploadFileToS3(formData: FormData) {
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
 
     const command = new PutObjectCommand({
-        Bucket: "webcritic",
+        Bucket: "WebCRitics",
         Key: fileName,
         Body: buffer,
         ContentType: file.type,
@@ -23,5 +23,5 @@ export async function uploadFileToS3(formData: FormData) {
 
     await s3Client.send(command);
 
-    return `https://storage.yandexcloud.net/webcritic/${fileName}`;
+    return `https://storage.yandexcloud.net/WebCRitics/${fileName}`;
 }

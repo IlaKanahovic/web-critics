@@ -35,21 +35,21 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
 export const metadata: Metadata = {
   metadataBase: new URL('https://web-critics.ru'),
   title: {
-    default: 'WebCRitics - Разработка сайтов и IT-решений для бизнеса',
-    template: '%s | WebCRitics',
+    default: 'WebCRiticss - Разработка сайтов и IT-решений для бизнеса',
+    template: '%s | WebCRiticss',
   },
   description: 'Находим, что мешает вашему бизнесу расти, и создаём цифровое решение под конкретную задачу.',
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
     url: 'https://web-critics.ru',
-    siteName: 'WebCRitics',
+    siteName: 'WebCRiticss',
     images: [
       {
         url: '/img/avatar.png',
         width: 1200,
         height: 630,
-        alt: 'WebCRitics: Ваша проблема - наше решение!',
+        alt: 'WebCRiticss: Ваша проблема - наше решение!',
       },
     ],
   },
@@ -86,7 +86,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'WebCRitic',
+              name: 'WebCRitics',
               url: 'https://web-critics.ru',
               logo: 'https://web-critics.ru/img/avatar.png',
             }),
