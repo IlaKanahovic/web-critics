@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Image from "next/image" // <--- Добавили
+import Image from "next/image"
 import { FaRegClock, FaUser } from "react-icons/fa"
 import { IoIosArrowBack } from "react-icons/io"
 import { articleStyleText } from "@/constants/styles/article"
@@ -42,7 +42,7 @@ export function MainArticleComponent({ article }: MainArticleComponentProps) {
                                     {article.avatar ? (
                                         <Image
                                             src={article.avatar}
-                                            alt={article.nameAuthor}
+                                            alt={article.nameAuthor || ''}
                                             fill
                                             sizes="40px"
                                             className="object-cover"

@@ -176,7 +176,7 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                                     {article.avatar && (
                                                         <Image
                                                             src={article.avatar}
-                                                            alt={article.nameAuthor}
+                                                            alt={article.nameAuthor || ''}
                                                             fill
                                                             sizes="32px"
                                                             className="object-cover"
