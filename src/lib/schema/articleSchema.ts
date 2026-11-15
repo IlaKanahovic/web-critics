@@ -67,19 +67,24 @@ export const Article = z.object({
 
     avatar: z
         .string()
-        .url({ message: 'Некорректная ссылка на аватар' }),
-
-    previewBg: z
-        .string()
-        .url({ message: 'Некорректная ссылка на фон' }),
+        .url({ message: 'Некорректная ссылка на аватар' })
+        .optional()
+        .nullable()
+        .or(z.literal('')),
 
     nameAuthor: z
         .string()
         .max(200)
-        .transform(sanitizeText)
-        .refine((v) => v.split(/\s+/).filter(Boolean).length >= 2, {
+        .transform((v) => v ? sanitizeText(v) : v)
+        .refine((v) => !v || v.split(/\s+/).filter(Boolean).length >= 2, {
             message: 'Поле должно содержать минимум два слова (Имя Фамилия)'
-        }),
+        })
+        .optional()
+        .nullable(),
+
+    previewBg: z
+        .string()
+        .url({ message: 'Некорректная ссылка на фон' }),
 
     readingTime: z
         .coerce

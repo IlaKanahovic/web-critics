@@ -5,8 +5,8 @@ model Article {
     title       String
     description String
     previewBg   String   @map("preview_bg")
-    avatar      String
-    nameAuthor  String   @map("name_author")
+    avatar      String?
+    nameAuthor  String?  @map("name_author")
     date        DateTime
     readingTime String   @map("reading_time")
     content     String

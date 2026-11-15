@@ -5,8 +5,8 @@ model Article {
   title       String
   description String
   previewBg   String   @map("preview_bg")
-  avatar      String
-  nameAuthor  String   @map("name_author")
+  avatar      String?
+  nameAuthor  String?  @map("name_author")
   date        DateTime
   readingTime String   @map("reading_time")
   content     String
@@ -111,13 +111,6 @@ enum Role {
   ADMIN
 }
 
-enum LeadStatus {
-  NEW
-  IN_PROGRESS
-  WON
-  LOST
-}
-
 model Lead {
   id          String     @id @default(cuid())
   budgetFrom  Int        @map("budget_from")
@@ -132,6 +125,13 @@ model Lead {
 
   @@index([ownerId])
   @@map("leads")
+}
+
+enum LeadStatus {
+  NEW
+  IN_PROGRESS
+  WON
+  LOST
 }
 
 enum PurchaseFormat {
