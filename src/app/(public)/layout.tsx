@@ -35,21 +35,21 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
 export const metadata: Metadata = {
   metadataBase: new URL('https://web-critics.ru'),
   title: {
-    default: 'WebCRiticss - Разработка сайтов и IT-решений для бизнеса',
-    template: '%s | WebCRiticss',
+    default: 'WebCRitics - Разработка сайтов и IT-решений для бизнеса',
+    template: '%s | WebCRitics',
   },
   description: 'Находим, что мешает вашему бизнесу расти, и создаём цифровое решение под конкретную задачу.',
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
     url: 'https://web-critics.ru',
-    siteName: 'WebCRiticss',
+    siteName: 'WebCRitics',
     images: [
       {
         url: '/img/avatar.png',
         width: 1200,
         height: 630,
-        alt: 'WebCRiticss: Ваша проблема - наше решение!',
+        alt: 'WebCRitics: Ваша проблема - наше решение!',
       },
     ],
   },

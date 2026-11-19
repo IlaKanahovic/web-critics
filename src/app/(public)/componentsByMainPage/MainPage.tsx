@@ -45,7 +45,7 @@ export async function MainPage({ projectsLength }: IProjectsLength) {
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                    background: "radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.03) 0%, transparent 70%)",
+                    background: "radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.03) 100%, transparent 100%)",
                     zIndex: -1,
                 }}
             />

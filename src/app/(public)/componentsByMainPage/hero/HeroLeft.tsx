@@ -21,20 +21,20 @@ export function HeroLeft({ projectsLength }: IProjectsLength) {
                 и создаём цифровое решение под конкретную задачу.
             </h2>
             <div className="flex flex-wrap items-center gap-6 pt-8">
-                <Link href="/catalog">
-                    <button className="button-main-styles">
-                        Каталог
-                    </button>
-                </Link>
                 <Link href="/contacts">
                     <button className="text-font-inter text-[#a1a4a5] text-lg md:text-xl duration-300 hover:text-white cursor-pointer button-main-styles">
                         Анализ вашей проблемы
                     </button>
                 </Link>
+                <Link href="/portfolio">
+                    <button className="button-main-styles">
+                        Портфолио
+                    </button>
+                </Link>
             </div>
 
             <div className="flex flex-wrap items-center gap-6 pt-8 text-sm">
-                <Link
+                {/* <Link
                     href="/portfolio"
                     className="relative z-10 pointer-events-auto group inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 cursor-pointer"
                     aria-label="Перейти к выполненным работам"
@@ -46,7 +46,7 @@ export function HeroLeft({ projectsLength }: IProjectsLength) {
                     <IoIosArrowForward className="size-3.5 text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
                 </Link>
 
-                <div className="hidden sm:block w-px h-5 bg-white/10" />
+                <div className="hidden sm:block w-px h-5 bg-white/10" /> */}
 
                 <Link
                     href="/reviews"
