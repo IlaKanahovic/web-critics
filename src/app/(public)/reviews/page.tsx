@@ -6,18 +6,20 @@ import { HeroReviews } from "./components/HeroReviews";
 import { SummaryReviews } from "./components/SummaryReviews";
 import { ReviewsList } from "./components/ReviewsList";
 import { CTAreviews } from "./components/CTAreviews";
+import { ReviewsModalStyles } from "./components/ReviewsModalStyles";
 import { dbGetReviewsAll } from "@/lib/db/review/dbGetReviewsAll"
+import type { CSSProperties } from "react";
 
 export const dynamic = 'force-dynamic'
 
 export default async function Reviews() {
     const stars = [
-        { top: "6%", right: "8%", size: 320, opacity: 0.06, delay: 0, rotate: -8, position: "right" },
-        { top: "14%", left: "10%", size: 200, opacity: 0.05, delay: 1.5, rotate: 6, position: "left" },
-        { top: "38%", right: "14%", size: 260, opacity: 0.05, delay: 3, rotate: -4, position: "right" },
-        { top: "52%", left: "6%", size: 340, opacity: 0.06, delay: 0.8, rotate: 5, position: "left" },
-        { top: "76%", right: "10%", size: 220, opacity: 0.05, delay: 2.2, rotate: -6, position: "right" },
-        { top: "90%", left: "18%", size: 280, opacity: 0.06, delay: 1.2, rotate: 4, position: "left" },
+        { top: "6%", right: "8%", size: 320, opacity: 0.06, lightOpacity: 0.14, delay: 0, rotate: -8, position: "right" },
+        { top: "14%", left: "10%", size: 200, opacity: 0.05, lightOpacity: 0.12, delay: 1.5, rotate: 6, position: "left" },
+        { top: "38%", right: "14%", size: 260, opacity: 0.05, lightOpacity: 0.12, delay: 3, rotate: -4, position: "right" },
+        { top: "52%", left: "6%", size: 340, opacity: 0.06, lightOpacity: 0.14, delay: 0.8, rotate: 5, position: "left" },
+        { top: "76%", right: "10%", size: 220, opacity: 0.05, lightOpacity: 0.12, delay: 2.2, rotate: -6, position: "right" },
+        { top: "90%", left: "18%", size: 280, opacity: 0.06, lightOpacity: 0.14, delay: 1.2, rotate: 4, position: "left" },
     ]
 
     const rawReviews = await dbGetReviewsAll()
@@ -44,22 +46,10 @@ export default async function Reviews() {
     })
 
     return (
-        <div className="relative min-h-screen overflow-hidden" style={{ isolation: "isolate" }}>
+        <div className="reviews-page relative min-h-screen overflow-hidden light:bg-canvas" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background:
-                            "radial-gradient(ellipse at 50% 30%, #131318 0%, #0a0a10 45%, #050505 100%)",
-                    }}
-                />
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background:
-                            "radial-gradient(ellipse at 50% 40%, rgba(250, 204, 21, 0.05) 0%, transparent 55%)",
-                    }}
-                />
+                <div className="absolute inset-0 reviews-base" />
+                <div className="absolute inset-0 reviews-center-glow" />
                 <div className="hidden md:block">
                     {stars.map((star, i) => (
                         <div
@@ -70,10 +60,11 @@ export default async function Reviews() {
                                 left: star.position === "left" ? star.left : "auto",
                                 right: star.position === "right" ? star.right : "auto",
                                 fontSize: `${star.size}px`,
-                                opacity: star.opacity,
+                                opacity: `var(--reviews-star-opacity, ${star.opacity})`,
+                                "--reviews-star-light-opacity": star.lightOpacity,
                                 animationDelay: `${star.delay}s`,
                                 transform: `rotate(${star.rotate}deg)`,
-                            }}
+                            } as CSSProperties}
                         >
                             <FaStar />
                         </div>
@@ -86,9 +77,10 @@ export default async function Reviews() {
                             top: "8%",
                             right: "5%",
                             fontSize: "140px",
-                            opacity: 0.07,
+                            opacity: "var(--reviews-star-opacity, 0.07)",
+                            "--reviews-star-light-opacity": 0.15,
                             transform: "rotate(-8deg)",
-                        }}
+                        } as CSSProperties}
                     >
                         <FaStar />
                     </div>
@@ -98,10 +90,11 @@ export default async function Reviews() {
                             top: "55%",
                             left: "4%",
                             fontSize: "160px",
-                            opacity: 0.06,
+                            opacity: "var(--reviews-star-opacity, 0.06)",
+                            "--reviews-star-light-opacity": 0.13,
                             transform: "rotate(6deg)",
                             animationDelay: "2s",
-                        }}
+                        } as CSSProperties}
                     >
                         <FaStar />
                     </div>
@@ -111,20 +104,16 @@ export default async function Reviews() {
                             bottom: "8%",
                             right: "8%",
                             fontSize: "120px",
-                            opacity: 0.07,
+                            opacity: "var(--reviews-star-opacity, 0.07)",
+                            "--reviews-star-light-opacity": 0.15,
                             transform: "rotate(-4deg)",
                             animationDelay: "4s",
-                        }}
+                        } as CSSProperties}
                     >
                         <FaStar />
                     </div>
                 </div>
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background: "radial-gradient(ellipse at 50% 45%, transparent 40%, #050505 95%)",
-                    }}
-                />
+                <div className="absolute inset-0 reviews-vignette" />
             </div>
             <style>{`
                 @keyframes reviewsStarFloat {
@@ -150,7 +139,30 @@ export default async function Reviews() {
                 .reviews-star-mobile {
                     animation: reviewsStarFloatMobile 14s ease-in-out infinite;
                 }
+                .reviews-base {
+                    background: radial-gradient(ellipse at 50% 30%, #131318 0%, #0a0a10 45%, #050505 100%);
+                }
+                .reviews-center-glow {
+                    background: radial-gradient(ellipse at 50% 40%, rgba(250, 204, 21, 0.05) 0%, transparent 55%);
+                }
+                .reviews-vignette {
+                    background: radial-gradient(ellipse at 50% 45%, transparent 40%, #050505 95%);
+                }
+                .light .reviews-base {
+                    background: radial-gradient(ellipse at 50% 30%, #F5F6F2 0%, #F1F3F6 45%, var(--color-canvas) 100%);
+                }
+                .light .reviews-center-glow {
+                    background: radial-gradient(ellipse at 50% 40%, rgba(250, 204, 21, 0.12) 0%, transparent 55%);
+                }
+                .light .reviews-vignette {
+                    background: radial-gradient(ellipse at 50% 45%, transparent 40%, var(--color-canvas) 95%);
+                }
+                .light :is(.reviews-star, .reviews-star-mobile) {
+                    --reviews-star-opacity: var(--reviews-star-light-opacity);
+                    color: #eab308;
+                }
             `}</style>
+            <ReviewsModalStyles />
 
             <div className="relative z-10 pt-18">
                 <div className="mobile-only">

@@ -4,7 +4,7 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 
 export default function ConsernPersonalData() {
     return (
-        <div className="relative z-10 pt-30">
+        <div className="relative z-10 min-h-screen pt-30 light:bg-canvas">
             <div className="mobile-only">
                 <HeaderMobile />
             </div>
@@ -13,18 +13,18 @@ export default function ConsernPersonalData() {
             </div>
 
             <main className="container pt-30 md:pt-42 pb-24">
-                <article className="max-w-3xl mx-auto text-white/75 text-font-inter text-sm md:text-base leading-relaxed">
+                <article className="max-w-3xl mx-auto text-white/75 light:text-ink-secondary text-font-inter text-sm md:text-base leading-relaxed">
 
-                    <h1 className="text-white text-font-space text-3xl md:text-4xl lg:text-5xl mb-10">
+                    <h1 className="text-white light:text-ink text-font-space text-3xl md:text-4xl lg:text-5xl mb-10">
                         Политика конфиденциальности
                     </h1>
 
-                    <p className="text-white/50 text-xs md:text-sm mb-10">
+                    <p className="text-white/50 light:text-ink-muted text-xs md:text-sm mb-10">
                         Действует с 29 октября 2026 года. Актуальная редакция размещена на сайте web-critics.ru.
                     </p>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">1. Общие положения</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">1. Общие положения</h2>
 
                         <p className="mb-3">
                             1.1 Настоящая Политика в отношении обработки персональных данных (далее — «Политика») определяет порядок и условия обработки персональных данных Самозанятый Канахович Илья Александрович (ИНН: 384900802148, адрес: 664541, Иркутская обл, Иркутский р-н, с Оек, ул Коммунистическая, д 79) и в отношении пользователей сайта: web-critics.ru.
@@ -40,7 +40,7 @@ export default function ConsernPersonalData() {
                         </p>
                         <p>
                             1.5 Контакты для обращений субъектов персональных данных: e-mail:{' '}
-                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
+                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2">
                                 WebCRitics.company@gmail.com
                             </a>
                             ; телефон: +7 (924) 996-51-91; почтовый адрес: 664541, Иркутская обл, Иркутский р-н, с Оек, ул Коммунистическая, д 79. Политика действует с 2026-10-29 и размещается в свободном доступе на сайте.
@@ -48,7 +48,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">2. Основные понятия, используемые в Политике</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">2. Основные понятия, используемые в Политике</h2>
 
                         <p className="mb-3">
                             2.1 Автоматизированная обработка персональных данных — обработка персональных данных с помощью средств вычислительной техники.
@@ -95,7 +95,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">3. Основные права и обязанности Оператора</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">3. Основные права и обязанности Оператора</h2>
 
                         <p className="mb-2">3.1 Оператор имеет право:</p>
                         <ul className="list-disc pl-5 space-y-2 mb-4">
@@ -118,7 +118,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">4. Основные права и обязанности субъектов персональных данных</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">4. Основные права и обязанности субъектов персональных данных</h2>
 
                         <p className="mb-2">4.1 Субъекты персональных данных имеют право:</p>
                         <ul className="list-disc pl-5 space-y-2 mb-4">
@@ -142,7 +142,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">5. Цели сбора и обработки персональных данных</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">5. Цели сбора и обработки персональных данных</h2>
                         <ul className="list-disc pl-5 space-y-2">
                             <li>5.1 Поддержка пользователей и обработка обращений.</li>
                             <li>5.2 Обеспечение функционирования и безопасности сайта/приложения.</li>
@@ -154,7 +154,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">6. Правовые основания обработки персональных данных</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">6. Правовые основания обработки персональных данных</h2>
 
                         <p className="mb-3">
                             6.1 Для цели «Поддержка пользователей и обработка обращений» правовыми основаниями являются: договор/оферта; 126-ФЗ (запись разговоров при информировании); согласие (если требуется).
@@ -177,13 +177,13 @@ export default function ConsernPersonalData() {
                         <p className="mb-3">
                             6.7 Также правовыми основаниями могут являться уставные документы оператора, локальные нормативные акты, а также заключённые с субъектами договоры и/или выданные ими согласия (в случаях, предусмотренных законодательством).
                         </p>
-                        <p className="text-white/55 italic">
+                        <p className="text-white/55 light:text-ink-muted italic">
                             Примечание: Федеральный закон № 152-ФЗ «О персональных данных» устанавливает общие требования к обработке персональных данных и сам по себе не является правовым основанием для обработки.
                         </p>
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">7. Объём и категории обрабатываемых персональных данных; категории субъектов</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">7. Объём и категории обрабатываемых персональных данных; категории субъектов</h2>
 
                         <p className="mb-3">
                             7.1 По цели «Поддержка пользователей и обработка обращений» могут обрабатываться следующие категории данных: ФИО, контакты, содержимое обращений/звонков/чатов, записи звонков, метаданные тикетов, платёжные/заказные данные при необходимости.
@@ -209,7 +209,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">8. Порядок и условия обработки персональных данных</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">8. Порядок и условия обработки персональных данных</h2>
 
                         <p className="mb-3">
                             8.1 Обработка персональных данных осуществляется на основании согласия Пользователя на обработку его персональных данных, если иное не предусмотрено законодательством Российской Федерации.
@@ -219,7 +219,7 @@ export default function ConsernPersonalData() {
                         </p>
                         <p className="mb-3">
                             8.3 Пользователь вправе в любой момент отозвать согласие на обработку персональных данных, направив обращение на{' '}
-                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
+                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2">
                                 WebCRitics.company@gmail.com
                             </a>
                             . После отзыва Оператор прекращает обработку, за исключением случаев, когда обработка допускается без согласия субъекта в силу закона или иных правовых оснований.
@@ -256,7 +256,7 @@ export default function ConsernPersonalData() {
                         </p>
                         <p className="mb-3">
                             8.14 На сайте могут использоваться файлы cookie для обеспечения корректной работы сервисов и улучшения пользовательского опыта. Подробнее в{' '}
-                            <a href="/documents/legal/cookie-policy" className="text-white/90 hover:text-white underline underline-offset-2">
+                            <a href="/documents/legal/cookie-policy" className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2">
                                 Политике использования файлов cookie
                             </a>
                             .
@@ -270,7 +270,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">9. Меры по обеспечению защиты персональных данных</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">9. Меры по обеспечению защиты персональных данных</h2>
 
                         <p className="mb-3">
                             9.1 Оператор принимает необходимые правовые, организационные и технические меры для защиты персональных данных Пользователей от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, предоставления, распространения, а также от иных неправомерных действий.
@@ -281,7 +281,7 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">10. Актуализация, исправление, удаление и уничтожение персональных данных; ответы на запросы субъектов</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">10. Актуализация, исправление, удаление и уничтожение персональных данных; ответы на запросы субъектов</h2>
 
                         <p className="mb-3">
                             10.1 При подтверждении факта неточности персональных данных или неправомерности их обработки оператор актуализирует данные и/или прекращает обработку.
@@ -291,7 +291,7 @@ export default function ConsernPersonalData() {
                         </p>
                         <p className="mb-3">
                             10.3 Субъект персональных данных вправе направить запрос о предоставлении информации по обработке его персональных данных и/или заявления об уточнении, блокировании, удалении. Запрос может быть направлен на адрес электронной почты{' '}
-                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 hover:text-white underline underline-offset-2">
+                            <a href="mailto:WebCRitics.company@gmail.com" className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2">
                                 WebCRitics.company@gmail.com
                             </a>{' '}
                             или по почтовому адресу: 664541, Иркутская обл, Иркутский р-н, с Оек, ул Коммунистическая, д 79.
@@ -305,14 +305,14 @@ export default function ConsernPersonalData() {
                     </section>
 
                     <section className="mt-10">
-                        <h2 className="text-white text-font-space text-xl md:text-2xl mb-4">11. Обновление политики</h2>
+                        <h2 className="text-white light:text-ink text-font-space text-xl md:text-2xl mb-4">11. Обновление политики</h2>
 
                         <p className="mb-3">
                             11.1 Настоящая Политика подлежит пересмотру и обновлению в случае изменений в законодательстве Российской Федерации, применимых нормативных актах, а также по решению Оператора.
                         </p>
                         <p className="mb-3">
                             11.2 Актуальная редакция Политики всегда доступна на сайте Оператора{' '}
-                            <a href="https://web-critics.ru" className="text-white/90 hover:text-white underline underline-offset-2">
+                            <a href="https://web-critics.ru" className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2">
                                 web-critics.ru
                             </a>
                             .

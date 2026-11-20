@@ -5,23 +5,23 @@ export function TaskToFinishedWebSite() {
         <div className="container">
             <div className="pt-20 md:pt-32">
                 <div className="mb-10 md:mb-16 flex items-center gap-4">
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
-                    <span className="text-white/40 text-xs uppercase tracking-widest">Этапы</span>
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
+                    <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-widest">Этапы</span>
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
                     <div className="lg:col-span-5">
-                        <h2 className="text-white text-font-space text-4xl md:text-5xl lg:text-6xl leading-tight">
+                        <h2 className="text-white light:text-ink text-font-space text-4xl md:text-5xl lg:text-6xl leading-tight">
                             Разбираемся в задаче до того, как начинаем разработку
                         </h2>
                     </div>
 
                     <div className="lg:col-span-7 space-y-5">
-                        <p className="text-white/80 text-font-inter text-lg md:text-xl leading-relaxed">
+                        <p className="text-white/80 light:text-ink text-font-inter text-lg md:text-xl leading-relaxed">
                             Мы не начинаем проект с открытия редактора и сборки первого экрана. Сначала нужно понять, зачем бизнесу сайт, кто им будет пользоваться, что сейчас не работает и каким должен быть результат.
                         </p>
-                        <p className="text-white/60 text-font-inter text-base md:text-lg leading-relaxed">
+                        <p className="text-white/60 light:text-ink-secondary text-font-inter text-base md:text-lg leading-relaxed">
                             Чем лучше мы понимаем задачу на старте, тем меньше вероятность получить сайт, который технически работает, но не приносит нужного результата.
                         </p>
                     </div>
@@ -31,19 +31,19 @@ export function TaskToFinishedWebSite() {
                     {stagesWebDevelopmentSites.map((stage, i) => (
                         <div key={i} className="group relative">
                             <div className="flex items-center gap-4 mb-5">
-                                <div className="relative w-12 h-12 rounded-full bg-[#050505] border border-white/15 flex items-center justify-center transition-all duration-300 group-hover:border-white/40 shrink-0">
-                                    <span className="relative text-white/50 font-mono text-sm group-hover:text-white transition-colors duration-300">
+                                <div className="relative w-12 h-12 rounded-full bg-[#050505] light:bg-white border border-white/15 light:border-line flex items-center justify-center transition-all duration-300 group-hover:border-white/40 light:group-hover:border-accent/40 shrink-0">
+                                    <span className="relative text-white/50 light:text-ink-secondary font-mono text-sm group-hover:text-white light:group-hover:text-accent-hover transition-colors duration-300">
                                         {stage.num}
                                     </span>
                                 </div>
 
-                                <div className="flex-1 h-px bg-linear-to-r from-white/15 to-transparent" />
+                                <div className="flex-1 h-px bg-linear-to-r from-white/15 light:from-line to-transparent" />
                             </div>
 
-                            <h3 className="text-white text-xl md:text-2xl font-semibold leading-snug">
+                            <h3 className="text-white light:text-ink text-xl md:text-2xl font-semibold leading-snug">
                                 {stage.title}
                             </h3>
-                            <p className="text-white/50 text-sm leading-relaxed mt-3 group-hover:text-white/70 transition-colors duration-300">
+                            <p className="text-white/50 light:text-ink-secondary text-sm leading-relaxed mt-3 group-hover:text-white/70 light:group-hover:text-ink transition-colors duration-300">
                                 {stage.desc}
                             </p>
                         </div>
@@ -51,10 +51,10 @@ export function TaskToFinishedWebSite() {
                 </div>
 
                 <div className="mt-20 md:mt-28 max-w-2xl mx-auto text-center">
-                    <p className="text-white/70 text-font-inter text-base md:text-lg leading-relaxed">
+                    <p className="text-white/70 light:text-ink-secondary text-font-inter text-base md:text-lg leading-relaxed">
                         На этом работа не обязательно заканчивается.
                     </p>
-                    <p className="text-white/50 text-font-inter text-sm md:text-base leading-relaxed mt-3">
+                    <p className="text-white/50 light:text-ink-secondary text-font-inter text-sm md:text-base leading-relaxed mt-3">
                         Если сайт развивается вместе с бизнесом, мы можем продолжать работу над ним: добавлять функциональность, подключать новые сервисы, анализировать результаты и улучшать отдельные части продукта.
                     </p>
                 </div>

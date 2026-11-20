@@ -4,7 +4,7 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 
 export default function CompanyDetails() {
     return (
-        <div className="relative z-10 pt-30">
+        <div className="relative z-10 min-h-screen pt-30 light:bg-canvas">
             <div className="mobile-only">
                 <HeaderMobile />
             </div>
@@ -13,45 +13,45 @@ export default function CompanyDetails() {
             </div>
 
             <main className="container pt-30 md:pt-42 pb-24">
-                <article className="max-w-3xl mx-auto text-white/75 text-font-inter text-sm md:text-base leading-relaxed">
+                <article className="max-w-3xl mx-auto text-white/75 light:text-ink-secondary text-font-inter text-sm md:text-base leading-relaxed">
 
-                    <h1 className="text-white text-font-space text-3xl md:text-4xl lg:text-5xl mb-10">
+                    <h1 className="text-white light:text-ink text-font-space text-3xl md:text-4xl lg:text-5xl mb-10">
                         Реквизиты компании
                     </h1>
 
                     <dl className="space-y-4">
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                            <dt className="text-white/50 text-xs uppercase tracking-wider sm:w-44 shrink-0">
+                            <dt className="text-white/50 light:text-ink-muted text-xs uppercase tracking-wider sm:w-44 shrink-0">
                                 ФИО
                             </dt>
-                            <dd className="text-white">Канахович Илья Александрович</dd>
+                            <dd className="text-white light:text-ink">Канахович Илья Александрович</dd>
                         </div>
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                            <dt className="text-white/50 text-xs uppercase tracking-wider sm:w-44 shrink-0">
+                            <dt className="text-white/50 light:text-ink-muted text-xs uppercase tracking-wider sm:w-44 shrink-0">
                                 ИНН
                             </dt>
-                            <dd className="text-white">384900802148</dd>
+                            <dd className="text-white light:text-ink">384900802148</dd>
                         </div>
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                            <dt className="text-white/50 text-xs uppercase tracking-wider sm:w-44 shrink-0">
+                            <dt className="text-white/50 light:text-ink-muted text-xs uppercase tracking-wider sm:w-44 shrink-0">
                                 Статус
                             </dt>
-                            <dd className="text-white">
+                            <dd className="text-white light:text-ink">
                                 Самозанятый (Плательщик налога на профессиональный доход)
                             </dd>
                         </div>
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                            <dt className="text-white/50 text-xs uppercase tracking-wider sm:w-44 shrink-0">
+                            <dt className="text-white/50 light:text-ink-muted text-xs uppercase tracking-wider sm:w-44 shrink-0">
                                 Email для связи
                             </dt>
                             <dd>
                                 <a
                                     href="mailto:WebCRitics.company@gmail.com"
-                                    className="text-white/90 hover:text-white underline underline-offset-2"
+                                    className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2"
                                 >
                                     WebCRitics.company@gmail.com
                                 </a>
@@ -59,13 +59,13 @@ export default function CompanyDetails() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                            <dt className="text-white/50 text-xs uppercase tracking-wider sm:w-44 shrink-0">
+                            <dt className="text-white/50 light:text-ink-muted text-xs uppercase tracking-wider sm:w-44 shrink-0">
                                 Телефон
                             </dt>
                             <dd>
                                 <a
                                     href="tel:+79249965191"
-                                    className="text-white/90 hover:text-white underline underline-offset-2"
+                                    className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2"
                                 >
                                     +7 (924) 996 51-91
                                 </a>
@@ -73,7 +73,7 @@ export default function CompanyDetails() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                            <dt className="text-white/50 text-xs uppercase tracking-wider sm:w-44 shrink-0">
+                            <dt className="text-white/50 light:text-ink-muted text-xs uppercase tracking-wider sm:w-44 shrink-0">
                                 ОГРНИП
                             </dt>
                             <dd>
@@ -82,7 +82,7 @@ export default function CompanyDetails() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                            <dt className="text-white/50 text-xs uppercase tracking-wider sm:w-44 shrink-0">
+                            <dt className="text-white/50 light:text-ink-muted text-xs uppercase tracking-wider sm:w-44 shrink-0">
                                 НДС
                             </dt>
                             <dd>

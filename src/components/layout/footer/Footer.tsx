@@ -4,10 +4,10 @@ import { HiOutlineMail } from 'react-icons/hi'
 
 export function Footer() {
     return (
-        <footer className="text-white/60 text-sm pt-12">
+        <footer className="text-white/60 light:text-ink-secondary text-sm pt-12">
             <div className="relative w-full h-px overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent" />
-                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent blur-xl" />
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 light:via-line to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 light:via-line/50 to-transparent blur-xl" />
             </div>
 
             <div className="container px-4 md:px-0">
@@ -17,26 +17,26 @@ export function Footer() {
                             <BrandIdentityLogo />
                             <div className="flex items-center gap-2 mt-2">
                                 <span className="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                                <span className="text-white/40 text-xs">Все разработанные сайты работают</span>
+                                <span className="text-white/40 light:text-ink-muted text-xs">Все разработанные сайты работают</span>
                             </div>
                         </div>
                         <ul className="space-y-2.5">
-                            <li><a href="/" className="hover:text-white transition-colors duration-200">Главная</a></li>
+                            <li><a href="/" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Главная</a></li>
                             {/* <li><a href="/catalog" className="hover:text-white transition-colors duration-200">Каталог</a></li> */}
-                            <li><a href="/portfolio" className="hover:text-white transition-colors duration-200">Кейсы</a></li>
-                            <li><a href="/#services" className="hover:text-white transition-colors duration-200">Услуги</a></li>
-                            <li><a href="/contacts" className="hover:text-white transition-colors duration-200">Контакты</a></li>
+                            <li><a href="/portfolio" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Кейсы</a></li>
+                            <li><a href="/#services" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Услуги</a></li>
+                            <li><a href="/contacts" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Контакты</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Услуги</h4>
+                        <h4 className="text-white/30 light:text-ink-muted text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Услуги</h4>
                         <ul className="space-y-2.5">
-                            <li><a href="/services/web-development" className="hover:text-white transition-colors duration-200">Веб-разработка</a></li>
-                            <li><a href="/services/automation" className="hover:text-white transition-colors duration-200">Автоматизация</a></li>
-                            <li><a href="/services/growth-analytics" className="hover:text-white transition-colors duration-200">Рост и аналитика</a></li>
-                            <li><a href="/services/ai" className="hover:text-white transition-colors duration-200">AI</a></li>
-                            <li><a href="/services/reliability" className="hover:text-white transition-colors duration-200">Надёжность и масштабирование</a></li>
+                            <li><a href="/services/web-development" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Веб-разработка</a></li>
+                            <li><a href="/services/automation" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Автоматизация</a></li>
+                            <li><a href="/services/growth-analytics" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Рост и аналитика</a></li>
+                            <li><a href="/services/ai" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">AI</a></li>
+                            <li><a href="/services/reliability" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Надёжность и масштабирование</a></li>
                         </ul>
                     </div>
 
@@ -50,34 +50,34 @@ export function Footer() {
                     </div> */}
 
                     <div>
-                        <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Компания</h4>
+                        <h4 className="text-white/30 light:text-ink-muted text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Компания</h4>
                         <ul className="space-y-2.5">
-                            <li><a href="/about" className="hover:text-white transition-colors duration-200">О студии</a></li>
-                            <li><a href="/reviews" className="hover:text-white transition-colors duration-200">Отзывы</a></li>
-                            <li><a href="/portfolio" className="hover:text-white transition-colors duration-200">Портфолио</a></li>
-                            <li><a href="/blog" className="hover:text-white transition-colors duration-200">Блог</a></li>
-                            <li><a href="/documents/legal" className="hover:text-white transition-colors duration-200">Документы и памятки</a></li>
+                            <li><a href="/about" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">О студии</a></li>
+                            <li><a href="/reviews" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Отзывы</a></li>
+                            <li><a href="/portfolio" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Портфолио</a></li>
+                            <li><a href="/blog" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Блог</a></li>
+                            <li><a href="/documents/legal" className="hover:text-white light:hover:text-accent-hover transition-colors duration-200">Документы и памятки</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="text-white/30 text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Контакты</h4>
+                        <h4 className="text-white/30 light:text-ink-muted text-[10px] uppercase tracking-[0.15em] mb-5 font-medium">Контакты</h4>
                         <ul className="space-y-3">
                             <li>
-                                <a href="https://t.me/ilcloud_dff" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
-                                    <FaTelegram className="text-white/30 group-hover:text-white transition-colors duration-200" size={18} />
+                                <a href="https://t.me/ilcloud_dff" className="group flex items-center gap-3 hover:text-white light:hover:text-accent-hover transition-colors duration-200">
+                                    <FaTelegram className="text-white/30 light:text-ink-muted group-hover:text-white light:group-hover:text-accent-hover transition-colors duration-200" size={18} />
                                     <span>Telegram</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:WebCRitics.company@gmail.com" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
-                                    <HiOutlineMail className="text-white/30 group-hover:text-white transition-colors duration-200" size={20} />
+                                <a href="mailto:WebCRitics.company@gmail.com" className="group flex items-center gap-3 hover:text-white light:hover:text-accent-hover transition-colors duration-200">
+                                    <HiOutlineMail className="text-white/30 light:text-ink-muted group-hover:text-white light:group-hover:text-accent-hover transition-colors duration-200" size={20} />
                                     <span>Email</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="tel:+79249965191" className="group flex items-center gap-3 hover:text-white transition-colors duration-200">
-                                    <FaPhoneAlt className="text-white/30 group-hover:text-white transition-colors duration-200" size={16} />
+                                <a href="tel:+79249965191" className="group flex items-center gap-3 hover:text-white light:hover:text-accent-hover transition-colors duration-200">
+                                    <FaPhoneAlt className="text-white/30 light:text-ink-muted group-hover:text-white light:group-hover:text-accent-hover transition-colors duration-200" size={16} />
                                     <span>+7 (924) 996 51-91</span>
                                 </a>
                             </li>
@@ -85,10 +85,10 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/5 py-7 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-white/40 text-xs">WebCRitics: Ваша проблема — наше решение!</p>
+                <div className="border-t border-white/5 light:border-line py-7 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-white/40 light:text-ink-muted text-xs">WebCRitics: Ваша проблема — наше решение!</p>
                     <div className="flex gap-6 text-xs">
-                        <a href="/documents/legal/consent-personal-data" className="text-white/30 hover:text-white transition-colors duration-200">Политика конфиденциальности</a>
+                        <a href="/documents/legal/consent-personal-data" className="text-white/30 light:text-ink-muted hover:text-white light:hover:text-accent-hover transition-colors duration-200">Политика конфиденциальности</a>
                         {/* <a href="/documents/legal/offer" className="text-white/30 hover:text-white transition-colors duration-200">Оферта</a> */}
                     </div>
                 </div>

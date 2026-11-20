@@ -1,5 +1,5 @@
 
-const cardStyle = "relative rounded-xl w-full transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden bg-gradient-to-b from-[#111111] to-black before:absolute before:inset-0 before:rounded-xl before:p-[1px] before:bg-gradient-to-b before:from-white/10 before:to-transparent before:pointer-events-none [&>*]:relative [&>*]:rounded-xl"
+const cardStyle = "relative rounded-xl w-full transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden bg-linear-to-b from-[#111111] to-black before:absolute before:inset-0 before:rounded-xl before:p-px before:bg-linear-to-b before:from-white/10 before:to-transparent before:pointer-events-none *:relative *:rounded-xl"
 
 export function Portfolio() {
     return (

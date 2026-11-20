@@ -37,7 +37,7 @@ export function HeaderBurgerMenu(props: Props) {
                             }
             `}
                     >
-                        <RxHamburgerMenu className="text-white size-8" />
+                        <RxHamburgerMenu className="text-white light:text-ink size-8" />
                     </div>
                     <div
                         className={`
@@ -49,7 +49,7 @@ export function HeaderBurgerMenu(props: Props) {
                             }
             `}
                     >
-                        <IoClose className="text-white size-8" />
+                        <IoClose className="text-white light:text-ink size-8" />
                     </div>
                 </div>
             </div>

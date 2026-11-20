@@ -3,16 +3,17 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
 import { FaEnvelope, FaPhone, FaTelegram, FaWhatsapp, FaMapMarkerAlt, FaCommentDots, FaPaperPlane } from "react-icons/fa"
 import { ContactsForm } from "./components/ContactsForm"
 import { Footer } from "@/components/layout/footer/Footer"
+import type { CSSProperties } from "react"
 
 const nodes = [
-    { Icon: FaEnvelope, x: 12, y: 22, size: 32, color: "#a78bfa", delay: 0 },
-    { Icon: FaPhone, x: 28, y: 40, size: 26, color: "#7aa2ff", delay: 0.8 },
-    { Icon: FaTelegram, x: 82, y: 28, size: 30, color: "#a78bfa", delay: 1.6 },
-    { Icon: FaWhatsapp, x: 68, y: 58, size: 28, color: "#7aa2ff", delay: 2.4 },
-    { Icon: FaMapMarkerAlt, x: 18, y: 72, size: 30, color: "#a78bfa", delay: 0.4 },
-    { Icon: FaCommentDots, x: 88, y: 78, size: 26, color: "#c4b5fd", delay: 2 },
-    { Icon: FaPaperPlane, x: 50, y: 88, size: 32, color: "#7aa2ff", delay: 1.2 },
-    { Icon: FaEnvelope, x: 50, y: 14, size: 24, color: "#c4b5fd", delay: 3 },
+    { Icon: FaEnvelope, x: 12, y: 22, size: 32, color: "#a78bfa", lightColor: "#7c3aed", delay: 0 },
+    { Icon: FaPhone, x: 28, y: 40, size: 26, color: "#7aa2ff", lightColor: "#2563eb", delay: 0.8 },
+    { Icon: FaTelegram, x: 82, y: 28, size: 30, color: "#a78bfa", lightColor: "#7c3aed", delay: 1.6 },
+    { Icon: FaWhatsapp, x: 68, y: 58, size: 28, color: "#7aa2ff", lightColor: "#2563eb", delay: 2.4 },
+    { Icon: FaMapMarkerAlt, x: 18, y: 72, size: 30, color: "#a78bfa", lightColor: "#7c3aed", delay: 0.4 },
+    { Icon: FaCommentDots, x: 88, y: 78, size: 26, color: "#c4b5fd", lightColor: "#8b5cf6", delay: 2 },
+    { Icon: FaPaperPlane, x: 50, y: 88, size: 32, color: "#7aa2ff", lightColor: "#2563eb", delay: 1.2 },
+    { Icon: FaEnvelope, x: 50, y: 14, size: 24, color: "#c4b5fd", lightColor: "#8b5cf6", delay: 3 },
 ]
 
 const links: [number, number][] = [
@@ -23,7 +24,7 @@ const links: [number, number][] = [
 
 export default function Contacts() {
     return (
-        <div className="relative min-h-screen bg-[#050505] overflow-hidden" style={{ isolation: "isolate" }}>
+        <div className="relative min-h-screen bg-[#050505] light:bg-canvas overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 <svg
                     className="absolute inset-0 w-full h-full"
@@ -52,7 +53,7 @@ export default function Contacts() {
                     ))}
 
                     {links.map(([a, b], i) => (
-                        <circle key={`p-${i}`} r="0.25" fill="#c4b5fd" opacity="0.7">
+                        <circle key={`p-${i}`} className="contacts-particle" r="0.25" fill="#c4b5fd" fillOpacity={0.7 / 0.9} opacity="0.9">
                             <animateMotion
                                 dur={`${5 + (i % 4)}s`}
                                 begin={`${(i * 0.6) % 5}s`}
@@ -61,7 +62,7 @@ export default function Contacts() {
                             />
                             <animate
                                 attributeName="opacity"
-                                values="0;0.7;0"
+                                values="0;0.9;0"
                                 dur={`${5 + (i % 4)}s`}
                                 begin={`${(i * 0.6) % 5}s`}
                                 repeatCount="indefinite"
@@ -79,29 +80,21 @@ export default function Contacts() {
                             top: `${n.y}%`,
                             transform: "translate(-50%, -50%)",
                             animationDelay: `${n.delay}s`,
-                        }}
+                            "--contacts-node-color": n.color,
+                            "--contacts-node-halo": `${n.color}20`,
+                            "--contacts-node-ring": `${n.color}25`,
+                            "--contacts-node-light-color": n.lightColor,
+                            "--contacts-node-light-halo": `${n.lightColor}30`,
+                            "--contacts-node-light-ring": `${n.lightColor}40`,
+                        } as CSSProperties}
                     >
                         <div
                             className="relative flex items-center justify-center"
                             style={{ width: n.size * 2.5, height: n.size * 2.5 }}
                         >
-                            <div
-                                className="absolute inset-0 rounded-full"
-                                style={{
-                                    background: `radial-gradient(circle, ${n.color}20, transparent 70%)`,
-                                }}
-                            />
-                            <div
-                                className="absolute inset-[15%] rounded-full border"
-                                style={{ borderColor: `${n.color}25` }}
-                            />
-                            <n.Icon
-                                style={{
-                                    color: n.color,
-                                    fontSize: n.size,
-                                    opacity: 0.55,
-                                }}
-                            />
+                            <div className="absolute inset-0 rounded-full contacts-node-halo" />
+                            <div className="absolute inset-[15%] rounded-full border contacts-node-ring" />
+                            <n.Icon className="contacts-node-icon" style={{ fontSize: n.size }} />
                         </div>
                     </div>
                 ))}
@@ -115,23 +108,67 @@ export default function Contacts() {
                     50% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.06); }
                 }
                 @keyframes contactsGlow1 {
-                    0%, 100% { transform: translate(0, 0); opacity: 0.3; }
-                    50% { transform: translate(100px, 60px); opacity: 0.5; }
+                    0%, 100% { transform: translate(0, 0); opacity: var(--contacts-glow-rest); }
+                    50% { transform: translate(100px, 60px); opacity: var(--contacts-glow-peak); }
                 }
                 @keyframes contactsGlow2 {
-                    0%, 100% { transform: translate(0, 0); opacity: 0.25; }
-                    50% { transform: translate(-100px, -60px); opacity: 0.45; }
+                    0%, 100% { transform: translate(0, 0); opacity: var(--contacts-glow-rest); }
+                    50% { transform: translate(-100px, -60px); opacity: var(--contacts-glow-peak); }
                 }
                 .contacts-node {
                     animation: contactsNodePulse 5s ease-in-out infinite;
                 }
+                .contacts-node-icon {
+                    color: var(--contacts-node-color);
+                    opacity: 0.55;
+                }
+                .contacts-node-halo {
+                    background: radial-gradient(circle, var(--contacts-node-halo), transparent 70%);
+                }
+                .contacts-node-ring {
+                    border-color: var(--contacts-node-ring);
+                }
                 .contacts-glow-1 {
+                    --contacts-glow-rest: 0.3;
+                    --contacts-glow-peak: 0.5;
                     background: radial-gradient(circle, rgba(167,139,250,0.08), transparent 70%);
                     animation: contactsGlow1 26s ease-in-out infinite;
                 }
                 .contacts-glow-2 {
+                    --contacts-glow-rest: 0.25;
+                    --contacts-glow-peak: 0.45;
                     background: radial-gradient(circle, rgba(122,162,255,0.07), transparent 70%);
                     animation: contactsGlow2 30s ease-in-out infinite;
+                }
+                .light #contactLine stop {
+                    stop-color: #7c3aed;
+                }
+                .light #contactLine stop[offset="50%"] {
+                    stop-opacity: 0.25;
+                }
+                .light .contacts-particle {
+                    fill: #8b5cf6;
+                    fill-opacity: 1;
+                }
+                .light .contacts-node-icon {
+                    color: var(--contacts-node-light-color);
+                    opacity: 0.75;
+                }
+                .light .contacts-node-halo {
+                    background: radial-gradient(circle, var(--contacts-node-light-halo), transparent 70%);
+                }
+                .light .contacts-node-ring {
+                    border-color: var(--contacts-node-light-ring);
+                }
+                .light .contacts-glow-1 {
+                    --contacts-glow-rest: 0.5;
+                    --contacts-glow-peak: 0.75;
+                    background: radial-gradient(circle, rgba(124,58,237,0.20), transparent 70%);
+                }
+                .light .contacts-glow-2 {
+                    --contacts-glow-rest: 0.45;
+                    --contacts-glow-peak: 0.7;
+                    background: radial-gradient(circle, rgba(37,99,235,0.18), transparent 70%);
                 }
             `}</style>
             <div className="relative z-10 pt-18">

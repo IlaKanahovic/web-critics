@@ -1,0 +1,120 @@
+[    2089ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=v_pU4mnqByDi-9ynX4VQLYedjE8clhCYakR8kh3b_7wwhQ6BdXk9_HzsisWherNM:1
+[    3781ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[    4320ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[    4678ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <InnerScrollHandlerNew focusAndScrollRef={{scrollRef:null, ...}} cacheNode={{rsc:{...}, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary name="/" loading={[...]}>
+          <Suspense name="/" fallback={<Fragment>}>
+      ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1053
+[    5373ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=nYFihXXCsixCjI2CnHfGkB0LGt63ToOJVaM_Em-qBxe7D1fl2It4FLyz14dw0nWT:1
+[    6371ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[    6608ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[    7726ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <InnerScrollHandlerNew focusAndScrollRef={{scrollRef:null, ...}} cacheNode={{rsc:{...}, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary name="/" loading={[...]}>
+          <Suspense name="/" fallback={<Fragment>}>
+      ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1053
+[    8490ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Tp7qmEB0imNVvbzS5uPD2Jl4443Ku86s1Pv9KtKxWBVyy3JGQhMt0FUUSK5qtbjmqdoBuOTAkGdqekFN-_p5VA:1
+[   10886ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=vib0cE00i4seGyqVnJfxTd3VXYOgl94zJJaAin09ivFwXG2LxDmVdkDPBtKPc7E-bGyPkzotJF77Ev1Frefb2MH9sz8OQdvJV7GFP1WllMU:1
+[   12107ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=A6O5RjVB7e8awAfmqnnGevxYjOGdzLKtRDb4xow_-dXL8UF0i2DUUZlRzDnvUUihvITj6tPF6_p6ps3GJwwByshuIRsU6XAmHyGlRjvJ7Uc:1
+[   13216ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[   13322ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[   13588ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <InnerScrollHandlerNew focusAndScrollRef={{scrollRef:null, ...}} cacheNode={{rsc:{...}, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary name="/" loading={[...]}>
+          <Suspense name="/" fallback={<Fragment>}>
+      ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1053
+[   14105ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=laC4b0Y-sYmyziKnWj0cMfV3KWJPqCylDGVOBno8D_P-k9r9gXZOysrojrsZfhVDmVxWJEtKDWXB3dA43YKcoQ:1
+[   14415ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[   14470ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:777
+[   14625ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <InnerScrollHandlerNew focusAndScrollRef={{scrollRef:null, ...}} cacheNode={{rsc:{...}, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary name="/" loading={[...]}>
+          <Suspense name="/" fallback={<Fragment>}>
+            <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>
+              <HTTPAccessFallbackErrorBoundary pathname="/documents..." notFound={{...}} forbidden={undefined} ...>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/documents..." tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} ...>
+                      <SegmentViewNode type="layout" pagePath="(public)/l...">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <RootLayout>
+                          <html
+                            lang="ru"
++                           className="font-sans cormorant_91fce83-module__VgS7ga__variable plus_jakarta_sans_3ad1778b..."
+-                           className="font-sans cormorant_91fce83-module__VgS7ga__variable plus_jakarta_sans_3ad1778b..."
+                          >
+                            <head>
+                              <script
++                               type="application/ld+json"
+-                               type="text/javascript"
+                                dangerouslySetInnerHTML={{
++                                 __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"..."
+-                                 __html: ""
+                                }}
+-                               src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main..."
+-                               charset="UTF-8"
+                              >
+                            ...
+                    ...
+      ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1053
+[   14701ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://mc.yandex.ru/metrika/tag.js?id=113698334:1
+[   15174ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3UOufUcHxnmuq0jjup8M8gd9Nl3xoyUEg3hp657z6YqDkn4cT5jjhd20oNZXdR0mnJeTRLY8ivNoxPoT7B84kQ:1

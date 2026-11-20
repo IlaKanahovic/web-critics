@@ -15,7 +15,7 @@ import { Footer } from "@/components/layout/footer/Footer"
 
 export default function About() {
     return (
-        <div className="relative min-h-screen bg-[#050505] overflow-hidden" style={{ isolation: "isolate" }}>
+        <div className="relative min-h-screen bg-[#050505] light:bg-canvas overflow-hidden" style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="about-blob about-blob-1" />
                 <div className="about-blob about-blob-2" />
@@ -50,12 +50,7 @@ export default function About() {
                     }}
                 />
 
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background: "radial-gradient(ellipse at 50% 40%, transparent 25%, #050505 90%)",
-                    }}
-                />
+                <div className="absolute inset-0 about-vignette" />
             </div>
             <style>{`
                 @keyframes aboutBlob1 {
@@ -127,6 +122,41 @@ export default function About() {
                 .about-grain {
                     opacity: 0.15;
                     mix-blend-mode: overlay;
+                }
+                .about-vignette {
+                    background: radial-gradient(ellipse at 50% 40%, transparent 25%, #050505 90%);
+                }
+                .light #aboutArc stop {
+                    stop-color: #6d28d9;
+                }
+                .light #aboutArc stop[offset="50%"] {
+                    stop-color: #8b5cf6;
+                    stop-opacity: 0.45;
+                }
+                .light .about-vignette {
+                    background: radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(240,244,248,0.7) 100%);
+                }
+                .light .about-blob {
+                    filter: blur(100px);
+                }
+                .light .about-blob-1 {
+                    background: radial-gradient(circle, rgba(124,58,237,0.65), rgba(124,58,237,0.15) 45%, transparent 75%);
+                }
+                .light .about-blob-2 {
+                    background: radial-gradient(circle, rgba(37,99,235,0.60), rgba(37,99,235,0.15) 45%, transparent 75%);
+                }
+                .light .about-blob-3 {
+                    background: radial-gradient(circle, rgba(139,92,246,0.55), rgba(139,92,246,0.12) 45%, transparent 75%);
+                }
+                .light .about-blob-4 {
+                    background: radial-gradient(circle, rgba(124,58,237,0.60), rgba(124,58,237,0.15) 45%, transparent 75%);
+                }
+                .light .about-blob-5 {
+                    background: radial-gradient(circle, rgba(37,99,235,0.50), rgba(37,99,235,0.10) 45%, transparent 75%);
+                }
+                .light .about-grain {
+                    opacity: 0.06;
+                    mix-blend-mode: multiply;
                 }
             `}</style>
             <div className="relative z-10 pt-18">

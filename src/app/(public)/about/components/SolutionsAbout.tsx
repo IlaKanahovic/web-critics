@@ -33,56 +33,56 @@ export function SolutionsAbout() {
         <div className="container">
             <div className="pt-20 md:pt-32">
                 <div className="mb-10 md:mb-16 flex items-center gap-4">
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
-                    <span className="text-white/40 text-xs uppercase tracking-widest">Как мы принимаем решения</span>
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
+                    <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-widest">Как мы принимаем решения</span>
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end mb-20 md:mb-28">
                     <div className="lg:col-span-7">
-                        <h2 className="text-white text-font-space text-4xl md:text-5xl lg:text-6xl leading-[1.1]">
+                        <h2 className="text-white light:text-ink text-font-space text-4xl md:text-5xl lg:text-6xl leading-[1.1]">
                             Не начинаем с вопроса «что мы можем вам продать?»
                         </h2>
                     </div>
 
                     <div className="lg:col-span-5 lg:pb-2">
                         <div className="flex items-center gap-3">
-                            <span className="w-1.5 h-1.5 rounded-full bg-violet-400/60" />
-                            <span className="text-white/50 text-sm md:text-base leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-violet-400/60 light:bg-accent/70" />
+                            <span className="text-white/50 light:text-ink-secondary text-sm md:text-base leading-relaxed">
                                 Начинаем с нескольких гораздо менее удобных вопросов
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div className="border-t border-white/10">
+                <div className="border-t border-white/10 light:border-line">
                     {questions.map((item, i) => (
                         <div
                             key={i}
-                            className="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 md:py-14 border-b border-white/10 hover:border-white/25 transition-colors duration-500"
+                            className="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 md:py-14 border-b border-white/10 light:border-line hover:border-white/25 light:hover:border-accent/40 transition-colors duration-500"
                         >
                             <div className="md:col-span-1">
-                                <span className="text-white/20 font-mono text-lg md:text-2xl leading-none transition-colors duration-500 group-hover:text-violet-300/60">
+                                <span className="text-white/20 light:text-ink-muted font-mono text-lg md:text-2xl leading-none transition-colors duration-500 group-hover:text-violet-300/60 light:group-hover:text-accent">
                                     {item.num}
                                 </span>
                             </div>
 
                             <div className="md:col-span-4">
-                                <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.15]">
+                                <h3 className="text-white light:text-ink text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.15]">
                                     {item.question}
                                 </h3>
                             </div>
 
                             <div className="md:col-span-7 space-y-4">
-                                <p className="text-white/60 text-base md:text-lg leading-relaxed">
+                                <p className="text-white/60 light:text-ink-secondary text-base md:text-lg leading-relaxed">
                                     {item.desc}
                                 </p>
 
                                 {item.extra && (
-                                    <div className="pt-4 space-y-3 border-t border-white/8">
+                                    <div className="pt-4 space-y-3 border-t border-white/8 light:border-line">
                                         {item.extra.map((line, j) => (
-                                            <p key={j} className="text-white/50 text-sm md:text-base leading-relaxed flex items-start gap-3">
-                                                <span className="mt-2.5 w-1 h-1 rounded-full bg-violet-400/60 shrink-0" />
+                                            <p key={j} className="text-white/50 light:text-ink-secondary text-sm md:text-base leading-relaxed flex items-start gap-3">
+                                                <span className="mt-2.5 w-1 h-1 rounded-full bg-violet-400/60 light:bg-accent/70 shrink-0" />
                                                 <span>{line}</span>
                                             </p>
                                         ))}
@@ -94,10 +94,10 @@ export function SolutionsAbout() {
                 </div>
 
                 <div className="mt-20 md:mt-28 max-w-4xl mx-auto text-center">
-                    <p className="text-white text-font-space text-2xl md:text-3xl lg:text-4xl leading-tight">
+                    <p className="text-white light:text-ink text-font-space text-2xl md:text-3xl lg:text-4xl leading-tight">
                         Мы стараемся не делать больше, чем необходимо для решения задачи.
                     </p>
-                    <p className="text-white/40 text-font-space text-2xl md:text-3xl lg:text-4xl leading-tight mt-2">
+                    <p className="text-white/40 light:text-ink-muted text-font-space text-2xl md:text-3xl lg:text-4xl leading-tight mt-2">
                         Но и не пытаемся решить сложную проблему инструментом, который для неё изначально не подходит.
                     </p>
                 </div>

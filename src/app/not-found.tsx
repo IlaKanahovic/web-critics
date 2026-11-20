@@ -1,10 +1,19 @@
+'use client'
+
+import { useThemeStore } from "@/store/targetThemeStore"
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
 import '../globals.css'
 
+const actionLinkClass = "group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 light:border-line light:hover:border-accent/40 transition-colors"
+const actionTextClass = "text-white/80 group-hover:text-white light:text-accent light:group-hover:text-accent-hover text-sm transition-colors"
+const actionIconClass = "size-4 text-white/30 group-hover:text-violet-300 light:text-accent light:group-hover:text-accent-hover group-hover:translate-x-0.5 transition-all duration-200"
+
 export default function NotFound() {
+    const isLight = useThemeStore((state) => state.targetTheme === 'Light')
+
     return (
-        <div className="relative min-h-screen bg-[#050505] overflow-hidden" style={{ isolation: "isolate" }}>
+        <div className={`relative min-h-screen overflow-hidden ${isLight ? 'light bg-canvas' : 'bg-[#050505]'}`} style={{ isolation: "isolate" }}>
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 <div
                     className="absolute inset-0 nf-lines"
@@ -14,8 +23,8 @@ export default function NotFound() {
                                 90deg,
                                 transparent 0,
                                 transparent 79px,
-                                rgba(167,139,250,0.06) 79px,
-                                rgba(167,139,250,0.06) 80px
+                                var(--nf-grid-color) 79px,
+                                var(--nf-grid-color) 80px
                             )
                         `,
                     }}
@@ -41,7 +50,10 @@ export default function NotFound() {
                     0%, 45% { opacity: 1; }
                     50%, 100% { opacity: 0.15; }
                 }
-                .nf-lines { animation: none; }
+                .nf-lines {
+                    --nf-grid-color: rgba(167,139,250,0.06);
+                    animation: none;
+                }
                 .nf-glow-1 {
                     background: radial-gradient(circle, rgba(167,139,250,0.08), transparent 70%);
                     animation: nfGlow1 22s ease-in-out infinite;
@@ -50,6 +62,15 @@ export default function NotFound() {
                     background: radial-gradient(circle, rgba(122,162,255,0.06), transparent 70%);
                     animation: nfGlow2 26s ease-in-out infinite;
                 }
+                .light .nf-lines {
+                    --nf-grid-color: rgba(15,23,42,0.06);
+                }
+                .light .nf-glow-1 {
+                    background: radial-gradient(circle, rgba(139,92,246,0.10), transparent 70%);
+                }
+                .light .nf-glow-2 {
+                    background: radial-gradient(circle, rgba(37,99,235,0.10), transparent 70%);
+                }
             `}</style>
 
             <div className="relative z-10 min-h-screen flex flex-col">
@@ -57,65 +78,65 @@ export default function NotFound() {
                     <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                         <div className="lg:col-span-7">
                             <div className="flex items-center gap-3">
-                                <span className="w-2 h-2 rounded-full bg-violet-400 nf-dot" />
-                                <span className="text-white/40 text-xs uppercase tracking-[0.3em] font-mono">
+                                <span className="w-2 h-2 rounded-full bg-violet-400 light:bg-accent nf-dot" />
+                                <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-[0.3em] font-mono">
                                     page not found
                                 </span>
                             </div>
 
-                            <h1 className="text-font-cormorant text-[#f0f0f0] text-[120px] md:text-[180px] lg:text-[220px] leading-[0.9] mt-6">
-                                4<span className="text-white/15">0</span>4
+                            <h1 className="text-font-cormorant text-[#f0f0f0] light:text-ink text-[120px] md:text-[180px] lg:text-[220px] leading-[0.9] mt-6">
+                                4<span className="text-white/15 light:text-accent">0</span>4
                             </h1>
 
                             <div className="mt-8 max-w-lg">
-                                <p className="text-white/70 text-font-inter text-base md:text-lg leading-relaxed">
+                                <p className="text-white/70 light:text-ink text-font-inter text-base md:text-lg leading-relaxed">
                                     Мы потеряли эту страницу.
                                 </p>
-                                <p className="text-white/45 text-font-inter text-sm md:text-base leading-relaxed mt-2">
+                                <p className="text-white/45 light:text-ink-secondary text-font-inter text-sm md:text-base leading-relaxed mt-2">
                                     Возможно, ссылка устарела, страница была перемещена или адрес введён неверно. Попробуйте вернуться назад или начать с главной.
                                 </p>
                             </div>
                         </div>
 
                         <div className="lg:col-span-5">
-                            <div className="relative rounded-2xl border border-white/10 bg-[#0a0a12]/60 p-8 backdrop-blur-[2px]">
-                                <div className="absolute top-0 left-8 right-8 h-px bg-linear-to-r from-transparent via-violet-400/30 to-transparent" />
+                            <div className="relative rounded-2xl border border-white/10 light:border-line bg-[#0a0a12]/60 light:bg-white light:shadow-card p-8 backdrop-blur-[2px]">
+                                <div className="absolute top-0 left-8 right-8 h-px bg-linear-to-r from-transparent via-violet-400/30 light:via-accent/30 to-transparent" />
 
-                                <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-mono">
+                                <span className="text-white/30 light:text-ink-muted text-[10px] uppercase tracking-[0.3em] font-mono">
                                     возможные действия
                                 </span>
 
                                 <div className="mt-6 space-y-3">
-                                    <Link href="/" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
-                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                    <Link href="/" className={actionLinkClass}>
+                                        <span className={actionTextClass}>
                                             Вернуться на главную
                                         </span>
-                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                        <IoIosArrowForward className={actionIconClass} />
                                     </Link>
 
-                                    <Link href="/catalog" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
-                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                    <Link href="/catalog" className={actionLinkClass}>
+                                        <span className={actionTextClass}>
                                             Посмотреть каталог
                                         </span>
-                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                        <IoIosArrowForward className={actionIconClass} />
                                     </Link>
 
-                                    <Link href="/portfolio" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
-                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                    <Link href="/portfolio" className={actionLinkClass}>
+                                        <span className={actionTextClass}>
                                             Изучить портфолио
                                         </span>
-                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                        <IoIosArrowForward className={actionIconClass} />
                                     </Link>
 
-                                    <Link href="/contacts" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
-                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                    <Link href="/contacts" className={actionLinkClass}>
+                                        <span className={actionTextClass}>
                                             Написать нам
                                         </span>
-                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                        <IoIosArrowForward className={actionIconClass} />
                                     </Link>
                                 </div>
 
-                                <p className="text-white/25 text-[10px] font-mono mt-6">
+                                <p className="text-white/25 light:text-ink-muted text-[10px] font-mono mt-6">
                                     err_code · 404 · page_not_found
                                 </p>
                             </div>
@@ -124,8 +145,8 @@ export default function NotFound() {
                 </div>
 
                 <div className="container pb-12">
-                    <div className="flex items-center gap-4 text-white/20 text-[10px] uppercase tracking-[0.3em] font-mono">
-                        <span className="w-12 h-px bg-white/15" />
+                    <div className="flex items-center gap-4 text-white/20 light:text-ink-muted text-[10px] uppercase tracking-[0.3em] font-mono">
+                        <span className="w-12 h-px bg-white/15 light:bg-line" />
                         <span>not found</span>
                     </div>
                 </div>

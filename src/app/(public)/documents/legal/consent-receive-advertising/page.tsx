@@ -4,7 +4,7 @@ import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 
 export default function MarketingConsern() {
     return (
-        <div className="relative z-10 pt-30">
+        <div className="relative z-10 min-h-screen pt-30 light:bg-canvas">
             <div className="mobile-only">
                 <HeaderMobile />
             </div>
@@ -13,9 +13,9 @@ export default function MarketingConsern() {
             </div>
 
             <main className="container pt-30 md:pt-42 pb-24">
-                <article className="max-w-3xl mx-auto text-white/75 text-font-inter text-sm md:text-base leading-relaxed">
+                <article className="max-w-3xl mx-auto text-white/75 light:text-ink-secondary text-font-inter text-sm md:text-base leading-relaxed">
 
-                    <h1 className="text-white text-font-space text-3xl md:text-4xl lg:text-5xl mb-10">
+                    <h1 className="text-white light:text-ink text-font-space text-3xl md:text-4xl lg:text-5xl mb-10">
                         Согласие на получение рекламных и информационных рассылок
                     </h1>
 
@@ -28,11 +28,11 @@ export default function MarketingConsern() {
                     </p>
 
                     <p className="mb-3">
-                        <span className="text-white">Темы:</span> акции, новые продукты, обновления систем.
+                        <span className="text-white light:text-ink">Темы:</span> акции, новые продукты, обновления систем.
                     </p>
 
                     <p className="mb-6">
-                        <span className="text-white">Частота:</span> не чаще 4 раз в месяц.
+                        <span className="text-white light:text-ink">Частота:</span> не чаще 4 раз в месяц.
                     </p>
 
                     <p className="mb-3">
@@ -43,7 +43,7 @@ export default function MarketingConsern() {
                         Согласие необязательно для покупки и не связано с другими согласиями. Отказаться от рассылки можно в любой момент по ссылке «Отписаться» в каждом письме или направив письмо на{' '}
                         <a
                             href="mailto:WebCRitics.company@gmail.com"
-                            className="text-white/90 hover:text-white underline underline-offset-2"
+                            className="text-white/90 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2"
                         >
                             WebCRitics.company@gmail.com
                         </a>

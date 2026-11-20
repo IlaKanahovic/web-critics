@@ -27,13 +27,13 @@ export function HeaderBurgerNav() {
     const [openWebDev, setOpenWebDev] = useState(false)
 
     return (
-        <div className="bg-black min-h-screen pt-8">
+        <div className="bg-black light:bg-white min-h-screen pt-8">
             <div className="container-mobile">
                 <a href="/" className="text-mobile-nav">
                     <div>Главная</div>
                     <FaArrowRightLong className="size-5" />
                 </a>
-                <hr className="border border-[#111111]" />
+                <hr className="border border-[#111111] light:border-line" />
 
                 <div>
                     <button
@@ -52,11 +52,11 @@ export function HeaderBurgerNav() {
                     >
                         <div className="overflow-hidden">
                             <div className="pb-4 pl-2">
-                                <div className="border-l border-white/10">
+                                <div className="border-l border-white/10 light:border-line">
                                     <button
                                         type="button"
                                         onClick={() => setOpenWebDev(!openWebDev)}
-                                        className="w-full flex items-center justify-between py-3 px-4 text-left text-white hover:text-violet-300 text-sm font-medium transition-colors cursor-pointer"
+                                        className="w-full flex items-center justify-between py-3 px-4 text-left text-white light:text-ink hover:text-violet-300 light:hover:text-accent-hover text-sm font-medium transition-colors cursor-pointer"
                                     >
                                         <span>Веб-разработка</span>
                                         <FaChevronDown
@@ -73,9 +73,9 @@ export function HeaderBurgerNav() {
                                                     <li key={i}>
                                                         <a
                                                             href={item.href}
-                                                            className="flex items-center gap-3 py-1.5 text-white/50 hover:text-white text-sm transition-colors"
+                                                            className="flex items-center gap-3 py-1.5 text-white/50 light:text-ink-secondary hover:text-white light:hover:text-accent-hover text-sm transition-colors"
                                                         >
-                                                            <span className="text-white/20 font-mono text-[10px] w-5">
+                                                            <span className="text-white/20 light:text-ink-muted font-mono text-[10px] w-5">
                                                                 {String(i + 1).padStart(2, "0")}
                                                             </span>
                                                             <span>{item.label}</span>
@@ -87,15 +87,15 @@ export function HeaderBurgerNav() {
                                     </div>
                                 </div>
 
-                                <div className="border-l border-white/10">
+                                <div className="border-l border-white/10 light:border-line">
                                     {otherServices.map((service, i) => (
                                         <a
                                             key={i}
                                             href={service.href}
-                                            className="flex items-center justify-between py-3 px-4 text-white/70 hover:text-white text-sm transition-colors"
+                                            className="flex items-center justify-between py-3 px-4 text-white/70 light:text-ink-secondary hover:text-white light:hover:text-accent-hover text-sm transition-colors"
                                         >
                                             <span>{service.title}</span>
-                                            <FaArrowRightLong className="size-3.5 text-white/25" />
+                                            <FaArrowRightLong className="size-3.5 text-white/25 light:text-ink-muted" />
                                         </a>
                                     ))}
                                 </div>
@@ -109,17 +109,17 @@ export function HeaderBurgerNav() {
                     <div>Каталог</div>
                     <FaArrowRightLong className="size-5" />
                 </a> */}
-                <hr className="border border-[#111111]" />
+                <hr className="border border-[#111111] light:border-line" />
                 <a href="/portfolio" className="text-mobile-nav">
                     <div>Портфолио</div>
                     <FaArrowRightLong className="size-5" />
                 </a>
-                <hr className="border border-[#111111]" />
+                <hr className="border border-[#111111] light:border-line" />
                 <a href="/about" className="text-mobile-nav">
                     <div>О нас</div>
                     <FaArrowRightLong className="size-5" />
                 </a>
-                <hr className="border border-[#111111]" />
+                <hr className="border border-[#111111] light:border-line" />
                 <a href="/contacts" className="text-mobile-nav">
                     <div>Контакты</div>
                     <FaArrowRightLong className="size-5" />

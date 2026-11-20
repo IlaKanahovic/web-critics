@@ -20,52 +20,52 @@ export function FAQandCTAinteraface() {
             <div className="relative py-20 md:py-32 lg:py-40">
                 <div className="container px-4 md:px-10 lg:px-35">
                     <div className="mb-10 md:mb-16 flex items-center gap-4">
-                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
-                        <span className="text-white/40 text-xs uppercase tracking-widest">FAQ</span>
-                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
+                        <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-widest">FAQ</span>
+                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
                         <div className="lg:col-span-4">
                             <div className="lg:sticky lg:top-32">
-                                <h2 className="text-white text-3xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
+                                <h2 className="text-white light:text-ink text-3xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
                                     Частые<br />вопросы
                                 </h2>
 
-                                <p className="text-white/55 text-sm md:text-base leading-relaxed max-w-md">
+                                <p className="text-white/55 light:text-ink-secondary text-sm md:text-base leading-relaxed max-w-md">
                                     Собрали то, что чаще всего спрашивают до начала работы. Если вашего вопроса здесь нет - задайте его напрямую.
                                 </p>
 
-                                <div className="hidden lg:flex items-center gap-4 mt-10 text-white/30 text-xs uppercase tracking-widest">
-                                    <span className="w-12 h-px bg-white/20" />
+                                <div className="hidden lg:flex items-center gap-4 mt-10 text-white/30 light:text-ink-muted text-xs uppercase tracking-widest">
+                                    <span className="w-12 h-px bg-white/20 light:bg-line" />
                                     <span>{faqWebDevelopmnetInterface.length} вопросов</span>
                                 </div>
                             </div>
                         </div>
 
                         <div className="lg:col-span-8">
-                            <div className="border-t border-white/8">
+                            <div className="border-t border-white/8 light:border-line">
                                 {faqWebDevelopmnetInterface.map((item, i) => {
                                     const isOpen = open === i
                                     return (
-                                        <div key={i} className="border-b border-white/8">
+                                        <div key={i} className="border-b border-white/8 light:border-line">
                                             <button
                                                 type="button"
                                                 onClick={() => setOpen(isOpen ? null : i)}
                                                 className="group w-full flex items-start justify-between gap-6 py-6 md:py-7 text-left transition-colors duration-300 cursor-pointer"
                                             >
                                                 <div className="flex items-start gap-5 md:gap-8 flex-1">
-                                                    <span className={`shrink-0 text-xs tracking-[0.3em] pt-1.5 transition-colors duration-500 ${isOpen ? 'text-white/60' : 'text-white/25 group-hover:text-white/50'}`}>
+                                                    <span className={`shrink-0 text-xs tracking-[0.3em] pt-1.5 transition-colors duration-500 ${isOpen ? 'text-white/60 light:text-ink-secondary' : 'text-white/25 light:text-ink-muted group-hover:text-white/50 light:group-hover:text-accent'}`}>
                                                         {String(i + 1).padStart(2, '0')}
                                                     </span>
-                                                    <span className={`text-base md:text-xl leading-snug transition-colors duration-500 ${isOpen ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>
+                                                    <span className={`text-base md:text-xl leading-snug transition-colors duration-500 ${isOpen ? 'text-white light:text-ink' : 'text-white/80 light:text-ink group-hover:text-white light:group-hover:text-accent-hover'}`}>
                                                         {item.q}
                                                     </span>
                                                 </div>
 
                                                 <span className="relative shrink-0 w-6 h-6 md:w-7 md:h-7 mt-0.5">
-                                                    <span className={`absolute top-1/2 left-0 w-full h-px bg-white/60 transition-transform duration-500 ${isOpen ? 'rotate-0' : ''}`} />
-                                                    <span className={`absolute top-0 left-1/2 w-px h-full bg-white/60 transition-transform duration-500 ${isOpen ? 'rotate-90 scale-y-0' : ''}`} />
+                                                    <span className={`absolute top-1/2 left-0 w-full h-px bg-white/60 light:bg-accent transition-transform duration-500 ${isOpen ? 'rotate-0' : ''}`} />
+                                                    <span className={`absolute top-0 left-1/2 w-px h-full bg-white/60 light:bg-accent transition-transform duration-500 ${isOpen ? 'rotate-90 scale-y-0' : ''}`} />
                                                 </span>
                                             </button>
 
@@ -74,7 +74,7 @@ export function FAQandCTAinteraface() {
                                             >
                                                 <div className="overflow-hidden">
                                                     <div className="pb-7 md:pb-9 pl-11 md:pl-16 pr-4 md:pr-12">
-                                                        <p className="text-white/55 text-sm md:text-base leading-relaxed max-w-2xl">
+                                                        <p className="text-white/55 light:text-ink-secondary text-sm md:text-base leading-relaxed max-w-2xl">
                                                             {item.a}
                                                         </p>
                                                     </div>
@@ -92,23 +92,23 @@ export function FAQandCTAinteraface() {
             <div className="relative pb-20 md:pb-32 lg:pb-40">
                 <div className="container px-4 md:px-10 lg:px-35">
                     <div className="mb-10 md:mb-14 flex items-center gap-4">
-                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
-                        <span className="text-white/40 text-xs uppercase tracking-widest">Другие направления</span>
-                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
+                        <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-widest">Другие направления</span>
+                        <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
                         <div className="lg:col-span-5">
-                            <h3 className="text-white text-font-space text-3xl md:text-4xl leading-[1.15]">
+                            <h3 className="text-white light:text-ink text-font-space text-3xl md:text-4xl leading-[1.15]">
                                 Не уверены, какое направление вам нужно?
                             </h3>
 
-                            <p className="text-white/50 text-font-inter text-sm md:text-base leading-relaxed mt-5 max-w-md">
+                            <p className="text-white/50 light:text-ink-secondary text-font-inter text-sm md:text-base leading-relaxed mt-5 max-w-md">
                                 Опишите задачу - разберёмся, что лучше использовать, и определим, с чего имеет смысл начать.
                             </p>
 
                             <Link href="/contacts">
-                                <button className="button-main-styles inline-flex items-center gap-2 mt-8">
+                                <button className="button-main-styles button-primary inline-flex items-center gap-2 mt-8">
                                     Обсудить проблему
                                     <IoIosArrowForward className="size-4" />
                                 </button>
@@ -119,16 +119,16 @@ export function FAQandCTAinteraface() {
                             <div className="flex flex-col gap-2">
                                 {otherDirections.map((item, i) => (
                                     <Link key={i} href={item.href}>
-                                        <div className="group relative flex items-center gap-5 md:gap-6 py-4 md:py-5 pl-5 md:pl-6 pr-4 md:pr-5 border-l-2 border-white/10 hover:border-white/40 bg-white/1 hover:bg-white/3 transition-all duration-500 cursor-pointer">
-                                            <span className="text-white/25 font-mono text-xs md:text-sm tracking-[0.2em] group-hover:text-white/70 transition-colors duration-500">
+                                        <div className="group relative flex items-center gap-5 md:gap-6 py-4 md:py-5 pl-5 md:pl-6 pr-4 md:pr-5 border-l-2 border-white/10 light:border-line hover:border-white/40 light:hover:border-accent/40 bg-white/1 light:bg-white/80 hover:bg-white/3 light:hover:bg-accent/5 transition-all duration-500 cursor-pointer">
+                                            <span className="text-white/25 light:text-ink-muted font-mono text-xs md:text-sm tracking-[0.2em] group-hover:text-white/70 light:group-hover:text-ink transition-colors duration-500">
                                                 {item.num}
                                             </span>
 
-                                            <span className="flex-1 text-white text-base md:text-lg font-medium leading-snug group-hover:translate-x-1 transition-transform duration-500">
+                                            <span className="flex-1 text-white light:text-ink text-base md:text-lg font-medium leading-snug group-hover:translate-x-1 transition-transform duration-500">
                                                 {item.title}
                                             </span>
 
-                                            <IoIosArrowForward className="size-4 text-white/20 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-500" />
+                                            <IoIosArrowForward className="size-4 text-white/20 light:text-ink-muted group-hover:text-white light:group-hover:text-accent-hover group-hover:translate-x-0.5 transition-all duration-500" />
                                         </div>
                                     </Link>
                                 ))}
@@ -140,46 +140,46 @@ export function FAQandCTAinteraface() {
 
             <div className="relative pb-20 md:pb-32 lg:pb-40">
                 <div className="container px-4 md:px-10 lg:px-35">
-                    <div className="relative rounded-3xl border border-white/8 bg-linear-to-br from-white/4 via-white/2 to-transparent overflow-hidden">
-                        <div className="absolute -top-1/3 -right-1/4 w-175 h-175 rounded-full bg-violet-500/10 blur-[140px] pointer-events-none" />
-                        <div className="absolute -bottom-1/3 -left-1/4 w-150 h-150 rounded-full bg-blue-500/8 blur-[140px] pointer-events-none" />
+                    <div className="relative rounded-3xl border border-white/8 light:border-line bg-linear-to-br from-white/4 via-white/2 to-transparent light:bg-white light:bg-none light:shadow-card overflow-hidden">
+                        <div className="absolute -top-1/3 -right-1/4 w-175 h-175 rounded-full bg-violet-500/10 light:bg-accent/8 blur-[140px] pointer-events-none" />
+                        <div className="absolute -bottom-1/3 -left-1/4 w-150 h-150 rounded-full bg-blue-500/8 light:bg-accent/6 blur-[140px] pointer-events-none" />
 
-                        <span className="absolute -top-8 -left-4 text-[200px] md:text-[320px] font-bold text-white/2.5 leading-none select-none pointer-events-none">
+                        <span className="absolute -top-8 -left-4 text-[200px] md:text-[320px] font-bold text-white/2.5 light:text-ink/5 leading-none select-none pointer-events-none">
                             I
                         </span>
 
                         <div className="relative p-8 md:p-16 lg:p-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                             <div className="lg:col-span-7">
                                 <div className="flex items-center gap-3 mb-6">
-                                    <span className="h-px w-8 bg-white/30" />
-                                    <span className="text-white/40 text-xs uppercase tracking-widest">Финальный шаг</span>
+                                    <span className="h-px w-8 bg-white/30 light:bg-line" />
+                                    <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-widest">Финальный шаг</span>
                                 </div>
 
-                                <h2 className="text-white text-3xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
+                                <h2 className="text-white light:text-ink text-3xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
                                     Нужно сделать интерфейс удобнее?
                                 </h2>
 
-                                <p className="text-white/60 text-sm md:text-lg leading-relaxed max-w-xl mb-4">
+                                <p className="text-white/60 light:text-ink-secondary text-sm md:text-lg leading-relaxed max-w-xl mb-4">
                                     Расскажите, с каким продуктом или системой вы работаете сейчас, что в ней неудобно или какой интерфейс нужно создать с нуля.
                                 </p>
-                                <p className="text-white/45 text-sm md:text-base leading-relaxed max-w-xl">
+                                <p className="text-white/45 light:text-ink-secondary text-sm md:text-base leading-relaxed max-w-xl">
                                     Мы разберём задачу, определим необходимые сценарии и предложим подходящий вариант - от отдельного экрана или дизайн-системы до полноценного интерфейса работающего продукта.
                                 </p>
                             </div>
 
-                            <div className="lg:col-span-5 lg:pl-10 lg:border-l lg:border-white/8">
+                            <div className="lg:col-span-5 lg:pl-10 lg:border-l lg:border-white/8 light:lg:border-line">
                                 <Link href="/contacts">
                                     <button
                                         type="button"
-                                        className="group relative w-full md:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-white text-black font-medium text-base md:text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-95 cursor-pointer"
+                                        className="group relative w-full md:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-white text-black button-primary font-medium text-base md:text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-95 cursor-pointer"
                                     >
                                         <span className="relative z-10">Обсудить задачу</span>
                                         <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
-                                        <span className="absolute inset-0 bg-linear-to-br from-gray-200 to-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                                        <span className="absolute inset-0 bg-linear-to-br from-gray-200 to-white light:from-accent-hover light:to-accent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                                     </button>
                                 </Link>
 
-                                <p className="text-white/40 text-xs md:text-sm leading-relaxed mt-5 max-w-sm">
+                                <p className="text-white/40 light:text-ink-muted text-xs md:text-sm leading-relaxed mt-5 max-w-sm">
                                     Разберём задачу и предложим подходящее решение.
                                 </p>
                             </div>

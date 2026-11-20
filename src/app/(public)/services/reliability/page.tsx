@@ -14,25 +14,25 @@ import { MainDirectionsReliability } from "./components/MainDirectionsReliabilit
 
 export default function servicesReliability() {
     return (
-        <div className="relative min-h-screen bg-[#050505]">
+        <div className="relative min-h-screen bg-[#050505] light:bg-canvas">
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div
                     className="absolute inset-0 reliability-grid-base"
                     style={{
                         backgroundImage: `
-                            linear-gradient(rgba(167,139,250,0.06) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(167,139,250,0.06) 1px, transparent 1px)
+                            linear-gradient(var(--reliability-grid-color) 1px, transparent 1px),
+                            linear-gradient(90deg, var(--reliability-grid-color) 1px, transparent 1px)
                         `,
                         backgroundSize: "70px 70px",
                     }}
                 />
 
                 <div
-                    className="absolute inset-0"
+                    className="absolute inset-0 reliability-grid-wide"
                     style={{
                         backgroundImage: `
-                            linear-gradient(rgba(167,139,250,0.12) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(167,139,250,0.12) 1px, transparent 1px)
+                            linear-gradient(var(--reliability-grid-color) 1px, transparent 1px),
+                            linear-gradient(90deg, var(--reliability-grid-color) 1px, transparent 1px)
                         `,
                         backgroundSize: "350px 350px",
                     }}
@@ -50,11 +50,11 @@ export default function servicesReliability() {
             <style>{`
                 @keyframes reliabilityGlow1 {
                     0%, 100% { transform: translate(0, 0); opacity: 0.5; }
-                    50% { transform: translate(120px, 80px); opacity: 0.9; }
+                    50% { transform: translate(120px, 80px); opacity: var(--reliability-glow-peak, 0.9); }
                 }
                 @keyframes reliabilityGlow2 {
                     0%, 100% { transform: translate(0, 0); opacity: 0.5; }
-                    50% { transform: translate(-120px, -80px); opacity: 0.9; }
+                    50% { transform: translate(-120px, -80px); opacity: var(--reliability-glow-peak, 0.9); }
                 }
                 @keyframes reliabilityGlow3 {
                     0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
@@ -71,7 +71,11 @@ export default function servicesReliability() {
                     50% { opacity: 1; }
                 }
                 .reliability-grid-base {
+                    --reliability-grid-color: rgba(167,139,250,0.06);
                     animation: reliabilityGridPulse 8s ease-in-out infinite;
+                }
+                .reliability-grid-wide {
+                    --reliability-grid-color: rgba(167,139,250,0.12);
                 }
                 .reliability-glow-1 {
                     background: radial-gradient(circle, rgba(167,139,250,0.10), transparent 65%);
@@ -91,9 +95,9 @@ export default function servicesReliability() {
                     background: linear-gradient(
                         to bottom,
                         transparent,
-                        rgba(167,139,250,0.04),
-                        rgba(167,139,250,0.08),
-                        rgba(167,139,250,0.04),
+                        var(--reliability-scan-edge, rgba(167,139,250,0.04)),
+                        var(--reliability-scan-center, rgba(167,139,250,0.08)),
+                        var(--reliability-scan-edge, rgba(167,139,250,0.04)),
                         transparent
                     );
                     animation: reliabilityScan 14s linear infinite;
@@ -102,6 +106,27 @@ export default function servicesReliability() {
                 .reliability-scan-2 { animation-delay: 3.5s; }
                 .reliability-scan-3 { animation-delay: 7s; }
                 .reliability-scan-4 { animation-delay: 10.5s; }
+                .light .reliability-grid-base {
+                    --reliability-grid-color: rgba(148,163,184,0.15);
+                }
+                .light .reliability-grid-wide {
+                    --reliability-grid-color: rgba(148,163,184,0.25);
+                }
+                .light .reliability-glow-1 {
+                    --reliability-glow-peak: 0.8;
+                    background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(226,232,240,0.3) 40%, transparent 65%);
+                }
+                .light .reliability-glow-2 {
+                    --reliability-glow-peak: 0.8;
+                    background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(203,213,225,0.4) 40%, transparent 65%);
+                }
+                .light .reliability-glow-3 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.6), transparent 60%);
+                }
+                .light .reliability-scan {
+                    --reliability-scan-edge: rgba(255,255,255,0.5);
+                    --reliability-scan-center: rgba(148,163,184,0.2);
+                }
             `}</style>
             <div className="relative z-10 pt-18">
                 <div className="mobile-only">

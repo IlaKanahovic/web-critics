@@ -25,15 +25,16 @@ export function BrandIdentityLogo({
                     <path
                         d="M3 32V8L9 22L18 4L27 22L33 8V32H28V13L18 30L8 13V32H3Z"
                         fill="#FAFAFA"
+                        className="light:fill-ink"
                     />
                 </svg>
                 <span
-                    className={`font-bold tracking-tight text-[#ffffff] ${textSize} logo-web`}
+                    className={`font-bold tracking-tight text-white light:text-ink ${textSize} logo-web`}
                 >
                     eb
                 </span>
                 <span
-                    className={`font-bold tracking-tight text-[#d7d7d7] ${textSize} logo-web`}
+                    className={`font-bold tracking-tight text-[#d7d7d7] light:text-ink-secondary ${textSize} logo-web`}
                 >
                     CRitics
                 </span>

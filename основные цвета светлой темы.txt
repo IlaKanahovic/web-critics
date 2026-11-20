@@ -1,0 +1,2770 @@
+основные цвета светлой темы
+#F0F4F8 — Главный фон (Base)  
+#FFFFFF — Поверхность карточек (Card)  
+#000000 (opacity 3%) — Сетка на фоне  
+#0F172A — Основной текст (Primary)  
+#475569 — Вторичный текст (Secondary)  
+#64748B — Приглушенный текст (Muted)  
+#2563EB — Главный акцент (Primary Blue)  
+#1D4ED8 — Акцент Hover  
+#F59E0B — Рейтинг (Stars)  
+#CBD5E1 — Основная граница (Border)  
+#2563EB — Акцентная полоса (Left Stripe)  
+shadow-[0_4px_20px_rgba(15,23,42,0.03)] — Тень карточек  
+shadow-sm — Тень светлых кнопок
+
+
+Фоны страниц для светлой темы сайта
+
+○ /
+
+'use client'
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { Hero } from "./hero/Hero"
+import { OverviewOfServices } from "./overviewOfServices/OverviewOfServices"
+import { AboutMyWork } from "./aboutMyWork/AboutMyWork"
+import { Portfolio } from "./portfolio/Portfolio"
+import { ContactsMainPage } from "./contactsMainPage/ContactsMainPage"
+import { Footer } from "@/components/layout/footer/Footer"
+import { TeaserCatalog } from "./teaserByCatalog/TeaserCatalog"
+import { ApplicationLaunch } from "./applicationToLaunch/ApplicationLaunch"
+
+export interface IProjectsLength {
+    projectsLength: number
+}
+
+export async function MainPage({ projectsLength }: IProjectsLength) {
+    return (
+        <div className="relative pt-18">
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    backgroundColor: "#F0F4F8",
+                    backgroundImage: `
+                        repeating-linear-gradient(
+                            45deg,
+                            transparent,
+                            transparent 40px,
+                            rgba(15, 23, 42, 0.04) 40px,
+                            rgba(15, 23, 42, 0.04) 41px
+                        ),
+                        repeating-linear-gradient(
+                            -45deg,
+                            transparent,
+                            transparent 40px,
+                            rgba(15, 23, 42, 0.04) 40px,
+                            rgba(15, 23, 42, 0.04) 41px
+                        )
+                    `,
+                    zIndex: -2,
+                }}
+            />
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: "radial-gradient(ellipse at 50% 30%, rgba(37, 99, 235, 0.08) 0%, transparent 60%)",
+                    zIndex: -1,
+                }}
+            />
+            <div className="mobile-only">
+                <HeaderMobile />
+            </div>
+            <div className="desktop-only">
+                <HeaderDesktop />
+            </div>
+            <Hero projectsLength={projectsLength} />
+            <OverviewOfServices />
+            <AboutMyWork />
+            {/* <TeaserCatalog /> */}
+            <ApplicationLaunch />
+            {/* <Portfolio /> */}
+            <ContactsMainPage />
+            <Footer />
+        </div>
+    )
+}
+
+├ ○ /_not-found
+
+import Link from "next/link"
+import { IoIosArrowForward } from "react-icons/io"
+import '../globals.css'
+
+export default function NotFound() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0 nf-lines"
+                    style={{
+                        backgroundImage: `
+                            repeating-linear-gradient(
+                                90deg,
+                                transparent 0,
+                                transparent 79px,
+                                rgba(15,23,42,0.06) 79px,
+                                rgba(15,23,42,0.06) 80px
+                            )
+                        `,
+                    }}
+                />
+                <div className="nf-glow-1 absolute top-0 left-1/4 w-225 h-225 rounded-full" />
+                <div className="nf-glow-2 absolute bottom-0 right-1/4 w-225 h-225 rounded-full" />
+            </div>
+
+            <style>{`
+                @keyframes nfGlow1 {
+                    0%, 100% { opacity: 0.2; transform: translate(0, 0); }
+                    50% { opacity: 0.4; transform: translate(80px, 40px); }
+                }
+                @keyframes nfGlow2 {
+                    0%, 100% { opacity: 0.15; transform: translate(0, 0); }
+                    50% { opacity: 0.35; transform: translate(-80px, -40px); }
+                }
+                @keyframes nfLineSweep {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+                @keyframes nfDotBlink {
+                    0%, 45% { opacity: 1; }
+                    50%, 100% { opacity: 0.15; }
+                }
+                .nf-lines { animation: none; }
+                .nf-glow-1 {
+                    background: radial-gradient(circle, rgba(139,92,246,0.10), transparent 70%);
+                    animation: nfGlow1 22s ease-in-out infinite;
+                }
+                .nf-glow-2 {
+                    background: radial-gradient(circle, rgba(37,99,235,0.10), transparent 70%);
+                    animation: nfGlow2 26s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 min-h-screen flex flex-col">
+                <div className="container flex-1 flex items-center">
+                    <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div className="lg:col-span-7">
+                            <div className="flex items-center gap-3">
+                                <span className="w-2 h-2 rounded-full bg-violet-400 nf-dot" />
+                                <span className="text-white/40 text-xs uppercase tracking-[0.3em] font-mono">
+                                    page not found
+                                </span>
+                            </div>
+
+                            <h1 className="text-font-cormorant text-[#f0f0f0] text-[120px] md:text-[180px] lg:text-[220px] leading-[0.9] mt-6">
+                                4<span className="text-white/15">0</span>4
+                            </h1>
+
+                            <div className="mt-8 max-w-lg">
+                                <p className="text-white/70 text-font-inter text-base md:text-lg leading-relaxed">
+                                    Мы потеряли эту страницу.
+                                </p>
+                                <p className="text-white/45 text-font-inter text-sm md:text-base leading-relaxed mt-2">
+                                    Возможно, ссылка устарела, страница была перемещена или адрес введён неверно. Попробуйте вернуться назад или начать с главной.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="lg:col-span-5">
+                            <div className="relative rounded-2xl border border-white/10 bg-[#0a0a12]/60 p-8 backdrop-blur-[2px]">
+                                <div className="absolute top-0 left-8 right-8 h-px bg-linear-to-r from-transparent via-violet-400/30 to-transparent" />
+
+                                <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-mono">
+                                    возможные действия
+                                </span>
+
+                                <div className="mt-6 space-y-3">
+                                    <Link href="/" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
+                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                            Вернуться на главную
+                                        </span>
+                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                    </Link>
+
+                                    <Link href="/catalog" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
+                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                            Посмотреть каталог
+                                        </span>
+                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                    </Link>
+
+                                    <Link href="/portfolio" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
+                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                            Изучить портфолио
+                                        </span>
+                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                    </Link>
+
+                                    <Link href="/contacts" className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/15 transition-colors">
+                                        <span className="text-white/80 group-hover:text-white text-sm transition-colors">
+                                            Написать нам
+                                        </span>
+                                        <IoIosArrowForward className="size-4 text-white/30 group-hover:text-violet-300 group-hover:translate-x-0.5 transition-all duration-200" />
+                                    </Link>
+                                </div>
+
+                                <p className="text-white/25 text-[10px] font-mono mt-6">
+                                    err_code · 404 · page_not_found
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="container pb-12">
+                    <div className="flex items-center gap-4 text-white/20 text-[10px] uppercase tracking-[0.3em] font-mono">
+                        <span className="w-12 h-px bg-white/15" />
+                        <span>not found</span>
+                    </div>
+                </div>
+            </div>
+
+            <style>{`
+                @keyframes nfDotBlink {
+                    0%, 45% { opacity: 1; }
+                    50%, 100% { opacity: 0.15; }
+                }
+                .nf-dot {
+                    animation: nfDotBlink 1.5s ease-in-out infinite;
+                }
+            `}</style>
+        </div>
+    )
+}
+
+├ ○ /about
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { AboutHero } from "./components/AboutHero"
+import { AllBeganAbout } from "./components/AllBeganAbout"
+import { AgencyAbout } from "./components/AgencyAbout"
+import { SolutionsAbout } from "./components/SolutionsAbout"
+import { ToolsAbout } from "./components/ToolsAbout"
+import { PersonalizedApproachAbout } from "./components/PersonalizedApproachAbout"
+import { DevelopmentAbout } from "./components/DevelopmentAbout"
+import { GoodSolutionAbout } from "./components/GoodSolutionAbout"
+import { BeforeAfterAbout } from "./components/BeforeAfterAbout"
+import { AlsoOnTheSiteAbout } from "./components/AlsoOnTheSiteAbout"
+import { CTAabout } from "./components/CTAabout"
+import { Footer } from "@/components/layout/footer/Footer"
+
+export default function About() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div className="about-blob about-blob-1" />
+                <div className="about-blob about-blob-2" />
+                <div className="about-blob about-blob-3" />
+                <div className="about-blob about-blob-4" />
+                <div className="about-blob about-blob-5" />
+
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 6000" preserveAspectRatio="xMidYMin slice">
+                    <defs>
+                        <linearGradient id="aboutArc" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#6d28d9" stopOpacity="0" />
+                            <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.45" />
+                            <stop offset="100%" stopColor="#6d28d9" stopOpacity="0" />
+                        </linearGradient>
+                    </defs>
+
+                    <ellipse cx="720" cy="800" rx="700" ry="200" fill="none" stroke="url(#aboutArc)" strokeWidth="0.8" strokeDasharray="3 12" />
+                    <ellipse cx="720" cy="800" rx="500" ry="140" fill="none" stroke="url(#aboutArc)" strokeWidth="0.8" strokeDasharray="3 12" />
+
+                    <ellipse cx="400" cy="2400" rx="600" ry="180" fill="none" stroke="url(#aboutArc)" strokeWidth="0.8" strokeDasharray="3 12" />
+                    <ellipse cx="400" cy="2400" rx="400" ry="120" fill="none" stroke="url(#aboutArc)" strokeWidth="0.8" strokeDasharray="3 12" />
+
+                    <ellipse cx="1100" cy="4200" rx="650" ry="190" fill="none" stroke="url(#aboutArc)" strokeWidth="0.8" strokeDasharray="3 12" />
+                    <ellipse cx="1100" cy="4200" rx="450" ry="130" fill="none" stroke="url(#aboutArc)" strokeWidth="0.8" strokeDasharray="3 12" />
+                </svg>
+
+                <div
+                    className="absolute inset-0 about-grain"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                        backgroundSize: "220px 220px",
+                    }}
+                />
+
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background: "radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(240,244,248,0.7) 100%)",
+                    }}
+                />
+            </div>
+            <style>{`
+                @keyframes aboutBlob1 {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    50% { transform: translate(120px, 80px) scale(1.15); }
+                }
+                @keyframes aboutBlob2 {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    50% { transform: translate(-140px, 100px) scale(1.1); }
+                }
+                @keyframes aboutBlob3 {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    50% { transform: translate(80px, -120px) scale(1.2); }
+                }
+                @keyframes aboutBlob4 {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    50% { transform: translate(-100px, -80px) scale(1.08); }
+                }
+                @keyframes aboutBlob5 {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    50% { transform: translate(60px, 140px) scale(1.12); }
+                }
+                .about-blob {
+                    position: absolute;
+                    border-radius: 50%;
+                    filter: blur(100px);
+                    will-change: transform;
+                }
+                .about-blob-1 {
+                    top: 5%;
+                    left: 10%;
+                    width: 600px;
+                    height: 600px;
+                    background: radial-gradient(circle, rgba(124,58,237,0.65), rgba(124,58,237,0.15) 45%, transparent 75%);
+                    animation: aboutBlob1 28s ease-in-out infinite;
+                }
+                .about-blob-2 {
+                    top: 25%;
+                    right: 5%;
+                    width: 700px;
+                    height: 700px;
+                    background: radial-gradient(circle, rgba(37,99,235,0.60), rgba(37,99,235,0.15) 45%, transparent 75%);
+                    animation: aboutBlob2 34s ease-in-out infinite;
+                }
+                .about-blob-3 {
+                    top: 55%;
+                    left: 20%;
+                    width: 550px;
+                    height: 550px;
+                    background: radial-gradient(circle, rgba(139,92,246,0.55), rgba(139,92,246,0.12) 45%, transparent 75%);
+                    animation: aboutBlob3 30s ease-in-out infinite;
+                }
+                .about-blob-4 {
+                    top: 75%;
+                    right: 15%;
+                    width: 650px;
+                    height: 650px;
+                    background: radial-gradient(circle, rgba(124,58,237,0.60), rgba(124,58,237,0.15) 45%, transparent 75%);
+                    animation: aboutBlob4 36s ease-in-out infinite;
+                }
+                .about-blob-5 {
+                    top: 40%;
+                    right: 40%;
+                    width: 500px;
+                    height: 500px;
+                    background: radial-gradient(circle, rgba(37,99,235,0.50), rgba(37,99,235,0.10) 45%, transparent 75%);
+                    animation: aboutBlob5 32s ease-in-out infinite;
+                }
+                .about-grain {
+                    opacity: 0.06;
+                    mix-blend-mode: multiply;
+                }
+            `}</style>
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <AboutHero />
+                <AllBeganAbout />
+                <AgencyAbout />
+                <SolutionsAbout />
+                <ToolsAbout />
+                <PersonalizedApproachAbout />
+                <DevelopmentAbout />
+                <GoodSolutionAbout />
+                <BeforeAfterAbout />
+                <AlsoOnTheSiteAbout />
+                <CTAabout />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ƒ /blog
+├ ƒ /blog/[article]
+├ ƒ /blog/business-solutions
+├ ƒ /blog/cases
+├ ƒ /blog/guides
+├ ƒ /blog/stocks
+├ ƒ /blog/technologies
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { MainPageBlog } from "./MainPageBlog"
+import { Footer } from "@/components/layout/footer/Footer"
+import { dbGetArticlesEverything } from "@/lib/db/blog/dbGetArticles"
+
+export const dynamic = 'force-dynamic'
+
+export const letters = [
+    { char: "B", top: "6%", left: "4%", size: 420, rotate: -8, delay: 0 },
+    { char: "L", top: "18%", left: "76%", size: 360, rotate: 6, delay: 2 },
+    { char: "O", top: "34%", left: "10%", size: 480, rotate: -3, delay: 4 },
+    { char: "G", top: "50%", left: "78%", size: 400, rotate: 4, delay: 1 },
+    { char: "B", top: "64%", left: "6%", size: 340, rotate: -6, delay: 3 },
+    { char: "L", top: "78%", left: "72%", size: 460, rotate: 3, delay: 5 },
+    { char: "O", top: "92%", left: "14%", size: 380, rotate: -4, delay: 2.5 },
+]
+
+export default async function Blog() {
+    const rawArticles = await dbGetArticlesEverything()
+    const articles = JSON.parse(JSON.stringify(rawArticles))
+
+    return (
+        <div className="relative min-h-screen overflow-hidden bg-[#F0F4F8]" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background: "radial-gradient(ellipse at 50% 0%, #E4EBF3 0%, #ECF1F6 40%, #F0F4F8 100%)",
+                    }}
+                />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background: "linear-gradient(90deg, #F0F4F8 0%, transparent 25%, transparent 75%, #F0F4F8 100%)",
+                    }}
+                />
+                <div className="blog-center-light" />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(124,58,237,0.08) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(124,58,237,0.08) 1px, transparent 1px)
+                        `,
+                        backgroundSize: "80px 80px",
+                        maskImage: "linear-gradient(90deg, transparent 0%, black 30%, black 70%, transparent 100%)",
+                        WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 30%, black 70%, transparent 100%)",
+                    }}
+                />
+                <div className="hidden md:block">
+                    {letters.map((item, i) => (
+                        <span
+                            key={i}
+                            className="blog-letter"
+                            style={{
+                                top: item.top,
+                                left: item.left,
+                                fontSize: `${item.size}px`,
+                                transform: `rotate(${item.rotate}deg)`,
+                                animationDelay: `${item.delay}s`,
+                            }}
+                        >
+                            {item.char}
+                        </span>
+                    ))}
+                </div>
+            </div>
+            <style>{`
+                @keyframes blogLetterFloat {
+                    0%, 100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+                    50% { transform: translate(15px, -25px) rotate(var(--r, 0deg)); }
+                }
+                @keyframes blogCenterPulse {
+                    0%, 100% { opacity: 0.85; }
+                    50% { opacity: 1; }
+                }
+                .blog-letter {
+                    position: absolute;
+                    font-family: 'Space Grotesk', system-ui, sans-serif;
+                    font-weight: 700;
+                    line-height: 0.85;
+                    color: #7c3aed;
+                    opacity: 0.13;
+                    user-select: none;
+                    pointer-events: none;
+                    animation: blogLetterFloat 14s ease-in-out infinite;
+                    letter-spacing: -0.04em;
+                }
+                .blog-center-light {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 900px;
+                    background: linear-gradient(
+                        90deg,
+                        transparent 0%,
+                        rgba(124,58,237,0.05) 20%,
+                        rgba(139,92,246,0.10) 45%,
+                        rgba(37,99,235,0.12) 50%,
+                        rgba(139,92,246,0.10) 55%,
+                        rgba(124,58,237,0.05) 80%,
+                        transparent 100%
+                    );
+                    filter: blur(60px);
+                    animation: blogCenterPulse 8s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <MainPageBlog articles={articles} />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /contacts
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { FaEnvelope, FaPhone, FaTelegram, FaWhatsapp, FaMapMarkerAlt, FaCommentDots, FaPaperPlane } from "react-icons/fa"
+import { ContactsForm } from "./components/ContactsForm"
+import { Footer } from "@/components/layout/footer/Footer"
+
+const nodes = [
+    { Icon: FaEnvelope, x: 12, y: 22, size: 32, color: "#7c3aed", delay: 0 },
+    { Icon: FaPhone, x: 28, y: 40, size: 26, color: "#2563eb", delay: 0.8 },
+    { Icon: FaTelegram, x: 82, y: 28, size: 30, color: "#7c3aed", delay: 1.6 },
+    { Icon: FaWhatsapp, x: 68, y: 58, size: 28, color: "#2563eb", delay: 2.4 },
+    { Icon: FaMapMarkerAlt, x: 18, y: 72, size: 30, color: "#7c3aed", delay: 0.4 },
+    { Icon: FaCommentDots, x: 88, y: 78, size: 26, color: "#8b5cf6", delay: 2 },
+    { Icon: FaPaperPlane, x: 50, y: 88, size: 32, color: "#2563eb", delay: 1.2 },
+    { Icon: FaEnvelope, x: 50, y: 14, size: 24, color: "#8b5cf6", delay: 3 },
+]
+
+const links: [number, number][] = [
+    [0, 1], [1, 2], [2, 3], [3, 5],
+    [1, 4], [4, 6], [6, 5], [0, 7],
+    [7, 2], [3, 6], [1, 7],
+]
+
+export default function Contacts() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                >
+                    <defs>
+                        <linearGradient id="contactLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#7c3aed" stopOpacity="0" />
+                            <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
+                        </linearGradient>
+                    </defs>
+
+                    {links.map(([a, b], i) => (
+                        <line
+                            key={i}
+                            x1={nodes[a].x}
+                            y1={nodes[a].y}
+                            x2={nodes[b].x}
+                            y2={nodes[b].y}
+                            stroke="url(#contactLine)"
+                            strokeWidth="0.08"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    ))}
+
+                    {links.map(([a, b], i) => (
+                        <circle key={`p-${i}`} r="0.25" fill="#8b5cf6" opacity="0.9">
+                            <animateMotion
+                                dur={`${5 + (i % 4)}s`}
+                                begin={`${(i * 0.6) % 5}s`}
+                                repeatCount="indefinite"
+                                path={`M ${nodes[a].x} ${nodes[a].y} L ${nodes[b].x} ${nodes[b].y}`}
+                            />
+                            <animate
+                                attributeName="opacity"
+                                values="0;0.9;0"
+                                dur={`${5 + (i % 4)}s`}
+                                begin={`${(i * 0.6) % 5}s`}
+                                repeatCount="indefinite"
+                            />
+                        </circle>
+                    ))}
+                </svg>
+
+                {nodes.map((n, i) => (
+                    <div
+                        key={i}
+                        className="absolute contacts-node"
+                        style={{
+                            left: `${n.x}%`,
+                            top: `${n.y}%`,
+                            transform: "translate(-50%, -50%)",
+                            animationDelay: `${n.delay}s`,
+                        }}
+                    >
+                        <div
+                            className="relative flex items-center justify-center"
+                            style={{ width: n.size * 2.5, height: n.size * 2.5 }}
+                        >
+                            <div
+                                className="absolute inset-0 rounded-full"
+                                style={{
+                                    background: `radial-gradient(circle, ${n.color}30, transparent 70%)`,
+                                }}
+                            />
+                            <div
+                                className="absolute inset-[15%] rounded-full border"
+                                style={{ borderColor: `${n.color}40` }}
+                            />
+                            <n.Icon
+                                style={{
+                                    color: n.color,
+                                    fontSize: n.size,
+                                    opacity: 0.75,
+                                }}
+                            />
+                        </div>
+                    </div>
+                ))}
+
+                <div className="contacts-glow-1 absolute top-[15%] left-[5%] w-225 h-225 rounded-full" />
+                <div className="contacts-glow-2 absolute bottom-[10%] right-[5%] w-225 h-225 rounded-full" />
+            </div>
+            <style>{`
+                @keyframes contactsNodePulse {
+                    0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+                    50% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.06); }
+                }
+                @keyframes contactsGlow1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+                    50% { transform: translate(100px, 60px); opacity: 0.75; }
+                }
+                @keyframes contactsGlow2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.45; }
+                    50% { transform: translate(-100px, -60px); opacity: 0.7; }
+                }
+                .contacts-node {
+                    animation: contactsNodePulse 5s ease-in-out infinite;
+                }
+                .contacts-glow-1 {
+                    background: radial-gradient(circle, rgba(124,58,237,0.20), transparent 70%);
+                    animation: contactsGlow1 26s ease-in-out infinite;
+                }
+                .contacts-glow-2 {
+                    background: radial-gradient(circle, rgba(37,99,235,0.18), transparent 70%);
+                    animation: contactsGlow2 30s ease-in-out infinite;
+                }
+            `}</style>
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <ContactsForm />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /documents/legal
+├ ○ /documents/legal/company-details
+├ ○ /documents/legal/consent-personal-data
+├ ○ /documents/legal/consent-receive-advertising
+├ ○ /documents/legal/cookie-policy
+├ ○ /documents/legal/offer
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { Footer } from "@/components/layout/footer/Footer"
+import Link from "next/link"
+import { IoIosArrowForward } from "react-icons/io"
+import { documents } from "@/constants/documents"
+
+export default function DocumentsLegal() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0 docs-lines-base"
+                    style={{
+                        backgroundImage: `
+                            repeating-linear-gradient(
+                                0deg,
+                                transparent 0,
+                                transparent 47px,
+                                rgba(124,58,237,0.10) 47px,
+                                rgba(124,58,237,0.10) 48px
+                            )
+                        `,
+                    }}
+                />
+
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            repeating-linear-gradient(
+                                0deg,
+                                transparent 0,
+                                transparent 239px,
+                                rgba(37,99,235,0.16) 239px,
+                                rgba(37,99,235,0.16) 240px
+                            )
+                        `,
+                    }}
+                />
+
+                <div
+                    className="absolute inset-x-0 top-0 h-125 pointer-events-none"
+                    style={{
+                        background: "radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.15), transparent 70%)",
+                    }}
+                />
+
+                <div className="docs-glow-1 absolute top-[30%] -left-1/4 w-225 h-225 rounded-full" />
+                <div className="docs-glow-2 absolute bottom-[10%] -right-1/4 w-225 h-225 rounded-full" />
+            </div>
+            <style>{`
+                @keyframes docsLinesPulse {
+                    0%, 100% { opacity: 0.8; }
+                    50% { opacity: 1; }
+                }
+                @keyframes docsGlow1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+                    50% { transform: translate(100px, 60px); opacity: 0.75; }
+                }
+                @keyframes docsGlow2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.45; }
+                    50% { transform: translate(-100px, -60px); opacity: 0.7; }
+                }
+                .docs-lines-base {
+                    animation: docsLinesPulse 14s ease-in-out infinite;
+                }
+                .docs-glow-1 {
+                    background: radial-gradient(circle, rgba(124,58,237,0.20), transparent 70%);
+                    animation: docsGlow1 26s ease-in-out infinite;
+                }
+                .docs-glow-2 {
+                    background: radial-gradient(circle, rgba(37,99,235,0.18), transparent 70%);
+                    animation: docsGlow2 30s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+
+                <div className="container pt-24 md:pt-40">
+                    <h1 className="text-font-cormorant text-[#f0f0f0] text-5xl md:text-7xl lg:text-[96px] leading-tight">
+                        Документы
+                    </h1>
+
+                    <div className="mt-16 md:mt-20 space-y-3">
+                        {documents.map((doc, idx) => (
+                            <Link key={idx} href={doc.href}>
+                                <div className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start py-6 md:py-8 border-b border-white/8 hover:border-white/20 transition-colors duration-300 cursor-pointer">
+                                    <span className="md:col-span-1 text-white/30 font-mono text-sm">
+                                        {doc.num}
+                                    </span>
+
+                                    <h2 className="md:col-span-5 text-white text-lg md:text-xl font-semibold transition-colors duration-300 group-hover:text-violet-300">
+                                        {doc.title}
+                                    </h2>
+
+                                    <p className="md:col-span-5 text-white/50 text-sm leading-relaxed">
+                                        {doc.desc}
+                                    </p>
+
+                                    <span className="md:col-span-1 flex md:justify-end items-center gap-2 text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-200">
+                                        Читать
+                                        <IoIosArrowForward className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                                    </span>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="pb-20" />
+
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ƒ /portfolio
+├ ƒ /portfolio/[project]
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+import { PortfolioComponent } from "./PortfolioComponent";
+import { Footer } from "@/components/layout/footer/Footer";
+
+export const dynamic = 'force-dynamic'
+
+export default function Portfolio() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0 portfolio-lines-base"
+                    style={{
+                        backgroundImage: `
+                            repeating-linear-gradient(
+                                115deg,
+                                transparent 0,
+                                transparent 38px,
+                                rgba(124,58,237,0.10) 38px,
+                                rgba(124,58,237,0.10) 39px
+                            )
+                        `,
+                    }}
+                />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            repeating-linear-gradient(
+                                115deg,
+                                transparent 0,
+                                transparent 190px,
+                                rgba(37,99,235,0.16) 190px,
+                                rgba(37,99,235,0.16) 191px
+                            )
+                        `,
+                    }}
+                />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(90deg, transparent 0%, rgba(240,244,248,0) 30%, rgba(240,244,248,0.6) 100%)
+                        `,
+                    }}
+                />
+                <div className="portfolio-glow-1 absolute -top-1/4 -left-1/4 w-225 h-225 rounded-full" />
+                <div className="portfolio-glow-2 absolute top-1/3 -right-1/4 w-225 h-225 rounded-full" />
+                <div className="portfolio-glow-3 absolute -bottom-1/4 left-1/4 w-225 h-225 rounded-full" />
+            </div>
+            <style>{`
+                @keyframes portfolioLinesPulse {
+                    0%, 100% { opacity: 0.8; }
+                    50% { opacity: 1; }
+                }
+                @keyframes portfolioGlow1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+                    50% { transform: translate(100px, 60px); opacity: 0.75; }
+                }
+                @keyframes portfolioGlow2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.45; }
+                    50% { transform: translate(-100px, -60px); opacity: 0.7; }
+                }
+                @keyframes portfolioGlow3 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    50% { transform: translate(60px, -80px); opacity: 0.65; }
+                }
+                .portfolio-lines-base {
+                    animation: portfolioLinesPulse 12s ease-in-out infinite;
+                }
+                .portfolio-glow-1 {
+                    background: radial-gradient(circle, rgba(124,58,237,0.20), transparent 70%);
+                    animation: portfolioGlow1 26s ease-in-out infinite;
+                }
+                .portfolio-glow-2 {
+                    background: radial-gradient(circle, rgba(37,99,235,0.18), transparent 70%);
+                    animation: portfolioGlow2 30s ease-in-out infinite;
+                }
+                .portfolio-glow-3 {
+                    background: radial-gradient(circle, rgba(139,92,246,0.16), transparent 70%);
+                    animation: portfolioGlow3 34s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <PortfolioComponent />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ƒ /reviews
+
+import { Footer } from "@/components/layout/footer/Footer";
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+import { FaStar } from "react-icons/fa";
+import { HeroReviews } from "./components/HeroReviews";
+import { SummaryReviews } from "./components/SummaryReviews";
+import { ReviewsList } from "./components/ReviewsList";
+import { CTAreviews } from "./components/CTAreviews";
+import { dbGetReviewsAll } from "@/lib/db/review/dbGetReviewsAll"
+
+export const dynamic = 'force-dynamic'
+
+export default async function Reviews() {
+    const stars = [
+        { top: "6%", right: "8%", size: 320, opacity: 0.14, delay: 0, rotate: -8, position: "right" },
+        { top: "14%", left: "10%", size: 200, opacity: 0.12, delay: 1.5, rotate: 6, position: "left" },
+        { top: "38%", right: "14%", size: 260, opacity: 0.12, delay: 3, rotate: -4, position: "right" },
+        { top: "52%", left: "6%", size: 340, opacity: 0.14, delay: 0.8, rotate: 5, position: "left" },
+        { top: "76%", right: "10%", size: 220, opacity: 0.12, delay: 2.2, rotate: -6, position: "right" },
+        { top: "90%", left: "18%", size: 280, opacity: 0.14, delay: 1.2, rotate: 4, position: "left" },
+    ]
+
+    const rawReviews = await dbGetReviewsAll()
+    const reviews = JSON.parse(JSON.stringify(rawReviews))
+    const totalReviews = rawReviews.length
+
+    const averageRating = totalReviews > 0
+        ? rawReviews.reduce((sum, item) => sum + Number(item.estimation), 0) / totalReviews
+        : 0
+
+    const distribution = [
+        { stars: 5, count: 0 },
+        { stars: 4, count: 0 },
+        { stars: 3, count: 0 },
+        { stars: 2, count: 0 },
+        { stars: 1, count: 0 },
+    ]
+
+    rawReviews.forEach(item => {
+        const target = distribution.find(d => d.stars === Number(item.estimation))
+        if (target) {
+            target.count++
+        }
+    })
+
+    return (
+        <div className="relative min-h-screen overflow-hidden bg-[#F0F4F8]" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background:
+                            "radial-gradient(ellipse at 50% 30%, #F5F6F2 0%, #F1F3F6 45%, #F0F4F8 100%)",
+                    }}
+                />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background:
+                            "radial-gradient(ellipse at 50% 40%, rgba(250, 204, 21, 0.12) 0%, transparent 55%)",
+                    }}
+                />
+                <div className="hidden md:block">
+                    {stars.map((star, i) => (
+                        <div
+                            key={i}
+                            className="reviews-star"
+                            style={{
+                                top: star.top,
+                                left: star.position === "left" ? star.left : "auto",
+                                right: star.position === "right" ? star.right : "auto",
+                                fontSize: `${star.size}px`,
+                                opacity: star.opacity,
+                                animationDelay: `${star.delay}s`,
+                                transform: `rotate(${star.rotate}deg)`,
+                            }}
+                        >
+                            <FaStar />
+                        </div>
+                    ))}
+                </div>
+                <div className="md:hidden">
+                    <div
+                        className="reviews-star-mobile"
+                        style={{
+                            top: "8%",
+                            right: "5%",
+                            fontSize: "140px",
+                            opacity: 0.15,
+                            transform: "rotate(-8deg)",
+                        }}
+                    >
+                        <FaStar />
+                    </div>
+                    <div
+                        className="reviews-star-mobile"
+                        style={{
+                            top: "55%",
+                            left: "4%",
+                            fontSize: "160px",
+                            opacity: 0.13,
+                            transform: "rotate(6deg)",
+                            animationDelay: "2s",
+                        }}
+                    >
+                        <FaStar />
+                    </div>
+                    <div
+                        className="reviews-star-mobile"
+                        style={{
+                            bottom: "8%",
+                            right: "8%",
+                            fontSize: "120px",
+                            opacity: 0.15,
+                            transform: "rotate(-4deg)",
+                            animationDelay: "4s",
+                        }}
+                    >
+                        <FaStar />
+                    </div>
+                </div>
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background: "radial-gradient(ellipse at 50% 45%, transparent 40%, #F0F4F8 95%)",
+                    }}
+                />
+            </div>
+            <style>{`
+                @keyframes reviewsStarFloat {
+                    0%, 100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+                    50% { transform: translate(10px, -14px) rotate(var(--r, 0deg)); }
+                }
+                @keyframes reviewsStarFloatMobile {
+                    0%, 100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+                    50% { transform: translate(6px, -10px) rotate(var(--r, 0deg)); }
+                }
+                .reviews-star,
+                .reviews-star-mobile {
+                    position: absolute;
+                    color: #eab308;
+                    line-height: 1;
+                    user-select: none;
+                    pointer-events: none;
+                    filter: blur(0.5px);
+                }
+                .reviews-star {
+                    animation: reviewsStarFloat 18s ease-in-out infinite;
+                }
+                .reviews-star-mobile {
+                    animation: reviewsStarFloatMobile 14s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <HeroReviews />
+                <SummaryReviews
+                    totalReviews={totalReviews}
+                    averageRating={averageRating}
+                    distribution={distribution}
+                />
+                <ReviewsList reviews={reviews} />
+                <CTAreviews />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /services/ai
+
+import { Footer } from "@/components/layout/footer/Footer";
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+import { HeroAi } from "./components/HeroAi";
+import { CanBeDevelopedAi } from "./components/CanBeDevelopedAi";
+import { SolvingBusninessProblemsAi } from "./components/SolvingBusninessProblemsAi";
+import { DevelopmentStagesAi } from "./components/DevelopmentStagesAi";
+import { HowWeWorkAi } from "./components/HowWeWorkAi";
+import { WhatCanWeCheckSpecificallyAi } from "./components/WhatCanWeCheckSpecificallyAi";
+import { FAQandCTAByAi } from "./components/FAQandCTAByAi";
+import { MainDirectionsAi } from "./components/MainDirectionsAi";
+
+const hubs = [
+    { cx: 340, cy: 700, r: 180, layers: 4 },
+    { cx: 1120, cy: 1200, r: 220, layers: 5 },
+    { cx: 400, cy: 1900, r: 200, layers: 4 },
+    { cx: 1100, cy: 2600, r: 240, layers: 5 },
+    { cx: 360, cy: 3400, r: 200, layers: 4 },
+    { cx: 1080, cy: 4100, r: 220, layers: 5 },
+    { cx: 420, cy: 4800, r: 200, layers: 4 },
+    { cx: 1080, cy: 5500, r: 220, layers: 5 },
+]
+
+const topNeurons = [
+    { x: 720, y: 260 },
+    { x: 560, y: 340 }, { x: 880, y: 340 },
+    { x: 420, y: 420 }, { x: 720, y: 440 }, { x: 1020, y: 420 },
+    { x: 300, y: 520 }, { x: 540, y: 560 }, { x: 900, y: 560 }, { x: 1140, y: 520 },
+    { x: 220, y: 640 }, { x: 460, y: 700 }, { x: 720, y: 720 }, { x: 980, y: 700 }, { x: 1220, y: 640 },
+    { x: 340, y: 820 }, { x: 620, y: 860 }, { x: 820, y: 860 }, { x: 1100, y: 820 },
+]
+
+const topSynapses: [number, number][] = [
+    [0, 1], [0, 2],
+    [1, 3], [1, 4], [2, 4], [2, 5],
+    [3, 6], [3, 7], [4, 7], [4, 8], [5, 8], [5, 9],
+    [6, 10], [6, 11], [7, 11], [7, 12], [8, 12], [8, 13], [9, 13], [9, 14],
+    [10, 15], [11, 15], [11, 16], [12, 16], [12, 17], [13, 17], [13, 18], [14, 18],
+    [15, 16], [16, 17], [17, 18],
+]
+
+export default function servicesAI() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8]">
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 1440 6000"
+                    preserveAspectRatio="xMidYMin slice"
+                    style={{ opacity: 0.8 }}
+                >
+                    <defs>
+                        <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stopColor="#F8FAFC" stopOpacity="0.9" />
+                            <stop offset="35%" stopColor="#E2E8F0" stopOpacity="0.5" />
+                            <stop offset="100%" stopColor="#E2E8F0" stopOpacity="0" />
+                        </radialGradient>
+                        <radialGradient id="coreGlowBlue" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
+                            <stop offset="35%" stopColor="#E2E8F0" stopOpacity="0.45" />
+                            <stop offset="100%" stopColor="#E2E8F0" stopOpacity="0" />
+                        </radialGradient>
+                        <radialGradient id="topCoreGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stopColor="#F8FAFC" stopOpacity="0.95" />
+                            <stop offset="30%" stopColor="#E2E8F0" stopOpacity="0.55" />
+                            <stop offset="70%" stopColor="#CBD5E1" stopOpacity="0.2" />
+                            <stop offset="100%" stopColor="#CBD5E1" stopOpacity="0" />
+                        </radialGradient>
+                        <filter id="bigBlur">
+                            <feGaussianBlur stdDeviation="4" />
+                        </filter>
+                        <filter id="midBlur">
+                            <feGaussianBlur stdDeviation="2" />
+                        </filter>
+                        <filter id="topBlur">
+                            <feGaussianBlur stdDeviation="6" />
+                        </filter>
+                    </defs>
+
+                    <g opacity="0.9">
+                        <circle cx="720" cy="440" r="340" fill="url(#topCoreGlow)" filter="url(#topBlur)" />
+
+                        {[120, 180, 240, 300, 360, 420].map((r, i) => (
+                            <circle
+                                key={`top-ring-${i}`}
+                                cx="720"
+                                cy="440"
+                                r={r}
+                                fill="none"
+                                stroke={i % 2 === 0 ? "#CBD5E1" : "#94A3B8"}
+                                strokeOpacity={0.35 - i * 0.04}
+                                strokeWidth="0.8"
+                                strokeDasharray={i % 2 === 0 ? "0" : "4 8"}
+                            >
+                                <animate
+                                    attributeName="r"
+                                    values={`${r};${r + 8};${r}`}
+                                    dur={`${10 + i * 2}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </circle>
+                        ))}
+
+                        {Array.from({ length: 36 }).map((_, i) => {
+                            const angle = (i / 36) * Math.PI * 2
+                            return (
+                                <line
+                                    key={`top-ray-${i}`}
+                                    x1={720 + Math.cos(angle) * 60}
+                                    y1={440 + Math.sin(angle) * 60}
+                                    x2={720 + Math.cos(angle) * 400}
+                                    y2={440 + Math.sin(angle) * 400}
+                                    stroke="#CBD5E1"
+                                    strokeOpacity="0.15"
+                                    strokeWidth="0.6"
+                                />
+                            )
+                        })}
+
+                        {Array.from({ length: 60 }).map((_, i) => {
+                            const angle = (i / 60) * Math.PI * 2
+                            const radius = 120 + (i % 4) * 70
+                            return (
+                                <circle
+                                    key={`top-dot-${i}`}
+                                    cx={720 + Math.cos(angle) * radius}
+                                    cy={440 + Math.sin(angle) * radius}
+                                    r={i % 3 === 0 ? 1.5 : 1}
+                                    fill={i % 2 === 0 ? "#FFFFFF" : "#94A3B8"}
+                                    fillOpacity="0.75"
+                                >
+                                    <animate
+                                        attributeName="opacity"
+                                        values="0.75;1;0.75"
+                                        dur={`${3 + (i % 5)}s`}
+                                        begin={`${(i * 0.08) % 4}s`}
+                                        repeatCount="indefinite"
+                                    />
+                                </circle>
+                            )
+                        })}
+
+                        {topSynapses.map(([a, b], i) => (
+                            <line
+                                key={`top-syn-${i}`}
+                                x1={topNeurons[a].x}
+                                y1={topNeurons[a].y}
+                                x2={topNeurons[b].x}
+                                y2={topNeurons[b].y}
+                                stroke="#94A3B8"
+                                strokeOpacity="0.20"
+                                strokeWidth="0.8"
+                            />
+                        ))}
+
+                        {topNeurons.map((n, i) => (
+                            <g key={`top-n-${i}`}>
+                                <circle cx={n.x} cy={n.y} r="20" fill="url(#coreGlow)" opacity="0.7" />
+                                <circle cx={n.x} cy={n.y} r="2" fill="#FFFFFF" fillOpacity="0.95" />
+                                <circle cx={n.x} cy={n.y} r="2" fill="#FFFFFF" opacity="0">
+                                    <animate
+                                        attributeName="opacity"
+                                        values="0;0.7;0"
+                                        dur="4s"
+                                        begin={`${i * 0.15}s`}
+                                        repeatCount="indefinite"
+                                    />
+                                    <animate
+                                        attributeName="r"
+                                        values="2;7;2"
+                                        dur="4s"
+                                        begin={`${i * 0.15}s`}
+                                        repeatCount="indefinite"
+                                    />
+                                </circle>
+                            </g>
+                        ))}
+
+                        {topNeurons.map((n, i) => {
+                            if (i % 3 !== 0) return null
+                            return (
+                                <circle key={`top-p-${i}`} r="2.5" fill="#F1F5F9" filter="url(#midBlur)">
+                                    <animateMotion
+                                        dur={`${4 + (i % 4)}s`}
+                                        begin={`${i * 0.3}s`}
+                                        repeatCount="indefinite"
+                                        path={`M ${n.x} ${n.y} L 720 440`}
+                                    />
+                                    <animate
+                                        attributeName="opacity"
+                                        values="0;0.9;0"
+                                        dur={`${4 + (i % 4)}s`}
+                                        begin={`${i * 0.3}s`}
+                                        repeatCount="indefinite"
+                                    />
+                                </circle>
+                            )
+                        })}
+                    </g>
+
+                    {[
+                        "M -100 200 C 300 100, 600 340, 900 200 S 1300 60, 1600 220",
+                        "M -100 500 C 250 400, 550 620, 850 480 S 1250 340, 1600 500",
+                        "M -100 800 C 300 700, 600 920, 900 780 S 1300 640, 1600 820",
+                        "M -100 1100 C 250 1000, 550 1220, 850 1080 S 1250 940, 1600 1120",
+                        "M -100 1400 C 300 1300, 600 1520, 900 1380 S 1300 1240, 1600 1420",
+                        "M -100 1700 C 250 1600, 550 1820, 850 1680 S 1250 1540, 1600 1720",
+                        "M -100 2000 C 300 1900, 600 2120, 900 1980 S 1300 1840, 1600 2020",
+                        "M -100 2300 C 250 2200, 550 2420, 850 2280 S 1250 2140, 1600 2320",
+                        "M -100 2600 C 300 2500, 600 2720, 900 2580 S 1300 2440, 1600 2620",
+                        "M -100 2900 C 250 2800, 550 3020, 850 2880 S 1250 2740, 1600 2920",
+                        "M -100 3200 C 300 3100, 600 3320, 900 3180 S 1300 3040, 1600 3220",
+                        "M -100 3500 C 250 3400, 550 3620, 850 3480 S 1250 3340, 1600 3520",
+                        "M -100 3800 C 300 3700, 600 3920, 900 3780 S 1300 3640, 1600 3820",
+                        "M -100 4100 C 250 4000, 550 4220, 850 4080 S 1250 3940, 1600 4120",
+                        "M -100 4400 C 300 4300, 600 4520, 900 4380 S 1300 4240, 1600 4420",
+                        "M -100 4700 C 250 4600, 550 4820, 850 4680 S 1250 4540, 1600 4720",
+                        "M -100 5000 C 300 4900, 600 5120, 900 4980 S 1300 4840, 1600 5020",
+                        "M -100 5300 C 250 5200, 550 5420, 850 5280 S 1250 5140, 1600 5320",
+                        "M -100 5600 C 300 5500, 600 5720, 900 5580 S 1300 5440, 1600 5620",
+                        "M -100 5900 C 250 5800, 550 6020, 850 5880 S 1250 5740, 1600 5920",
+                    ].map((d, i) => (
+                        <path
+                            key={`wave-${i}`}
+                            d={d}
+                            stroke={i % 3 === 0 ? "#CBD5E1" : i % 3 === 1 ? "#E2E8F0" : "#94A3B8"}
+                            strokeOpacity="0.22"
+                            strokeWidth="1"
+                            fill="none"
+                            strokeLinecap="round"
+                        />
+                    ))}
+
+                    {hubs.map((hub, hi) => (
+                        <g key={`hub-${hi}`}>
+                            {Array.from({ length: hub.layers }).map((_, li) => (
+                                <circle
+                                    key={li}
+                                    cx={hub.cx}
+                                    cy={hub.cy}
+                                    r={hub.r - li * (hub.r / hub.layers / 1.2)}
+                                    fill="none"
+                                    stroke={hi % 2 === 0 ? "#CBD5E1" : "#94A3B8"}
+                                    strokeOpacity={0.28 - li * 0.03}
+                                    strokeWidth="0.8"
+                                    strokeDasharray={li % 2 === 0 ? "0" : "3 6"}
+                                >
+                                    <animate
+                                        attributeName="r"
+                                        values={`${hub.r - li * (hub.r / hub.layers / 1.2)};${hub.r - li * (hub.r / hub.layers / 1.2) + 6};${hub.r - li * (hub.r / hub.layers / 1.2)}`}
+                                        dur={`${8 + li * 2}s`}
+                                        repeatCount="indefinite"
+                                    />
+                                </circle>
+                            ))}
+
+                            <circle cx={hub.cx} cy={hub.cy} r="45" fill={hi % 2 === 0 ? "url(#coreGlow)" : "url(#coreGlowBlue)"} />
+                            <circle cx={hub.cx} cy={hub.cy} r="3" fill="#FFFFFF" fillOpacity="0.95" filter="url(#midBlur)" />
+                            <circle cx={hub.cx} cy={hub.cy} r="3" fill="#CBD5E1" fillOpacity="0.7">
+                                <animate
+                                    attributeName="r"
+                                    values="3;7;3"
+                                    dur="3s"
+                                    begin={`${hi * 0.4}s`}
+                                    repeatCount="indefinite"
+                                />
+                                <animate
+                                    attributeName="opacity"
+                                    values="0.7;0;0.7"
+                                    dur="3s"
+                                    begin={`${hi * 0.4}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </circle>
+
+                            {Array.from({ length: 12 }).map((_, si) => {
+                                const angle = (si / 12) * Math.PI * 2 + hi * 0.3
+                                const r1 = 60
+                                const r2 = hub.r * 0.9
+                                return (
+                                    <line
+                                        key={si}
+                                        x1={hub.cx + Math.cos(angle) * r1}
+                                        y1={hub.cy + Math.sin(angle) * r1}
+                                        x2={hub.cx + Math.cos(angle) * r2}
+                                        y2={hub.cy + Math.sin(angle) * r2}
+                                        stroke={hi % 2 === 0 ? "#CBD5E1" : "#94A3B8"}
+                                        strokeOpacity="0.15"
+                                        strokeWidth="0.8"
+                                    />
+                                )
+                            })}
+
+                            {Array.from({ length: 24 }).map((_, ai) => {
+                                const angle = (ai / 24) * Math.PI * 2
+                                const radius = hub.r * (0.85 + (ai % 3) * 0.05)
+                                return (
+                                    <circle
+                                        key={ai}
+                                        cx={hub.cx + Math.cos(angle) * radius}
+                                        cy={hub.cy + Math.sin(angle) * radius}
+                                        r="1.2"
+                                        fill={hi % 2 === 0 ? "#FFFFFF" : "#94A3B8"}
+                                        fillOpacity="0.7"
+                                    >
+                                        <animate
+                                            attributeName="opacity"
+                                            values="0.7;1;0.7"
+                                            dur={`${3 + (ai % 4)}s`}
+                                            begin={`${(ai * 0.1) % 3}s`}
+                                            repeatCount="indefinite"
+                                        />
+                                    </circle>
+                                )
+                            })}
+
+                            {Array.from({ length: 6 }).map((_, pi) => {
+                                const angle = (pi / 6) * Math.PI * 2
+                                const targetX = hub.cx + Math.cos(angle) * hub.r * 0.85
+                                const targetY = hub.cy + Math.sin(angle) * hub.r * 0.85
+                                return (
+                                    <circle key={`pulse-${pi}`} r="2.2" fill="#FFFFFF" filter="url(#midBlur)">
+                                        <animateMotion
+                                            dur={`${5 + pi}s`}
+                                            begin={`${pi * 0.4}s`}
+                                            repeatCount="indefinite"
+                                            path={`M ${targetX} ${targetY} L ${hub.cx} ${hub.cy}`}
+                                        />
+                                        <animate
+                                            attributeName="opacity"
+                                            values="0;0.9;0"
+                                            dur={`${5 + pi}s`}
+                                            begin={`${pi * 0.4}s`}
+                                            repeatCount="indefinite"
+                                        />
+                                    </circle>
+                                )
+                            })}
+                        </g>
+                    ))}
+
+                    {Array.from({ length: 400 }).map((_, i) => {
+                        const x = (i * 97) % 1440
+                        const y = (i * 137) % 6000
+                        const size = (i % 3) * 0.4 + 0.6
+                        const isLight = i % 2 === 0
+                        return (
+                            <circle
+                                key={`particle-${i}`}
+                                cx={x}
+                                cy={y}
+                                r={size}
+                                fill={isLight ? "#FFFFFF" : "#94A3B8"}
+                                fillOpacity="0.35"
+                            >
+                                <animate
+                                    attributeName="opacity"
+                                    values="0.35;0.6;0.35"
+                                    dur={`${4 + (i % 6)}s`}
+                                    begin={`${(i * 0.05) % 4}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </circle>
+                        )
+                    })}
+                </svg>
+
+                <div className="absolute top-[3%] -left-1/4 w-275 h-275 rounded-full ai-glow-3" />
+                <div className="absolute top-[8%] -right-1/4 w-275 h-275 rounded-full ai-glow-1" />
+                <div className="absolute top-[30%] -left-1/4 w-250 h-250 rounded-full ai-glow-2" />
+                <div className="absolute top-[55%] -right-1/4 w-275 h-275 rounded-full ai-glow-1" />
+                <div className="absolute top-[78%] -left-1/4 w-250 h-250 rounded-full ai-glow-2" />
+                <div className="absolute bottom-[2%] -right-1/4 w-275 h-275 rounded-full ai-glow-1" />
+            </div>
+            <style>{`
+                @keyframes aiGlow1 {
+                    0%, 100% { opacity: 0.5; transform: translate(0, 0); }
+                    50% { opacity: 0.75; transform: translate(-60px, 40px); }
+                }
+                @keyframes aiGlow2 {
+                    0%, 100% { opacity: 0.45; transform: translate(0, 0); }
+                    50% { opacity: 0.7; transform: translate(60px, -40px); }
+                }
+                @keyframes aiGlow3 {
+                    0%, 100% { opacity: 0.55; transform: translate(0, 0) scale(1); }
+                    50% { opacity: 0.8; transform: translate(40px, 30px) scale(1.08); }
+                }
+                .ai-glow-1 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.55), rgba(226,232,240,0.15) 45%, transparent 70%);
+                    animation: aiGlow1 22s ease-in-out infinite;
+                }
+                .ai-glow-2 {
+                    background: radial-gradient(circle, rgba(203,213,225,0.35), transparent 70%);
+                    animation: aiGlow2 26s ease-in-out infinite;
+                }
+                .ai-glow-3 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(203,213,225,0.15) 45%, transparent 70%);
+                    animation: aiGlow3 20s ease-in-out infinite;
+                }
+            `}</style>
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <HeroAi />
+                {/* <MainDirectionsAi /> */}
+                <CanBeDevelopedAi />
+                <SolvingBusninessProblemsAi />
+                <DevelopmentStagesAi />
+                <HowWeWorkAi />
+                <WhatCanWeCheckSpecificallyAi />
+                <FAQandCTAByAi />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /services/automation
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+import { HeroAutomation } from "./components/HeroAutomation";
+import { CanBeDevelopedAutomation } from "./components/CanBeDevelopedAutomation";
+import { SolvingBusninessProblemsAutomation } from "./components/SolvingBusninessProblemsAutomation";
+import { DevelopmentStagesAutomation } from "./components/DevelopmentStagesAutomation";
+import { HowWeWorkAutomation } from "./components/HowWeWorkAutomation";
+import { FAQandCTAByAutomation } from "./components/FAQandCTAByAutomation";
+import { Footer } from "@/components/layout/footer/Footer";
+import { MainDirectionsAutomation } from "./components/MainDirectionsAutomation";
+
+const nodes = [
+    { x: 320, y: 950 }, { x: 480, y: 1030 }, { x: 640, y: 940 }, { x: 800, y: 1050 }, { x: 960, y: 970 },
+    { x: 380, y: 1190 }, { x: 540, y: 1120 }, { x: 700, y: 1230 }, { x: 860, y: 1160 }, { x: 1020, y: 1250 },
+    { x: 340, y: 1410 }, { x: 500, y: 1350 }, { x: 660, y: 1470 }, { x: 820, y: 1390 }, { x: 980, y: 1510 },
+    { x: 400, y: 1670 }, { x: 560, y: 1600 }, { x: 720, y: 1730 }, { x: 880, y: 1640 },
+    { x: 350, y: 1930 }, { x: 520, y: 1850 }, { x: 680, y: 1970 }, { x: 850, y: 1890 }, { x: 1000, y: 2010 },
+    { x: 420, y: 2190 }, { x: 580, y: 2120 }, { x: 740, y: 2250 }, { x: 900, y: 2160 },
+    { x: 380, y: 2450 }, { x: 560, y: 2370 }, { x: 720, y: 2490 }, { x: 880, y: 2410 },
+    { x: 440, y: 2710 }, { x: 620, y: 2640 }, { x: 780, y: 2770 }, { x: 940, y: 2680 },
+    { x: 360, y: 2970 }, { x: 540, y: 2890 }, { x: 700, y: 3010 }, { x: 860, y: 2930 },
+    { x: 420, y: 3230 }, { x: 600, y: 3160 }, { x: 760, y: 3290 }, { x: 920, y: 3200 },
+]
+
+const edges = [
+    [0, 1], [1, 2], [2, 3], [3, 4],
+    [0, 5], [1, 6], [2, 6], [3, 7], [4, 8], [4, 9],
+    [5, 6], [6, 7], [7, 8], [8, 9],
+    [5, 10], [6, 11], [7, 12], [8, 13], [9, 14],
+    [10, 11], [11, 12], [12, 13], [13, 14],
+    [10, 15], [11, 16], [12, 16], [13, 17], [14, 18],
+    [15, 16], [16, 17], [17, 18],
+    [15, 19], [16, 20], [17, 21], [18, 22],
+    [19, 20], [20, 21], [21, 22], [22, 23],
+    [19, 24], [20, 25], [21, 26], [22, 27], [23, 27],
+    [24, 25], [25, 26], [26, 27],
+    [24, 28], [25, 29], [26, 30], [27, 31],
+    [28, 29], [29, 30], [30, 31],
+    [28, 32], [29, 33], [30, 34], [31, 35],
+    [32, 33], [33, 34], [34, 35],
+    [32, 36], [33, 37], [34, 38], [35, 39],
+    [36, 37], [37, 38], [38, 39],
+    [36, 40], [37, 41], [38, 42], [39, 43],
+    [40, 41], [41, 42], [42, 43],
+]
+
+const cx = 640
+const cy = 380
+
+const satellites = [
+    { angle: -90, r: 200, size: 44, color: "#94A3B8" },
+    { angle: 0, r: 240, size: 38, color: "#CBD5E1" },
+    { angle: 90, r: 200, size: 44, color: "#94A3B8" },
+    { angle: 180, r: 240, size: 38, color: "#CBD5E1" },
+]
+
+export default function servicesAutomation() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 1280 3600"
+                    preserveAspectRatio="xMidYMin slice"
+                    style={{ opacity: 0.65 }}
+                >
+                    <defs>
+                        <radialGradient id="glow">
+                            <stop offset="0%" stopColor="#94A3B8" stopOpacity="0.35" />
+                            <stop offset="100%" stopColor="#94A3B8" stopOpacity="0" />
+                        </radialGradient>
+                        <radialGradient id="hubSoft">
+                            <stop offset="0%" stopColor="#F8FAFC" stopOpacity="0.6" />
+                            <stop offset="60%" stopColor="#E2E8F0" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#E2E8F0" stopOpacity="0" />
+                        </radialGradient>
+                        <radialGradient id="satGlow">
+                            <stop offset="0%" stopColor="#CBD5E1" stopOpacity="0.35" />
+                            <stop offset="100%" stopColor="#CBD5E1" stopOpacity="0" />
+                        </radialGradient>
+                        <radialGradient id="satGlowBlue">
+                            <stop offset="0%" stopColor="#94A3B8" stopOpacity="0.3" />
+                            <stop offset="100%" stopColor="#94A3B8" stopOpacity="0" />
+                        </radialGradient>
+                        <filter id="blur">
+                            <feGaussianBlur stdDeviation="1.5" />
+                        </filter>
+                        <filter id="blurSoft">
+                            <feGaussianBlur stdDeviation="3" />
+                        </filter>
+                    </defs>
+
+                    <g>
+                        <circle cx={cx} cy={cy} r="260" fill="url(#hubSoft)" filter="url(#blurSoft)" />
+
+                        <circle cx={cx} cy={cy} r="130" fill="none" stroke="#94A3B8" strokeOpacity="0.25" strokeWidth="1" />
+                        <circle cx={cx} cy={cy} r="170" fill="none" stroke="#94A3B8" strokeOpacity="0.18" strokeWidth="0.8" strokeDasharray="2 8" />
+                        <circle cx={cx} cy={cy} r="90" fill="none" stroke="#CBD5E1" strokeOpacity="0.25" strokeWidth="0.6" />
+
+                        <circle cx={cx} cy={cy} r="20" fill="none" stroke="#FFFFFF" strokeOpacity="0.9" strokeWidth="1" />
+                        <circle cx={cx} cy={cy} r="6" fill="#FFFFFF" fillOpacity="0.95">
+                            <animate attributeName="r" values="6;9;6" dur="4s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" values="0.95;0.6;0.95" dur="4s" repeatCount="indefinite" />
+                        </circle>
+
+                        {satellites.map((sat, i) => {
+                            const rad = (sat.angle * Math.PI) / 180
+                            const x = cx + Math.cos(rad) * sat.r
+                            const y = cy + Math.sin(rad) * sat.r
+                            const glowId = sat.color === "#CBD5E1" ? "satGlow" : "satGlowBlue"
+                            return (
+                                <g key={`sat-${i}`}>
+                                    <line
+                                        x1={cx + Math.cos(rad) * 30}
+                                        y1={cy + Math.sin(rad) * 30}
+                                        x2={x - Math.cos(rad) * (sat.size / 2)}
+                                        y2={y - Math.sin(rad) * (sat.size / 2)}
+                                        stroke={sat.color}
+                                        strokeOpacity="0.35"
+                                        strokeWidth="1"
+                                        strokeDasharray="3 5"
+                                    />
+                                    <circle cx={x} cy={y} r={sat.size * 0.9} fill={`url(#${glowId})`} filter="url(#blurSoft)" />
+                                    <circle cx={x} cy={y} r={sat.size / 2} fill="#F8FAFC" stroke={sat.color} strokeOpacity="0.6" strokeWidth="1" />
+                                    <circle cx={x} cy={y} r={sat.size / 2 - 6} fill="none" stroke={sat.color} strokeOpacity="0.3" strokeWidth="0.6" />
+                                    <circle cx={x} cy={y} r="3" fill={sat.color} fillOpacity="0.85" />
+                                    <circle r="2" fill={sat.color} filter="url(#blur)">
+                                        <animateMotion
+                                            dur={`${4 + i}s`}
+                                            begin={`${i * 0.6}s`}
+                                            repeatCount="indefinite"
+                                            path={`M ${x} ${y} L ${cx} ${cy}`}
+                                        />
+                                        <animate
+                                            attributeName="opacity"
+                                            values="0;0.9;0"
+                                            dur={`${4 + i}s`}
+                                            begin={`${i * 0.6}s`}
+                                            repeatCount="indefinite"
+                                        />
+                                    </circle>
+                                    <circle r="1.8" fill={sat.color} filter="url(#blur)">
+                                        <animateMotion
+                                            dur={`${5 + i}s`}
+                                            begin={`${i * 0.8}s`}
+                                            repeatCount="indefinite"
+                                            path={`M ${cx} ${cy} L ${x} ${y}`}
+                                        />
+                                        <animate
+                                            attributeName="opacity"
+                                            values="0;0.7;0"
+                                            dur={`${5 + i}s`}
+                                            begin={`${i * 0.8}s`}
+                                            repeatCount="indefinite"
+                                        />
+                                    </circle>
+                                </g>
+                            )
+                        })}
+
+                        <path
+                            d={`M ${cx - 240} ${cy} Q ${cx} ${cy - 90} ${cx + 240} ${cy}`}
+                            fill="none"
+                            stroke="#94A3B8"
+                            strokeOpacity="0.18"
+                            strokeWidth="0.8"
+                        />
+                        <path
+                            d={`M ${cx - 240} ${cy} Q ${cx} ${cy + 90} ${cx + 240} ${cy}`}
+                            fill="none"
+                            stroke="#CBD5E1"
+                            strokeOpacity="0.22"
+                            strokeWidth="0.8"
+                        />
+
+                        <circle r="2.5" fill="#94A3B8" filter="url(#blur)">
+                            <animateMotion
+                                dur="10s"
+                                repeatCount="indefinite"
+                                path={`M ${cx - 240} ${cy} Q ${cx} ${cy - 90} ${cx + 240} ${cy}`}
+                            />
+                            <animate attributeName="opacity" values="0;0.9;0" dur="10s" repeatCount="indefinite" />
+                        </circle>
+                        <circle r="2.5" fill="#CBD5E1" filter="url(#blur)">
+                            <animateMotion
+                                dur="12s"
+                                begin="2s"
+                                repeatCount="indefinite"
+                                path={`M ${cx + 240} ${cy} Q ${cx} ${cy + 90} ${cx - 240} ${cy}`}
+                            />
+                            <animate attributeName="opacity" values="0;0.8;0" dur="12s" begin="2s" repeatCount="indefinite" />
+                        </circle>
+                    </g>
+
+                    {edges.map(([a, b], i) => (
+                        <line
+                            key={i}
+                            x1={nodes[a].x}
+                            y1={nodes[a].y}
+                            x2={nodes[b].x}
+                            y2={nodes[b].y}
+                            stroke="#94A3B8"
+                            strokeOpacity="0.18"
+                            strokeWidth="1"
+                        />
+                    ))}
+                    {edges.map(([a, b], i) => {
+                        const x1 = nodes[a].x
+                        const y1 = nodes[a].y
+                        const x2 = nodes[b].x
+                        const y2 = nodes[b].y
+                        return (
+                            <circle key={`p-${i}`} r="1.8" fill="#94A3B8" filter="url(#blur)" opacity="0.85">
+                                <animate
+                                    attributeName="cx"
+                                    from={x1}
+                                    to={x2}
+                                    dur={`${3 + (i % 4)}s`}
+                                    begin={`${(i * 0.4) % 6}s`}
+                                    repeatCount="indefinite"
+                                />
+                                <animate
+                                    attributeName="cy"
+                                    from={y1}
+                                    to={y2}
+                                    dur={`${3 + (i % 4)}s`}
+                                    begin={`${(i * 0.4) % 6}s`}
+                                    repeatCount="indefinite"
+                                />
+                                <animate
+                                    attributeName="opacity"
+                                    values="0;0.9;0"
+                                    dur={`${3 + (i % 4)}s`}
+                                    begin={`${(i * 0.4) % 6}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </circle>
+                        )
+                    })}
+                    {nodes.map((node, i) => (
+                        <g key={i}>
+                            <circle cx={node.x} cy={node.y} r="14" fill="url(#glow)" opacity="0.5" />
+                            <circle cx={node.x} cy={node.y} r="1.6" fill="#FFFFFF" fillOpacity="0.95" />
+                        </g>
+                    ))}
+                </svg>
+
+                <div className="absolute top-[3%] -left-1/4 w-250 h-250 rounded-full auto-glow-1" />
+                <div className="absolute top-[5%] -right-1/4 w-250 h-250 rounded-full auto-glow-2" />
+                <div className="absolute top-[55%] -left-1/4 w-225 h-225 rounded-full auto-glow-1" />
+                <div className="absolute top-[80%] -right-1/4 w-225 h-225 rounded-full auto-glow-2" />
+            </div>
+            <style>{`
+                @keyframes autoGlow1 {
+                    0%, 100% { opacity: 0.5; transform: translate(0, 0); }
+                    50% { opacity: 0.75; transform: translate(-60px, 40px); }
+                }
+                @keyframes autoGlow2 {
+                    0%, 100% { opacity: 0.45; transform: translate(0, 0); }
+                    50% { opacity: 0.7; transform: translate(60px, -40px); }
+                }
+                .auto-glow-1 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.55), rgba(226,232,240,0.15) 45%, transparent 70%);
+                    animation: autoGlow1 24s ease-in-out infinite;
+                }
+                .auto-glow-2 {
+                    background: radial-gradient(circle, rgba(203,213,225,0.35), transparent 70%);
+                    animation: autoGlow2 28s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <HeroAutomation />
+                {/* <MainDirectionsAutomation /> */}
+                <CanBeDevelopedAutomation />
+                <SolvingBusninessProblemsAutomation />
+                <DevelopmentStagesAutomation />
+                <HowWeWorkAutomation />
+                <FAQandCTAByAutomation />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /services/growth-analytics
+
+'use client'
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+import { FAQandCTAByGrowthAnalytics } from "./components/FAQandCTAByGrowthAnalytics";
+import { WhatCanWeCheckSpecificallyGrowthAnalytics } from "./components/WhatCanWeCheckSpecificallyGrowthAnalytics";
+import { HowWeWorkGrowthAnalytics } from "./components/HowWeWorkGrowthAnalytics";
+import { DevelopmentStagesGrowthAnalytics } from "./components/DevelopmentStagesGrowthAnalytics";
+import { SolvingBusninessProblemsGrowthAnalytics } from "./components/SolvingBusninessProblemsGrowthAnalytics";
+import { CanBeDevelopedGrowthAnalytics } from "./components/CanBeDevelopedGrowthAnalytics";
+import { HeroGrowthAnalytics } from "./components/HeroGrowthAnalytics";
+import { Footer } from "@/components/layout/footer/Footer";
+import { MainDirectionsGrowthAnalytics } from "./components/MainDirectionsGrowthAnalytics";
+
+export default function servicesGrowthAnalytics() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 1440 6000"
+                    preserveAspectRatio="xMidYMin slice"
+                    style={{ opacity: 0.8 }}
+                >
+                    <defs>
+                        <linearGradient id="areaSoft" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#94A3B8" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#94A3B8" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="areaSoft2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#CBD5E1" stopOpacity="0.2" />
+                            <stop offset="100%" stopColor="#CBD5E1" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="lineSoft" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#94A3B8" stopOpacity="0" />
+                            <stop offset="50%" stopColor="#94A3B8" stopOpacity="0.6" />
+                            <stop offset="100%" stopColor="#94A3B8" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="lineSoftBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#CBD5E1" stopOpacity="0" />
+                            <stop offset="50%" stopColor="#CBD5E1" stopOpacity="0.5" />
+                            <stop offset="100%" stopColor="#CBD5E1" stopOpacity="0" />
+                        </linearGradient>
+                        <radialGradient id="dashGlow">
+                            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.4" />
+                            <stop offset="60%" stopColor="#E2E8F0" stopOpacity="0.15" />
+                            <stop offset="100%" stopColor="#E2E8F0" stopOpacity="0" />
+                        </radialGradient>
+                        <linearGradient id="dashArea" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#94A3B8" stopOpacity="0.15" />
+                            <stop offset="100%" stopColor="#94A3B8" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="dashLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#CBD5E1" stopOpacity="0.4" />
+                            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.7" />
+                        </linearGradient>
+                        <linearGradient id="barGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#94A3B8" stopOpacity="0.7" />
+                            <stop offset="100%" stopColor="#94A3B8" stopOpacity="0.1" />
+                        </linearGradient>
+                        <filter id="glowBg">
+                            <feGaussianBlur stdDeviation="2.5" />
+                        </filter>
+                        <filter id="blurBig">
+                            <feGaussianBlur stdDeviation="6" />
+                        </filter>
+                    </defs>
+
+                    <g>
+                        <ellipse cx="640" cy="400" rx="480" ry="240" fill="url(#dashGlow)" filter="url(#blurBig)" />
+
+                        <line x1="240" y1="600" x2="1040" y2="600" stroke="#94A3B8" strokeOpacity="0.4" strokeWidth="1" />
+                        <line x1="240" y1="200" x2="240" y2="600" stroke="#94A3B8" strokeOpacity="0.3" strokeWidth="1" />
+
+                        {[280, 360, 440, 520].map((y, i) => (
+                            <line key={`yt-${i}`} x1="232" y1={y} x2="248" y2={y} stroke="#94A3B8" strokeOpacity="0.4" strokeWidth="1" />
+                        ))}
+                        {[340, 440, 540, 640, 740, 840, 940].map((x, i) => (
+                            <line key={`xt-${i}`} x1={x} y1="600" x2={x} y2="612" stroke="#94A3B8" strokeOpacity="0.4" strokeWidth="1" />
+                        ))}
+
+                        {[280, 360, 440, 520].map((y, i) => (
+                            <line key={`hg-${i}`} x1="240" y1={y} x2="1040" y2={y} stroke="#94A3B8" strokeOpacity="0.15" strokeWidth="0.8" strokeDasharray="2 6" />
+                        ))}
+                        {[340, 440, 540, 640, 740, 840, 940].map((x, i) => (
+                            <line key={`vg-${i}`} x1={x} y1="200" x2={x} y2="600" stroke="#94A3B8" strokeOpacity="0.15" strokeWidth="0.8" strokeDasharray="2 6" />
+                        ))}
+
+                        {[
+                            { x: 280, h: 60 },
+                            { x: 380, h: 105 },
+                            { x: 480, h: 135 },
+                            { x: 580, h: 170 },
+                            { x: 680, h: 200 },
+                            { x: 780, h: 240 },
+                            { x: 880, h: 280 },
+                            { x: 980, h: 320 },
+                        ].map((bar, i) => (
+                            <rect
+                                key={`b-${i}`}
+                                x={bar.x - 16}
+                                y={600 - bar.h}
+                                width="32"
+                                height={bar.h}
+                                rx="3"
+                                fill="url(#barGrad)"
+                                opacity="0.6"
+                            >
+                                <animate
+                                    attributeName="opacity"
+                                    values="0.6;0.8;0.6"
+                                    dur={`${3 + (i % 3)}s`}
+                                    begin={`${i * 0.3}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </rect>
+                        ))}
+
+                        <path
+                            d="M 240 520 L 340 480 L 440 440 L 540 380 L 640 340 L 740 280 L 840 240 L 940 200 L 1040 160 L 1040 600 L 240 600 Z"
+                            fill="url(#dashArea)"
+                        />
+
+                        <path
+                            d="M 240 520 L 340 480 L 440 440 L 540 380 L 640 340 L 740 280 L 840 240 L 940 200 L 1040 160"
+                            stroke="url(#dashLine)"
+                            strokeWidth="1.6"
+                            fill="none"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                        />
+
+                        {[
+                            { x: 340, y: 480, d: "0s" },
+                            { x: 540, y: 380, d: "0.5s" },
+                            { x: 740, y: 280, d: "1s" },
+                            { x: 940, y: 200, d: "1.5s" },
+                        ].map((p, i) => (
+                            <g key={`dot-${i}`}>
+                                <circle cx={p.x} cy={p.y} r="9" fill="#FFFFFF" opacity="0.25" filter="url(#glowBg)" />
+                                <circle cx={p.x} cy={p.y} r="2.5" fill="#FFFFFF" fillOpacity="0.9" />
+                                <circle cx={p.x} cy={p.y} r="2.5" fill="#CBD5E1" opacity="0">
+                                    <animate attributeName="r" values="2.5;9;2.5" dur="3s" begin={p.d} repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" begin={p.d} repeatCount="indefinite" />
+                                </circle>
+                            </g>
+                        ))}
+
+                        <g transform="translate(1050 148) rotate(-25)">
+                            <path
+                                d="M 0 0 L 22 -14 L 22 -6 L 42 -14 L 22 -22 L 22 -14 Z"
+                                fill="#FFFFFF"
+                                fillOpacity="0.8"
+                            />
+                        </g>
+
+                        <g transform="translate(1160 340)">
+                            <circle r="70" fill="none" stroke="#94A3B8" strokeOpacity="0.25" strokeWidth="8" />
+                            <circle
+                                r="70"
+                                fill="none"
+                                stroke="#FFFFFF"
+                                strokeOpacity="0.9"
+                                strokeWidth="8"
+                                strokeDasharray="180 440"
+                                strokeLinecap="round"
+                                transform="rotate(-90)"
+                            >
+                                <animate attributeName="stroke-dasharray" values="80 440;300 440;80 440" dur="6s" repeatCount="indefinite" />
+                            </circle>
+                            <circle r="48" fill="none" stroke="#94A3B8" strokeOpacity="0.2" strokeWidth="1" />
+                            <circle r="24" fill="none" stroke="#94A3B8" strokeOpacity="0.3" strokeWidth="1" />
+                            <circle r="5" fill="#FFFFFF" fillOpacity="0.9">
+                                <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+
+                        {[
+                            { x: 180, y: 300 }, { x: 380, y: 200 }, { x: 600, y: 250 },
+                            { x: 800, y: 180 }, { x: 980, y: 380 }, { x: 200, y: 500 },
+                        ].map((p, i) => (
+                            <circle key={`f-${i}`} cx={p.x} cy={p.y} r="1.5" fill="#94A3B8" fillOpacity="0.4">
+                                <animate attributeName="opacity" values="0.4;0.8;0.4" dur={`${3 + i}s`} begin={`${i * 0.4}s`} repeatCount="indefinite" />
+                            </circle>
+                        ))}
+
+                        <circle r="2.5" fill="#FFFFFF" filter="url(#glowBg)" opacity="0.9">
+                            <animateMotion
+                                dur="8s"
+                                repeatCount="indefinite"
+                                path="M 240 520 L 340 480 L 440 440 L 540 380 L 640 340 L 740 280 L 840 240 L 940 200 L 1040 160"
+                            />
+                            <animate attributeName="opacity" values="0;0.9;0.9;0" dur="8s" repeatCount="indefinite" />
+                        </circle>
+                    </g>
+
+                    {Array.from({ length: 20 }).map((_, i) => (
+                        <line key={`h-${i}`} x1="0" y1={i * 300} x2="1440" y2={i * 300} stroke="#94A3B8" strokeOpacity="0.08" strokeWidth="1" />
+                    ))}
+                    {[200, 440, 680, 920, 1160, 1400].map((x, i) => (
+                        <line key={`v-${i}`} x1={x} y1="0" x2={x} y2="6000" stroke="#94A3B8" strokeOpacity="0.06" strokeWidth="1" />
+                    ))}
+
+                    <path
+                        d="M -50 900 L 180 780 L 400 700 L 620 620 L 840 520 L 1060 440 L 1280 340 L 1500 280 L 1500 1200 L -50 1200 Z"
+                        fill="url(#areaSoft)"
+                    />
+                    <path
+                        d="M -50 900 L 180 780 L 400 700 L 620 620 L 840 520 L 1060 440 L 1280 340 L 1500 280"
+                        stroke="url(#lineSoft)"
+                        strokeWidth="1.5"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+                    <path
+                        d="M -50 1050 L 200 1000 L 420 940 L 660 860 L 880 800 L 1100 720 L 1320 660 L 1500 620"
+                        stroke="url(#lineSoftBlue)"
+                        strokeWidth="1.2"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+                    <path
+                        d="M -50 1120 L 220 1080 L 460 1020 L 700 980 L 940 900 L 1180 860 L 1420 800 L 1500 780"
+                        stroke="url(#lineSoft)"
+                        strokeWidth="1"
+                        fill="none"
+                        strokeLinejoin="round"
+                        opacity="0.7"
+                    />
+
+                    {[
+                        { x: 400, y: 700 }, { x: 620, y: 620 }, { x: 840, y: 520 },
+                        { x: 1060, y: 440 }, { x: 1280, y: 340 },
+                    ].map((p, i) => (
+                        <g key={`p1-${i}`}>
+                            <circle cx={p.x} cy={p.y} r="12" fill="#FFFFFF" opacity="0.2" filter="url(#glowBg)" />
+                            <circle cx={p.x} cy={p.y} r="2.2" fill="#FFFFFF" fillOpacity="0.8" />
+                        </g>
+                    ))}
+
+                    <g opacity="0.7">
+                        {Array.from({ length: 18 }).map((_, i) => {
+                            const x = 30 + i * 80
+                            const h1 = [140, 180, 160, 220, 200, 260, 240, 280, 260, 320, 300, 340, 320, 380, 360, 400, 380, 420][i]
+                            const h2 = [100, 120, 110, 150, 140, 180, 170, 210, 200, 240, 220, 260, 250, 290, 280, 320, 310, 340][i]
+                            return (
+                                <g key={i}>
+                                    <rect x={x} y={1950 - h1} width="20" height={h1} rx="2" fill="#94A3B8" fillOpacity="0.3" />
+                                    <rect x={x + 24} y={1950 - h2} width="20" height={h2} rx="2" fill="#CBD5E1" fillOpacity="0.2" />
+                                </g>
+                            )
+                        })}
+                    </g>
+
+                    <path
+                        d="M 30 1810 L 190 1770 L 350 1790 L 510 1730 L 670 1750 L 830 1690 L 990 1710 L 1150 1650 L 1310 1670 L 1450 1610"
+                        stroke="#94A3B8"
+                        strokeOpacity="0.4"
+                        strokeWidth="1.2"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+
+                    <path
+                        d="M -50 2500 L 150 2420 L 380 2560 L 620 2380 L 860 2520 L 1100 2340 L 1340 2460 L 1500 2380"
+                        stroke="url(#lineSoft)"
+                        strokeWidth="1.3"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+                    <path
+                        d="M -50 2900 L 180 2960 L 420 2840 L 660 2920 L 900 2780 L 1140 2860 L 1380 2740 L 1500 2780"
+                        stroke="url(#lineSoftBlue)"
+                        strokeWidth="1.2"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+                    <path
+                        d="M -50 3200 L 200 3130 L 460 3220 L 720 3080 L 980 3170 L 1240 3040 L 1500 3120"
+                        stroke="#CBD5E1"
+                        strokeOpacity="0.3"
+                        strokeWidth="1"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+
+                    {[200, 480, 760, 1040, 1320].map((x, i) => (
+                        <line
+                            key={`mk-${i}`}
+                            x1={x}
+                            y1="2300"
+                            x2={x}
+                            y2="3300"
+                            stroke="#94A3B8"
+                            strokeOpacity="0.15"
+                            strokeWidth="1"
+                            strokeDasharray="2 8"
+                        />
+                    ))}
+
+                    {[
+                        { x: 380, y: 2560 }, { x: 860, y: 2520 }, { x: 1340, y: 2460 },
+                        { x: 420, y: 2840 }, { x: 900, y: 2780 }, { x: 1380, y: 2740 },
+                    ].map((p, i) => (
+                        <g key={`x-${i}`}>
+                            <circle cx={p.x} cy={p.y} r="10" fill="#FFFFFF" opacity="0.2" filter="url(#glowBg)" />
+                            <circle cx={p.x} cy={p.y} r="1.8" fill="#FFFFFF" fillOpacity="0.8" />
+                        </g>
+                    ))}
+
+                    {[
+                        { ox: 80, d: "M 0 200 L 40 180 L 80 190 L 120 160 L 160 170 L 200 130 L 240 150 L 280 110 L 320 120 L 360 80 L 400 90 L 440 50" },
+                        { ox: 560, d: "M 0 180 L 40 195 L 80 170 L 120 185 L 160 150 L 200 165 L 240 130 L 280 145 L 320 100 L 360 115 L 400 80 L 440 95" },
+                        { ox: 1040, d: "M 0 190 L 40 175 L 80 185 L 120 165 L 160 180 L 200 145 L 240 155 L 280 120 L 320 130 L 360 95 L 400 110 L 440 70" },
+                    ].map((chart, i) => (
+                        <g key={i} transform={`translate(${chart.ox}, 3700)`}>
+                            <path
+                                d={chart.d}
+                                stroke={i === 1 ? "#CBD5E1" : "#94A3B8"}
+                                strokeOpacity="0.5"
+                                strokeWidth="1.2"
+                                fill="none"
+                                strokeLinejoin="round"
+                            />
+                            <circle cx="440" cy={parseInt(chart.d.split(" ").slice(-1)[0])} r="2.5" fill={i === 1 ? "#CBD5E1" : "#FFFFFF"} fillOpacity="0.9" />
+                        </g>
+                    ))}
+
+                    <g opacity="0.6">
+                        {Array.from({ length: 12 }).map((_, i) => {
+                            const x = 100 + i * 105
+                            const h = [60, 90, 70, 110, 85, 130, 100, 150, 120, 170, 140, 190][i]
+                            return (
+                                <rect key={i} x={x} y={4350 - h} width="18" height={h} rx="2" fill="#94A3B8" fillOpacity="0.25" />
+                            )
+                        })}
+                    </g>
+
+                    {[
+                        { cx: 240, cy: 5100, dash: "180 377", color: "#94A3B8" },
+                        { cx: 720, cy: 5100, dash: "220 377", color: "#FFFFFF" },
+                        { cx: 1200, cy: 5100, dash: "140 377", color: "#CBD5E1" },
+                    ].map((c, i) => (
+                        <g key={i}>
+                            <circle cx={c.cx} cy={c.cy} r="70" fill="none" stroke="#94A3B8" strokeOpacity="0.15" strokeWidth="10" />
+                            <circle
+                                cx={c.cx}
+                                cy={c.cy}
+                                r="70"
+                                fill="none"
+                                stroke={c.color}
+                                strokeOpacity="0.6"
+                                strokeWidth="10"
+                                strokeDasharray={c.dash}
+                                strokeLinecap="round"
+                                transform={`rotate(-90 ${c.cx} ${c.cy})`}
+                            />
+                            <circle cx={c.cx} cy={c.cy} r="50" fill="none" stroke="#94A3B8" strokeOpacity="0.1" strokeWidth="1" />
+                            <circle cx={c.cx} cy={c.cy} r="30" fill="none" stroke="#94A3B8" strokeOpacity="0.15" strokeWidth="1" />
+                        </g>
+                    ))}
+
+                    <path
+                        d="M -50 5600 L 200 5520 L 480 5580 L 760 5480 L 1040 5540 L 1320 5460 L 1500 5500"
+                        stroke="url(#lineSoft)"
+                        strokeWidth="1.2"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+                    <path
+                        d="M -50 5800 L 240 5760 L 480 5790 L 720 5720 L 960 5750 L 1200 5680 L 1440 5700 L 1500 5690"
+                        stroke="url(#lineSoftBlue)"
+                        strokeWidth="1.2"
+                        fill="none"
+                        strokeLinejoin="round"
+                    />
+
+                    <circle r="2.5" fill="#FFFFFF" opacity="0.9" filter="url(#glowBg)">
+                        <animateMotion
+                            dur="14s"
+                            repeatCount="indefinite"
+                            path="M -50 900 L 180 780 L 400 700 L 620 620 L 840 520 L 1060 440 L 1280 340 L 1500 280"
+                        />
+                        <animate attributeName="opacity" values="0;0.9;0.9;0" dur="14s" repeatCount="indefinite" />
+                    </circle>
+                    <circle r="2" fill="#CBD5E1" opacity="0.8" filter="url(#glowBg)">
+                        <animateMotion
+                            dur="22s"
+                            repeatCount="indefinite"
+                            begin="4s"
+                            path="M -50 2500 L 150 2420 L 380 2560 L 620 2380 L 860 2520 L 1100 2340 L 1340 2460 L 1500 2380"
+                        />
+                        <animate attributeName="opacity" values="0;0.8;0.8;0" dur="22s" begin="4s" repeatCount="indefinite" />
+                    </circle>
+                    <circle r="2" fill="#FFFFFF" opacity="0.8" filter="url(#glowBg)">
+                        <animateMotion
+                            dur="28s"
+                            repeatCount="indefinite"
+                            begin="8s"
+                            path="M -50 5600 L 200 5520 L 480 5580 L 760 5480 L 1040 5540 L 1320 5460 L 1500 5500"
+                        />
+                        <animate attributeName="opacity" values="0;0.8;0.8;0" dur="28s" begin="8s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+
+                <div className="absolute top-[10%] -right-1/4 w-250 h-250 rounded-full growth-glow" />
+                <div className="absolute top-[40%] -left-1/4 w-225 h-225 rounded-full growth-glow-2" />
+                <div className="absolute top-[70%] -right-1/4 w-250 h-250 rounded-full growth-glow" />
+                <div className="absolute bottom-[5%] -left-1/4 w-225 h-225 rounded-full growth-glow-2" />
+            </div>
+            <style>{`
+                @keyframes growthGlow {
+                    0%, 100% { opacity: 0.5; transform: translate(0, 0); }
+                    50% { opacity: 0.8; transform: translate(-60px, 40px); }
+                }
+                @keyframes growthGlow2 {
+                    0%, 100% { opacity: 0.4; transform: translate(0, 0); }
+                    50% { opacity: 0.7; transform: translate(60px, -40px); }
+                }
+                .growth-glow {
+                    background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(226,232,240,0.2) 45%, transparent 70%);
+                    animation: growthGlow 24s ease-in-out infinite;
+                }
+                .growth-glow-2 {
+                    background: radial-gradient(circle, rgba(203,213,225,0.4), transparent 70%);
+                    animation: growthGlow2 28s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <HeroGrowthAnalytics />
+                {/* <MainDirectionsGrowthAnalytics /> */}
+                <CanBeDevelopedGrowthAnalytics />
+                <SolvingBusninessProblemsGrowthAnalytics />
+                <DevelopmentStagesGrowthAnalytics />
+                <HowWeWorkGrowthAnalytics />
+                <WhatCanWeCheckSpecificallyGrowthAnalytics />
+                <FAQandCTAByGrowthAnalytics />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /services/reliability
+
+'use client'
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { HeroReliability } from "./components/HeroReliability"
+import { CanBeDevelopedReliability } from "./components/CanBeDevelopedReliability"
+import { SolvingBusninessProblemsReliability } from "./components/SolvingBusninessProblemsReliability"
+import { DevelopmentStagesReliability } from "./components/DevelopmentStagesReliability"
+import { HowWeWorkReliability } from "./components/HowWeWorkReliability"
+import { FAQandCTAByReliability } from "./components/FAQandCTAByReliability"
+import { Footer } from "@/components/layout/footer/Footer"
+import { WhatCanWeCheckSpecifically } from "./components/WhatCanWeCheckSpecifically"
+import { MainDirectionsReliability } from "./components/MainDirectionsReliability"
+
+export default function servicesReliability() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8]">
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0 reliability-grid-base"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(148,163,184,0.15) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(148,163,184,0.15) 1px, transparent 1px)
+                        `,
+                        backgroundSize: "70px 70px",
+                    }}
+                />
+
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(148,163,184,0.25) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(148,163,184,0.25) 1px, transparent 1px)
+                        `,
+                        backgroundSize: "350px 350px",
+                    }}
+                />
+
+                <div className="reliability-glow-1 absolute -top-1/4 -left-1/4 w-225 h-225 rounded-full" />
+                <div className="reliability-glow-2 absolute -bottom-1/4 -right-1/4 w-225 h-225 rounded-full" />
+                <div className="reliability-glow-3 absolute top-1/2 left-1/2 w-300 h-300 rounded-full -translate-x-1/2 -translate-y-1/2" />
+
+                <div className="reliability-scan reliability-scan-1 absolute inset-x-0 h-100" />
+                <div className="reliability-scan reliability-scan-2 absolute inset-x-0 h-100" />
+                <div className="reliability-scan reliability-scan-3 absolute inset-x-0 h-100" />
+                <div className="reliability-scan reliability-scan-4 absolute inset-x-0 h-100" />
+            </div>
+            <style>{`
+                @keyframes reliabilityGlow1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+                    50% { transform: translate(120px, 80px); opacity: 0.8; }
+                }
+                @keyframes reliabilityGlow2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+                    50% { transform: translate(-120px, -80px); opacity: 0.8; }
+                }
+                @keyframes reliabilityGlow3 {
+                    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+                    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
+                }
+                @keyframes reliabilityScan {
+                    0% { top: -400px; opacity: 0; }
+                    10% { opacity: 1; }
+                    90% { opacity: 1; }
+                    100% { top: 100%; opacity: 0; }
+                }
+                @keyframes reliabilityGridPulse {
+                    0%, 100% { opacity: 0.85; }
+                    50% { opacity: 1; }
+                }
+                .reliability-grid-base {
+                    animation: reliabilityGridPulse 8s ease-in-out infinite;
+                }
+                .reliability-glow-1 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(226,232,240,0.3) 40%, transparent 65%);
+                    animation: reliabilityGlow1 18s ease-in-out infinite;
+                }
+                .reliability-glow-2 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(203,213,225,0.4) 40%, transparent 65%);
+                    animation: reliabilityGlow2 22s ease-in-out infinite;
+                }
+                .reliability-glow-3 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.6), transparent 60%);
+                    animation: reliabilityGlow3 14s ease-in-out infinite;
+                }
+                .reliability-scan {
+                    top: -400px;
+                    opacity: 0;
+                    background: linear-gradient(
+                        to bottom,
+                        transparent,
+                        rgba(255,255,255,0.5),
+                        rgba(148,163,184,0.2),
+                        rgba(255,255,255,0.5),
+                        transparent
+                    );
+                    animation: reliabilityScan 14s linear infinite;
+                }
+                .reliability-scan-1 { animation-delay: 0s; }
+                .reliability-scan-2 { animation-delay: 3.5s; }
+                .reliability-scan-3 { animation-delay: 7s; }
+                .reliability-scan-4 { animation-delay: 10.5s; }
+            `}</style>
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <HeroReliability />
+                {/* <MainDirectionsReliability /> */}
+                <CanBeDevelopedReliability />
+                <SolvingBusninessProblemsReliability />
+                <DevelopmentStagesReliability />
+                <HowWeWorkReliability />
+                <WhatCanWeCheckSpecifically />
+                <FAQandCTAByReliability />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /services/web-development
+
+'use client'
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { HeroWebDevelopment } from "./components/HeroWebDevelopment"
+import { CanBeDevelopedWebDevelopment } from "./components/CanBeDevelopedWebDevelopment"
+import { SolvingBusninessProblemsWebDevelopment } from "./components/SolvingBusninessProblemsWebDevelopment"
+import { DevelopmentStagesWebDevelopment } from "./components/DevelopmentStagesWebDevelopment"
+import { HowWeWorkWebDevelopment } from "./components/HowWeWorkWebDevelopment"
+import { FAQandCTAByWebDevelopment } from "./components/FAQandCTAByWebDevelopment"
+import { Footer } from "@/components/layout/footer/Footer"
+import { bgWebDevelopment, codeLinesWebDevelopment, fileTreeWebDevelopment } from "@/constants/bg"
+
+export default function servicesWebDevelopment() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0 webdev-plus-base"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 14 L20 26 M14 20 L26 20' stroke='%2394A3B8' stroke-opacity='0.3' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                        backgroundSize: "40px 40px",
+                    }}
+                />
+
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M100 90 L100 110 M90 100 L110 100' stroke='%23CBD5E1' stroke-opacity='0.3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                        backgroundSize: "200px 200px",
+                    }}
+                />
+
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px)
+                        `,
+                        backgroundSize: "200px 200px",
+                    }}
+                />
+
+                {bgWebDevelopment.map((c, i) => (
+                    <div
+                        key={`card-${i}`}
+                        className="absolute webdev-float"
+                        style={{
+                            left: `${c.x}px`,
+                            top: `${c.y}px`,
+                            width: `${c.w}px`,
+                            height: `${c.h}px`,
+                            animationDelay: c.delay,
+                        }}
+                    >
+                        <div className="w-full h-full rounded-lg border border-[#CBD5E1]/50 bg-white/60 backdrop-blur-[1px] shadow-[0_4px_20px_rgba(15,23,42,0.03)]">
+                            <div className="flex items-center gap-2 p-3 h-full">
+                                <div className="w-2 h-2 rounded-full bg-[#94A3B8]/60" />
+                                <div className="flex-1 space-y-1.5">
+                                    <div className="h-1.5 w-1/2 rounded-full bg-[#94A3B8]/30" />
+                                    <div className="h-1.5 w-3/4 rounded-full bg-[#CBD5E1]/40" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+                <div
+                    className="hidden md:block absolute left-1/2 -translate-x-1/2 pointer-events-none"
+                    style={{
+                        top: "480px",
+                        width: "760px",
+                        height: "500px",
+                        opacity: 0.9,
+                    }}
+                >
+                    <div className="w-full h-full rounded-xl bg-white/90 border border-[#CBD5E1] backdrop-blur-md shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
+                        <div className="flex items-center justify-between px-4 h-9 border-b border-[#E2E8F0]">
+                            <div className="flex items-center gap-1.5">
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]/80" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]/80" />
+                            </div>
+                            <div className="flex-1 mx-4 h-5 rounded-md bg-[#F1F5F9] border border-[#E2E8F0] flex items-center px-2.5">
+                                <span className="text-[9px] text-[#64748B] font-mono tracking-wide">
+                                    localhost:3000 / services
+                                </span>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                                <div className="w-4 h-4 rounded border border-[#CBD5E1]" />
+                                <div className="w-4 h-4 rounded border border-[#CBD5E1]" />
+                            </div>
+                        </div>
+
+                        <div className="flex h-[calc(100%-36px)]">
+                            <div className="w-40 border-r border-[#E2E8F0] p-3">
+                                <span className="text-[8px] text-[#94A3B8] uppercase tracking-widest font-mono">
+                                    files
+                                </span>
+                                <div className="mt-2 space-y-1.5">
+                                    {fileTreeWebDevelopment.map((f, i) => (
+                                        <div
+                                            key={`f-${i}`}
+                                            className="flex items-center gap-1.5"
+                                            style={{ paddingLeft: `${f.depth * 8}px` }}
+                                        >
+                                            <div
+                                                className={`w-1.5 h-1.5 rounded-sm ${
+                                                    f.depth === 0
+                                                        ? "bg-[#64748B]"
+                                                        : f.depth === 1
+                                                        ? "bg-[#94A3B8]"
+                                                        : "bg-[#CBD5E1]"
+                                                }`}
+                                            />
+                                            <span
+                                                className={`text-[9px] font-mono ${
+                                                    f.depth === 0
+                                                        ? "text-[#334155]"
+                                                        : f.depth === 1
+                                                        ? "text-[#64748B]"
+                                                        : "text-[#94A3B8]"
+                                                }`}
+                                            >
+                                                {f.label}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="flex-1 p-4 overflow-hidden">
+                                <div className="flex gap-4 mb-3 border-b border-[#E2E8F0] pb-2">
+                                    <span className="text-[9px] font-mono text-[#334155]">page.tsx</span>
+                                    <span className="text-[9px] font-mono text-[#94A3B8]">layout.tsx</span>
+                                    <span className="text-[9px] font-mono text-[#94A3B8]">globals.css</span>
+                                </div>
+
+                                <div className="space-y-2">
+                                    {codeLinesWebDevelopment.map((line, i) => (
+                                        <div
+                                            key={`line-${i}`}
+                                            className="flex items-center gap-2"
+                                            style={{ paddingLeft: `${line.indent * 14}px` }}
+                                        >
+                                            <span className="text-[8px] text-[#CBD5E1] font-mono w-4 text-right">
+                                                {String(i + 1).padStart(2, "0")}
+                                            </span>
+                                            <div
+                                                className="h-2 rounded-full webdev-code-line"
+                                                style={{
+                                                    width: `${line.w}px`,
+                                                    background: `linear-gradient(90deg, #94A3B8 0%, #CBD5E1 100%)`,
+                                                    animationDelay: `${i * 0.15}s`,
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+
+                                    <div className="flex items-center gap-2" style={{ paddingLeft: "0px" }}>
+                                        <span className="text-[8px] text-[#CBD5E1] font-mono w-4 text-right">
+                                            {String(codeLinesWebDevelopment.length + 1).padStart(2, "0")}
+                                        </span>
+                                        <div className="w-1.5 h-3 bg-[#64748B] webdev-cursor" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-50 border-l border-[#E2E8F0] p-3">
+                                <span className="text-[8px] text-[#94A3B8] uppercase tracking-widest font-mono">
+                                    preview
+                                </span>
+                                <div className="mt-3 space-y-2">
+                                    <div className="h-3 w-full rounded bg-[#94A3B8]/20" />
+                                    <div className="h-1.5 w-3/4 rounded bg-[#CBD5E1]/50" />
+                                    <div className="h-1.5 w-2/3 rounded bg-[#CBD5E1]/40" />
+                                    <div className="mt-3 h-20 w-full rounded-md bg-gradient-to-br from-[#E2E8F0]/50 to-[#F1F5F9]/50 border border-[#E2E8F0]" />
+                                    <div className="flex gap-1.5 mt-2">
+                                        <div className="h-4 w-14 rounded bg-[#E2E8F0]" />
+                                        <div className="h-4 w-14 rounded border border-[#CBD5E1]" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="webdev-glow-1 absolute -top-1/4 -left-1/4 w-225 h-225 rounded-full" />
+                <div className="webdev-glow-2 absolute -bottom-1/4 -right-1/4 w-225 h-225 rounded-full" />
+            </div>
+            <style>{`
+                @keyframes webdevFloat {
+                    0%, 100% { transform: translateY(0); opacity: 0.7; }
+                    50% { transform: translateY(-12px); opacity: 1; }
+                }
+                @keyframes webdevCursor {
+                    0%, 45% { opacity: 1; }
+                    50%, 95% { opacity: 0; }
+                    100% { opacity: 1; }
+                }
+                @keyframes webdevCodeLine {
+                    0%, 100% { opacity: 0.6; }
+                    50% { opacity: 1; }
+                }
+                @keyframes webdevGlow1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+                    50% { transform: translate(120px, 80px); opacity: 0.8; }
+                }
+                @keyframes webdevGlow2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    50% { transform: translate(-120px, -80px); opacity: 0.7; }
+                }
+                @keyframes webdevPlusPulse {
+                    0%, 100% { opacity: 0.65; }
+                    50% { opacity: 1; }
+                }
+                .webdev-plus-base {
+                    animation: webdevPlusPulse 10s ease-in-out infinite;
+                }
+                .webdev-float {
+                    animation: webdevFloat 6s ease-in-out infinite;
+                }
+                .webdev-cursor {
+                    animation: webdevCursor 1.2s ease-in-out infinite;
+                }
+                .webdev-code-line {
+                    animation: webdevCodeLine 3s ease-in-out infinite;
+                }
+                .webdev-glow-1 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(226,232,240,0.2) 45%, transparent 65%);
+                    animation: webdevGlow1 22s ease-in-out infinite;
+                }
+                .webdev-glow-2 {
+                    background: radial-gradient(circle, rgba(203,213,225,0.4), transparent 65%);
+                    animation: webdevGlow2 26s ease-in-out infinite;
+                }
+            `}</style>
+
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <HeroWebDevelopment />
+                <CanBeDevelopedWebDevelopment />
+                <SolvingBusninessProblemsWebDevelopment />
+                <DevelopmentStagesWebDevelopment />
+                <HowWeWorkWebDevelopment />
+                <FAQandCTAByWebDevelopment />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+
+├ ○ /services/web-development/complex-webproducts
+├ ○ /services/web-development/interfaces
+├ ○ /services/web-development/online-stores
+├ ○ /services/web-development/sites
+├ ○ /services/web-development/web-application
+
+import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
+import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
+import { HeroSites } from "./HeroSites"
+import { SiteNeed } from "./SiteNeed"
+import { SiteMustSolveProblem } from "./SiteMustSolveProblem"
+import { CanIncludedInSite } from "./CanIncludedInSite"
+import { TaskToFinishedWebSite } from "./TaskToFinishedWebSite"
+import { FAQandCTAsites } from "./FAQandCTAsites"
+import { Footer } from "@/components/layout/footer/Footer"
+import { bgWebDevelopment } from "@/constants/bg"
+
+export default function WebDevelopmentSites() {
+    return (
+        <div className="relative min-h-screen bg-[#F0F4F8] overflow-hidden" style={{ isolation: "isolate" }}>
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute inset-0 webdev-plus-base"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 14 L20 26 M14 20 L26 20' stroke='%2394A3B8' stroke-opacity='0.3' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                        backgroundSize: "40px 40px",
+                    }}
+                />
+
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M100 90 L100 110 M90 100 L110 100' stroke='%23CBD5E1' stroke-opacity='0.3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                        backgroundSize: "200px 200px",
+                    }}
+                />
+
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px)
+                        `,
+                        backgroundSize: "200px 200px",
+                    }}
+                />
+
+                {bgWebDevelopment.map((c, i) => (
+                    <div
+                        key={`card-${i}`}
+                        className="absolute webdev-float"
+                        style={{
+                            left: `${c.x}px`,
+                            top: `${c.y}px`,
+                            width: `${c.w}px`,
+                            height: `${c.h}px`,
+                            animationDelay: c.delay,
+                        }}
+                    >
+                        <div className="w-full h-full rounded-lg border border-[#CBD5E1]/50 bg-white/60 backdrop-blur-[1px] shadow-[0_4px_20px_rgba(15,23,42,0.03)]">
+                            <div className="flex items-center gap-2 p-3 h-full">
+                                <div className="w-2 h-2 rounded-full bg-[#94A3B8]/60" />
+                                <div className="flex-1 space-y-1.5">
+                                    <div className="h-1.5 w-1/2 rounded-full bg-[#94A3B8]/30" />
+                                    <div className="h-1.5 w-3/4 rounded-full bg-[#CBD5E1]/40" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+                <div className="webdev-glow-1 absolute -top-1/4 -left-1/4 w-225 h-225 rounded-full" />
+                <div className="webdev-glow-2 absolute -bottom-1/4 -right-1/4 w-225 h-225 rounded-full" />
+            </div>
+            <style>{`
+                @keyframes webdevFloat {
+                    0%, 100% { transform: translateY(0); opacity: 0.7; }
+                    50% { transform: translateY(-12px); opacity: 1; }
+                }
+                @keyframes webdevGlow1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+                    50% { transform: translate(120px, 80px); opacity: 0.8; }
+                }
+                @keyframes webdevGlow2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    50% { transform: translate(-120px, -80px); opacity: 0.7; }
+                }
+                @keyframes webdevPlusPulse {
+                    0%, 100% { opacity: 0.65; }
+                    50% { opacity: 1; }
+                }
+                .webdev-plus-base {
+                    animation: webdevPlusPulse 10s ease-in-out infinite;
+                }
+                .webdev-float {
+                    animation: webdevFloat 6s ease-in-out infinite;
+                }
+                .webdev-glow-1 {
+                    background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(226,232,240,0.2) 45%, transparent 65%);
+                    animation: webdevGlow1 22s ease-in-out infinite;
+                }
+                .webdev-glow-2 {
+                    background: radial-gradient(circle, rgba(203,213,225,0.4), transparent 65%);
+                    animation: webdevGlow2 26s ease-in-out infinite;
+                }
+            `}</style>
+            <div className="relative z-10 pt-18">
+                <div className="mobile-only">
+                    <HeaderMobile />
+                </div>
+                <div className="desktop-only">
+                    <HeaderDesktop />
+                </div>
+                <HeroSites />
+                <SiteNeed />
+                <SiteMustSolveProblem />
+                <CanIncludedInSite />
+                <TaskToFinishedWebSite />
+                <FAQandCTAsites />
+                <Footer />
+            </div>
+        </div>
+    )
+}
+

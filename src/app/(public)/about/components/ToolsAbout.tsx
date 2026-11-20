@@ -15,25 +15,25 @@ export function ToolsAbout() {
         <div className="container">
             <div className="pt-20 md:pt-32">
                 <div className="mb-10 md:mb-16 flex items-center gap-4">
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
-                    <span className="text-white/40 text-xs uppercase tracking-widest">Широкий набор навыков</span>
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
+                    <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-widest">Широкий набор навыков</span>
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
                 </div>
 
                 <div className="max-w-4xl mx-auto text-center mb-16 md:mb-20">
-                    <h2 className="text-white text-font-space text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+                    <h2 className="text-white light:text-ink text-font-space text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
                         Широкий набор навыков - не цель.
                         <br />
-                        <span className="text-white/40">Это инструмент.</span>
+                        <span className="text-white/40 light:text-ink-muted">Это инструмент.</span>
                     </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-24 md:mb-32 max-w-4xl mx-auto">
-                    <p className="text-white/60 text-font-inter text-base md:text-lg leading-relaxed">
+                    <p className="text-white/60 light:text-ink-secondary text-font-inter text-base md:text-lg leading-relaxed">
                         У студии есть несколько разных направлений не потому, что хочется разместить на сайте как можно больше услуг. Они появились из практики.
                     </p>
 
-                    <p className="text-white/60 text-font-inter text-base md:text-lg leading-relaxed">
+                    <p className="text-white/60 light:text-ink-secondary text-font-inter text-base md:text-lg leading-relaxed">
                         В рамках подготовки и разработки я работал с конструкторами, HTML/CSS/JS, fullstack-приложениями, SaaS и микросервисами, SEO, аналитикой, AI, автоматизацией и оптимизацией существующих продуктов.
                     </p>
                 </div>
@@ -41,13 +41,13 @@ export function ToolsAbout() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-20 md:mb-28">
                     <div className="lg:col-span-4 flex justify-center lg:justify-start">
                         <div className="relative">
-                            <span className="block text-white font-mono text-[180px] md:text-[240px] lg:text-[300px] leading-[0.75] tracking-tighter">
+                            <span className="block text-white light:text-ink font-mono text-[180px] md:text-[240px] lg:text-[300px] leading-[0.75] tracking-tighter">
                                 7
                             </span>
 
                             <div className="mt-6 flex items-center gap-3">
-                                <span className="w-8 h-px bg-violet-400/60" />
-                                <span className="text-white/40 text-xs uppercase tracking-[0.3em] font-mono whitespace-nowrap">
+                                <span className="w-8 h-px bg-violet-400/60 light:bg-accent/70" />
+                                <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-[0.3em] font-mono whitespace-nowrap">
                                     возможных причин
                                 </span>
                             </div>
@@ -55,20 +55,20 @@ export function ToolsAbout() {
                     </div>
 
                     <div className="lg:col-span-8">
-                        <p className="text-white text-font-space text-2xl md:text-3xl leading-tight mb-8">
+                        <p className="text-white light:text-ink text-font-space text-2xl md:text-3xl leading-tight mb-8">
                             Проблема с сайтом может оказаться совсем не тем, чем кажется.
                         </p>
 
-                        <div className="border-t border-white/10">
+                        <div className="border-t border-white/10 light:border-line">
                             {problems.map((item, i) => (
                                 <div
                                     key={i}
-                                    className="group flex items-center gap-6 py-3.5 border-b border-white/10 hover:border-white/30 transition-colors duration-500"
+                                    className="group flex items-center gap-6 py-3.5 border-b border-white/10 light:border-line hover:border-white/30 light:hover:border-accent/40 transition-colors duration-500"
                                 >
-                                    <span className="text-white/20 font-mono text-sm w-8 shrink-0 group-hover:text-violet-300/60 transition-colors duration-500">
+                                    <span className="text-white/20 light:text-ink-muted font-mono text-sm w-8 shrink-0 group-hover:text-violet-300/60 light:group-hover:text-accent transition-colors duration-500">
                                         {String(i + 1).padStart(2, "0")}
                                     </span>
-                                    <span className="text-white/55 text-base md:text-lg group-hover:text-white group-hover:translate-x-0.5 transition-all duration-500">
+                                    <span className="text-white/55 light:text-ink-secondary text-base md:text-lg group-hover:text-white light:group-hover:text-ink group-hover:translate-x-0.5 transition-all duration-500">
                                         проблемой {item}
                                     </span>
                                 </div>
@@ -78,24 +78,24 @@ export function ToolsAbout() {
                 </div>
 
                 <div className="max-w-3xl mx-auto text-center mb-20 md:mb-28">
-                    <p className="text-white/70 text-font-inter text-base md:text-lg leading-relaxed">
+                    <p className="text-white/70 light:text-ink-secondary text-font-inter text-base md:text-lg leading-relaxed">
                         Полезно не просто уметь «сделать сайт», а иметь возможность проверить несколько возможных причин и выбрать между разными способами решения.
                     </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto text-center">
-                    <p className="text-white text-font-space text-3xl md:text-4xl lg:text-5xl leading-[1.15]">
+                    <p className="text-white light:text-ink text-font-space text-3xl md:text-4xl lg:text-5xl leading-[1.15]">
                         Технологии в WebCRitics - не витрина.
                     </p>
-                    <p className="text-white/40 text-font-space text-3xl md:text-4xl lg:text-5xl leading-[1.15] mt-2">
+                    <p className="text-white/40 light:text-ink-muted text-font-space text-3xl md:text-4xl lg:text-5xl leading-[1.15] mt-2">
                         Это набор инструментов, из которого выбирается необходимый.
                     </p>
 
-                    <p className="text-white/45 text-sm md:text-base leading-relaxed mt-10 max-w-xl mx-auto">
+                    <p className="text-white/45 light:text-ink-secondary text-sm md:text-base leading-relaxed mt-10 max-w-xl mx-auto">
                         Подробно о конкретных направлениях и технологиях -{" "}
                         <a
                             href="/#services"
-                            className="text-white/80 hover:text-white underline underline-offset-2 decoration-white/30 transition-colors"
+                            className="text-white/80 light:text-accent hover:text-white light:hover:text-accent-hover underline underline-offset-2 decoration-white/30 light:decoration-accent/40 transition-colors"
                         >
                             сервисы
                         </a>

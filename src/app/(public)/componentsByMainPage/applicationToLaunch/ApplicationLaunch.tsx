@@ -7,11 +7,11 @@ export function ApplicationLaunch() {
         <div className="pt-60.5">
             <div className="container">
                 <div className="mb-16 flex items-center gap-4">
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
-                    <span className="text-white/40 text-xs uppercase tracking-widest">Процесс</span>
-                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
+                    <span className="text-white/40 light:text-ink-muted text-xs uppercase tracking-widest">Процесс</span>
+                    <div className="h-px flex-1 bg-linear-to-r from-transparent via-white/20 light:via-line to-transparent" />
                 </div>
-                <h2 className="text-white text-center text-font-space text-4xl md:text-5xl">
+                <h2 className="text-white light:text-ink text-center text-font-space text-4xl md:text-5xl">
                     От проблемы до работающего решения
                 </h2>
                 <div className="mobile-only">
