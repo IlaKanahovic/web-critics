@@ -12,7 +12,7 @@ export function HeroRight() {
                         <div className="flex items-start gap-3">
                             <div>
                                 <p className="text-white light:text-ink text-sm md:text-base font-semibold">{item.title}</p>
-                                <h3 className="text-white light:text-ink text-sm md:text-base">{item.subtitle}</h3>
+                                <p className="text-white light:text-ink text-sm md:text-base">{item.subtitle}</p>
                                 <p className="text-white/50 light:text-ink-secondary text-xs md:text-sm leading-relaxed mt-1">{item.desc}</p>
                             </div>
                         </div>

@@ -35,9 +35,9 @@ export function ReviewsList({ reviews }: IReviewsList) {
                             <FaRegCommentDots className="text-white/40 light:text-ink-muted size-6" />
                         </div>
 
-                        <h3 className="relative text-white light:text-ink text-2xl md:text-3xl font-space mb-3 text-center">
+                        <p className="relative text-white light:text-ink text-2xl md:text-3xl font-space mb-3 text-center">
                             Отзывов пока нет
-                        </h3>
+                        </p>
 
                         <p className="relative text-white/50 light:text-ink-secondary text-sm md:text-base text-center max-w-md leading-relaxed mb-8">
                             Произошла ошибка при загрузке отзывов

@@ -4,6 +4,8 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "@/lib/s3";
 import { checkAdmin } from "@/lib/utils/checkAdmin";
 
+const bucketName = "webcritic";
+
 export async function uploadFileToS3(formData: FormData) {
     await checkAdmin();
 
@@ -15,7 +17,7 @@ export async function uploadFileToS3(formData: FormData) {
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
 
     const command = new PutObjectCommand({
-        Bucket: "WebCRitics",
+        Bucket: bucketName,
         Key: fileName,
         Body: buffer,
         ContentType: file.type,
@@ -23,5 +25,5 @@ export async function uploadFileToS3(formData: FormData) {
 
     await s3Client.send(command);
 
-    return `https://storage.yandexcloud.net/WebCRitics/${fileName}`;
+    return `https://storage.yandexcloud.net/${bucketName}/${fileName}`;
 }

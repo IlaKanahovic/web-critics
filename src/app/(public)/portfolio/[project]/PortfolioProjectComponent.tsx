@@ -59,7 +59,7 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
                                 <>
                                     <Image
                                         src={currentImage}
-                                        alt={`${project.title} - изображение ${activeIndex + 1}`}
+                                        alt={`${project.title} — скриншот интерфейса`}
                                         fill
                                         sizes="(max-width: 1024px) 100vw, 66vw"
                                         className="object-contain"
@@ -163,9 +163,9 @@ export function PortfolioProjectComponent({ project }: IPortfolioProjectComponen
                             </div>
 
                             <div className="pt-6 border-t border-white/8 light:border-line">
-                                <h3 className="text-white light:text-ink text-xl font-semibold leading-snug">
+                                <h2 className="text-white light:text-ink text-xl font-semibold leading-snug">
                                     Понравилось?
-                                </h3>
+                                </h2>
                                 <p className="text-white/50 light:text-ink-secondary text-sm mt-2 leading-relaxed">
                                     Закажите подобное решение
                                 </p>

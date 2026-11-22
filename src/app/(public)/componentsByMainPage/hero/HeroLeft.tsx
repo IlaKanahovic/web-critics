@@ -15,11 +15,11 @@ export function HeroLeft({ projectsLength }: IProjectsLength) {
             <h1 className="text-font-cormorant text-[#f0f0f0] light:text-ink text-5xl md:text-7xl lg:text-[96px] leading-tight mt-8">
                 Ваша проблема. <br />Наше решение.
             </h1>
-            <h2 className="text-font-inter text-[#a1a4a5] light:text-ink-secondary text-base md:text-lg mt-6">
+            <p className="text-font-inter text-[#a1a4a5] light:text-ink-secondary text-base md:text-lg mt-6">
                 Находим, что мешает вашему бизнесу расти,
                 <br />
                 и создаём цифровое решение под конкретную задачу.
-            </h2>
+            </p>
             <div className="flex flex-wrap items-center gap-6 pt-8">
                 <Link href="/contacts">
                     <button className="text-font-inter text-[#a1a4a5] text-lg md:text-xl duration-300 hover:text-white cursor-pointer button-main-styles button-primary">

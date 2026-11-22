@@ -57,7 +57,7 @@ export function OverviewOfServices() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-0.5 bg-linear-to-r from-transparent via-white/40 light:via-line to-transparent pointer-events-none z-10"></div>
                 <div>
                     <h2 className="text-white light:text-ink text-center text-font-space text-6xl pt-12">Услуги</h2>
-                    <h3 className="text-[#a1a4a5] light:text-ink-secondary text-font-inter text-center text-2xl pt-4">Какая задача стоит перед вами?</h3>
+                    <p className="text-[#a1a4a5] light:text-ink-secondary text-font-inter text-center text-2xl pt-4">Какая задача стоит перед вами?</p>
                     <div className="pt-8">
                         <div className="flex flex-wrap gap-6 justify-center">
                             {services.map((service, index) => (

@@ -9,6 +9,16 @@ import { revalidatePath } from "next/cache"
 import * as z from "zod"
 import { Prisma } from "../../../../prisma/generated/prisma"
 
+const reservedArticleSlugs = new Set([
+    "cases",
+    "guides",
+    "business-solutions",
+    "technologies",
+    "stocks",
+    "admin",
+    "blog",
+])
+
 type ActionResponse = {
     data?: { articleId: string },
     error?: {
@@ -37,7 +47,8 @@ export async function AddArticle(rawData: unknown): Promise<ActionResponse> {
     const data = result.data
 
     try {
-        const newSlug = generateSlug(data.title)
+        const baseSlug = generateSlug(data.title)
+        const newSlug = reservedArticleSlugs.has(baseSlug) ? `${baseSlug}-article` : baseSlug
 
         const availabilityCheckArticle = await prisma.article.findUnique({
             where: {

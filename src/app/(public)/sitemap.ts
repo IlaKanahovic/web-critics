@@ -35,10 +35,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { route: '/documents/legal/consent-personal-data', priority: 0.3, freq: 'yearly' },
         { route: '/documents/legal/consent-receive-advertising', priority: 0.3, freq: 'yearly' },
         { route: '/documents/legal/cookie-policy', priority: 0.3, freq: 'yearly' },
-        { route: '/documents/legal/offer', priority: 0.3, freq: 'yearly' },
     ].map((item) => ({
         url: `${baseUrl}${item.route}`,
-        lastModified: new Date(),
         changeFrequency: item.freq as 'daily' | 'weekly' | 'monthly' | 'yearly',
         priority: item.priority,
     }));

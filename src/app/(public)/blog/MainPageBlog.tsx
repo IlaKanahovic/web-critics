@@ -164,9 +164,9 @@ export function MainPageBlog({ articles, title = "Самое новое" }: IMai
                                         </div>
 
                                         <div className="p-6 md:p-8">
-                                            <h3 className="text-white light:text-ink text-xl md:text-2xl lg:text-3xl font-semibold leading-snug group-hover:text-violet-300 light:group-hover:text-accent-hover transition-colors duration-500">
+                                            <h2 className="text-white light:text-ink text-xl md:text-2xl lg:text-3xl font-semibold leading-snug group-hover:text-violet-300 light:group-hover:text-accent-hover transition-colors duration-500">
                                                 {article.title}
-                                            </h3>
+                                            </h2>
 
                                             <p className="text-white/50 light:text-ink-secondary text-sm md:text-base leading-relaxed mt-4 group-hover:text-white/70 light:group-hover:text-ink transition-colors duration-500">
                                                 {article.description}

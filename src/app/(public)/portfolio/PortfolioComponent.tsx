@@ -51,7 +51,7 @@ export async function PortfolioComponent() {
                                     </div>
 
                                     <div className="p-5 relative z-30">
-                                        <h3 className="text-white light:text-ink text-lg font-semibold">{project.title}</h3>
+                                        <h2 className="text-white light:text-ink text-lg font-semibold">{project.title}</h2>
                                         <div className="flex">
                                             <p className="text-white/50 light:text-ink-muted text-sm mt-1 mr-2">{project.service}</p>
                                             <p className="text-white/50 light:text-ink-muted text-sm mt-1 mr-2">•</p>
