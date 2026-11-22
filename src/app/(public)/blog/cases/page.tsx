@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlog } from "../MainPageBlog";
 import { Footer } from "@/components/layout/footer/Footer";
 import { prisma } from "@/lib/db/prisma";
 import { BlogBackground } from "../BlogBackground";
+
+export const metadata: Metadata = {
+    title: "Кейсы клиентов в блоге",
+    description: "Разборы клиентских проектов WebCRitics. Читайте, какие задачи стояли перед бизнесом, какие решения выбрала команда и как проходила работа.",
+    alternates: { canonical: "/blog/cases" },
+};
 
 export const dynamic = 'force-dynamic'
 

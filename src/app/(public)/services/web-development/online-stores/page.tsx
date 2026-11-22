@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { WebDevelopmentBackground } from "../components/WebDevelopmentBackground"
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
@@ -9,6 +10,12 @@ import { CreationAndRefinementOnlineStore } from "./CreationAndRefinementOnlineS
 import { WhatYouGetOnlineStores } from "./WhatYouGetOnlineStores"
 import { FAQandCTAonlineStores } from "./FAQandCTAonlineStores"
 import { Footer } from "@/components/layout/footer/Footer"
+
+export const metadata: Metadata = {
+    title: "Разработка интернет-магазинов",
+    description: "Создаём и дорабатываем интернет-магазины. Прорабатываем каталог, корзину, оплату, управление заказами и интеграции с сервисами бизнеса.",
+    alternates: { canonical: "/services/web-development/online-stores" },
+}
 
 export default function WebDevelopmentInterfaces() {
     return (

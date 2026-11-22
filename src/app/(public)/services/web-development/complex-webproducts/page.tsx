@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { WebDevelopmentBackground } from "../components/WebDevelopmentBackground";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
@@ -10,6 +11,12 @@ import { ExistingOrNewProduct } from "./ExistingOrNewProduct";
 import { WhatBusinessGetComplexWeb } from "./WhatBusinessGetComplexWeb";
 import { FAQandCTAbyComplexWeb } from "./FAQandCTAbyComplexWeb";
 import { Footer } from "@/components/layout/footer/Footer";
+
+export const metadata: Metadata = {
+    title: "Разработка сложных веб-продуктов",
+    description: "Разрабатываем сложные веб-продукты с несколькими ролями, интеграциями и бизнес-логикой. Помогаем запустить новый продукт или развить существующий.",
+    alternates: { canonical: "/services/web-development/complex-webproducts" },
+};
 
 export default function WebDevelopmentSites() {
     return (

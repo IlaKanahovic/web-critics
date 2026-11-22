@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { WebDevelopmentBackground } from "../components/WebDevelopmentBackground";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
@@ -9,6 +10,12 @@ import { CanIncludedInWebApplication } from "./CanIncludedInWebApplication";
 import { ProcessWebApplication } from "./ProcessWebApplication";
 import { FAQandCTAwebApplication } from "./FAQandCTAwebApplication";
 import { Footer } from "@/components/layout/footer/Footer";
+
+export const metadata: Metadata = {
+    title: "Разработка веб-приложений для бизнеса",
+    description: "Создаём веб-приложения для рабочих задач бизнеса. Проектируем личные кабинеты, панели управления и сервисы с нужными интеграциями.",
+    alternates: { canonical: "/services/web-development/web-application" },
+};
 
 export default function WebDevelopmentSites() {
     return (

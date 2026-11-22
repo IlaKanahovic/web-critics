@@ -6,22 +6,41 @@ import { PortfolioProjectComponent } from "./PortfolioProjectComponent";
 import { dbGetProjectById } from "@/lib/db/portfolio/dbGetProjectById";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { cache } from "react";
 
-export async function generateMetadata({ params }: { params: Promise<{ project: string }> }): Promise<Metadata> {
-    const { project } = await params
-    const projectSlug = await dbGetProjectById(project)
+type ProjectPageProps = { params: Promise<{ project: string }> };
 
-    if (!projectSlug) return { title: 'Проект не найден' }
+const getProject = cache(dbGetProjectById);
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+    const { project: slug } = await params;
+    const project = await getProject(slug);
+
+    if (!project) return { title: "Проект не найден" };
+
+    const { title, service, previewBg } = project;
+    const description = `Кейс из портфолио WebCRitics: ${title}. Услуга: ${service}`;
+    const canonical = `/portfolio/${encodeURIComponent(project.slug)}`;
 
     return {
-        title: projectSlug.title,
-        description: `Кейс из портфолио WebCRitics: ${projectSlug.title}. Услуга: ${projectSlug.service}`,
-    }
+        title,
+        description,
+        alternates: { canonical },
+        openGraph: {
+            type: "website",
+            locale: "ru_RU",
+            siteName: "WebCRitics",
+            url: canonical,
+            title,
+            description,
+            images: [{ url: previewBg, alt: title }],
+        },
+    };
 }
 
-export default async function Project({ params }: { params: Promise<{ project: string }> }) {
+export default async function Project({ params }: ProjectPageProps) {
     const { project } = await params
-    const projectSlug = await dbGetProjectById(project)
+    const projectSlug = await getProject(project)
 
     if (!projectSlug) {
         notFound()

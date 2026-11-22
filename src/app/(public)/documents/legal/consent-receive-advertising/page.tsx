@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer/Footer";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+
+export const metadata: Metadata = {
+    title: "Согласие на рекламные рассылки",
+    description: "Условия согласия на получение рекламных и маркетинговых сообщений от WebCRitics, включая порядок отказа от рассылок.",
+    alternates: { canonical: "/documents/legal/consent-receive-advertising" },
+};
 
 export default function MarketingConsern() {
     return (

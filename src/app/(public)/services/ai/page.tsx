@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AiBackground } from "./components/AiBackground";
 import { Footer } from "@/components/layout/footer/Footer";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
@@ -10,6 +11,12 @@ import { HowWeWorkAi } from "./components/HowWeWorkAi";
 import { WhatCanWeCheckSpecificallyAi } from "./components/WhatCanWeCheckSpecificallyAi";
 import { FAQandCTAByAi } from "./components/FAQandCTAByAi";
 import { MainDirectionsAi } from "./components/MainDirectionsAi";
+
+export const metadata: Metadata = {
+    title: "Внедрение ИИ для бизнеса",
+    description: "Внедряем ИИ в рабочие процессы бизнеса. Разрабатываем ассистентов и ботов, подключаем модели к сервисам и упрощаем обработку данных.",
+    alternates: { canonical: "/services/ai" },
+};
 
 export default function servicesAI() {
     return (

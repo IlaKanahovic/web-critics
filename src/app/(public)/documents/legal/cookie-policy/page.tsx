@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer/Footer";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+
+export const metadata: Metadata = {
+    title: "Политика использования файлов cookie",
+    description: "Какие файлы cookie использует сайт WebCRitics, для чего они нужны и как пользователи могут управлять их использованием.",
+    alternates: { canonical: "/documents/legal/cookie-policy" },
+};
 
 export default function CookiePolicy() {
     return (

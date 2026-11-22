@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlog } from "../MainPageBlog";
 import { Footer } from "@/components/layout/footer/Footer";
 import { prisma } from "@/lib/db/prisma";
 import { BlogBackground } from "../BlogBackground";
+
+export const metadata: Metadata = {
+    title: "Практические руководства по веб-проектам",
+    description: "Пошаговые материалы WebCRitics по работе с веб-проектами и цифровыми инструментами. Инструкции для тех, кто запускает или развивает продукт.",
+    alternates: { canonical: "/blog/guides" },
+};
 
 export const dynamic = 'force-dynamic'
 

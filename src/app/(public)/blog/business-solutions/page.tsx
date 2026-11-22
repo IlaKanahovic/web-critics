@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlog } from "../MainPageBlog";
 import { Footer } from "@/components/layout/footer/Footer";
 import { prisma } from "@/lib/db/prisma";
 import { BlogBackground } from "../BlogBackground";
+
+export const metadata: Metadata = {
+    title: "Цифровые решения для бизнеса",
+    description: "Статьи о том, как выбрать цифровое решение для задачи бизнеса, упростить процессы и использовать технологии в повседневной работе.",
+    alternates: { canonical: "/blog/business-solutions" },
+};
 
 export const dynamic = 'force-dynamic'
 

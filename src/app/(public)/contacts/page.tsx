@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
 import { FaEnvelope, FaPhone, FaTelegram, FaWhatsapp, FaMapMarkerAlt, FaCommentDots, FaPaperPlane } from "react-icons/fa"
@@ -21,6 +22,12 @@ const links: [number, number][] = [
     [1, 4], [4, 6], [6, 5], [0, 7],
     [7, 2], [3, 6], [1, 7],
 ]
+
+export const metadata: Metadata = {
+    title: "Контакты и заявка на разработку",
+    description: "Свяжитесь с WebCRitics и расскажите о задаче. Оставьте заявку на разработку сайта, веб-приложения или автоматизацию процессов.",
+    alternates: { canonical: "/contacts" },
+}
 
 export default function Contacts() {
     return (

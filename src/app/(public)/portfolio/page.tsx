@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { PortfolioBackground } from "./PortfolioBackground";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { PortfolioComponent } from "./PortfolioComponent";
 import { Footer } from "@/components/layout/footer/Footer";
+
+export const metadata: Metadata = {
+    title: "Портфолио веб-проектов и IT-решений",
+    description: "Посмотрите выполненные проекты WebCRitics. В кейсах собраны задачи клиентов, описание работ и скриншоты готовых цифровых продуктов.",
+    alternates: { canonical: "/portfolio" },
+};
 
 export const dynamic = 'force-dynamic'
 

@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { BlogBackground } from "./BlogBackground";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
 import { MainPageBlog } from "./MainPageBlog";
 import { Footer } from "@/components/layout/footer/Footer";
 import { dbGetArticlesEverything } from "@/lib/db/blog/dbGetArticles";
+
+export const metadata: Metadata = {
+    title: "Блог о веб-разработке и цифровых продуктах",
+    description: "Новые статьи WebCRitics о разработке, технологиях и решениях для бизнеса. Читайте практические руководства и разборы клиентских проектов.",
+    alternates: { canonical: "/blog" },
+};
 
 export const dynamic = 'force-dynamic'
 

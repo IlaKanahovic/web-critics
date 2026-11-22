@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AutomationBackground } from "./components/AutomationBackground";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
@@ -9,6 +10,12 @@ import { HowWeWorkAutomation } from "./components/HowWeWorkAutomation";
 import { FAQandCTAByAutomation } from "./components/FAQandCTAByAutomation";
 import { Footer } from "@/components/layout/footer/Footer";
 import { MainDirectionsAutomation } from "./components/MainDirectionsAutomation";
+
+export const metadata: Metadata = {
+    title: "Автоматизация бизнес-процессов",
+    description: "Автоматизируем повторяющиеся задачи, связываем сервисы и CRM, создаём интеграции и ботов под рабочие процессы вашей команды.",
+    alternates: { canonical: "/services/automation" },
+};
 
 export default function servicesAutomation() {
     return (

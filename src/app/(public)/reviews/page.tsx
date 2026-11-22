@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer/Footer";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
@@ -9,6 +10,12 @@ import { CTAreviews } from "./components/CTAreviews";
 import { ReviewsModalStyles } from "./components/ReviewsModalStyles";
 import { dbGetReviewsAll } from "@/lib/db/review/dbGetReviewsAll"
 import type { CSSProperties } from "react";
+
+export const metadata: Metadata = {
+    title: "Отзывы клиентов о нашей работе",
+    description: "Отзывы клиентов о разработке и работе с командой WebCRitics. Посмотрите оценки и комментарии или поделитесь своим опытом.",
+    alternates: { canonical: "/reviews" },
+};
 
 export const dynamic = 'force-dynamic'
 

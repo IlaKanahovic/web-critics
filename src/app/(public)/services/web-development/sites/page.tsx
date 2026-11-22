@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { WebDevelopmentBackground } from "../components/WebDevelopmentBackground";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
@@ -8,6 +9,12 @@ import { CanIncludedInSite } from "./CanIncludedInSite";
 import { TaskToFinishedWebSite } from "./TaskToFinishedWebSite";
 import { FAQandCTAsites } from "./FAQandCTAsites";
 import { Footer } from "@/components/layout/footer/Footer";
+
+export const metadata: Metadata = {
+    title: "Разработка сайтов для бизнеса",
+    description: "Разрабатываем сайты под задачи бизнеса. Продумываем структуру, пользовательский путь и подачу услуг, затем создаём и запускаем сайт.",
+    alternates: { canonical: "/services/web-development/sites" },
+};
 
 export default function WebDevelopmentSites() {
     return (

@@ -5,10 +5,41 @@ import { dbGetArticle } from "@/lib/db/blog/dbGetArticle";
 import { MainArticleComponent } from "./MainArticleComponent";
 import { BlogBackground } from "../BlogBackground";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { cache } from "react";
 
-export default async function Article({ params }: { params: Promise<{ article: string }> }) {
+type ArticlePageProps = { params: Promise<{ article: string }> };
+
+const getArticle = cache(dbGetArticle);
+
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+    const { article: slug } = await params;
+    const article = await getArticle(slug);
+
+    if (!article) return { title: "Статья не найдена" };
+
+    const { title, description, previewBg } = article;
+    const canonical = `/blog/${encodeURIComponent(article.slug)}`;
+
+    return {
+        title,
+        description,
+        alternates: { canonical },
+        openGraph: {
+            type: "article",
+            locale: "ru_RU",
+            siteName: "WebCRitics",
+            url: canonical,
+            title,
+            description,
+            images: [{ url: previewBg, alt: title }],
+        },
+    };
+}
+
+export default async function Article({ params }: ArticlePageProps) {
     const { article } = await params
-    const articleSlug = await dbGetArticle(article)
+    const articleSlug = await getArticle(article)
 
     if (!article) {
         notFound()

@@ -1,9 +1,16 @@
+import type { Metadata } from "next"
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
 import { Footer } from "@/components/layout/footer/Footer"
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
 import { documents } from "@/constants/documents"
+
+export const metadata: Metadata = {
+    title: "Юридические документы компании",
+    description: "Официальные документы WebCRitics. Политика конфиденциальности, правила использования cookie, условия согласия на рассылки и реквизиты исполнителя.",
+    alternates: { canonical: "/documents/legal" },
+}
 
 export default function DocumentsLegal() {
     return (

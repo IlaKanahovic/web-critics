@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer/Footer";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+
+export const metadata: Metadata = {
+    title: "Реквизиты компании и данные исполнителя",
+    description: "Сведения об исполнителе WebCRitics и его статусе. Реквизиты для оформления документов, взаимодействия с компанией и оплаты.",
+    alternates: { canonical: "/documents/legal/company-details" },
+};
 
 export default function CompanyDetails() {
     return (

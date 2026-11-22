@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
 import { AboutHero } from "./components/AboutHero"
@@ -12,6 +13,12 @@ import { BeforeAfterAbout } from "./components/BeforeAfterAbout"
 import { AlsoOnTheSiteAbout } from "./components/AlsoOnTheSiteAbout"
 import { CTAabout } from "./components/CTAabout"
 import { Footer } from "@/components/layout/footer/Footer"
+
+export const metadata: Metadata = {
+    title: "О команде и подходе к разработке",
+    description: "Как WebCRitics разбирается в задачах бизнеса, выбирает решение и доводит разработку до запуска. Узнайте о команде, инструментах и подходе к работе.",
+    alternates: { canonical: "/about" },
+}
 
 export default function About() {
     return (

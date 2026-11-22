@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop"
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile"
 import { Footer } from "@/components/layout/footer/Footer"
@@ -5,6 +6,12 @@ import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
 import { FaDownload } from "react-icons/fa"
 import { guides } from "@/constants/guides"
+
+export const metadata: Metadata = {
+    title: "Руководства и справочные документы",
+    description: "Раздел справочной документации WebCRitics. Здесь собраны руководства и инструкции, доступные в разделе документов сайта.",
+    alternates: { canonical: "/documents/guides" },
+}
 
 export default function DocumentsGuides() {
     return (

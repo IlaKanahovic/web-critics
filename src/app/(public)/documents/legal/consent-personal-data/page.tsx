@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer/Footer";
 import { HeaderDesktop } from "@/components/layout/headerDesktop/HeaderDesktop";
 import { HeaderMobile } from "@/components/layout/headerMobile/HeaderMobile";
+
+export const metadata: Metadata = {
+    title: "Политика обработки персональных данных",
+    description: "Политика конфиденциальности WebCRitics. Цели и порядок обработки персональных данных, права пользователей и способы обращения к оператору.",
+    alternates: { canonical: "/documents/legal/consent-personal-data" },
+};
 
 export default function ConsernPersonalData() {
     return (
