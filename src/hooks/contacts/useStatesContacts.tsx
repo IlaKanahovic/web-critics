@@ -1,9 +1,8 @@
 import { useState } from "react"
 
-
 export function useStatesContacts() {
-    const [budgetFrom, setBudgetFrom] = useState(5000)
-    const [budgetTo, setBudgetTo] = useState(100000)
+    const [budgetFrom, setBudgetFrom] = useState(1000)
+    const [budgetTo, setBudgetTo] = useState(50000)
     const [description, setDescription] = useState('')
     const [advertisingConsent, setAdvertisingConsent] = useState(false)
     const [format, setFormat] = useState<'one-time' | 'subscription'>('one-time')

@@ -23,7 +23,7 @@ export const Lead = z.object({
     budgetFrom: z
         .number()
         .int()
-        .min(5000, { message: "Минимальный бюджет 5000" }),
+        .min(1000, { message: "Минимальный бюджет 1000" }),
 
     budgetTo: z
         .number()

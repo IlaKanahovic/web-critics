@@ -124,8 +124,8 @@ export function LeadForm() {
                     description: undefined
                 })
                 resetForm()
-                setBudgetFrom(5000)
-                setBudgetTo(100000)
+                setBudgetFrom(1000)
+                setBudgetTo(50000)
                 setServices([])
                 setDescription('')
                 setAdvertisingConsent(false)
@@ -163,7 +163,7 @@ export function LeadForm() {
                                             <span className="text-white/60 text-sm w-16">от</span>
                                             <input
                                                 type="range"
-                                                min="5000"
+                                                min="1000"
                                                 max="1000000"
                                                 step="1000"
                                                 value={budgetFrom}
@@ -179,7 +179,7 @@ export function LeadForm() {
                                             <span className="text-white/60 text-sm w-16">до</span>
                                             <input
                                                 type="range"
-                                                min="5000"
+                                                min="1000"
                                                 max="1000000"
                                                 step="1000"
                                                 value={budgetTo}
